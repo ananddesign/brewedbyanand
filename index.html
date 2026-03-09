@@ -1,701 +1,897 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brewed by Anand — Experiments & Plugins</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #f2ece6;
-    --bg2: #ebe3db;
-    --ink: #2a1f1a;
-    --ink-light: #8c7a70;
-    --accent: #b87c5a;
-    --accent2: #d4a882;
-    --white: #faf7f4;
-    --border: rgba(42,31,26,0.1);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Mono', monospace;
-    background: var(--bg);
-    color: var(--ink);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(242,236,230,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--ink); }
-
-  .nav-tag {
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    border: 1px solid var(--border);
-    padding: 5px 12px;
-    border-radius: 100px;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 40px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(180,120,80,0.12) 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(5rem, 14vw, 11rem);
-    font-weight: 300;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.35s;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-sub {
-    margin-top: 32px;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-light);
-    max-width: 380px;
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.5s;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.9s;
-  }
-
-  .hero-scroll span {
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
-    animation: scrollPulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.1); }
-  }
-
-  /* SECTION */
-  section {
-    padding: 100px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 60px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 300;
-    letter-spacing: -0.01em;
-  }
-
-  .section-count {
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-  }
-
-  /* EXPERIMENTS GRID */
-  .experiments-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2px;
-  }
-
-  .exp-card {
-    background: var(--white);
-    padding: 36px 32px;
-    cursor: pointer;
-    transition: background 0.25s;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .exp-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-
-  .exp-card:hover { background: var(--bg2); }
-  .exp-card:hover::after { transform: scaleX(1); }
-
-  .exp-tag {
-    display: inline-block;
-    font-size: 0.55rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid var(--accent2);
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin-bottom: 20px;
-  }
-
-  .exp-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
-    font-weight: 300;
-    line-height: 1.15;
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-
-  .exp-desc {
-    font-size: 0.65rem;
-    color: var(--ink-light);
-    line-height: 1.8;
-    letter-spacing: 0.03em;
-  }
-
-  .exp-footer {
-    margin-top: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .exp-date {
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    opacity: 0.6;
-  }
-
-  .exp-status {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-  }
-
-  .status-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  .status-dot.active {
-    background: #7cb87a;
-    box-shadow: 0 0 0 3px rgba(124,184,122,0.2);
-    animation: pulse 2s infinite;
-  }
-
-  .status-dot.archived { background: var(--ink-light); opacity: 0.4; }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(124,184,122,0.2); }
-    50% { box-shadow: 0 0 0 6px rgba(124,184,122,0.1); }
-  }
-
-  .exp-arrow {
-    position: absolute;
-    top: 32px; right: 28px;
-    font-size: 0.9rem;
-    color: var(--ink-light);
-    opacity: 0;
-    transform: translate(-4px, 4px);
-    transition: all 0.25s ease;
-  }
-
-  .exp-card:hover .exp-arrow {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-
-  /* FEATURED (large card) */
-  .exp-card.featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    padding: 56px 52px;
-  }
-
-  .exp-card.featured .exp-name {
-    font-size: 3rem;
-  }
-
-  .exp-card.featured .exp-preview {
-    background: var(--bg);
-    border-radius: 4px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .preview-demo {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Animated preview for featured card */
-  .preview-nodes {
-    position: relative;
-    width: 120px;
-    height: 120px;
-  }
-
-  .preview-node {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  .preview-node:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); animation: orbit1 3s linear infinite; }
-  .preview-node:nth-child(2) { bottom: 0; left: 50%; transform: translateX(-50%); animation: orbit2 3s linear infinite 1s; }
-  .preview-node:nth-child(3) { left: 0; top: 50%; transform: translateY(-50%); animation: orbit3 3s linear infinite 0.5s; }
-
-  .preview-line {
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(180,120,80,0.2);
-    border-radius: 50%;
-    animation: spinSlow 8s linear infinite;
-  }
-
-  @keyframes orbit1 { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
-  @keyframes orbit2 { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
-  @keyframes orbit3 { 0%, 100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(6px); } }
-  @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-  /* BUTTONS */
-  .exp-actions {
-    margin-top: 24px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 9px 18px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary { background: var(--ink); color: var(--bg); }
-  .btn-primary:hover { background: var(--accent); }
-
-  .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-  .btn-soon { background: transparent; color: var(--ink-light); border: 1px dashed var(--border); cursor: default; opacity: 0.6; }
-
-  .btn svg { width: 11px; height: 11px; flex-shrink: 0; }
-
-  .exp-features {
-    margin-top: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .exp-feature {
-    font-size: 0.55rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-light);
-    background: var(--bg);
-    padding: 3px 10px;
-    border-radius: 100px;
-  }
-
-  /* DIVIDER */
-  .divider {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ABOUT STRIP */
-  .about-strip {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 80px 40px;
-    text-align: center;
-  }
-
-  .about-strip p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
-    font-weight: 300;
-    line-height: 1.4;
-    max-width: 700px;
-    margin: 0 auto;
-    letter-spacing: -0.01em;
-  }
-
-  .about-strip em { font-style: italic; color: var(--accent2); }
-
-  /* FOOTER */
-  footer {
-    padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--border);
-  }
-
-  footer span {
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Scroll reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewed by Anand — Design × Code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --accent: #c43e2a;
+      --accent-hover: #a83220;
+      --text-primary: #1a1410;
+      --text-secondary: #6b5e52;
+      --text-muted: #a09484;
+      --border: rgba(26, 20, 16, 0.1);
+      --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ========= NAV ========= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(245, 240, 232, 0.85);
+      transition: padding 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-name {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav-role {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-link {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
+    }
+
+    .nav-link sup {
+      font-size: 0.5rem;
+      vertical-align: super;
+      margin-left: 1px;
+      color: var(--accent);
+    }
+
+    .nav-link:hover { color: var(--accent); }
+
+    .nav-link--email {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+
+    /* ========= HERO ========= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 160px 48px 80px;
+      position: relative;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      opacity: 0;
+      animation: heroReveal 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+    }
+
+    .hero-desc {
+      margin-top: 36px;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      line-height: 2;
+      max-width: 380px;
+      opacity: 0;
+      animation: heroReveal 0.8s ease 0.6s forwards;
+    }
+
+    .hero-email {
+      margin-top: 40px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+      animation: heroReveal 0.8s ease 0.9s forwards;
+    }
+
+    .hero-email:hover { opacity: 0.7; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: heroReveal 0.8s ease 1.2s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--accent);
+      animation: scrollPulse 2s ease-in-out infinite;
+      transform-origin: top;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { scaleY: 1; opacity: 1; }
+      50% { scaleY: 0.4; opacity: 0.4; }
+    }
+
+    /* ========= PROJECT STRIP ========= */
+    .project-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 0 4px;
+    }
+
+    .project-strip-item {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .project-strip-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(26, 20, 16, 0.7));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .project-strip-item:hover::before { opacity: 1; }
+
+    .strip-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .project-strip-item:hover .strip-bg { transform: scale(1.05); }
+
+    .strip-icon {
+      font-size: 4rem;
+      opacity: 0.15;
+    }
+
+    .strip-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px;
+      z-index: 2;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .project-strip-item:hover .strip-info {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .strip-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.6);
+      margin-bottom: 4px;
+    }
+
+    .strip-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #f5f0e8;
+    }
+
+    .strip-fill-1 {
+      background: url('mockup-studio.png') center/cover no-repeat;
+      background-color: #f5f0e8;
+    }
+    .strip-fill-2 {
+      background: url('project-2.png') center/cover no-repeat;
+      background-color: #c43e2a;
+    }
+    .strip-fill-3 {
+      background: url('project-3.png') center/cover no-repeat;
+      background-color: #d4c4b0;
+    }
+
+    /* ========= WORK SECTION ========= */
+    .work-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .work-heading {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .work-count {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .project-item:hover { padding-left: 12px; }
+    .project-item:hover .project-item-title { color: var(--accent); }
+    .project-item:hover .project-item-arrow { transform: translate(3px, -3px); color: var(--accent); }
+
+    .project-num {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .project-item-body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .project-item-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .project-item-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      letter-spacing: -0.01em;
+    }
+
+    .project-item-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-top: 2px;
+      max-width: 500px;
+    }
+
+    .project-item-arrow {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+    }
+
+    /* ========= EXPERIMENTS ========= */
+    .experiments-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      margin-top: 64px;
+    }
+
+    .exp-card {
+      padding: 48px 40px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .exp-card:hover {
+      background: rgba(196, 62, 42, 0.03);
+      border-color: rgba(196, 62, 42, 0.15);
+    }
+
+    .exp-card:hover .exp-title { color: var(--accent); }
+
+    .exp-icon { font-size: 1.5rem; margin-bottom: 20px; display: block; }
+
+    .exp-label {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .exp-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .exp-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========= ABOUT ========= */
+    .about-section {
+      background: var(--text-primary);
+      color: var(--bg);
+      padding: 120px 48px;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-heading {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(245, 240, 232, 0.7);
+      margin-bottom: 16px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .about-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 1px solid rgba(245, 240, 232, 0.15);
+      color: rgba(245, 240, 232, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .about-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ========= CONTACT ========= */
+    .contact-section {
+      padding: 120px 48px;
+      text-align: center;
+    }
+
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .contact-text {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn--primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .contact-btn--primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(196, 62, 42, 0.25);
+    }
+
+    .contact-btn--secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .contact-btn--secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ========= FOOTER ========= */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-text {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ========= ANIMATIONS ========= */
+    @keyframes heroReveal {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========= RESPONSIVE ========= */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-right { gap: 20px; }
+      .hero { padding: 140px 24px 60px; }
+      .project-strip { grid-template-columns: 1fr; }
+      .work-section { padding: 80px 24px; }
+      .work-heading { font-size: 2.4rem; }
+      .project-item { grid-template-columns: 40px 1fr auto; gap: 16px; }
+      .project-item-title { font-size: 1.2rem; }
+      .experiments-section { padding: 0 24px 80px; }
+      .exp-grid { grid-template-columns: 1fr; }
+      .about-section { padding: 80px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-heading { font-size: 2.4rem; }
+      .contact-section { padding: 80px 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+      .hero-name { font-size: 3rem; }
+      .project-item { grid-template-columns: 1fr; gap: 8px; }
+      .project-num, .project-item-arrow { display: none; }
+      .contact-links { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">Brewed by Anand</a>
-  <ul class="nav-links">
-    <li><a href="#experiments">Experiments</a></li>
-    <li><a href="#plugins">Plugins</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-  <span class="nav-tag">Open to collab</span>
-</nav>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-left">
+      <a href="#" class="nav-name">Brewed by Anand</a>
+      <span class="nav-role">Staff Product Designer</span>
+    </div>
+    <div class="nav-right">
+      <a href="#work" class="nav-link">Work <sup>(10)</sup></a>
+      <a href="#experiments" class="nav-link">Archives</a>
+      <a href="mailto:hello@brewedbyanand.com" class="nav-link nav-link--email">hello@brewedbyanand.com ↗</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <p class="hero-eyebrow">A personal repository by Anand</p>
-  <h1 class="hero-title">No <em>rules,</em><br>just work.</h1>
-  <p class="hero-sub">A collection of experiments, plugins, and half-finished ideas built in the margins of everything else.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-name">Brewed by<br>Anand</h1>
+    <p class="hero-desc">
+      I'm a Staff Product Designer based<br>
+      in India building tools for design<br>
+      systems &amp; luxury e-commerce
+    </p>
+    <a href="mailto:hello@brewedbyanand.com" class="hero-email">hello@brewedbyanand.com ↗</a>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
+  <!-- PROJECT STRIP -->
+  <div class="project-strip">
+    <div class="project-strip-item">
+      <div class="strip-bg strip-fill-1"></div>
+      <div class="strip-info">
+        <div class="strip-label">Figma Plugin</div>
+        <div class="strip-title">Design Cop</div>
+      </div>
+    </div>
+    <div class="project-strip-item">
+      <div class="strip-bg strip-fill-2"></div>
+      <div class="strip-info">
+        <div class="strip-label">Design System</div>
+        <div class="strip-title">Qween DS 2.0</div>
+      </div>
+    </div>
+    <div class="project-strip-item">
+      <div class="strip-bg strip-fill-3"></div>
+      <div class="strip-info">
+        <div class="strip-label">Workshop</div>
+        <div class="strip-title">Design Manifesto</div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- EXPERIMENTS -->
-<section id="experiments">
-  <div class="section-header reveal">
-    <h2 class="section-title">Plugins</h2>
-    <span class="section-count">04 entries</span>
+  <!-- WORK -->
+  <section class="work-section" id="work">
+    <div class="work-header reveal">
+      <h2 class="work-heading">Work</h2>
+      <span class="work-count">10 Projects</span>
+    </div>
+    <div class="project-list">
+      <div class="project-item reveal">
+        <span class="project-num">01</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Figma Plugin</span>
+          <span class="project-item-title">Design Cop</span>
+          <span class="project-item-desc">DS style checker & auto-linker for Qween DS 2.0 with generic color token discovery</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">02</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Design System</span>
+          <span class="project-item-title">Qween DS 2.0</span>
+          <span class="project-item-desc">Token layering, specs directory, and CI drift detection infrastructure</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">03</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Workshop &amp; AI</span>
+          <span class="project-item-title">QWEEN Design Manifesto</span>
+          <span class="project-item-desc">13 luxury principles, custom design critic skill, 22-slide team workshop</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">04</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Chrome Extension</span>
+          <span class="project-item-title">Feedback Annotator v4</span>
+          <span class="project-item-desc">Unified 3-step annotation + ticket flow for ClickUp bug reporting</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">05</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Side Business</span>
+          <span class="project-item-title">Tarami</span>
+          <span class="project-item-desc">Jewelry pop-up with expense dashboard, UPI checkout, and AI image classifier</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">06</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Fintech — PhonePe</span>
+          <span class="project-item-title">Pincode App</span>
+          <span class="project-item-desc">Checkout flows, discoverability, and trading app redesign</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">07</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Prototype</span>
+          <span class="project-item-title">Cinematic Scroll</span>
+          <span class="project-item-desc">Scroll-driven jewelry landing with video scrubbing and CSS scale zoom</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">08</span>
+        <div class="project-item-body">
+          <span class="project-item-label">AI / Vision</span>
+          <span class="project-item-title">Jewelry Classifier</span>
+          <span class="project-item-desc">Claude Vision for earring subcategory detection and hybrid classification</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">09</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Upcoming</span>
+          <span class="project-item-title">Desk Robot</span>
+          <span class="project-item-desc">React PWA with animated expressions and voice activation on Android</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+      <div class="project-item reveal">
+        <span class="project-num">10</span>
+        <div class="project-item-body">
+          <span class="project-item-label">Type Design</span>
+          <span class="project-item-title">Custom Didot</span>
+          <span class="project-item-desc">FontForge-compatible SVG glyphs for a bespoke luxury typeface</span>
+        </div>
+        <span class="project-item-arrow">↗</span>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- EXPERIMENTS -->
+  <section class="experiments-section" id="experiments">
+    <div class="work-header reveal">
+      <h2 class="work-heading">Archives</h2>
+      <span class="work-count">Explorations</span>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <span class="exp-icon">⚡</span>
+        <div class="exp-label">Integration</div>
+        <div class="exp-title">MCP Explorations</div>
+        <div class="exp-desc">Figma MCP, Pencil.dev, and Claude Code CLI integrations for design-to-code workflows.</div>
+      </div>
+      <div class="exp-card reveal">
+        <span class="exp-icon">🤖</span>
+        <div class="exp-label">Hardware</div>
+        <div class="exp-title">Android PWA Bot</div>
+        <div class="exp-desc">Repurposed Android device running React PWA with animated facial expressions and voice activation.</div>
+      </div>
+      <div class="exp-card reveal">
+        <span class="exp-icon">Aa</span>
+        <div class="exp-label">Typography</div>
+        <div class="exp-title">Custom Didot / Bodoni</div>
+        <div class="exp-desc">FontForge-compatible SVG glyphs exploring bespoke luxury typeface creation.</div>
+      </div>
+      <div class="exp-card reveal">
+        <span class="exp-icon">📊</span>
+        <div class="exp-label">Tarami Tools</div>
+        <div class="exp-title">Expense Dashboard</div>
+        <div class="exp-desc">Mobile-first expense tracker with real business data, pop-up events, and UPI payment capture.</div>
+      </div>
+    </div>
+  </section>
 
-  <div class="experiments-grid">
-
-    <!-- Design Cop — Featured -->
-    <div class="exp-card featured reveal">
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
       <div>
-        <span class="exp-tag">Figma Plugin</span>
-        <h3 class="exp-name">Design<br>Cop 2</h3>
-        <p class="exp-desc">Auto-fix and link design system styles in Figma. Scans your file for unlinked fills, text styles, and component overrides — then fixes them in one shot.</p>
-        <div class="exp-features">
-          <span class="exp-feature">Detect unlinked styles</span>
-          <span class="exp-feature">Auto-link to DS</span>
-          <span class="exp-feature">Batch fix text</span>
-          <span class="exp-feature">Undo & re-link</span>
-        </div>
-        <div class="exp-footer" style="margin-top:24px;">
-          <span class="exp-date">Feb 2026</span>
-          <span class="exp-status"><span class="status-dot active"></span> Active</span>
-        </div>
-        <div class="exp-actions">
-          <a class="btn btn-primary" href="figma://plugins/ds-style-checker-plugin" title="Opens in Figma">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-            Open in Figma
-          </a>
-          <a class="btn btn-secondary" href="#" download="design-cop.zip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Download Source
-          </a>
-        </div>
+        <h2 class="about-heading">Designing with<br>intention,<br>building with code</h2>
       </div>
-      <div class="exp-preview">
-        <div class="preview-demo">
-          <!-- Animated DS check visual -->
-          <svg width="160" height="140" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="20" width="120" height="16" rx="3" fill="rgba(180,120,80,0.12)" stroke="rgba(180,120,80,0.3)" stroke-width="1"/>
-            <rect x="20" y="20" width="0" height="16" rx="3" fill="rgba(180,120,80,0.4)" id="bar1">
-              <animate attributeName="width" from="0" to="120" dur="1.8s" fill="freeze" begin="0.3s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-            </rect>
-            <rect x="20" y="46" width="120" height="16" rx="3" fill="rgba(180,120,80,0.12)" stroke="rgba(180,120,80,0.3)" stroke-width="1"/>
-            <rect x="20" y="46" width="0" height="16" rx="3" fill="rgba(180,120,80,0.25)" id="bar2">
-              <animate attributeName="width" from="0" to="80" dur="1.8s" fill="freeze" begin="0.6s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-            </rect>
-            <rect x="20" y="72" width="120" height="16" rx="3" fill="rgba(180,120,80,0.12)" stroke="rgba(180,120,80,0.3)" stroke-width="1"/>
-            <rect x="20" y="72" width="0" height="16" rx="3" fill="rgba(124,184,122,0.4)" id="bar3">
-              <animate attributeName="width" from="0" to="100" dur="1.8s" fill="freeze" begin="0.9s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-            </rect>
-            <text x="20" y="112" font-family="DM Mono, monospace" font-size="8" fill="rgba(140,122,112,0.7)" letter-spacing="1">STYLE CHECK</text>
-            <circle cx="148" cy="104" r="5" fill="rgba(124,184,122,0.9)">
-              <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
+      <div>
+        <p class="about-text">
+          I'm Anand — a Staff Product Designer with 8+ years spanning fintech and luxury 
+          e-commerce. Currently at Qween, an experiential jewellery brand, where I lead 
+          design systems, Figma tooling, and hands-on prototyping.
+        </p>
+        <p class="about-text">
+          I believe the best design tools are the ones you brew yourself. From Figma plugins 
+          to Chrome extensions, AI experiments to pop-up businesses — I work at the edge 
+          where design thinking meets making.
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">Product Design</span>
+          <span class="about-tag">Design Systems</span>
+          <span class="about-tag">Figma Plugins</span>
+          <span class="about-tag">Prototyping</span>
+          <span class="about-tag">Luxury UX</span>
+          <span class="about-tag">AI Tools</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- LineMotion -->
-    <div class="exp-card reveal">
-      <span class="exp-tag">Figma Plugin</span>
-      <h3 class="exp-name">Line<br>Motion</h3>
-      <p class="exp-desc">Bring your Figma line illustrations to life. Animate vectors with draw, fade, scale, spin, or slide — then export as Lottie JSON for web, iOS, and Android.</p>
-      <div class="exp-features">
-        <span class="exp-feature">5 animation types</span>
-        <span class="exp-feature">Per-layer control</span>
-        <span class="exp-feature">Spring easing</span>
-        <span class="exp-feature">Lottie export</span>
-      </div>
-      <div class="exp-footer" style="margin-top:24px;">
-        <span class="exp-date">Jan 2026</span>
-        <span class="exp-status"><span class="status-dot active"></span> Active</span>
-      </div>
-      <div class="exp-actions">
-        <a class="btn btn-primary" href="figma://plugins/linemotion-lottie-animator">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Open in Figma
-        </a>
-        <a class="btn btn-secondary" href="#" download="linemotion.zip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Download Source
-        </a>
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner reveal">
+      <h2 class="contact-heading">Let's Build<br>Something</h2>
+      <p class="contact-text">
+        Open to consulting, collaborations, and conversations about 
+        design tooling, systems, and the craft of making.
+      </p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/anand/" target="_blank" class="contact-btn contact-btn--primary">LinkedIn</a>
+        <a href="mailto:hello@brewedbyanand.com" class="contact-btn contact-btn--secondary">Email</a>
       </div>
     </div>
+  </section>
 
-    <!-- Design Critique -->
-    <div class="exp-card reveal">
-      <span class="exp-tag">Figma Plugin</span>
-      <h3 class="exp-name">Design<br>Critique</h3>
-      <p class="exp-desc">Run a full automated critique on any Figma frame. Scores your design across contrast, typography, layout, and component consistency — with a pass/fail per check.</p>
-      <div class="exp-features">
-        <span class="exp-feature">WCAG contrast</span>
-        <span class="exp-feature">Typography audit</span>
-        <span class="exp-feature">Layout alignment</span>
-        <span class="exp-feature">Design score</span>
-      </div>
-      <div class="exp-footer" style="margin-top:24px;">
-        <span class="exp-date">Feb 2026</span>
-        <span class="exp-status"><span class="status-dot active"></span> Active</span>
-      </div>
-      <div class="exp-actions">
-        <a class="btn btn-primary" href="figma://plugins/design-critique-plugin">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          Open in Figma
-        </a>
-        <a class="btn btn-secondary" href="#" download="design-critique.zip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Download Source
-        </a>
-      </div>
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">© 2026 Brewed by Anand</span>
+    <div class="footer-links">
+      <a href="#work">Work</a>
+      <a href="#experiments">Archives</a>
+      <a href="https://www.linkedin.com/in/anand/" target="_blank">LinkedIn</a>
     </div>
+  </footer>
 
-    <!-- Video Compressor -->
-    <div class="exp-card reveal">
-      <span class="exp-tag">Bash Script</span>
-      <h3 class="exp-name">Jewellery<br>Compressor</h3>
-      <p class="exp-desc">FFmpeg script built for jewellery product videos. Cuts file size by 60–70% with no visible quality loss — tuned specifically for reflective surfaces, fine detail, and colour-change pieces.</p>
-      <div class="exp-features">
-        <span class="exp-feature">H.264 / CRF 20</span>
-        <span class="exp-feature">Web fast-start</span>
-        <span class="exp-feature">Batch mode</span>
-        <span class="exp-feature">15MB → 5MB</span>
-      </div>
-      <div class="exp-footer" style="margin-top:24px;">
-        <span class="exp-date">Feb 2026</span>
-        <span class="exp-status"><span class="status-dot active"></span> Active</span>
-      </div>
-      <div class="exp-actions">
-        <a class="btn btn-primary" href="compress_jewellery_video.sh" download="compress_jewellery_video.sh">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Download Script
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT STRIP -->
-<div class="about-strip" id="about">
-  <p>Brewed slowly, in <em>public.</em> Each experiment is a question — some get answered, some get abandoned, all get learned from.</p>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <span>Brewed by Anand — 2026</span>
-  <span>Crafted with curiosity</span>
-</footer>
-
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-        observer.unobserve(entry.target);
-      }
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
     });
-  }, { threshold: 0.1 });
 
-  reveals.forEach(el => observer.observe(el));
-</script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
 
 </body>
 </html>
