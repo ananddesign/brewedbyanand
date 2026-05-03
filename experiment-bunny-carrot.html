@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bunny Carrot Chase — Brewed by Anand</title>
+  <title>Bunny Carrot Chase - Brewed by Anand</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -18,16 +18,20 @@
     body { background:var(--cream); font-family:'Inter',sans-serif; color:var(--dark); overflow-x:hidden; }
 
     /* NAV */
-    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:36px 72px; background:#F0EBE5; transition:padding 0.4s ease, box-shadow 0.4s ease; }
-    nav.scrolled { padding:18px 72px; background:#F0EBE5; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(28,28,28,0.08); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:36px 72px; background:transparent; transition:padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease; }
+    nav.scrolled { padding:18px 72px; background:rgba(240,235,229,0.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(28,28,28,0.08); }
     .nav-logo { text-decoration:none; display:block; transition:opacity 0.2s; } .nav-logo:hover { opacity:0.7; }
+    .nav-logo-white { display:block; }
+    .nav-logo-black { display:none; }
+    nav.scrolled .nav-logo-white { display:none; }
+    nav.scrolled .nav-logo-black { display:block; }
     .nav-right { display:flex; align-items:center; gap:40px; }
     .nav-links { display:flex; gap:32px; list-style:none; }
     .nav-links a { font-family:'Inter',sans-serif; font-weight:300; font-size:16px; color:rgba(255,255,255,0.85); text-decoration:none; transition:color 0.4s ease, opacity 0.2s; }
     .nav-links a:hover { opacity:0.6; }
     .nav-book-btn { font-family:'Inter',sans-serif; font-size:13px; font-weight:300; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; color:var(--white); background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.5); padding:10px 22px; transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease; white-space:nowrap; backdrop-filter:blur(4px); }
     .nav-book-btn:hover { background:rgba(255,255,255,0.35); }
-    /* Scrolled state — revert to brand colours */
+    /* Scrolled state - revert to brand colours */
     nav.scrolled .nav-logo { color:var(--terracotta); }
     nav.scrolled .nav-links a { color:var(--terracotta); }
     nav.scrolled .nav-book-btn { background:var(--terracotta); border-color:var(--terracotta); color:var(--white); }
@@ -118,7 +122,7 @@
   <section class="blog-hero">
     <div class="blog-hero-bg"></div>
     <div class="blog-hero-content">
-      <p class="blog-hero-tag">Experiment &#8212; Three.js / Character Design</p>
+      <p class="blog-hero-tag">Experiment - Three.js / Character Design</p>
       <h1 class="blog-hero-title">Bunny Carrot Chase</h1>
       <p class="blog-hero-subtitle">On building a clay bunny from pure geometry, and what the carrot designs reveal about the game underneath.</p>
       <p class="blog-hero-date">2026</p>
@@ -131,7 +135,7 @@
     <!-- Intro -->
     <div class="blog-section fade-up">
       <p>When artists model a character, they drag vertices. They push and pull until the shape feels right. The feedback is immediate, physical, intuitive.</p>
-      <p>When you model in Three.js &#8212; no Blender, no .obj files, primitives only &#8212; none of that is available to you. You look at a reference image. You estimate a ratio. You write a number. You re-render. You look again.</p>
+      <p>When you model in Three.js, no Blender, no .obj files, primitives only none of that is available to you. You look at a reference image. You estimate a ratio. You write a number. You re-render. You look again.</p>
       <p>It is a different skill. Not better or worse. Slower in some directions, more precise in others. Every dimension is a decision you have to consciously make and write down.</p>
     </div>
 
@@ -141,10 +145,10 @@
     <div class="blog-section fade-up">
       <h2>The bunny, piece by piece.</h2>
       <div class="blog-code">// SphereGeometry, CylinderGeometry, and a lot of 0.05 increments</div>
-      <p>The brief was a clay-style render &#8212; round white body, stubby ears, two black dot eyes, sitting pose. Simple to look at. Harder to recreate without a sculpting tool.</p>
+      <p>The brief was a clay-style render - round white body, stubby ears, two black dot eyes, sitting pose. Simple to look at. Harder to recreate without a sculpting tool.</p>
       <table class="blog-parts">
-        <tr><td>Body</td><td>SphereGeometry scaled (1, 0.85, 1.1). Slightly flat on the vertical, slightly deep front-to-back. What stops it reading as a perfect ball &#8212; which is what nobody looks like.</td></tr>
-        <tr><td>Head</td><td>Smaller sphere. 0.95 units up from centre, 0.3 units forward. The forward offset is everything &#8212; it makes the head sit in front of the body, not on top of it. That single number is the difference between a bunny and a snowman.</td></tr>
+        <tr><td>Body</td><td>SphereGeometry scaled (1, 0.85, 1.1). Slightly flat on the vertical, slightly deep front-to-back. What stops it reading as a perfect ball - which is what nobody looks like.</td></tr>
+        <tr><td>Head</td><td>Smaller sphere. 0.95 units up from centre, 0.3 units forward. The forward offset is everything - it makes the head sit in front of the body, not on top of it. That single number is the difference between a bunny and a snowman.</td></tr>
         <tr><td>Ears</td><td>Two CylinderGeometry primitives, each rotated &#177;0.18 radians outward. Close enough to read as ears. Far enough apart to have personality. Any wider and they look alarmed. Any narrower and they look like a hat.</td></tr>
         <tr><td>Eyes</td><td>Two spheres at 0.055 unit radius. Positioned entirely by feel. Not by formula. The face only clicked when the eyes were in the right place, and you know right when you see it.</td></tr>
       </table>
@@ -153,12 +157,12 @@
     <!-- Four iterations -->
     <div class="blog-section fade-up">
       <h2>Four iterations.</h2>
-      <p>Not twenty. Not two. Four. This is important because most people assume character modelling in code will take forever, and abandon it before discovering the iteration count is actually small &#8212; if you reason carefully between each one.</p>
+      <p>Not twenty. Not two. Four. This is important because most people assume character modelling in code will take forever, and abandon it before discovering the iteration count is actually small - if you reason carefully between each one.</p>
       <div class="blog-iterations">
         <div class="blog-iter"><div class="blog-iter-num">01</div><div class="blog-iter-text">A shape. Technically correct. Reads as a white blob with ears attached.</div></div>
         <div class="blog-iter"><div class="blog-iter-num">02</div><div class="blog-iter-text">An animal. The head offset started working. Something with intention was emerging.</div></div>
         <div class="blog-iter"><div class="blog-iter-num">03</div><div class="blog-iter-text">Close. The proportions were landing. The face still wasn&#8217;t right.</div></div>
-        <div class="blog-iter"><div class="blog-iter-num">04</div><div class="blog-iter-text">The bunny in the reference image. Immediately. Not gradually &#8212; the moment the last proportion clicked, the whole thing resolved at once.</div></div>
+        <div class="blog-iter"><div class="blog-iter-num">04</div><div class="blog-iter-text">The bunny in the reference image. Immediately. Not gradually - the moment the last proportion clicked, the whole thing resolved at once.</div></div>
       </div>
     </div>
 
@@ -171,9 +175,9 @@
       <p>The bunny needed to be charming. The carrots needed to be instantly legible mid-game, from any angle, at any scale, under movement. That is a harder problem than charm.</p>
       <p>Colour alone does not solve it. Colour helps, but if two carrots have the same silhouette, players hesitate. Hesitation in a 30-second game is a design failure. Each carrot needed a distinct shape language, not just a distinct hue.</p>
       <table class="blog-parts">
-        <tr><td>Orange</td><td>Cone inverted, three leaf spheres at the top. The most readable silhouette &#8212; universally understood as carrot. It is the baseline. Familiar on purpose.</td></tr>
+        <tr><td>Orange</td><td>Cone inverted, three leaf spheres at the top. The most readable silhouette universally understood as carrot. It is the baseline. Familiar on purpose.</td></tr>
         <tr><td>Gold</td><td>Rich yellow body with two spinning torus rings, one tilted. Five sparkle dots orbiting. Kinetic. You see it moving before you see its colour. Unmistakably different.</td></tr>
-        <tr><td>Purple</td><td>Deep violet with three ribbed bands, lilac leaves, a five-orb crown rotating at the top. Looks like a magical artefact. It should &#8212; it only appears when you earn it.</td></tr>
+        <tr><td>Purple</td><td>Deep violet with three ribbed bands, lilac leaves, a five-orb crown rotating at the top. Looks like a magical artefact. It should it only appears when you earn it.</td></tr>
       </table>
       <p>The visual design of each carrot is not decorative. It is functional documentation of the game&#8217;s rules. Orange means: always here, always available, standard effort. Gold means: fleeting, urgent, look fast. Purple means: you did something different to summon this.</p>
       <p>Players learn this without being told. That is the game design working correctly.</p>
@@ -182,7 +186,7 @@
     <!-- Why no external models -->
     <div class="blog-section fade-up">
       <h2>Why no external models.</h2>
-      <p>The constraint was not a limitation &#8212; it was a choice that held throughout the project. One HTML file. No build tools. No external assets. Open on any phone.</p>
+      <p>The constraint was not a limitation it was a choice that held throughout the project. One HTML file. No build tools. No external assets. Open on any phone.</p>
       <p>Importing a .obj file breaks that contract. The moment you have an external dependency, you have a loading state, a failure state, a hosting problem. Three primitives and some math have none of those problems.</p>
       <p>There is a broader principle here. The projects that ship cleanly are usually the ones where every constraint was chosen deliberately, not inherited accidentally. Constraints you choose become features. Constraints you inherit become bugs.</p>
     </div>
@@ -191,7 +195,7 @@
 
     <!-- Closing -->
     <div class="blog-section fade-up">
-      <p>That sentence is the entire technical philosophy of the project. Every modelling decision, every geometry choice, every carrot design &#8212; it all serves that sentence. The bunny exists inside that sentence. So does the radar chart. So does the behavioural layer.</p>
+      <p>That sentence is the entire technical philosophy of the project. Every modelling decision, every geometry choice, every carrot design - it all serves that sentence. The bunny exists inside that sentence. So does the radar chart. So does the behavioural layer.</p>
       <p>When you know what you are making, you know what you are not making. That clarity is what makes the thing ship.</p>
     </div>
 
