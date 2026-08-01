@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Small Business App — Brewed by Anand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Charlie Brown';
+    }
+    :root { --cream:#F0EBE5; --terracotta:#1C1C1C; --dark:#1C1C1C; --white:#ffffff; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--cream); font-family:'Inter',sans-serif; color:var(--dark); overflow-x:hidden; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:36px 72px; background:transparent; transition:padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease; }
+    nav.scrolled { padding:18px 72px; background:rgba(240,235,229,0.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(28,28,28,0.08); }
+    .nav-logo { text-decoration:none; display:block; transition:opacity 0.2s; } .nav-logo:hover { opacity:0.7; }
+    .nav-logo-white { display:block; }
+    .nav-logo-black { display:none; }
+    nav.scrolled .nav-logo-white { display:none; }
+    nav.scrolled .nav-logo-black { display:block; }
+    .nav-right { display:flex; align-items:center; gap:40px; }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-family:'Inter',sans-serif; font-weight:300; font-size:16px; color:rgba(255,255,255,0.85); text-decoration:none; transition:color 0.4s ease, opacity 0.2s; }
+    .nav-links a:hover { opacity:0.6; }
+    .nav-book-btn { font-family:'Inter',sans-serif; font-size:13px; font-weight:300; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; color:var(--white); background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.5); padding:10px 22px; transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease; white-space:nowrap; backdrop-filter:blur(4px); }
+    .nav-book-btn:hover { background:rgba(255,255,255,0.35); }
+    nav.scrolled .nav-logo { color:var(--terracotta); }
+    nav.scrolled .nav-links a { color:var(--terracotta); }
+    nav.scrolled .nav-book-btn { background:var(--terracotta); border-color:var(--terracotta); color:var(--white); }
+    nav.scrolled .nav-book-btn:hover { background:#333333; }
+
+    /* HERO */
+    .blog-hero { width:100%; height:100vh; min-height:600px; position:relative; overflow:hidden; display:flex; align-items:flex-end; }
+    .blog-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg, #1C1C1C 0%, #2E2520 60%, #3A2E26 100%); }
+    .blog-hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%); }
+    .blog-hero-content { position:relative; z-index:1; padding:0 72px 72px; max-width:860px; }
+    .blog-hero-tag { font-family:'Inter',sans-serif; font-size:11px; font-weight:300; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:20px; }
+    .blog-hero-title { font-family:'Charlie Brown',serif; font-size:64px; color:var(--white); line-height:1.15; letter-spacing:0.02em; text-transform:uppercase; margin-bottom:24px; }
+    .blog-hero-subtitle { font-family:'Inter',sans-serif; font-size:16px; font-weight:300; color:rgba(255,255,255,0.8); line-height:1.6; max-width:520px; }
+    .blog-hero-date { font-family:'Inter',sans-serif; font-size:12px; font-weight:300; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:32px; }
+
+    /* ARTICLE */
+    .blog-article { max-width:720px; margin:0 auto; padding:100px 40px 0; }
+    .blog-section { margin-bottom:72px; }
+    .blog-section h2 { font-family:'Inter',sans-serif; font-size:32px; font-weight:400; color:var(--dark); line-height:1.25; margin-bottom:24px; }
+    .blog-section p { font-family:'Inter',sans-serif; font-size:17px; font-weight:300; color:#2a2a2a; line-height:1.75; margin-bottom:18px; }
+    .blog-section p:last-child { margin-bottom:0; }
+
+    /* Pull quote */
+    .blog-pullquote { border-left:2px solid var(--terracotta); padding:4px 0 4px 28px; margin:48px 0; font-family:'Inter',sans-serif; font-size:22px; font-weight:300; color:var(--dark); line-height:1.5; letter-spacing:0; font-style:italic; }
+
+    /* CTA */
+    .blog-cta-wrap { margin-top:80px; padding-top:48px; border-top:1px solid rgba(28,28,28,0.1); }
+    .blog-cta { display:inline-flex; align-items:center; gap:10px; font-family:'Inter',sans-serif; font-size:13px; font-weight:300; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); background:var(--terracotta); padding:14px 28px; text-decoration:none; transition:background 0.2s; }
+    .blog-cta:hover { background:#333333; }
+
+    /* FOOTER */
+    footer { background:var(--cream); margin-top:120px; padding:60px 72px; border-top:1px solid rgba(28,28,28,0.08); }
+    .footer-tagline { font-family:'Inter',sans-serif; font-size:14px; font-weight:300; color:var(--dark); letter-spacing:0.15em; line-height:1.6; text-transform:lowercase; }
+
+    /* FADE UP */
+    .js-ready .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.65s ease, transform 0.65s ease; }
+    .js-ready .fade-up.visible { opacity:1; transform:translateY(0); }
+    .fade-up-d1 { transition-delay:0.1s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html" style="padding:0;border:none;outline:none;">
+      <span class="nav-logo-white"><svg style="height:36px;width:auto;display:block;" viewBox="0 0 334 117" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182.267 29.7137L181.981 29.8927C183.326 30.0071 182.747 31.2455 179.294 35.5944C172.702 43.777 169.704 46.3686 166.361 46.6268C165.921 46.6233 165.094 46.3836 164.475 46.0938C163.469 45.5679 163.29 45.2816 162.713 42.8945C162.237 40.9225 162.198 39.3943 162.448 37.2469C163.002 32.7194 163.002 32.7194 161.553 35.8155C159.392 40.5114 156.794 44.7636 155.28 46.2276C152.672 48.6152 149.823 48.6443 149.246 46.2572C148.62 43.6625 150.501 38.2652 152.745 36.1854C154.259 34.7214 155.633 34.4993 157.491 35.3687L158.987 36.1058L160.439 32.5695C161.838 29.2659 163.716 24.3088 167.397 14.0831C168.775 10.2355 169.433 8.86822 170.16 8.69274C170.367 8.6426 170.6 8.69625 170.832 8.7499C171.788 9.06828 171.785 9.5085 170.858 12.039C167.073 22.2897 163.894 40.9617 165.53 43.6421C166.654 45.5674 170.143 43.1868 175.164 37.1412C180.445 30.8128 181.594 29.6566 182.267 29.7137ZM155.992 41.4425L156.121 41.5212C157.906 38.4537 157.881 38.3499 157.162 37.645C156.442 36.94 155.952 36.729 155.433 36.8543C155.225 36.9044 154.939 37.0834 154.653 37.2624C153.089 38.5195 150.914 44.9757 151.709 45.992C152.195 46.6433 153.945 44.7927 155.992 41.4425Z" fill="white"/><path d="M135.607 107.533C135.566 107.533 136.891 107.065 151.747 100.981C165.286 95.4363 190.89 84.6175 212.863 77.1365C234.836 69.6554 252.372 65.7668 268.02 63.566C283.668 61.3651 296.897 60.9699 303.559 61.0432C310.222 61.1165 309.918 61.6704 307.078 63.8097C304.238 65.9491 298.87 69.657 293.34 73.4773" stroke="white" stroke-width="1.67549" stroke-linecap="round"/></svg></span>
+      <span class="nav-logo-black"><svg style="height:36px;width:auto;display:block;" viewBox="0 0 334 117" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182.267 29.7137L181.981 29.8927C183.326 30.0071 182.747 31.2455 179.294 35.5944C172.702 43.777 169.704 46.3686 166.361 46.6268C165.921 46.6233 165.094 46.3836 164.475 46.0938C163.469 45.5679 163.29 45.2816 162.713 42.8945C162.237 40.9225 162.198 39.3943 162.448 37.2469C163.002 32.7194 163.002 32.7194 161.553 35.8155C159.392 40.5114 156.794 44.7636 155.28 46.2276C152.672 48.6152 149.823 48.6443 149.246 46.2572C148.62 43.6625 150.501 38.2652 152.745 36.1854C154.259 34.7214 155.633 34.4993 157.491 35.3687L158.987 36.1058L160.439 32.5695C161.838 29.2659 163.716 24.3088 167.397 14.0831C168.775 10.2355 169.433 8.86822 170.16 8.69274C170.367 8.6426 170.6 8.69625 170.832 8.7499C171.788 9.06828 171.785 9.5085 170.858 12.039C167.073 22.2897 163.894 40.9617 165.53 43.6421C166.654 45.5674 170.143 43.1868 175.164 37.1412C180.445 30.8128 181.594 29.6566 182.267 29.7137ZM155.992 41.4425L156.121 41.5212C157.906 38.4537 157.881 38.3499 157.162 37.645C156.442 36.94 155.952 36.729 155.433 36.8543C155.225 36.9044 154.939 37.0834 154.653 37.2624C153.089 38.5195 150.914 44.9757 151.709 45.992C152.195 46.6433 153.945 44.7927 155.992 41.4425Z" fill="black"/><path d="M135.607 107.533C135.566 107.533 136.891 107.065 151.747 100.981C165.286 95.4363 190.89 84.6175 212.863 77.1365C234.836 69.6554 252.372 65.7668 268.02 63.566C283.668 61.3651 296.897 60.9699 303.559 61.0432C310.222 61.1165 309.918 61.6704 307.078 63.8097C304.238 65.9491 298.87 69.657 293.34 73.4773" stroke="black" stroke-width="1.67549" stroke-linecap="round"/></svg></span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#worked-with">ABOUT ME</a></li>
+        <li><a href="index.html#work">WORK</a></li>
+        <li><a href="index.html#experiments">EXPERIMENTS</a></li>
+      </ul>
+      <a class="nav-book-btn" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="blog-hero-bg"></div>
+    <div class="blog-hero-content">
+      <p class="blog-hero-tag">Essay &#8212; Design Tools / Product Thinking</p>
+      <h1 class="blog-hero-title">Building a Small Business App Changed How I Think About Design Tools</h1>
+      <p class="blog-hero-subtitle">Working on a small business app forces clarity. No luxury of overthinking flows. You&#8217;re solving real operational problems. That&#8217;s what pushed me deeper into code-first design experimentation.</p>
+      <p class="blog-hero-date">2026</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE -->
+  <article class="blog-article">
+
+    <!-- Intro -->
+    <div class="blog-section fade-up">
+      <p>Working on a small business app forces clarity.</p>
+      <p>No luxury of endless design reviews. No beautifully staged handoff rituals. No time to admire wireframes.</p>
+      <p>You&#8217;re solving operational problems&#8212;orders, workflows, tracking, merchant actions. The product doesn&#8217;t need theatre. It needs to work.</p>
+      <p>That reality pushed me into experimenting with code-first design and AI-native workflows while building this product. And it changed how I think about design tooling.</p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="blog-section fade-up">
+      <h2>1. For Small Business Apps, Code-First Feels Incredibly Logical</h2>
+      <p>In a small business app, utility beats polish in the early stages. You care less about pixel-perfect emotional storytelling and more about whether a merchant can finish a task without friction.</p>
+      <p>That makes designing in code surprisingly attractive.</p>
+      <p>Instead of: Idea &#8594; Figma &#8594; Prototype &#8594; Handoff &#8594; Build</p>
+      <p>You get: Idea &#8594; Build &#8594; Interact immediately</p>
+      <div class="blog-pullquote">That compression changes everything. You&#8217;re not imagining the flow. You&#8217;re feeling it.</div>
+      <p>You can test actual interactions, real constraints, real responsiveness&#8212;much earlier. For this category, code-first doesn&#8217;t feel experimental. It feels practical.</p>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="blog-section fade-up">
+      <h2>2. Canvas Is Still the Fastest Way to Explore</h2>
+      <p>But designing isn&#8217;t just building. It&#8217;s exploring. And exploration is chaotic.</p>
+      <p>Move the CTA here. Try filters on top. Shrink this section. Kill this card. Actually bring it back.</p>
+      <p>This kind of iteration is instinctive. Visual. Fast. Canvas still dominates this phase.</p>
+      <p>Because the moment every micro decision has to be translated into language or implementation, speed collapses. Dragging a block takes seconds. Describing that same intent takes thought, then interpretation, then retries.</p>
+      <div class="blog-pullquote">AI speeds up execution. Canvas still speeds up thinking. Those are not the same thing.</div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="blog-section fade-up">
+      <h2>3. Designing in Code Creates Hidden Double Work</h2>
+      <p>The strongest advantage of designing in code is realism. You see the actual product immediately. Not simulated interactions. Not designer approximations. The real thing.</p>
+      <p>But realism has a hidden tax. Design refinement gets entangled with engineering friction. Spacing tweaks become implementation work. Layout experiments break responsiveness. Simple visual improvements turn into debugging sessions.</p>
+      <p>Good product design lives in subtle details: hierarchy, spacing rhythm, visual clarity, micro interactions, whitespace balance. Those decisions are lightweight in design tools. Heavier in code.</p>
+      <div class="blog-pullquote">You move faster toward something functional. Sometimes slower toward something refined.</div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="blog-section fade-up">
+      <h2>4. Claude Design Is Impressive, But Still Feels Naive About Design Work</h2>
+      <p>I spent meaningful time experimenting with Claude Design while building this app. And the first impression is genuinely impressive. You can describe a screen, edit through conversation, refine components through prompts. That feels magical.</p>
+      <p>At one point, I gave it a Pinterest UI reference&#8212;and it recreated the direction surprisingly well. Messy, yes. But useful. Especially when you need fast inspiration or rough scaffolding.</p>
+      <p>But the cracks show quickly.</p>
+      <p>For example, I nearly spent <strong>20 minutes fixing padding between two CTA buttons.</strong> Not because the problem was hard. Because communicating precision through prompts becomes absurdly inefficient.</p>
+      <p>A designer would fix that in seconds on a canvas. Drag. Adjust. Done. Instead it became: describe spacing, wait, review, prompt again, fix side effects, repeat.</p>
+      <div class="blog-pullquote">Not every visual decision should become a conversation. Sometimes language is the slowest possible interface.</div>
+      <p>Claude understands structure better than nuance. It can imitate references, but originality is weak. It can generate interfaces, but design judgment is still shallow.</p>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="blog-section fade-up">
+      <h2>5. The Real Future Is Smart Canvas</h2>
+      <p>This whole experiment made one thing obvious: the future isn&#8217;t no-canvas design. That framing is wrong.</p>
+      <div class="blog-pullquote">The real opportunity is smart canvas.</div>
+      <p>A workspace where visual edits happen instantly, AI helps with generation and repetitive work, code previews stay live, references can become starting points, and layout changes don&#8217;t require linguistic negotiation.</p>
+      <p>A hybrid creation environment. Because designers don&#8217;t think in one mode&#8212;sometimes visually, sometimes structurally, sometimes conversationally. Great tools should adapt to that. Not force one interface for every problem.</p>
+    </div>
+
+    <!-- Closing -->
+    <div class="blog-section fade-up">
+      <p>Building this small business app taught me something simple:</p>
+      <p><strong>The future of design tools isn&#8217;t AI replacing canvas.</strong></p>
+      <p><strong>It&#8217;s AI making canvas intelligent.</strong></p>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-tagline">Always brewing something new</p>
+  </footer>
+
+  <script>
+    document.body.classList.add('js-ready');
+
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
