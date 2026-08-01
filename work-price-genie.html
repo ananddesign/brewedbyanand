@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Price Genie — Brewed by Anand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Charlie Brown';
+      src: url('data:font/otf;base64,T1RUTwANAIAAAwBQQ0ZGIP4CxQkAAAY8AAAeZ0RTSUcAAAABAAAmcAAAAAhHREVGAMwBNwAAJngAAABeR1BPU8Upw1wAACbYAAAPNkdTVUKptbcFAAA2EAAAAHxPUy8yaf2GpwAAAUAAAABgY21hcEVAHbQAAAQEAAACFmhlYWQseyhIAAAA3AAAADZoaGVhC1sGZAAAARQAAAAkaG10eBNtEMoAACSkAAABzG1heHAAc1AAAAABOAAAAAZuYW1lL8pbewAAAaAAAAJkcG9zdP+GADIAAAYcAAAAIAABAAAAAQAAnLYBdF8PPPUAAwPoAAAAAONE76QAAAAA40T0DgAK/zQG0AR+AAAABwACAAAAAAAAAAEAAAR+/zQAAAbuAAr/zgbQAAEAAAAAAAAAAAAAAAAAAABzAABQAABzAAAABAJlAZAABQAIAooCWAAAAEsCigJYAAABXgAyARMAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAVUtXTgHAACAiEgR+/zQAAAR+AMwAAAABAAAAAAImBBoAAAAgAAIAAAAMAJYAAwABBAkAAABuAAAAAwABBAkAAQAaAAAAAwABBAkAAgAOATQAAwABBAkAAwA0AG4AAwABBAkABAAaAAAAAwABBAkABQB4AKIAAwABBAkABgAoARoAAwABBAkABwBOAUIAAwABBAkACAAcABwAAwABBAkACQAiAZAAAwABBAkACgBuAAAAAwABBAkADQAcAbIAQwBoAGEAcgBsAGkAZQAgAEIAcgBvAHcAbgCpAEEAbABtAGUAZQByAGEAIABTAHQAdQBkAGkAbwAuACAAMgAwADIANAAuACAAQQBsAGwAIABSAGkAZwBoAHQAcwAgAFIAZQBzAGUAcgB2AGUAZABDAGgAYQByAGwAaQBlACAAQgByAG8AdwBuADoAVgBlAHIAcwBpAG8AbgAgADEALgAwADAAVgBlAHIAcwBpAG8AbgAgADEALgAwADAAOwBPAGMAdABvAGIAZQByACAAMgA4ACwAIAAyADAAMgA0ADsARgBvAG4AdABDAHIAZQBhAHQAbwByACAAMQAzAC4AMAAuADAALgAyADYAMQAzACAANgA0AC0AYgBpAHQAQwBoAGEAcgBsAGkAZQBCAHIAbwB3AG4ALQBSAGUAZwB1AGwAYQByAEMAaABhAHIAbABpAGUAIABCAHIAbwB3AG4ArgBUAHIAYQBkAGUAbQBhAHIAawAgAG8AZgAgAEEAbABtAGUAZQByAGEAIABTAHQAZAAuAFIAaQBuAHQAbwAgAEQAdwBpACAATgB1AGcAcgBvAGgAbwBDAG8AbQBtAGUAcgBjAGkAYQBsACAAVQBzAGUAAAADAAAAAwAAABwAAQAAAAABEAADAAEAAAAcAAQA9AAAACYAIAAEAAYALwA5AEAAWgBfAHoAfgCgAKIApQCxANcA9yAaIB4gOiCsIhL//wAAACAAMAA6AEEAWwBhAHsAoACiAKUAsQDXAPcgGCAcIDkgrCIS//8AAAALAAD/wQAA/8AAAP9h/8L/wv++/5P/dAAAAADgJN+63lcAAQAmAAAAQgAAAEwAAABSAAAAAAAAAAAAAAAAAEwAUAAAAAAAAAAAAAEASQBfAEwAZQByAGIAYABRAFIASwBoAEYATwBFAE0ARwBIAG4AbABtAEoAYQBVAE4AVgBxAFAAUwBjAFQAcABbAFwAVwBZAFoAWAAAAQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUlfTGVyYmBRUktoRk9FTTs8PT4/QEFCQ0RHSG5sbUphAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhtVTlZxUAAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5OlNjVHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAAAAAG8AAGcAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAFlaW1xrAAAAAGZdXgAAAABXWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAA/4MAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEBAABAQEVQ2hhcmxpZUJyb3duLVJlZ3VsYXIAAQEBKvgiAPgjDAD4JAL4JAP4GAT7EQwDlftgHAbQHAR+BfdXD/g8EZQcHl4SAAoBAQQHCg0QGx8kWmdDX0VDX0hPX09UX0hUX1RoeXBoZW5taW51c2V1cm8xLjAwMENoYXJsaWUgQnJvd25BbG1lZXJhIFN0dWRpby4gMjAyNC4gQWxsIFJpZ2h0cyBSZXNlcnZlZENoYXJsaWUgQnJvd24AAEYAAAABACIAIwAkACUAJgAnACgAKQAqACsALAAtAC4ALwAwADEAMgAzADQANQA2ADcAOAA5ADoAOwGHAYgBiQGKAYsAQgBDAEQARQBGAEcASABJAEoASwBMAE0ATgBPAFAAUQBSAFMAVABVAFYAVwBYAFkAWgBbABEAEgATABQAFQAWABcAGAAZABoADwANABsAHAACACAACwAEABAAPQGMAEAACQAKAFwAXgA8AD4AdQB2AGkAdwBBAAgAawBsAAMAaAAhAAcAXQBhAAUBjQBkAAwApgCoAJ8AHgAfAB0AnABfAD8ABgBzAgABAJIAlQC/AR8BfAG9AdYB7QJTAnACfgKyAtsC7AMWAzMDjgPOBHYE0wU1BUgFewWYBcwF/QYfBjwGuQcyCAwIOwhhCIsI6wlICYkJogm5Ch8KPApKCn4Kpwq4CuIK/wtaC5oMQgyfDQENFA1HDWQNmA3JDesOCA5bDnoOxQ87D3MP1hBMEHoRBRF7EZsRuRH2EjESbxLLEyMTkxOpE7oTxhPRFAYUOhSYFPMVChUhFT4VcxWpFd4V/BYZFjUWThZlFnMXZBgaGCcYiBkfGZkZ2Rn0GgEaLxp2GowaqRrFGusbLhtMG8yw+Kn64BX8MBz67PgwBif4MRX7Jvts9yYH90FhFfsWTfcWBrb33RX7J/ts9ye2I/cWyGBuX9MH9xb3MxX7Fvtst/dB4Qe22RVgNTD7FrbhuzW2B+H3EhVgXLYGt+YVMOFf+2z3Gwf3bPc8FWA1W+Fg+2y24bs2tgf3a/5kFWBhBzBOBfcZYPtstgbmyAUwtgYO+/8OL70W4vgfBfccBuL8HwX3Kwb7e/quBWMG+3r+rgX3HPhHFcb3osb7ogUOf/eA+q4V+07+rvdOBvdoi/cZ9wqL91CL9yM+8vsXtPCux9iL9Yv3J/sH5/tLiwj8SgRn+CKvBuaLxD6L+w6L+w5SPjCLCGf80BX4qK8H9wyL1iSL+zeL+zdAJPsMiwgO+B/3SPihFYv3u/dA92L3bIv3H4v3CjbR+xcI7cUFKPcN+yvY+0OL+8CL+4L7dIv70Yv70feC+3T3wIv3Q4v3K9ju9w0IKcUFRfsX+wo2+x+L+2yL+0D3Yov3uwgO98j3oPquFftu/q73bgb4FYv3gvdyi/fDi/fD+4L3cvwViwhH/oYV+l7hB/evi/dA+2CL+62L+637QPtg+6+LCA77FL0W+Diz+6L4qfdKs/tK+CH3jrP8JAYO+xT3XBb4kvdKs/tK+GD3orP8OP6uBw74h/oT+b4V7cUFKPcN+yvY+0OL+8CL+4L7dIv70Yv7w/eC+4L3z4v3AIv3ErTq1ggn9yr4ofyIY/fy+xEHi/tO+z77Kvs5i/t1i/tA93CL962L97v3QPdi92yL9x+L9wo20fsXCA6wvfquFf6u9yr4vfeO/L33Kvqu+yr8XfuO+F0HDvv/vfquFf6u9yr6rgcOWvc598QV+ypZBZT7RfIu9xuL9yuL8PcCi/dZCPmL+yr9oQeL+yR6JjyLMIuE9x6G9yIIDoH3XBb4SgeTmfd//FgF9yoG+8j45feN+F0FOwb7kvxkBfhk+yr+rgcO+xm9+q4V/q74OLP7ovqGBw7svfquFf6us/n1B/dS/fUFswb3Uvn1Bf319yr6rvsqB/sv/VX7L/lVBQ5+vfquFf6us/pTB/g4/lMFs/quY/1YBvvK+VgFDvil+M97FffDi/eC94KL98OL98P7gveC+8OL+8OL+4L7gov7w4v7w/eC+4L3w4sIswT7b4v7QPdwi/eti/et90D3cPdvi/dvi/dA+3CL+62L+637QPtw+2+LCA5/94D4mhVn+ICvBvcMi9Ysi/sri/srQCz7DIsI+078mhX3Kvhyrwb3aIv3GfcCi/dEi/dE+xn3Avtoiwj7TgYO+KX6APsCFdOL0arP1Ah7oQVbXl54XotWi1elUrX3Xtn3IPdXi/d8i/fD+4L3gvvDi/vDi/uC+4KL+8OL+8P3gvuC98OLoYuijKCO207cZtmLCPvF9xoV+xSL+wPWRPcKnJScj5uL24vZMN0+CLRmBfcTrhU70QUn5S3KNYtki2Z+Z29g23Psi/WL9633QPdw92+L92+L90D7cIv7rYv7aSj7RvskQQgOhveA+K4VZ/hsrwb3AIvOMIv7JYv7JUgw+wCLCPf5/K4VQPcO9yD36PvAv/cUrtboi/cYi/c++xH1+1yLCPtO/q73KviGrwb3O4uoI4v7CYtPg0uLVYtjj2iacwgOia750BWL+874QzWL+5uLTGo9NYv7Bota9xFh9yQI+xNABcf7IvcPL/cji/cwi+73BYv3Eov3uvxD4Yv3pYvlvcfPi/aLtfsSpiAI9xPWBTD3IfsAxCCL+xGL+ww2i/stCA5WlfquFWP3V/6G9yr6hvdXswcOfr36rhX9iweL+1nw+wL3OYv3KIvh9Iv3Wwj5jmP9kweL+y9TNyiLKItT3Iv3JAj5oQcOLpX6rhX3ev6uBbMG93r6rgVjBvsv/VX7L/lVBQ73lZX6rhX3ev6uBbMG9y/5Vfcv/VUFswb3evquBWMG+y/9Vfsv+VUFYwb7L/1V+y/5VQUOQqn6rhX3S/zK+1/8eAWzBvdJ+EH3H/xBBfcqBvtP+Nb3WfhsBWMG+0P8Nvsb+DYFDi6V+q4V90P9hQX7vfcq970H90P5hQVjBvsv/TD7L/kwBQ4us/quFWP3ygf76P5dBWP4iLP78gf36PpdBbMHDvoE90j4oRWL97v3QPdi92yL9x+L9wo20fsXCO3FBSj3Dfsr2PtDi/vAi/uC+3SL+9GL+9H3gvt098CL90OL9yvY7vcNCCnFBUX7F/sKNvsfi/tsi/tA92KL97sI+gL4oRX8Sfx+Y/h+/NH4OLP7ovip90qz+0r4IfeOswcO+Rj3SPihFYv3u/dA92L3bIv3H4v3CjbR+xcI7cUFKPcN+yvY+0OL+8CL+4L7dIv70Yv70feC+3T3wIv3Q4v3K9ju9w0IKcUFRfsX+wo2+x+L+2yL+0D3Yov3uwj30PfzFf1S9yr4D/gv/L33Kvqu+yr8Xfwv968HDhwEifjPexX3C4v3AbDjyeNN9wFm9wuL98OL94L3gov3w4v3w/uC94L7w4v7C4v7AWYzTTPJ+wGw+wuL+8OL+4L7gov7w4v7w/eC+4L3w4sIswT7b4v7QPdwi/eti/et90D3cPdvi+uL4mHPQygpTvsci/sti/styPsc7ilHQzRhK4sI+QwWK4s0tUfT7u3I9xyL9y2L9y1O9xwo7c/T4rXri/dvi/dA+3CL+62L+637QPtw+2+LCPwb+IkVi/cFp/K63ro4pySL+wWL+wVvJFw4XN5v8ov3BQgO+ByV+q4VY/dX/ob3KvqG946zB/sqOxX+Xvcq+L33XPy99yr6rvsq/F37XPgNBw73Wfm0+q4V/apj91f+hvcqBor6hgXvBoz+hgX3KgaJ+oYF91kGDi+9FuL4HwX3HAbi/B8F9ysG+3v6rgVjBvt6/q4F9xz4RxXG96LG+6IFDn/3gPquFftO/q73Tgb3aIv3GfcKi/dQi/cjPvL7F7TwrsfYi/WL9yf7B+f7S4sI/EoEZ/girwbmi8Q+i/sOi/sOUj4wiwhn/NAV+KivB/cMi9Yki/s3i/s3QCT7DIsIDvgf90j4oRWL97v3QPdi92yL9x+L9wo20fsXCO3FBSj3Dfsr2PtDi/vAi/uC+3SL+9GL+9H3gvt098CL90OL9yvY7vcNCCnFBUX7F/sKNvsfi/tsi/tA92KL97sIDvfI96D6rhX7bv6u924G+BWL94L3cov3w4v3w/uC93L8FYsIR/6GFfpe4Qf3r4v3QPtgi/uti/ut+0D7YPuviwgO+xS9Fvg4s/ui+Kn3SrP7Svgh946z/CQGDvsU91wW+JL3SrP7Svhg96Kz/Dj+rgcO+If6E/m+Fe3FBSj3Dfsr2PtDi/vAi/uC+3SL+9GL+8P3gvuC98+L9wCL9xK06tYIJ/cq+KH8iGP38vsRB4v7Tvs++yr7OYv7dYv7QPdwi/eti/e790D3Yvdsi/cfi/cKNtH7FwgOsL36rhX+rvcq+L33jvy99yr6rvsq/F37jvhdBw77/736rhX+rvcq+q4HDlr3OffEFfsqWQWU+0XyLvcbi/cri/D3Aov3WQj5i/sq/aEHi/skeiY8izCLhPcehvciCA6B91wW+EoHk5n3f/xYBfcqBvvI+OX3jfhdBTsG+5L8ZAX4ZPsq/q4HDvsZvfquFf6u+Diz+6L6hgcO7L36rhX+rrP59Qf3Uv31BbMG91L59QX99fcq+q77Kgf7L/1V+y/5VQUOfr36rhX+rrP6Uwf4OP5TBbP6rmP9WAb7yvlYBQ74pfjPexX3w4v3gveCi/fDi/fD+4L3gvvDi/vDi/uC+4KL+8OL+8P3gvuC98OLCLME+2+L+0D3cIv3rYv3rfdA93D3b4v3b4v3QPtwi/uti/ut+0D7cPtviwgOf/eA+JoVZ/iArwb3DIvWLIv7K4v7K0As+wyLCPtO/JoV9yr4cq8G92iL9xn3Aov3RIv3RPsZ9wL7aIsI+04GDvil+gD7AhXTi9Gqz9QIe6EFW15eeF6LVotXpVK1917Z9yD3V4v3fIv3w/uC94L7w4v7w4v7gvuCi/vDi/vD94L7gvfDi6GLooygjttO3GbZiwj7xfcaFfsUi/sD1kT3CpyUnI+bi9uL2TDdPgi0ZgX3E64VO9EFJ+UtyjWLZItmfmdvYNtz7Iv1i/et90D3cPdvi/dvi/dA+3CL+62L+2ko+0b7JEEIDob3gPiuFWf4bK8G9wCLzjCL+yWL+yVIMPsAiwj3+fyuFUD3Dvcg9+j7wL/3FK7W6Iv3GIv3PvsR9ftciwj7Tv6u9yr4hq8G9zuLqCOL+wmLT4NLi1WLY49omnMIDomu+dAVi/vO+EM1i/ubi0xqPTWL+waLWvcRYfckCPsTQAXH+yL3Dy/3I4v3MIvu9wWL9xKL97r8Q+GL96WL5b3Hz4v2i7X7EqYgCPcT1gUw9yH7AMQgi/sRi/sMNov7LQgOVpX6rhVj91f+hvcq+ob3V7MHDn69+q4V/YsHi/tZ8PsC9zmL9yiL4fSL91sI+Y5j/ZMHi/svUzcoiyiLU9yL9yQI+aEHDi6V+q4V93r+rgWzBvd6+q4FYwb7L/1V+y/5VQUO95WV+q4V93r+rgWzBvcv+VX3L/1VBbMG93r6rgVjBvsv/VX7L/lVBWMG+y/9Vfsv+VUFDkKp+q4V90v8yvtf/HgFswb3SfhB9x/8QQX3Kgb7T/jW91n4bAVjBvtD/Db7G/g2BQ4ulfquFfdD/YUF+733Kve9B/dD+YUFYwb7L/0w+y/5MAUOLrP6rhVj98oH++j+XQVj+Iiz+/IH9+j6XQWzBw73FfgHexX3U4v3KveCi/fDi/fD+yr3gvtTi/tTi/sq+4KL+8OL+8P3KvuC91OLCLMEIIs393CL962L963f93D2i/aL3/twi/uti/utN/twIIsIDvvU91/6rhVLaEpxS3wIYgenkKaTp5YI/lH3KvquBw50mhb4xAZZ9yoF+yg9+wpu+1qIw/dg+E33rIv3xIv3LfsC4PsSiyGLKVIw+yEI9xNABab2t/cS64vOi7NPizGL+878H/uvefurCA6K+EP4/RXi3r7Xi+OL9w8m2vsYiymL+w5SMPshCPcTQAWm9rX3EvcAi9WLrk+LRov7H/sBPUdRCGMH9x37BsH7Iov7BIv7AVg6Q4sri1r3EWH3JAj7E0AFz/s09xVB9wuL9yCL9xLwi/dJi/cEV/cU+wb3AwgOaviDFvdV1rNA+Pb7Kvz2+7sH9y73ffcC9/uL93UI+yoGkWSOXYtZi/toU/u0IPtKCGP34/tVBw6e7fquFV38b+1RBcH3BbuwxIvpi8v7F4v7Uov7VDr7FjeLS4tL1Wr3RAj7Ei8F4PsJ1Tr3GYv3SYv3Ffc9i/dVi/do+yn3Kfswi0SLRXFBSwix+B0F9zuH72/3Hz0IvfcqBQ6o9+76lhXSi6n7AZ/7LQj3B9UFVvclMd4si/uCiz/7n4v7/Yv7h/H7Z/dRi/c3i/cU9zOL91+L91r7Efc1+zuLWotgfmZ0kfd+xfcP5osI+zr9PBWL90Kp9yXyi+WLxvsli/tCi/tITfsiPIs8i033Iov3SAgOapX6rhW2+yoF9yLk9zae90GN+6r7uyH7rIv8Rwj3KgaL+I3X96z3Wvd1CLMHDrK++cAVi/sN0DzdRixPPvsBi/sSi/s99yAs9yaL9yWL9zXqi/dGi/cj+wDfJdj2x9bxi/cGi/cm+x7e+xSL+x+L+x44i/s/CPcB/MQVi+Sl7sPS9wgy9xo8i/sli/sBPEk3izSLOdOL9zEIoPj2FYvzzcfXi+6LtPsNiymLRH9CQEAm1i3Wi/cQCA6o99CjFUSLWfcBd/ctCPsHQQXA+yX3Ajjqi/eCi8P33Iv39ov3eCX3QPtRi/s3i/sU+zOL+1+L+1r3Efs19yuLw4u9pLWvh/uHY/sfLYsI+xz5PBWL90jJ9yLai9qLyfsii/tIiyFt+2n7CYs/i1D3JYv3QggO+//3EXsVtYusrIu1i7VqrGGLYYtqaothi2GsarWLCA778PcWKxXA06jUjtMI+yoGkHCOcYtwi12DXXxeCA77//cR97AVtYusrIu1i7VqrGGLYYtqaothi2GsarWLCPfjBLWLrKyLtYu1aqxhi2GLamqLYYthrGq1iwgO+/D3GPj/FbWLrKyLtYu1aqxhi2GLamqLYYthrGq1iwhI+1oVkHCOcYtwi12DXXxeCNsGwNOo1I7TCA77//dc+q4V+yoGp/uDnvu0k/uDCLMGk/eDnve0p/eDCED+vhW1i6ysi7WLtWqsYYthi2pqi2GLYaxqtYsIDrH30PewFbMGi/ds94nhi/eGi/cd+wPw+x2LI4v7AFIw+yEI9xNABab2uPcS7YvVi71PizGL+277KTaF+7UIn/vAFbWLrKyLtYu1aqxhi2GLamqLYYthrGq1iwgO+4X31vpUFXetBWdzandrdwiQ9wwFYwaOYI1ki2VrnmqgZ6MId2kFsniteax4CCFTn2kFr6Osn6ufi2WJZYhfCLMGhvcMBat4rHavcwifrQVknmmdap4IDvcV98f6fBVa+44F+wkGg2MF9wkGQ/wGBfsMBoNjBfcMBlr7jgWzBrz3jgX3hwZa+44Fswa8944F9wAGk7MF+wAG0/gGBfcDBpOzBfsDBrz3jgVjBlr7jgX7hwa8944F+xX9KBXT+AYF94cGQ/wGBQ77s/eA+uAV+04c+4IFswb3ThwEfgUO+7Pl+uAVYwb3Thz7ggWzBg77Nsf4tRVj99+zBw77Sr17FWP337MHDvtg9/scBHoVYwb7R/tCMft0i/tzi/tz5ftz90f7QwizBiP3PVT3dov3dov3dsL3dvP3PQgO+2DlHAR6FWMG8/s9wvt2i/t2i/t2VPt2I/s9CLMG90f3Q+X3c4v3c4v3czH3dPtH90IIDk74iisVswcni1nDi/csCIzuBYvohvdE+1uLCJUH91uLkPdEi+gIiu4Fi/csvcPviwizByeL+1xzi/tvCDEHiyWD+wX7JFYIYwf3JFaT+wWLJQgxB4v7b/dcc++LCA5OvSsV74v3XKOL928I5QeL8ZP3BfckwAizB/skwIP3BYvxCOUHi/dv+1yjJ4sIYwfvi71Ti/ssCIooBYsukPtE91uLCIEH+1uLhvtEiy4IjCgFi/ssWVMniwgO+2m9HAR6FRz7JvfAs/sqHASK9yqzBw77affyHAR6FfvAY/cqHPt2+ypj98AGDvvwzPcNFZBwjnGLcItdg118XgjbBsDTqNSO0wgO+0bM9w0VkHCOcYtwi12DXXxeCNsGwNOo1I7TCJ8WkHCOcYtwi12DXXxeCNsGwNOo1I7TCA77RvgG+dUVhqaIpYumi7mTuZq4CDsGVkNuQohDCHcWhqaIpYumi7mTuZq4CDsGVkNuQohDCA77Rsz6rhWQcI5xi3CLXYNdfF4I2wbA06jUjtMInxaQcI5xi3CLXYNdfF4I2wbA06jUjtMIDvvw91z51RWGpoili6aLuZO5mrgIOwZWQ25CiEMIDvvwzPquFZBwjnGLcItdg118XgjbBsDTqNSO0wgO+373tfi6FfuD+6f3g/unBbMG+4P3p/eD96cFDvt+5fi6FWMG94P7p/uD+6cFswb3g/enBQ77Vb36rRX7lvcq95YHnxb7lvcq95YHDvv/vfqtFfuW9yr3lgcO+K/5Yvi8FYl9BWyhaZVii/sii/sF+wdz+xyHdYl2i3eL+xvjQ+2L1YvCrrfFrFfMb8yL9xyL9wz3HJz3Qo2ai5qLmgiL9377UvdA+5qL+8OL+6r7dVn7s4VpiGqLa4v7k/dO+zX3e4v3E4v3Ibv3GPYIMs8FQ/sD+w1M+wWL+ySL+xjxi/d7i7OPuJS7uvec92T3ZPdvi/dUi/cW+yiL+12LbolthWxz+xxKIVyLb4uBoIuuCIurk7WUvQi796IF/CX75hWLpY6okKqi9xLA8NqLuouhaYtmi4SKhYqFCG37QAV8OmQzQotXi3a8i9AIDvfX9/R7FfKL4rDL1AiMigWecZ5xi3GLhouGiYYI95sGNsYt11jQz/cknPdEs90I+xgGj3KRVotMi0aEOHNDCPu9+CYF5c7g1ov3CIvaTuH7GIv7BIsnRov7H4tQoT3i+wkIjYgF+xwsSTuL+yeL+0n3MPsG9zqLCMbKFfsyi/sA9x6L9yqL5K3V2NII99z8UAVbVlFySIsIPPkCFUbpYL+L2Yzpz7LIi+uLs0aLUosqQEA8UAgO/G29+q4V/q6z+q4HDlqp+L4Vi/sv9wj7D/crfwg2s98H4ZDXtL3JCPsBuQV1TWVhYIMI+IYHtoOxYaFNCPcBuQVZyT+0NZAI32M2B/srf/sI+w+L+y8I9yoWi/cSvfHOnwj8hAdIn1nxi/cSCA6JrvnQFYv7Q/caI/cKJAj8LAdCr2XyafcICPsTQAW/+xDvNfcMdwgzs9+ZB/cwi+73BYv3Eov3QPsn7/sO9wEI+DIH1m6tIqIwCPcT1gU99wwxxzCZCONjN4QH+xGL+ww2i/stCPcWuxWL5b3Hz4sIj/wVBkbNVtSL6wj3Nv3nFfgVB9hEyUGLJ4tMaj01i4SLhIuFjAgO+Ef3cPihFYyzBffFs/vCBqf3kPc09z33WIv3H4v3CjbR+xcI7cUFKPcN+yvY+0OL+6aL+3L7T2b7pghPY8MGimOMYwVTY8cGsPum93L7T/emi/dDi/cr2O73DQgpxQVF+xf7Cjb7H4v7WIv7NPc9b/eQCPfCs/vFBg4ulfquFfcs/SEF+wZj9w8GmU8Fd/sdY/cd+4H3KveB9x6z+x6fB5nHBfcQs/sHBvcs+SEFYwb7L/0x+y/5MQUOsPfF+bkV+5P7k2P3k/uTs/eT95Oz+5P3kwcOsPjs+LoV/Lpj+LoGDiz4S/l3FftI+0j7SPdIbm73SPtI+0j7SKhu90j3SPdI+0ioqPtI90j3SPdIBQ6w+Oz4uhX8umP4ugb7p/twFbWLrKyLtYu1aqxhi2GLamqLYYthrGq1iwj33gS1i6ysi7WLtWqsYYthi2pqi2GLYaxqtYsIDrD47PkeFfy6Y/i6Bvs0BPy6Y/i6Bg6wvfmTFfiS+3/8kvt/BWMH+Lr3lAWzB/y695IFDrD47PmTFbMH/Lr7kgVjB/i6+5QFswf8kvd/BQ6w98X5uRX7dfuTY/eT+3Wz93X3k7P7k/d1B/eT/JIV/Lpj+LoGDvcW+IT4WBX2i8rhi9oIipljoQWMg4uEi4SLVnJdWIspi1H3KftEi/swi3f7IotcCLN5BYuql+vXi/KLxvsp9ziLCA77N+X5tRX3G/dm9xv7ZgWzBvsv940FYwb7L/uNBQ73S70Wswb5JPquBWMG/H37uBXhi8/Pi+GL4UfPNYs1i0dHizWLNc9H4YsIswRni2+9i8uLy6e9r4uvi6dZi0uLS29ZZ4sI9/79whXhi8/Pi+GL4UfPNYs1i0dHizWLNc9H4YsIswRni2+9i8uLy6e9r4uvi6dZi0uLS29ZZ4sIDnyLBvdcFPj5FQACigB5APoAAAIJAAoCWQAyA/AAHgOZADIB5QAyAeUAMgRYAB4CigAyAPoAMgI0AA8CWwAyAeAAMgLGADICWAAyBHYAHgJZADIEdgAeAmAAMgJjAA8CMAAKAlgAMgIIAAoDZgAKAhwACgIIAAoCCAAKBdUAHgTpAB4G7gAeA+0ACgMqAAoCCQAKAlkAMgPwAB4DmQAyAeUAMgHlADIEWAAeAooAMgD6ADICNAAPAlsAMgHgADICxgAyAlgAMgR2AB4CWQAyBHYAHgJgADICYwAPAjAACgJYADICCAAKA2YACgIcAAoCCAAKAggACgLmAB4BJQAKAk4ADwJkAA8CRAAKAngADwKCAB4CRAAKAowAHgKCAB4A+gAyAQkAMgD6ADIBCQAyAPoAMgKLADIBdAAyAuYAMgFGADIBRgAyAcMAPAGvADIBmQAyAZkAMgIoADICKAAyAZAAMgGQADIBCQAyAbMAMgGzADIBswAyAQkAMgEJADIBewAyAXsAMgGkADIA+gAyBIAAHgOoAB4AjAAyAjQAHgJjAA8EGAAPAggACgKKADICigAyAgYAMgKKADICigAyAooAMgKKADICigAyAucAKgHCADIDHAAyAAAAAQAAAAAAAQAAAAwAAAAAAAAAAgANAAAAAwABAAQABAAEAAUABQABAAYABgAEAAcACAABAAkACQAEAAoADwABABAAEAAEABEAFAABABUAFQAEABYAGwABABwAIAACACEAcgABAAAAAQAAAAoAHgAuAAFERkxUAAgABAAAAAD//wABAAAAAWtlcm4ACAAAAAIAAAABAAIABgAQAAIACAACABQA8gACAAgAAgSEBJwAAQDAAAQAAAANACQALgBAAEYAfACCAIwAjACSAJwAogCoALoAAgA9/+IAQv/EAAQAQv/sAEX/9gBhAB4AYgAyAAEAQv/EAA0AO//OAD//dABA/9gAQ//OAET/xABF/xAARv8kAEf/sABI/7oATf+mAGH/dABi/8QAcP+wAAEAQv/iAAIAPv/YAEL/nAABAEL/ugACAD3/xABC/7oAAQA//+IAAQBC/9gABAA+/7oAQP/OAEL/ugBD/7oAAQBC/6YAAQANADsAPgBBAEIAQwBFAEYARwBIAEoAYQBiAHAAAgJKAAQAAAJ0AuoAEwAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/zv+cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/87/sP+cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/sP/EAAAAAAAAAAAAAAAAAAAAAAAAAAD/nAAAAAAAAAAA/7r/dP/O/34AAAAAAAAAAAAAAAD/nP9qAAAAAAAAAAAAAP+wAAD/TP9+/87/ugAAAAD/nP9+AAAAAAAAAAAAAP+wAAD/iP+mAAD/2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9gAAAAAAAAAAP+mAAAAAAAAAAAAAAAAAAAAAAAA/9gAAAAAAAAAAAAAAAAAAAAA/6b+1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7oAAAAAAAAAAAAAAAAAAAAAAAAAAP+wAAAAAAAAAAAAAAAAAAD/2P/YAAAAAAAAAAAAAP+wAAAAAAAAAAD/iAAAAAAAAAAAAAAAAAAAAAD/av9gAAAAAAAAAAAAAAAA/9j/YP9+AAAAAAAAAAAAAAAAAAAAAAAAAAD+6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7r/sAAAAAAAAAAA/+wAAAAAAAAAAAAAAAAAAAAAAAAAAP+mAAEAEwABADsAQQBCAEQARQBGAEcASABLAEwATQBOAE8AUABfAGAAYgBkAAIAEwABAAEAAQA7ADsAAgBBAEEAAwBCAEIABABEAEQAAgBFAEUABQBGAEYABgBHAEcABwBIAEgACABLAEsACQBMAEwACgBNAE0ACwBOAE4ADABPAE8ADQBQAFAADgBfAF8ADwBgAGAAEABiAGIAEQBkAGQAEgACAB0AAgACAAYABAAEAAEACAAIAAEACwALAAcAEAAQAAEAEgASAAEAFQAVAAIAFwAYAAoAGgAaAAsAHAAeAAEAIAAgAAIAIQAhAAYAIwAjAAEAJwAnAAEAKgAqAAcALwAvAAEAMQAxAAEANAA0AAIANgA3AAoAOQA5AAsAOwA7AAgAPAA8AAwAQQBBAAgAQgBCAAMARABEAA0ARQBFAAQARgBGAAUASgBKAA4AZABkAAkAAQASAAQAAAABAAwAAQBG/7AAAQABABIAAghgAAQAAAiOCXQAHAAmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/8T/7P+I/+z/dP9+/5z/pv+6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/pgAA/87/zgAAAAAAAP/E/+z/zgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/4gAA/9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/4v9+AAD/zv/E/8QAAAAA/7r/2P+6/8T/zv+c/4j/Vv/sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP+6/7oACv/iAAAAAAAAAAAAAAAAAAAAAAAA/84AAAAAAAD/uv/YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/uv/OAAAAAAAAAAAAAAAAAAAAAAAAAAD/fv8a/xAAAAAA/2r/zv+S/6b/4v/i/7D/xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP+IAAD/sP+w/8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9gAAAAAAAP/iAAD/4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/4j/zv/i/8T/2AAA/84AAAAAAAAACgAAAAD/7AAAAAAAAP/OAAAAAAAAAAAAAAAAAAD/sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9W/6b/av+m/1b/iAAA/xoAAAAAAAD/xAAA/9gAAAAAAAD/sP+wAAAAAP/i/8QAAAAA/4j/2P/Y/xr/JP8a/wYAAAAAAAAAAAAAAAAAAP/2/7oAAAAAAAAAAAAAAAD/4v+6/+L/pv7U/o4AAP7A/4gAAAAA/84AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9j/7P+wAAD/4v/Y/+wAAAAAAAAAAP/YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/ugAAAAD/9gAAAAAAAP/2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/dP/OAAAAAAAAAAD/9gAAAAAAAAAAAAD/fv9g/2D/dP9g/2AAAAAA/84AAAAA/7AAAP+wAAAAAAAAAAD/fgAA/5L/kv+6/7oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/2AAA/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP90/3T/TP9q/2D/kgAAAAAAAAAAAAD/ugAAAAAAAAAAAAAAAAAAAAAAAP+wAAAAAAAAAAD/xP/iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2AAAAAAAA/+IAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/8T/9gAAAAAAAAAAAAAAAAAAAAAAAAAA/37/fv9+/4j/fv+IAAAAAAAAAAAAAP/YAAAAAAAAAAAAAAAAAAAAAAAA/7AAAAAAAAAAAP/E/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+IAAAAAAAD/ugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7oAAP/2AAAAAAAAAAD/4gAAAAD/7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9gAAAAAAAD/fgAA/7D/pgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP+6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/agAAAAAAAAAAAAAAAAAAAAAAAAAA/0wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAcAAgA6AAAAPAA8ADkAYQBiADoAZABmADwAaABoAD8AbABsAEAAcABxAEEAAQACAHAAAQACAAMABAAFAAYABwAIAAgACQAKAAsACAAIAAQADAAEAA0ADgAPABAAEQARABIAEwAUAAUACAAEAAgADwABAAIAAwAEAAUABgAHAAgACAAJAAoACwAIAAgABAAMAAQADQAOAA8AEAARABEAEgATABQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUAFgAAABcADgADAAAAGAAAAAAAAAAZAAAAAAAAABoAGwABAAEAcQAUAA0AJQABACUAJQAlAAEAJQAlAA4AJQAlACUAJQABACUAAQAlAAIAAwAEAAUABQAKAAYACwABAAEAAQAlAAMADQAlAAEAJQAlACUAAQAlACUADgAlACUAJQAlAAEAJQABACUAAgADAAQABQAFAAoABgALABMAAAAAABsAFQAcABMADAAWABcADwAQAAAAIQAAAAcACAAAACIACQAaABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AHgAYABkAAAASAAIAAAAAACMAAAAAAAAAJAAAAAAAAAAfACAAAAABAAAACgAeACwAAURGTFQACAAEAAAAAP//AAEAAAABZGxpZwAIAAAAAQAAAAEABAAEAAgAAQAIAAEAOgADAAwAHgAoAAIABgAMABwAAgAGAB0AAgAJAAEABAAeAAIAEAACAAYADAAfAAIACQAgAAIAFQABAAMABAAQABU=') format('opentype');
+    }
+    :root { --cream:#F0EBE5; --terracotta:#1C1C1C; --dark:#1C1C1C; --white:#ffffff; --line:rgba(28,28,28,0.12); --muted:rgba(28,28,28,0.55); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--cream); font-family:'Inter',sans-serif; color:var(--dark); overflow-x:hidden; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:36px 72px; background:transparent; transition:padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease; }
+    nav.scrolled { padding:18px 72px; background:rgba(240,235,229,0.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(28,28,28,0.08); }
+    .nav-logo { text-decoration:none; display:block; transition:opacity 0.2s; } .nav-logo:hover { opacity:0.7; }
+    .nav-logo-white { display:block; }
+    .nav-logo-black { display:none; }
+    nav.scrolled .nav-logo-white { display:none; }
+    nav.scrolled .nav-logo-black { display:block; }
+    .nav-right { display:flex; align-items:center; gap:40px; }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-family:'Inter',sans-serif; font-weight:300; font-size:16px; color:rgba(255,255,255,0.85); text-decoration:none; transition:color 0.4s ease, opacity 0.2s; }
+    .nav-links a:hover { opacity:0.6; }
+    .nav-book-btn { font-family:'Inter',sans-serif; font-size:13px; font-weight:300; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; color:var(--white); background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.5); padding:10px 22px; transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease; white-space:nowrap; backdrop-filter:blur(4px); }
+    .nav-book-btn:hover { background:rgba(255,255,255,0.35); }
+    nav.scrolled .nav-links a { color:var(--terracotta); }
+    nav.scrolled .nav-book-btn { background:var(--terracotta); border-color:var(--terracotta); color:var(--white); }
+    nav.scrolled .nav-book-btn:hover { background:#333333; }
+
+    /* HERO */
+    .cs-hero { width:100%; height:100vh; min-height:640px; position:relative; overflow:hidden; display:flex; align-items:flex-end; }
+    .cs-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg, #14161C 0%, #1F2530 55%, #2B3442 100%); }
+    .cs-hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%); }
+    .cs-hero-content { position:relative; z-index:1; padding:0 72px 72px; max-width:980px; }
+    .cs-hero-tag { font-size:11px; font-weight:300; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:20px; }
+    .cs-hero-title { font-family:'Charlie Brown',serif; font-size:64px; color:var(--white); line-height:1.12; letter-spacing:0.02em; text-transform:uppercase; margin-bottom:24px; }
+    .cs-hero-subtitle { font-size:17px; font-weight:300; color:rgba(255,255,255,0.82); line-height:1.6; max-width:560px; }
+    .cs-hero-meta { display:flex; flex-wrap:wrap; gap:48px; margin-top:44px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.18); }
+    .cs-hero-meta div h4 { font-size:10px; font-weight:300; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px; }
+    .cs-hero-meta div p { font-size:14px; font-weight:300; color:rgba(255,255,255,0.85); line-height:1.5; }
+
+    /* ARTICLE */
+    .cs-article { max-width:760px; margin:0 auto; padding:110px 40px 0; }
+    .cs-section { margin-bottom:110px; }
+    .cs-kicker { font-size:11px; font-weight:300; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+    .cs-section h2 { font-size:32px; font-weight:400; color:var(--dark); line-height:1.25; margin-bottom:24px; }
+    .cs-section h3 { font-size:20px; font-weight:500; color:var(--dark); line-height:1.35; margin:40px 0 14px; }
+    .cs-section p { font-size:17px; font-weight:300; color:#2a2a2a; line-height:1.75; margin-bottom:18px; }
+    .cs-section p:last-child { margin-bottom:0; }
+    .cs-section ul { margin:0 0 18px 18px; }
+    .cs-section li { font-size:17px; font-weight:300; color:#2a2a2a; line-height:1.75; margin-bottom:6px; }
+
+    /* Pull quote */
+    .cs-pullquote { border-left:2px solid var(--terracotta); padding:4px 0 4px 28px; margin:48px 0; font-size:22px; font-weight:300; color:var(--dark); line-height:1.5; font-style:italic; }
+
+    /* Big statement */
+    .cs-statement { font-family:'Charlie Brown',serif; font-size:34px; line-height:1.35; letter-spacing:0.01em; text-transform:uppercase; color:var(--dark); margin:56px 0; text-align:center; }
+
+    /* Image placeholder */
+    .cs-img { margin:44px 0; }
+    .cs-img-frame { width:100%; border:1px dashed rgba(28,28,28,0.3); background:rgba(28,28,28,0.03); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; }
+    .cs-img-frame.tall { min-height:520px; }
+    .cs-img-frame.med { min-height:380px; }
+    .cs-img-frame.short { min-height:260px; }
+    .cs-img-frame span { font-size:12px; font-weight:300; letter-spacing:0.22em; text-transform:uppercase; color:rgba(28,28,28,0.4); line-height:1.8; max-width:480px; }
+    .cs-img-caption { margin-top:12px; font-size:13px; font-weight:300; color:var(--muted); line-height:1.5; }
+    .cs-img-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:44px 0; }
+    .cs-img-grid .cs-img { margin:0; }
+
+    /* Flow diagram */
+    .cs-flow { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:40px 0; }
+    .cs-flow-step { border:1px solid rgba(28,28,28,0.25); padding:12px 18px; font-size:12px; font-weight:300; letter-spacing:0.14em; text-transform:uppercase; color:var(--dark); white-space:nowrap; background:rgba(255,255,255,0.4); }
+    .cs-flow-step.hl { background:var(--terracotta); color:var(--white); border-color:var(--terracotta); }
+    .cs-flow-arrow { font-size:14px; color:var(--muted); font-weight:300; }
+    .cs-flow-vertical { display:flex; flex-direction:column; align-items:flex-start; gap:8px; margin:40px 0; }
+    .cs-flow-vertical .cs-flow-arrow { padding-left:22px; }
+
+    /* Cards */
+    .cs-cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:40px 0; }
+    .cs-card { border:1px solid var(--line); padding:26px; background:rgba(255,255,255,0.35); }
+    .cs-card h4 { font-size:12px; font-weight:400; letter-spacing:0.22em; text-transform:uppercase; color:var(--dark); margin-bottom:12px; }
+    .cs-card p { font-size:14.5px !important; line-height:1.65 !important; margin-bottom:0 !important; color:#3a3a3a !important; }
+    .cs-cards-1 { grid-template-columns:1fr; }
+
+    /* Insight rows */
+    .cs-insight { border-top:1px solid var(--line); padding:32px 0; display:flex; gap:32px; align-items:flex-start; }
+    .cs-insight:last-child { border-bottom:1px solid var(--line); }
+    .cs-insight-num { font-family:'Charlie Brown',serif; font-size:28px; color:rgba(28,28,28,0.25); line-height:1; flex:0 0 56px; padding-top:4px; }
+    .cs-insight-body h4 { font-size:19px; font-weight:500; color:var(--dark); margin-bottom:10px; line-height:1.4; }
+    .cs-insight-body p { font-size:15.5px !important; line-height:1.7 !important; margin-bottom:0 !important; }
+
+    /* Scorecard */
+    .cs-scorecard { border:1px solid var(--line); margin:40px 0; }
+    .cs-scorecard-row { display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--line); }
+    .cs-scorecard-row:last-child { border-bottom:none; }
+    .cs-scorecard-dim { padding:22px 24px; font-size:11px; font-weight:400; letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); border-right:1px solid var(--line); display:flex; align-items:center; }
+    .cs-scorecard-metrics { padding:22px 24px; display:flex; flex-wrap:wrap; gap:10px; }
+    .cs-scorecard-metrics span { border:1px solid rgba(28,28,28,0.2); padding:7px 14px; font-size:12.5px; font-weight:300; color:var(--dark); }
+
+    /* Option exploration */
+    .cs-option { border:1px solid var(--line); margin-bottom:20px; background:rgba(255,255,255,0.35); }
+    .cs-option-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 26px; border-bottom:1px solid var(--line); }
+    .cs-option-head h4 { font-size:16px; font-weight:500; color:var(--dark); }
+    .cs-option-tag { font-size:10px; font-weight:400; letter-spacing:0.24em; text-transform:uppercase; padding:6px 12px; border:1px solid rgba(28,28,28,0.35); color:var(--muted); white-space:nowrap; }
+    .cs-option-tag.win { border-color:var(--terracotta); background:var(--terracotta); color:var(--white); }
+    .cs-option-body { padding:20px 26px; }
+    .cs-option-body p { font-size:14.5px !important; line-height:1.7 !important; margin-bottom:10px !important; color:#3a3a3a !important; }
+    .cs-option-body p:last-child { margin-bottom:0 !important; }
+
+    /* Decision chapter */
+    .cs-chapter { border-top:1px solid var(--line); padding-top:56px; margin-top:56px; }
+    .cs-chapter-num { font-size:11px; font-weight:300; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .cs-chapter h3 { margin-top:0; font-size:24px; }
+    .cs-decision-grid { display:grid; grid-template-columns:110px 1fr; gap:0; border:1px solid var(--line); margin:28px 0; }
+    .cs-decision-grid > div { padding:16px 20px; border-bottom:1px solid var(--line); }
+    .cs-decision-grid > div:nth-last-child(-n+2) { border-bottom:none; }
+    .cs-decision-label { font-size:10px; font-weight:400; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); border-right:1px solid var(--line); display:flex; align-items:flex-start; padding-top:19px !important; }
+    .cs-decision-text { font-size:14.5px; font-weight:300; line-height:1.65; color:#3a3a3a; }
+
+    /* Metrics */
+    .cs-metrics { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin:40px 0; }
+    .cs-metric { border:1px solid var(--line); padding:28px 26px; background:rgba(255,255,255,0.35); }
+    .cs-metric-value { font-family:'Charlie Brown',serif; font-size:40px; color:var(--dark); line-height:1; margin-bottom:10px; }
+    .cs-metric-label { font-size:12px; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; color:var(--dark); margin-bottom:10px; }
+    .cs-metric p { font-size:13.5px !important; line-height:1.6 !important; color:var(--muted) !important; margin-bottom:0 !important; }
+
+    /* CTA */
+    .cs-cta-wrap { margin-top:90px; padding-top:48px; border-top:1px solid rgba(28,28,28,0.1); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+    .cs-cta { display:inline-flex; align-items:center; gap:10px; font-size:13px; font-weight:300; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); background:var(--terracotta); padding:14px 28px; text-decoration:none; transition:background 0.2s; }
+    .cs-cta:hover { background:#333333; }
+    .cs-cta-note { font-size:13px; font-weight:300; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
+
+    /* FOOTER */
+    footer { background:var(--cream); margin-top:120px; padding:60px 72px; border-top:1px solid rgba(28,28,28,0.08); }
+    .footer-tagline { font-size:14px; font-weight:300; color:var(--dark); letter-spacing:0.15em; line-height:1.6; text-transform:lowercase; }
+
+    /* FADE UP */
+    .js-ready .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.65s ease, transform 0.65s ease; }
+    .js-ready .fade-up.visible { opacity:1; transform:translateY(0); }
+    .fade-up-d1 { transition-delay:0.1s; }
+
+    @media (max-width: 760px) {
+      nav, nav.scrolled { padding-left:24px; padding-right:24px; }
+      .nav-links { display:none; }
+      .cs-hero-content { padding:0 24px 48px; }
+      .cs-hero-title { font-size:40px; }
+      .cs-hero-meta { gap:28px; }
+      .cs-article { padding:80px 24px 0; }
+      .cs-cards, .cs-img-grid, .cs-metrics { grid-template-columns:1fr; }
+      .cs-scorecard-row { grid-template-columns:1fr; }
+      .cs-scorecard-dim { border-right:none; border-bottom:1px solid var(--line); }
+      .cs-decision-grid { grid-template-columns:1fr; }
+      .cs-decision-label { border-right:none; padding-bottom:0 !important; }
+      .cs-decision-grid > div { border-bottom:none; }
+      .cs-decision-grid > div.cs-decision-text { border-bottom:1px solid var(--line); }
+      .cs-decision-grid > div.cs-decision-text:last-child { border-bottom:none; }
+      footer { padding:48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html" style="padding:0;border:none;outline:none;">
+      <span class="nav-logo-white"><svg style="height:36px;width:auto;display:block;" viewBox="0 0 334 117" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182.267 29.7137L181.981 29.8927C183.326 30.0071 182.747 31.2455 179.294 35.5944C172.702 43.777 169.704 46.3686 166.361 46.6268C165.921 46.6233 165.094 46.3836 164.475 46.0938C163.469 45.5679 163.29 45.2816 162.713 42.8945C162.237 40.9225 162.198 39.3943 162.448 37.2469C163.002 32.7194 163.002 32.7194 161.553 35.8155C159.392 40.5114 156.794 44.7636 155.28 46.2276C152.672 48.6152 149.823 48.6443 149.246 46.2572C148.62 43.6625 150.501 38.2652 152.745 36.1854C154.259 34.7214 155.633 34.4993 157.491 35.3687L158.987 36.1058L160.439 32.5695C161.838 29.2659 163.716 24.3088 167.397 14.0831C168.775 10.2355 169.433 8.86822 170.16 8.69274C170.367 8.6426 170.6 8.69625 170.832 8.7499C171.788 9.06828 171.785 9.5085 170.858 12.039C167.073 22.2897 163.894 40.9617 165.53 43.6421C166.654 45.5674 170.143 43.1868 175.164 37.1412C180.445 30.8128 181.594 29.6566 182.267 29.7137ZM155.992 41.4425L156.121 41.5212C157.906 38.4537 157.881 38.3499 157.162 37.645C156.442 36.94 155.952 36.729 155.433 36.8543C155.225 36.9044 154.939 37.0834 154.653 37.2624C153.089 38.5195 150.914 44.9757 151.709 45.992C152.195 46.6433 153.945 44.7927 155.992 41.4425Z" fill="white"/><path d="M135.607 107.533C135.566 107.533 136.891 107.065 151.747 100.981C165.286 95.4363 190.89 84.6175 212.863 77.1365C234.836 69.6554 252.372 65.7668 268.02 63.566C283.668 61.3651 296.897 60.9699 303.559 61.0432C310.222 61.1165 309.918 61.6704 307.078 63.8097C304.238 65.9491 298.87 69.657 293.34 73.4773" stroke="white" stroke-width="1.67549" stroke-linecap="round"/></svg></span>
+      <span class="nav-logo-black"><svg style="height:36px;width:auto;display:block;" viewBox="0 0 334 117" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182.267 29.7137L181.981 29.8927C183.326 30.0071 182.747 31.2455 179.294 35.5944C172.702 43.777 169.704 46.3686 166.361 46.6268C165.921 46.6233 165.094 46.3836 164.475 46.0938C163.469 45.5679 163.29 45.2816 162.713 42.8945C162.237 40.9225 162.198 39.3943 162.448 37.2469C163.002 32.7194 163.002 32.7194 161.553 35.8155C159.392 40.5114 156.794 44.7636 155.28 46.2276C152.672 48.6152 149.823 48.6443 149.246 46.2572C148.62 43.6625 150.501 38.2652 152.745 36.1854C154.259 34.7214 155.633 34.4993 157.491 35.3687L158.987 36.1058L160.439 32.5695C161.838 29.2659 163.716 24.3088 167.397 14.0831C168.775 10.2355 169.433 8.86822 170.16 8.69274C170.367 8.6426 170.6 8.69625 170.832 8.7499C171.788 9.06828 171.785 9.5085 170.858 12.039C167.073 22.2897 163.894 40.9617 165.53 43.6421C166.654 45.5674 170.143 43.1868 175.164 37.1412C180.445 30.8128 181.594 29.6566 182.267 29.7137ZM155.992 41.4425L156.121 41.5212C157.906 38.4537 157.881 38.3499 157.162 37.645C156.442 36.94 155.952 36.729 155.433 36.8543C155.225 36.9044 154.939 37.0834 154.653 37.2624C153.089 38.5195 150.914 44.9757 151.709 45.992C152.195 46.6433 153.945 44.7927 155.992 41.4425Z" fill="black"/><path d="M135.607 107.533C135.566 107.533 136.891 107.065 151.747 100.981C165.286 95.4363 190.89 84.6175 212.863 77.1365C234.836 69.6554 252.372 65.7668 268.02 63.566C283.668 61.3651 296.897 60.9699 303.559 61.0432C310.222 61.1165 309.918 61.6704 307.078 63.8097C304.238 65.9491 298.87 69.657 293.34 73.4773" stroke="black" stroke-width="1.67549" stroke-linecap="round"/></svg></span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#worked-with">ABOUT ME</a></li>
+        <li><a href="index.html#work">WORK</a></li>
+        <li><a href="index.html#experiments">EXPERIMENTS</a></li>
+      </ul>
+      <a class="nav-book-btn" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-content">
+      <p class="cs-hero-tag">Case Study &#8212; PhonePe Pincode</p>
+      <h1 class="cs-hero-title">Price Genie: Shopping That Starts With a List, Not a Store</h1>
+      <p class="cs-hero-subtitle">Traditional commerce asks users to pick a store before they know what it sells. Price Genie inverted that&#8212;users build a shopping list first, and the system finds the stores that can fulfill it.</p>
+      <div class="cs-hero-meta">
+        <div>
+          <h4>Role</h4>
+          <p>Lead Product Designer<br />End-to-end UX</p>
+        </div>
+        <div>
+          <h4>Timeline</h4>
+          <p>Experimental initiative<br />Concept &#8594; Pilot</p>
+        </div>
+        <div>
+          <h4>Team</h4>
+          <p>PM, Backend &amp; Frontend Engineers,<br />Business, Merchandising, Research</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <p>PhonePe Pincode<br />ONDC network</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE -->
+  <article class="cs-article">
+
+    <!-- 2. CONTEXT -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">01 &#8212; Context</p>
+      <h2>Commerce built on open rails</h2>
+      <p>Pincode is PhonePe&#8217;s hyperlocal shopping app, built on ONDC&#8212;India&#8217;s Open Network for Digital Commerce. Unlike a closed marketplace, ONDC connects thousands of independent local merchants through a shared protocol. Any store can list. Any buyer app can sell.</p>
+      <p>That openness is the network&#8217;s biggest strength and its biggest design problem. Inventory quality varies by merchant. Prices for the same item differ across stores. Availability changes hour to hour. And the interface most apps put on top of this chaos is the same one ecommerce has used for twenty years:</p>
+      <div class="cs-flow">
+        <span class="cs-flow-step">Pick a Store</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Browse Products</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Add to Cart</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Checkout</span>
+      </div>
+      <p>Store-first discovery works when there are five stores. It breaks when there are five hundred. The user is forced to make their least-informed decision&#8212;which store?&#8212;before they have any information to make it with.</p>
+      <div class="cs-img">
+        <div class="cs-img-frame med"><span>Image &#8212; Pincode app context: hyperlocal storefront grid showing dozens of nearby stores competing for the same first tap</span></div>
+        <p class="cs-img-caption">The store-first entry point: hundreds of merchants, zero signal about which one has what you need.</p>
+      </div>
+    </div>
+
+    <!-- 3. THE PROBLEM -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">02 &#8212; The Problem</p>
+      <h2>Nobody wakes up wanting to shop from Store X</h2>
+      <p>People wake up needing milk, bread, fruits, vegetables. The need is a list. The interface is a directory.</p>
+      <p>Watch someone do their weekly grocery run on a store-first app and the friction is obvious. They open a store, search for six items, find four. Now what? Abandon the two missing items, or open a second store and rebuild part of the cart from memory? Most people do neither&#8212;they settle, or they leave.</p>
+      <div class="cs-pullquote">Users don&#8217;t think in stores. They think in products. We were asking them to translate.</div>
+      <p>Every store switch resets context: a new catalog, new prices, new delivery promises, a new cart. The cognitive work of comparison&#8212;the thing software is good at&#8212;was being pushed entirely onto the user.</p>
+      <div class="cs-img">
+        <div class="cs-img-frame short"><span>Illustration &#8212; A user's mental model (a scribbled shopping list) vs. the app's model (a grid of store logos)</span></div>
+      </div>
+    </div>
+
+    <!-- 4. BUSINESS CHALLENGE -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">03 &#8212; The Challenge, From Four Sides</p>
+      <h2>One broken flow, four unhappy parties</h2>
+      <p>This wasn&#8217;t just a usability gap. Store-first discovery was quietly capping the marketplace itself.</p>
+      <div class="cs-cards">
+        <div class="cs-card">
+          <h4>Users</h4>
+          <p>High effort to complete a full basket. No way to compare stores on the things they actually care about: availability, delivery time, savings, and whether the whole list gets fulfilled&#8212;not just price.</p>
+        </div>
+        <div class="cs-card">
+          <h4>Business</h4>
+          <p>Wanted higher discovery, higher cart conversion, and larger order values. Store-first flows produced small, single-store baskets and early drop-offs.</p>
+        </div>
+        <div class="cs-card">
+          <h4>Merchants</h4>
+          <p>Smaller stores with strong inventory in a few categories were invisible. Discovery rewarded brand recall, not fulfillment capability. Good merchants got no exposure.</p>
+        </div>
+        <div class="cs-card">
+          <h4>Engineering</h4>
+          <p>Matching a list against live inventory from hundreds of merchants&#8212;with changing prices, stock, and delivery promises&#8212;pushed against real API and offer-engine limitations.</p>
+        </div>
+      </div>
+      <p>Any solution had to work for all four at once. A flow users loved but merchants couldn&#8217;t serve, or a matching model the backend couldn&#8217;t compute in real time, would fail in production no matter how good it looked in Figma.</p>
+    </div>
+
+    <!-- 5. MY ROLE -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">04 &#8212; My Role</p>
+      <h2>Design as product strategy</h2>
+      <p>I led end-to-end UX for the initiative&#8212;from the discovery research that shaped the product thesis, through information architecture and flows, to final UI and design QA at launch.</p>
+      <p>The parts that mattered most weren&#8217;t screens. They were decisions made in rooms with backend engineers about what could be computed, with the business team about what should be ranked, and with merchandising about how catalog quality would shape what users saw. On a project like this, interaction design and system feasibility are the same conversation.</p>
+      <ul>
+        <li>Product discovery and experience strategy</li>
+        <li>Information architecture and UX flows</li>
+        <li>UI and interaction design</li>
+        <li>Backend and API constraint negotiation with engineering</li>
+        <li>Design QA through pilot</li>
+      </ul>
+    </div>
+
+    <!-- 6. RESEARCH -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">05 &#8212; Research</p>
+      <h2>What we learned before drawing anything</h2>
+      <p>We combined user interviews, shopping-behavior observation, market analysis, and merchant-side data. Four insights ended up carrying the whole product.</p>
+
+      <div style="margin-top:40px;">
+        <div class="cs-insight">
+          <span class="cs-insight-num">01</span>
+          <div class="cs-insight-body">
+            <h4>Users shop items, not stores.</h4>
+            <p>Shopping intent formed as a list of needs, almost never as a store preference. Store choice was a means, not a goal&#8212;and users resented having to make it first.</p>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <span class="cs-insight-num">02</span>
+          <div class="cs-insight-body">
+            <h4>Store-first discovery creates unnecessary cognitive load.</h4>
+            <p>Choosing a store before seeing inventory is a blind decision. Users compensated by defaulting to familiar names, which suppressed discovery for the entire long tail of merchants.</p>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <span class="cs-insight-num">03</span>
+          <div class="cs-insight-body">
+            <h4>Cross-store comparison is where users give up.</h4>
+            <p>Finding products across multiple stores meant rebuilding carts from memory. The moment a basket needed a second store, completion rates collapsed. This was the highest-friction point in the entire journey.</p>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <span class="cs-insight-num">04</span>
+          <div class="cs-insight-body">
+            <h4>Price is not the decision. Fulfillment is.</h4>
+            <p>Users said they wanted the cheapest option. They chose the store that had everything, delivered soon, and saved them a second order. Availability, delivery time, and total savings beat unit price&#8212;consistently. This insight named the product and shaped its ranking logic.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cs-img">
+        <div class="cs-img-frame short"><span>Data viz &#8212; What users say vs. what they choose: stated preference (price) against observed choice drivers (fulfillment, delivery, savings)</span></div>
+      </div>
+    </div>
+
+    <!-- 7. SUCCESS METRICS -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">06 &#8212; Success Metrics</p>
+      <h2>The scorecard we agreed on before designing</h2>
+      <p>We defined metrics up front so that design debates could be settled by outcomes, not opinions. Each dimension had an owner and a directional target.</p>
+      <div class="cs-scorecard">
+        <div class="cs-scorecard-row">
+          <div class="cs-scorecard-dim">User</div>
+          <div class="cs-scorecard-metrics">
+            <span>Average items added</span>
+            <span>Time to checkout</span>
+            <span>Stores explored per session</span>
+          </div>
+        </div>
+        <div class="cs-scorecard-row">
+          <div class="cs-scorecard-dim">Business</div>
+          <div class="cs-scorecard-metrics">
+            <span>Cart conversion</span>
+            <span>Average order value</span>
+            <span>Merchant visibility</span>
+          </div>
+        </div>
+        <div class="cs-scorecard-row">
+          <div class="cs-scorecard-dim">Product</div>
+          <div class="cs-scorecard-metrics">
+            <span>Fulfillment rate</span>
+            <span>Cancellation rate</span>
+            <span>List completion</span>
+          </div>
+        </div>
+      </div>
+      <p>The pairing matters: cart conversion without fulfillment rate rewards overpromising. Order value without cancellation rate rewards matching users to stores that can&#8217;t deliver. Every metric had a counterweight.</p>
+    </div>
+
+    <!-- 8. HMW -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">07 &#8212; Framing</p>
+      <div class="cs-statement">How might we let people shop the way they already think&#8212;starting from what they need, not where to get it?</div>
+    </div>
+
+    <!-- 9. EXPLORATION -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">08 &#8212; Exploration</p>
+      <h2>Four models for discovery</h2>
+      <p>Before committing, we prototyped four discovery models and tested them against the research insights, the metrics scorecard, and&#8212;critically&#8212;backend feasibility.</p>
+
+      <div style="margin-top:36px;">
+        <div class="cs-option">
+          <div class="cs-option-head">
+            <h4>Option A &#8212; Store-first, improved</h4>
+            <span class="cs-option-tag">Rejected</span>
+          </div>
+          <div class="cs-option-body">
+            <p>Keep the existing model but add better store filters: ratings, delivery time, category depth. Lowest engineering cost, fastest to ship.</p>
+            <p>Rejected because it optimizes the wrong decision. Better filters make a blind choice slightly less blind&#8212;they don&#8217;t remove the translation work between &#8220;what I need&#8221; and &#8220;where to go.&#8221; The core insight said the sequence itself was broken.</p>
+          </div>
+        </div>
+        <div class="cs-option">
+          <div class="cs-option-head">
+            <h4>Option B &#8212; Search-first</h4>
+            <span class="cs-option-tag">Rejected</span>
+          </div>
+          <div class="cs-option-body">
+            <p>A universal search bar across all merchant inventory. Type &#8220;milk,&#8221; see every store that sells milk.</p>
+            <p>Great for one item, wrong for a basket. Search resolves needs one at a time, so a six-item list means six searches and six store-comparison moments. It also depended on clean, consistent catalog data across merchants&#8212;which ONDC&#8217;s variable data quality couldn&#8217;t guarantee. Search stayed in the product, but as a utility, not the spine.</p>
+          </div>
+        </div>
+        <div class="cs-option">
+          <div class="cs-option-head">
+            <h4>Option C &#8212; Category-first</h4>
+            <span class="cs-option-tag">Partially adopted</span>
+          </div>
+          <div class="cs-option-body">
+            <p>Users browse normalized categories&#8212;dairy, produce, staples&#8212;instead of stores, and the system aggregates items across merchants within each category.</p>
+            <p>This matched how users scan a mental shopping list, and normalized categories absorbed messy merchant data better than raw search. But on its own it still ended in a single-store cart. We kept category browsing as the entry point and pushed further.</p>
+          </div>
+        </div>
+        <div class="cs-option">
+          <div class="cs-option-head">
+            <h4>Option D &#8212; Item-first (list-led)</h4>
+            <span class="cs-option-tag win">Selected</span>
+          </div>
+          <div class="cs-option-body">
+            <p>Users build a shopping list first&#8212;via categories or search&#8212;without committing to any store. The system then matches the complete list against live merchant inventory and returns ranked stores by fulfillment, savings, and delivery.</p>
+            <p>This was the only model that moved comparison work from the user to the system, served whole baskets instead of single items, and gave long-tail merchants exposure based on what they could actually fulfill. It was also the hardest to build&#8212;which is exactly why the next sections are mostly about constraints.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cs-img">
+        <div class="cs-img-frame med"><span>Image &#8212; Early exploration wireframes: the four discovery models sketched side by side</span></div>
+      </div>
+    </div>
+
+    <!-- 10. ARCHITECTURE -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">09 &#8212; Product Architecture</p>
+      <h2>Inverting the funnel</h2>
+      <p>The architecture is a straight inversion of ecommerce&#8217;s standard sequence. Store selection moves from the first step&#8212;where the user has no information&#8212;to the fifth, where the system has all of it.</p>
+      <div class="cs-flow-vertical">
+        <span class="cs-flow-step">Browse Categories</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Add Items to List</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Review List</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step hl">Find Best Stores</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Compare Stores</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Create Cart</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Checkout</span>
+      </div>
+      <p>Two structural ideas hold this together.</p>
+      <p><strong>The list is the primary object, not the cart.</strong> A cart belongs to a store. A list belongs to the user. Keeping the list store-agnostic until matching is what lets the same six items be priced against every eligible merchant simultaneously.</p>
+      <p><strong>Matching is a moment, not a background process.</strong> &#8220;Find Best Stores&#8221; is an explicit, user-triggered step. Users understood the system was working on their behalf, and engineering got a single defined point to run the expensive inventory-matching computation&#8212;instead of recomputing on every list edit.</p>
+      <div class="cs-img">
+        <div class="cs-img-frame tall"><span>Diagram &#8212; System architecture: user list &#8594; matching engine &#8594; merchant inventory, price, and delivery-promise inputs &#8594; ranked store results</span></div>
+        <p class="cs-img-caption">The matching engine sits between one user-owned list and many merchant catalogs.</p>
+      </div>
+    </div>
+
+    <!-- 11. DESIGN DECISIONS -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">10 &#8212; Design Decisions</p>
+      <h2>Six decisions that defined the product</h2>
+      <p>Each chapter below follows the same arc: the problem, the reasoning, the tradeoff we accepted, and what happened.</p>
+
+      <!-- Chapter 1 -->
+      <div class="cs-chapter">
+        <p class="cs-chapter-num">Chapter 01</p>
+        <h3>Categories: designing for a messy catalog</h3>
+        <div class="cs-decision-grid">
+          <div class="cs-decision-label">Problem</div>
+          <div class="cs-decision-text">Merchant catalog data was inconsistent&#8212;the same milk brand appeared under different names, categories, and pack sizes across stores. Raw catalogs would make list-building feel broken before matching even ran.</div>
+          <div class="cs-decision-label">Reasoning</div>
+          <div class="cs-decision-text">List-building had to feel effortless because everything downstream depended on list quality. We designed around a normalized category taxonomy with the most-purchased essentials surfaced first, so users add generic items (&#8220;milk, 1L&#8221;) rather than store-specific SKUs.</div>
+          <div class="cs-decision-label">Tradeoff</div>
+          <div class="cs-decision-text">Normalization hides brand-level choice at the list stage. Brand-sensitive users pick specifics later, at store comparison. We accepted slightly less precision up front for much faster list completion.</div>
+          <div class="cs-decision-label">Outcome</div>
+          <div class="cs-decision-text">Users built larger lists faster, and the normalized layer became the contract that made cross-store matching computable at all.</div>
+        </div>
+        <div class="cs-img">
+          <div class="cs-img-frame med"><span>Screen &#8212; Category browsing and quick-add: essentials grid with one-tap add to list</span></div>
+        </div>
+      </div>
+
+      <!-- Chapter 2 -->
+      <div class="cs-chapter">
+        <p class="cs-chapter-num">Chapter 02</p>
+        <h3>Review List: the commitment moment</h3>
+        <div class="cs-decision-grid">
+          <div class="cs-decision-label">Problem</div>
+          <div class="cs-decision-text">In testing, users treated their list casually&#8212;then felt ambushed when store results didn&#8217;t match expectations they hadn&#8217;t realized they had (quantities, sizes, substitutions).</div>
+          <div class="cs-decision-label">Reasoning</div>
+          <div class="cs-decision-text">We inserted an explicit review step before matching. It sets quantities, flags ambiguous items, and frames what happens next. It also protects the backend: matching runs once, on a confirmed list, not continuously on a changing one.</div>
+          <div class="cs-decision-label">Tradeoff</div>
+          <div class="cs-decision-text">One extra step in the flow&#8212;normally something you fight to remove. We kept it because it converted downstream confusion into upstream clarity, and cut abandoned matching results.</div>
+          <div class="cs-decision-label">Outcome</div>
+          <div class="cs-decision-text">Fewer surprises at comparison, fewer re-runs of matching, and a natural home for list editing on repeat visits.</div>
+        </div>
+        <div class="cs-img">
+          <div class="cs-img-frame med"><span>Screen &#8212; Review List: editable quantities, ambiguity flags, and the &#8220;Find Best Stores&#8221; action</span></div>
+        </div>
+      </div>
+
+      <!-- Chapter 3 -->
+      <div class="cs-chapter">
+        <p class="cs-chapter-num">Chapter 03</p>
+        <h3>Store Matching: ranking on fulfillment, not price</h3>
+        <div class="cs-decision-grid">
+          <div class="cs-decision-label">Problem</div>
+          <div class="cs-decision-text">How should matched stores be ordered? The obvious answer&#8212;cheapest first&#8212;contradicted our own research: users chose completeness and delivery over unit price.</div>
+          <div class="cs-decision-label">Reasoning</div>
+          <div class="cs-decision-text">We ranked primarily on fulfillment (how much of the list a store covers), with savings and delivery time as secondary signals. A store with 9/10 items at slightly higher prices beats a store with 6/10 items at the lowest prices, because the real cost of a missing item is a second order.</div>
+          <div class="cs-decision-label">Tradeoff</div>
+          <div class="cs-decision-text">A cheapest-first sort would have demoed better. Fulfillment-first occasionally puts a pricier store on top and requires the UI to justify why&#8212;which is exactly what the fulfillment snapshot (next chapter) exists to do.</div>
+          <div class="cs-decision-label">Outcome</div>
+          <div class="cs-decision-text">Lower cancellation and second-order rates in pilot, and merchant exposure shifted toward stores that could actually serve the basket&#8212;including small merchants with deep inventory in narrow categories.</div>
+        </div>
+        <div class="cs-img">
+          <div class="cs-img-frame med"><span>Screen &#8212; Store matching results: ranked stores with fulfillment count, total price, savings, and delivery promise</span></div>
+        </div>
+      </div>
+
+      <!-- Chapter 4 -->
+      <div class="cs-chapter">
+        <p class="cs-chapter-num">Chapter 04</p>
+        <h3>Fulfillment Snapshot: honest comparison at a glance</h3>
+        <div class="cs-decision-grid">
+          <div class="cs-decision-label">Problem</div>
+          <div class="cs-decision-text">Comparing stores across four dimensions&#8212;coverage, price, savings, delivery&#8212;risked becoming a spreadsheet. Dense comparison tables tested poorly; users wanted a verdict, then evidence.</div>
+          <div class="cs-decision-label">Reasoning</div>
+          <div class="cs-decision-text">Each store got a &#8220;fulfillment snapshot&#8221;: items available out of items requested, stated plainly (&#8220;9 of 10 items&#8221;), with missing items named&#8212;not hidden. Being explicit about gaps was a deliberate trust decision. A store that hides what it lacks earns a cancellation later.</div>
+          <div class="cs-decision-label">Tradeoff</div>
+          <div class="cs-decision-text">Showing missing items makes some stores look worse and can cost a conversion in the moment. We traded short-term conversion for fulfillment integrity, because cancellations were the more expensive failure.</div>
+          <div class="cs-decision-label">Outcome</div>
+          <div class="cs-decision-text">The snapshot became the most-referenced element in usability sessions&#8212;users made confident store choices in seconds and could articulate why.</div>
+        </div>
+        <div class="cs-img-grid">
+          <div class="cs-img">
+            <div class="cs-img-frame short"><span>Screen &#8212; Fulfillment snapshot card, expanded state with missing items listed</span></div>
+          </div>
+          <div class="cs-img">
+            <div class="cs-img-frame short"><span>Wireframe &#8212; Rejected comparison-table exploration, kept for contrast</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 5 -->
+      <div class="cs-chapter">
+        <p class="cs-chapter-num">Chapter 05</p>
+        <h3>Checkout: from list to cart without loss</h3>
+        <div class="cs-decision-grid">
+          <div class="cs-decision-label">Problem</div>
+          <div class="cs-decision-text">Once a user picks a store, their generic list must convert into that store&#8217;s actual SKUs, prices, and stock&#8212;which may have changed since matching ran. Silent substitutions here would destroy the trust the snapshot built.</div>
+          <div class="cs-decision-label">Reasoning</div>
+          <div class="cs-decision-text">Cart creation shows a reconciliation view: what mapped cleanly, what changed, what needs a decision. The user confirms deltas, not the whole cart. Anything the store can&#8217;t serve returns to the list, ready for a follow-up match instead of disappearing.</div>
+          <div class="cs-decision-label">Tradeoff</div>
+          <div class="cs-decision-text">A reconciliation step is slower than one-tap cart creation. Given dynamic inventory on ONDC, we chose accuracy at the moment of commitment over speed&#8212;this is where money changes hands.</div>
+          <div class="cs-decision-label">Outcome</div>
+          <div class="cs-decision-text">Faster overall completion despite the extra confirmation, because users stopped re-checking carts item by item. Time to checkout dropped measurably in pilot.</div>
+        </div>
+        <div class="cs-img">
+          <div class="cs-img-frame med"><span>Screen &#8212; Cart creation: reconciliation view showing matched items, price deltas, and unserved items returning to the list</span></div>
+        </div>
+      </div>
+
+      <!-- Chapter 6 -->
+      <div class="cs-chapter">
+        <p class="cs-chapter-num">Chapter 06</p>
+        <h3>Offer Engine: savings users can believe</h3>
+        <div class="cs-decision-grid">
+          <div class="cs-decision-label">Problem</div>
+          <div class="cs-decision-text">The offer engine computed discounts per store, per item, with restrictions on stacking and timing&#8212;and couldn&#8217;t always guarantee an offer at matching time would hold at checkout.</div>
+          <div class="cs-decision-label">Reasoning</div>
+          <div class="cs-decision-text">We surfaced savings at the basket level (&#8220;you save &#8377;X on this list here&#8221;) rather than itemized coupon mechanics, and only displayed offers the engine could commit to. A smaller number that holds beats a bigger number that evaporates at payment.</div>
+          <div class="cs-decision-label">Tradeoff</div>
+          <div class="cs-decision-text">Understating potential savings made some stores look less competitive than they might be. We accepted a conservative number in exchange for zero checkout-time surprises.</div>
+          <div class="cs-decision-label">Outcome</div>
+          <div class="cs-decision-text">Savings became a trusted comparison signal instead of a fine-print gamble, reinforcing the fulfillment-first ranking story.</div>
+        </div>
+        <div class="cs-img">
+          <div class="cs-img-frame short"><span>Screen &#8212; Basket-level savings treatment on the store comparison card</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. ENGINEERING -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">11 &#8212; Engineering Collaboration</p>
+      <h2>Designing inside real constraints</h2>
+      <p>Every major interaction in Price Genie was shaped by a backend conversation. The constraints weren&#8217;t obstacles to the design&#8212;they were inputs to it.</p>
+      <p><strong>Matching was expensive, so matching became a moment.</strong> Live inventory lookups across many merchants couldn&#8217;t run on every list edit. That constraint produced the explicit &#8220;Find Best Stores&#8221; step&#8212;which then tested better than continuous background matching, because users could see the system working for them.</p>
+      <p><strong>Data quality varied, so the taxonomy became the contract.</strong> The normalized category layer wasn&#8217;t just a browsing convenience. It was the agreement between design and backend about what a &#8220;match&#8221; even means when two merchants describe the same product differently.</p>
+      <p><strong>Promises were dynamic, so the UI stopped pretending otherwise.</strong> Delivery estimates and stock could shift between matching and checkout. Instead of designing around a fiction of static data, the reconciliation step made change a first-class state with a clear recovery path.</p>
+      <div class="cs-pullquote">The interaction model is the API constraint, made humane. That&#8217;s why product design needed a seat in backend discussions&#8212;not a handoff at the end of them.</div>
+      <div class="cs-img">
+        <div class="cs-img-frame short"><span>Photo &#8212; Whiteboard from a backend working session: matching-trigger sequence and API call boundaries</span></div>
+      </div>
+    </div>
+
+    <!-- 13. PILOT -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">12 &#8212; Pilot</p>
+      <h2>A closed rollout, on purpose</h2>
+      <p>Price Genie launched as a closed pilot in select serviceable areas with a curated merchant set. The bar for expansion was the scorecard: fulfillment rate and cancellation rate had to hold before we widened the funnel. A flow that converts but doesn&#8217;t deliver is just a faster way to disappoint people.</p>
+      <h3>What we observed</h3>
+      <p>Users built noticeably larger lists than the carts they built in store-first flows&#8212;when adding an item doesn&#8217;t commit you to a store, adding is cheap. The fulfillment snapshot did the persuasion work we&#8217;d hoped: store choice was fast and rarely reversed. The weakest link was catalog normalization at the edges&#8212;ambiguous items (&#8220;paneer&#8221; vs. a specific brand and weight) produced the most matching complaints.</p>
+      <h3>What we iterated</h3>
+      <p>We tightened ambiguity flags in Review List, tuned how aggressively matching relaxed pack-size constraints, and simplified the comparison card after watching users ignore its second row of metadata. The roadmap beyond pilot: reorder from a saved list, multi-store split baskets for lists no single merchant could serve, and personalization of the category grid.</p>
+      <div class="cs-img">
+        <div class="cs-img-frame med"><span>Data viz &#8212; Pilot funnel: list started &#8594; matching run &#8594; store selected &#8594; order placed, with drop-off at each stage</span></div>
+      </div>
+    </div>
+
+    <!-- 14. OUTCOMES -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">13 &#8212; Outcomes</p>
+      <h2>What changed</h2>
+      <p>Pilot numbers are directional&#8212;a closed rollout with a curated merchant set isn&#8217;t a clean A/B test&#8212;but the direction was consistent across cohorts.</p>
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric-value">+15%</div>
+          <div class="cs-metric-label">Average items added</div>
+          <p>Decoupling the list from the store made adding items cheap. Bigger lists are the input to every downstream business metric.</p>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-value">+20%</div>
+          <div class="cs-metric-label">Product discovery</div>
+          <p>Category-led browsing exposed users to items and merchants they never encountered in store-first sessions.</p>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-value">+2%</div>
+          <div class="cs-metric-label">Cart conversion</div>
+          <p>Modest by design&#8212;fulfillment-first ranking deliberately sacrifices some conversion for orders that actually complete.</p>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-value">+18%</div>
+          <div class="cs-metric-label">Faster shopping completion</div>
+          <p>One matching moment replaced serial store-hopping. Users spent their time choosing, not searching.</p>
+        </div>
+      </div>
+      <p><strong>For users</strong>, the comparison work moved into the system: higher fulfillment, fewer second orders, less cognitive load.</p>
+      <p><strong>For merchants</strong>, exposure started tracking inventory capability instead of brand recall&#8212;small stores with deep stock in narrow categories won baskets they&#8217;d never have been found for.</p>
+      <p><strong>For engineering and the product org</strong>, the list-matching architecture and the normalized taxonomy outlived the experiment: both were reused by later storefront experiences on the platform. That&#8217;s the quiet outcome I&#8217;m proudest of&#8212;experiments that leave infrastructure behind pay for themselves even if the feature evolves.</p>
+    </div>
+
+    <!-- 15. REFLECTION -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">14 &#8212; Reflection</p>
+      <h2>What I&#8217;d do differently now</h2>
+      <p><strong>Start with the reconciliation problem, not the discovery problem.</strong> We designed forward from list-building and discovered late that cart reconciliation was where trust was won or lost. Today I&#8217;d prototype the hardest moment of truth first and design backward from it.</p>
+      <p><strong>Treat catalog quality as a design surface earlier.</strong> We inherited normalization as a backend concern. It turned out to be the single biggest determinant of experience quality. I&#8217;d now put a designer in the taxonomy discussions from week one.</p>
+      <p><strong>Where AI changes this product.</strong> The list is a natural language object&#8212;&#8220;stuff for Saturday breakfast for six&#8221; should become a structured, quantified list in one step. LLMs also solve the exact problem that hurt us most: reconciling messy merchant catalog entries against a normalized taxonomy is a language problem, and it&#8217;s now a largely solved one. Matching explanations (&#8220;this store ranks first because&#8230;&#8221;) could be generated per user, per basket.</p>
+      <p><strong>How personalization would work.</strong> Grocery lists are heavily repeated. A remembered list that pre-builds itself, ranking that learns whether this user trades price for completeness, and a category grid ordered by household patterns&#8212;all of it sits naturally on the list-first architecture, because the list is a durable user-owned object in a way a store-bound cart never was.</p>
+      <div class="cs-pullquote">The lesson that stayed with me: the biggest UX gains come from reordering decisions, not redesigning screens. We didn&#8217;t make store choice easier. We moved it to where it was easy.</div>
+      <p>Price Genie shaped how I approach every product since: find the decision the user is least equipped to make, and ask whether the system should be making it instead.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cs-cta-wrap fade-up">
+      <span class="cs-cta-note">Want the full walkthrough with screens?</span>
+      <a class="cs-cta" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-tagline">Always brewing something new</p>
+  </footer>
+
+  <script>
+    document.body.classList.add('js-ready');
+
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
