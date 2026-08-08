@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JUGL — Brewed by Anand</title>
+  <meta name="description" content="JUGL — a lightweight business OS for small sellers and pop-up businesses, built and shipped 0 to 1." />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/case-study.css" />
+  <style>
+    /* ============================================================
+       JUGL — page-scoped moments. Composes the shared cs- kit;
+       tokens only.
+       ============================================================ */
+
+    /* Hero loop line — the business loop JUGL is built around */
+    .jg-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
+    .jg-hero-flow span {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.22); padding: 9px 15px; white-space: nowrap;
+    }
+    .jg-hero-flow em { font-style: normal; color: rgba(255, 255, 255, 0.35); font-size: 13px; }
+
+    /* Shipped feature checklist */
+    .jg-shipped { columns: 2; column-gap: 40px; margin: 34px 0 8px; }
+    .jg-shipped li {
+      break-inside: avoid; list-style: none; position: relative;
+      padding: 11px 0 11px 26px; border-bottom: 1px solid var(--line);
+      font-size: 15px; font-weight: 300; color: var(--dark);
+    }
+    .jg-shipped li::before {
+      content: ''; position: absolute; left: 0; top: 17px;
+      width: 9px; height: 9px; border: 1px solid var(--dark); border-radius: 50%;
+      background: var(--dark);
+    }
+    @media (max-width: 760px) { .jg-shipped { columns: 1; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html" aria-label="Brewed by Anand — home">
+      <img class="nav-logo-white" src="assets/img/logo-white.svg" alt="Brewed by Anand" width="334" height="117" />
+      <img class="nav-logo-black" src="assets/img/sign.svg" alt="" aria-hidden="true" width="177" height="112" />
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navRight">
+      <span></span><span></span>
+    </button>
+    <div class="nav-right" id="navRight">
+      <ul class="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#ai">AI Products</a></li>
+        <li><a href="index.html#plugins">Plugins</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <a class="nav-book-btn" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </nav>
+
+  <!-- 01 — HERO -->
+  <section class="cs-hero" style="--cs-hero-bg: linear-gradient(150deg, #0E1A14 0%, #12241A 55%, #0B1510 100%); --cs-hero-tint: radial-gradient(120% 90% at 80% 14%, rgba(126,185,150,0.20) 0%, rgba(11,11,12,0) 60%); --cs-hero-overlay: linear-gradient(to top, rgba(7,12,9,0.82) 0%, rgba(7,12,9,0.08) 60%);">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-content">
+      <p class="cs-hero-tag">Case Study &#8212; JUGL</p>
+      <h1 class="cs-hero-title">Your business, beautifully tracked.</h1>
+      <p class="cs-hero-subtitle">A lightweight business OS for small sellers and pop-up businesses. JUGL is built around the loudest, hardest moment of a small business&#8212;the pop-up itself&#8212;where the owner is also the salesperson, cashier, inventory manager and accountant, all at once.</p>
+      <div class="jg-hero-flow" aria-label="Prepare, sell, track, understand">
+        <span>Prepare</span><em>&#8594;</em>
+        <span>Sell</span><em>&#8594;</em>
+        <span>Track</span><em>&#8594;</em>
+        <span>Understand</span>
+      </div>
+      <div class="cs-hero-meta">
+        <div>
+          <h4>Role</h4>
+          <p>Product Designer &#183;<br />Product Builder</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <p>Web App</p>
+        </div>
+        <div>
+          <h4>Type</h4>
+          <p>0&#8594;1 independent product</p>
+        </div>
+        <div>
+          <h4>Status</h4>
+          <p>Shipped &#183; <a href="https://jugl.vercel.app/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Live</a></p>
+        </div>
+      </div>
+    </div>
+    <span class="cs-hero-scroll">Scroll</span>
+  </section>
+
+  <!-- ARTICLE -->
+  <article class="cs-article">
+
+    <!-- 02 — ORIGIN -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">02 &#8212; It started with a pop-up</p>
+      <h2>The selling was easy. Everything around it was broken.</h2>
+      <p>My wife runs a small jewellery business and, like many small sellers, a lot of it happens at pop-ups. Watching her work, I noticed something that felt surprisingly broken: the actual selling was the easy part. The hard part was everything happening around it.</p>
+      <div class="cs-flow-vertical">
+        <span class="cs-flow-step">Stock had to be tracked</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Sales had to be recorded</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Cash and UPI had to be reconciled</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Customers and expenses had to be remembered</span>
+        <span class="cs-flow-arrow">&#8595;</span>
+        <span class="cs-flow-step">Afterwards, someone had to figure out what happened</span>
+      </div>
+      <p>Most tools I found were built around &#8220;running a business&#8221; as an office activity. But small sellers don&#8217;t experience their business that way&#8212;they are the owner, salesperson, cashier, inventory manager and accountant, often at the same time.</p>
+      <div class="cs-pullquote">That became the problem I wanted to solve.</div>
+    </div>
+
+    <!-- 03 — OPPORTUNITY -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">03 &#8212; The opportunity</p>
+      <h2>They don&#8217;t need an ERP. They need speed.</h2>
+      <p>Thinking beyond my wife&#8217;s business, there are thousands of small sellers running jewellery, fashion, food and craft businesses through pop-ups, markets and small stores. They don&#8217;t need another complicated ERP. They need something that works at the speed of their business.</p>
+      <div class="cs-statement">&#8220;A simple operating system for small businesses&#8212;especially when they&#8217;re out there selling.&#8221;</div>
+    </div>
+
+    <!-- 04 — MOMENT OF SALE -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">04 &#8212; Designing around the moment of sale</p>
+      <h2>The most important screen wasn&#8217;t the dashboard.</h2>
+      <p>The biggest insight was that the pivotal moment wasn&#8217;t the dashboard&#8212;it was the pop-up itself. When a customer is standing in front of you, there isn&#8217;t time to navigate a complicated system. So I structured JUGL around the complete business loop.</p>
+      <div class="cs-flow">
+        <span class="cs-flow-step">Prepare</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Sell</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Track</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Understand</span>
+      </div>
+      <div class="cs-cards cs-cards-3">
+        <div class="cs-card"><h4>Before the pop-up</h4><p>Add inventory, create the event, and know exactly what you&#8217;re taking with you.</p></div>
+        <div class="cs-card"><h4>During the pop-up</h4><p>Log sales quickly, identify products, record quantity and payment method, keep a running total.</p></div>
+        <div class="cs-card"><h4>After the pop-up</h4><p>Understand revenue, expenses, customers and what happened to your inventory.</p></div>
+      </div>
+      <p>The product therefore isn&#8217;t just an inventory manager. It&#8217;s an <strong>event-to-business system.</strong></p>
+    </div>
+
+    <!-- 05 — ONE PRODUCT, MANY JOBS -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">05 &#8212; One product, multiple jobs</p>
+      <h2>Bringing the operational pieces together.</h2>
+      <p>A small seller wears every hat, so JUGL had to cover every job&#8212;without ever feeling like six apps stitched together.</p>
+      <div class="cs-cards cs-cards-3">
+        <div class="cs-card"><h4>Inventory</h4><p>Products, pricing, cost, margins, stock levels and SKUs.</p></div>
+        <div class="cs-card"><h4>Pop-ups</h4><p>Create events, track stall costs, and manage upcoming, live and completed events.</p></div>
+        <div class="cs-card"><h4>Live selling</h4><p>Scan or log a product manually, record quantity and payment method, keep a live sales log.</p></div>
+        <div class="cs-card"><h4>Expenses</h4><p>Capture business expenses and import existing data through CSV.</p></div>
+        <div class="cs-card"><h4>Customers</h4><p>Capture customer information at the point of sale, including through QR.</p></div>
+        <div class="cs-card"><h4>Checkout</h4><p>A customer-facing QR checkout experience supporting UPI and cash.</p></div>
+      </div>
+    </div>
+
+    <!-- 06 — SCAN ITEM -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">06 &#8212; Making selling faster</p>
+      <h2>Logging a sale shouldn&#8217;t mean scrolling a list.</h2>
+      <p>One place I wanted to remove friction was logging a sale. Instead of forcing a seller to search through a long inventory list mid-conversation, JUGL introduces <strong>Scan Item.</strong></p>
+      <div class="cs-flow">
+        <span class="cs-flow-step">Photograph the product</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">AI identifies the item</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Seller verifies</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Sale recorded</span>
+      </div>
+      <p>Because AI isn&#8217;t always right, low-confidence results are surfaced for manual verification rather than being silently trusted. That small interaction reflects a larger principle:</p>
+      <div class="cs-statement">&#8220;Automate the tedious part. Keep the human in control.&#8221;</div>
+    </div>
+
+    <!-- 07 — SYSTEM -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">07 &#8212; The system behind the simplicity</p>
+      <h2>A sale isn&#8217;t just a sale.</h2>
+      <p>One sale touches many parts of the business. JUGL connects these pieces so sellers don&#8217;t have to maintain separate spreadsheets or remember what changed where.</p>
+      <div class="cs-flow">
+        <span class="cs-flow-step">Sale</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Revenue</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Payment method</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Inventory</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Customer</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Event performance</span>
+      </div>
+      <p>The goal wasn&#8217;t to create more dashboards. It was to make the underlying business <strong>feel more connected.</strong></p>
+    </div>
+
+    <!-- 08 — SHIPPED -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">08 &#8212; What I shipped</p>
+      <h2>A working product, not a concept.</h2>
+      <ul class="jg-shipped">
+        <li>Inventory management</li>
+        <li>Live pop-up sales</li>
+        <li>AI-assisted product recognition</li>
+        <li>Cash / UPI tracking</li>
+        <li>Expense management</li>
+        <li>Customer records</li>
+        <li>QR-based customer capture</li>
+        <li>Customer checkout</li>
+        <li>Business dashboard</li>
+        <li>Event history</li>
+        <li>Low-stock alerts</li>
+        <li>CSV expense import</li>
+      </ul>
+      <div class="cs-cta-wrap" style="margin-top:44px;">
+        <span class="cs-cta-note">JUGL is live and in use.</span>
+        <a class="cs-cta" href="https://jugl.vercel.app/" target="_blank" rel="noopener">Explore the live product</a>
+      </div>
+    </div>
+
+    <!-- 09 — WHAT I LEARNED -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">09 &#8212; What I learned</p>
+      <h2>The product had to almost disappear.</h2>
+      <p>Building JUGL changed how I think about small-business products. The biggest opportunity isn&#8217;t always adding more functionality&#8212;it&#8217;s understanding <strong>when</strong> the product is being used, <strong>who</strong> is using it, and <strong>what else</strong> that person is doing at that exact moment.</p>
+      <p>For a small seller at a busy pop-up, the product has to almost disappear. It needs to help them sell&#8212;not make them manage software. And that started with something very personal:</p>
+      <div class="cs-pullquote">I wasn&#8217;t researching a hypothetical user. I was watching someone close to me try to run a real business.</div>
+      <p>That made the problem impossible to ignore.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cs-cta-wrap fade-up">
+      <span class="cs-cta-note">Want to talk through how it was built?</span>
+      <a class="cs-cta" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="footer--rule">
+    <p class="footer-tagline">Always brewing something new</p>
+  </footer>
+
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

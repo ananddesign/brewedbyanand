@@ -1,0 +1,411 @@
+/* ============================================================
+   HOME
+   Sections unique to index.html. Shared pieces live in
+   components.css; chrome and tokens live in base.css.
+   ============================================================ */
+
+/* The home page sits on a light hero and uses a larger logo. */
+body { --nav-logo-h: 73px; }
+
+/* Hero-only, not site-wide — this is why it lives here rather than in
+   base.css's shared @font-face block.
+   "Tempting" (RGB Studio) is a personal-use-only demo file: used here at
+   the site owner's explicit instruction, aware of and accepting that
+   restriction. Swap for a licensed build before treating this as settled. */
+@font-face {
+  font-family: 'Tempting';
+  src: url('../fonts/Tempting.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* Nav labels and corner links — matches the Figma source exactly. */
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/WorkSans-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/WorkSans-Italic-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------- NAV (home variant) ---------- */
+/* A third zone, floating dead-centre regardless of how wide the logo or
+   the link list either side happen to be — a plain 3-child flex row would
+   only land it at the midpoint of the gap between them, not true centre,
+   since logo and link-list are different widths. */
+.nav-thoughts {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 400;
+  text-transform: uppercase; text-decoration: none; color: var(--brand-blue);
+  transition: opacity var(--dur-hover);
+}
+.nav-thoughts:hover { opacity: 0.65; }
+.nav--home .nav-links a {
+  font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 400;
+  text-transform: uppercase;
+}
+/* The floating centre link and its in-menu duplicate swap per breakpoint —
+   one element for pointer/keyboard nav either way, never both at once. */
+.nav-thoughts-item { display: none; }
+
+/* ---------- HERO ---------- */
+#hero {
+  height: 100vh; min-height: 680px; position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; margin-top: 0;
+  padding: 150px 0 40px;
+}
+.hero-content { position: relative; z-index: 1; text-align: center; width: var(--w-wide); max-width: 100%; padding: 0 20px; }
+/* Per the Figma source: only the capital "F" is Tempting. The rest of
+   both lines is Instrument Serif — italic on the first line, upright on
+   the second — and both lines share the same font-size (113.072px at the
+   1440px frame width the design was built at; the swash alone runs
+   smaller, at 93.986px, an ~0.831 ratio carried through below). */
+.hero-headline { display: flex; flex-direction: column; align-items: center; }
+/* Both lines (and, by inheritance, the Tempting swash nested in .lead)
+   are set to weight 500 on the record — but neither Instrument Serif nor
+   Tempting ships anything beyond their single static 400 cut, so this
+   currently resolves back to that same 400 face. font-synthesis:none
+   stops the browser from faking the difference with algorithmic
+   faux-bold, which reads uneven and crude on serif italic display type.
+   The moment a real medium weight is self-hosted for either family, both
+   lines start rendering it automatically — no other change needed. */
+.hero-headline-lead,
+.hero-headline-sub {
+  display: block; font-family: 'Instrument Serif', serif;
+  color: var(--brand-blue); letter-spacing: -0.02em; line-height: 1;
+  font-size: clamp(48px, 7.85vw, 113px);
+  font-weight: 500; font-synthesis: none;
+}
+.hero-headline-lead { font-style: italic; }
+.hero-headline-sub { font-style: normal; margin-top: 0.06em; }
+.hero-headline-swash {
+  font-family: 'Tempting', cursive; font-style: normal;
+  font-size: clamp(40px, 6.53vw, 94px); letter-spacing: -0.02em;
+}
+
+/* Bottom corners of the viewport, not the centred content column — same
+   horizontal rhythm as the nav above them. */
+.hero-corner {
+  position: absolute; bottom: 40px; z-index: 1;
+  font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 400;
+  text-transform: uppercase; color: var(--brand-blue);
+  text-decoration: none; margin: 0;
+}
+.hero-corner--left { left: var(--gutter); }
+.hero-corner--right { right: var(--gutter); }
+a.hero-corner:hover { opacity: 0.65; }
+
+/* Canvas mount for the 3D cup. Sized in CSS only — the renderer reads
+   this box, so nothing here depends on the script having run. */
+.hero-cup {
+  --steam-bleed: 150px;
+  position: relative;
+  width: 520px; max-width: 100%;
+  height: clamp(200px, 30vh, 320px);
+  margin: 24px auto 0;
+}
+/* The canvas bleeds --steam-bleed above its layout box so the steam has
+   somewhere to rise. The box itself is untouched, so nothing reflows, and
+   z-index keeps the overspill behind the copy it passes through. */
+.hero-cup canvas {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  top: calc(-1 * var(--steam-bleed, 150px));
+  display: block; width: 100%;
+  height: calc(100% + var(--steam-bleed, 150px));
+  z-index: -1; pointer-events: none;
+  opacity: 0; transition: opacity 0.8s var(--ease-out);
+}
+.hero-cup.is-ready canvas { opacity: 1; }
+/* Drag target, sized to the cup rather than to the bled canvas, so the
+   paragraph above stays selectable. pan-y leaves vertical scroll to the page. */
+.hero-cup-grab {
+  position: absolute; inset: 0;
+  cursor: grab; touch-action: pan-y;
+}
+.hero-cup-grab:active { cursor: grabbing; }
+
+/* ---------- SECTION SHELLS ---------- */
+#work, #ai, #plugins, #about, #resume { margin-top: var(--space-section); }
+#contact { margin-top: var(--space-section); }
+
+/* ---------- FEATURED WORK ---------- */
+/* The flagship card. Built from .exp-card's visual language (8px radius,
+   full-bleed art, ink-on-art text) but static, so both studies are visible
+   at once without anyone having to drag. */
+.work-features {
+  width: var(--w-wide); max-width: calc(100% - 144px); margin: 0 auto;
+  display: flex; flex-direction: column; gap: 32px;
+}
+.work-feature {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  min-height: 440px; border-radius: 8px; overflow: hidden;
+  text-decoration: none; background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(28, 28, 28, 0.12);
+  transition: border-color 0.25s ease, transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+.work-feature:hover {
+  border-color: rgba(28, 28, 28, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -28px rgba(28, 28, 28, 0.45);
+}
+/* Art panel mirrors each case study's own hero, so the click-through
+   feels continuous rather than like a different site. */
+.work-feature-art { position: relative; overflow: hidden; background: var(--feature-art, var(--ink)); }
+.work-feature-art::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--feature-tint, none);
+}
+.work-feature-index {
+  position: absolute; left: 36px; top: 32px; z-index: 1;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px;
+  color: rgba(255, 255, 255, 0.45); line-height: 1;
+}
+.work-feature-art-label {
+  position: absolute; left: 36px; bottom: 32px; right: 36px; z-index: 1;
+  font-size: 10px; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5); line-height: 1.7;
+}
+.work-feature-body { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+.work-feature-tag {
+  font-size: var(--fs-kicker); font-weight: 300; color: rgba(28, 28, 28, 0.45);
+  letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 14px;
+}
+.work-feature-body h3 {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 34px; font-weight: 400; color: var(--dark);
+  letter-spacing: 0.02em; line-height: 1.2; margin-bottom: 14px;
+}
+.work-feature-desc { font-size: 14.5px; font-weight: 300; color: rgba(28, 28, 28, 0.65); line-height: 1.65; }
+.work-feature-meta {
+  display: flex; flex-wrap: wrap; gap: 28px; list-style: none;
+  margin: 26px 0 0; padding-top: 22px; border-top: 1px solid var(--line);
+}
+.work-feature-meta h4 {
+  font-size: 9.5px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(28, 28, 28, 0.42); margin-bottom: 6px;
+}
+.work-feature-meta p { font-size: 13px; font-weight: 300; color: var(--dark); line-height: 1.5; }
+.work-feature-impact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.work-feature-impact span {
+  border: 1px solid rgba(28, 28, 28, 0.2); padding: 6px 12px;
+  font-size: 12px; font-weight: 300; color: var(--dark);
+}
+.work-feature .work-card-link { margin-top: 26px; align-self: flex-start; }
+
+/* ---------- CARD CAROUSEL (AI Products) ---------- */
+/* The carousel component from the old Experiments section, reused as-is.
+   Card art comes from a --card-img custom property rather than :nth-child,
+   so cards can be reordered without the images following DOM position. */
+.exp-carousel-viewport { margin-top: 0; overflow: hidden; position: relative; padding-bottom: 40px; }
+.exp-carousel-track {
+  display: flex; gap: 24px;
+  padding: 0 calc((100vw - 1091px) / 2);
+  will-change: transform; cursor: grab; user-select: none;
+}
+.exp-carousel-track:active { cursor: grabbing; }
+.exp-card {
+  flex: 0 0 1091px; max-width: calc(100vw - 88px); height: 489px;
+  border-radius: 8px; overflow: hidden; position: relative;
+  background-image: var(--card-img, none);
+  background-color: var(--card-bg, transparent);
+  background-size: cover; background-position: center;
+  opacity: 0.45; transform: scale(0.97);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.exp-card.active { opacity: 1; transform: scale(1); }
+
+/* Per-card artwork.
+   NOTE: a url() written inside a custom property resolves against the
+   stylesheet that consumes the var(), not the HTML that declares it — so
+   card art is declared here rather than in an inline style. */
+.exp-card--design-cop { --card-img: url('../img/design-cop.webp'); }
+.exp-card--bunny-carrot { --card-img: url('../img/bunny-carrot.webp'); }
+
+.exp-card-text {
+  position: absolute; left: 76px; bottom: 60px; width: 266px;
+  display: flex; flex-direction: column; gap: 16px; pointer-events: none;
+}
+.exp-card-text a { pointer-events: auto; }
+.exp-card-text h2 {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 38px; color: var(--white);
+  line-height: 1.25; letter-spacing: 0.02em;
+}
+.exp-card-text p { font-size: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.85); line-height: 1.4; }
+.exp-card-link {
+  position: relative; align-self: flex-start; margin-top: 8px;
+  font-size: var(--fs-meta); font-weight: 300; color: rgba(255, 255, 255, 0.85);
+  text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35); padding-bottom: 2px;
+  transition: color var(--dur-hover), border-color var(--dur-hover);
+}
+.exp-card-link:hover { color: var(--white); border-color: var(--white); }
+
+.exp-card--light .exp-card-text h2 { color: var(--dark); }
+.exp-card--light .exp-card-text p { color: rgba(28, 28, 28, 0.6); }
+.exp-card--light .exp-card-link { color: rgba(28, 28, 28, 0.45); border-color: rgba(28, 28, 28, 0.2); }
+.exp-card--light .exp-card-link:hover { color: var(--dark); border-color: var(--dark); }
+
+/* AI product cards carry more than the old experiment cards did:
+   a stack, a problem line, and up to four links. */
+.exp-card--ai .exp-card-text { width: 460px; max-width: calc(100% - 152px); gap: 14px; pointer-events: auto; }
+.exp-card--ai .exp-card-text h2 { font-size: 32px; }
+.exp-card-eyebrow {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.exp-card-why {
+  font-size: 13px; font-weight: 300; color: rgba(255, 255, 255, 0.62);
+  line-height: 1.6; border-left: 1px solid rgba(255, 255, 255, 0.25); padding-left: 14px;
+}
+
+.exp-dots { display: flex; gap: 8px; justify-content: center; margin-top: 24px; }
+.exp-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: rgba(28, 28, 28, 0.2);
+  transition: background 0.3s, transform 0.3s; cursor: pointer;
+  border: 0; padding: 0;
+}
+.exp-dot.active { background: var(--dark); transform: scale(1.35); }
+
+/* ---------- PLUGINS & TOOLS ---------- */
+/* Deliberately lighter than the flagship cards: smaller art, thinner type,
+   no elevation on hover. */
+.plugin-grid {
+  width: var(--w-wide); max-width: calc(100% - 144px); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.plugin-card {
+  border: 1px solid var(--line); background: rgba(255, 255, 255, 0.3);
+  display: flex; flex-direction: column;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.plugin-card:hover { border-color: rgba(28, 28, 28, 0.3); background: rgba(255, 255, 255, 0.5); }
+.plugin-art {
+  height: 150px; position: relative; overflow: hidden;
+  background-image: var(--card-img, none);
+  background-color: var(--card-bg, rgba(28, 28, 28, 0.05));
+  background-size: cover; background-position: center;
+  border-bottom: 1px solid var(--line);
+}
+.plugin-art--design-cop { --card-img: url('../img/design-cop.webp'); }
+.plugin-art--bunny-carrot { --card-img: url('../img/bunny-carrot.webp'); }
+.plugin-art span {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 16px;
+  font-size: 10px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(28, 28, 28, 0.35); line-height: 1.8;
+}
+.plugin-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.plugin-type {
+  font-size: 9.5px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(28, 28, 28, 0.42); margin-bottom: 10px;
+}
+.plugin-body h3 { font-size: 17px; font-weight: 500; color: var(--dark); line-height: 1.3; margin-bottom: 10px; }
+.plugin-body p { font-size: 13.5px; font-weight: 300; color: rgba(28, 28, 28, 0.6); line-height: 1.65; flex: 1; }
+.plugin-body .tech-tags { margin-top: 16px; }
+.plugin-body .tech-tag { font-size: 11px; padding: 4px 9px; }
+.plugin-body .link-row { margin-top: 18px; }
+.plugin-body .link-row a { font-size: 11px; }
+
+/* ---------- ABOUT ---------- */
+.about-layout {
+  display: flex; gap: 48px; align-items: center;
+  width: 900px; max-width: calc(100% - 144px); margin: 0 auto;
+}
+.about-text { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.about-text p { font-size: 14px; font-weight: 300; color: var(--dark); line-height: 1.6; }
+.about-image { flex: 0 0 480px; }
+.about-image img { width: 100%; height: auto; display: block; }
+
+/* ---------- RESUME TEASER ---------- */
+.resume-teaser {
+  width: var(--w-card); max-width: calc(100% - 144px); margin: 0 auto;
+  border: 1px solid var(--line); background: rgba(255, 255, 255, 0.3);
+  padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+.resume-teaser h3 { font-size: 20px; font-weight: 500; color: var(--dark); margin-bottom: 10px; }
+.resume-teaser p { font-size: 14px; font-weight: 300; color: rgba(28, 28, 28, 0.6); line-height: 1.65; max-width: 380px; }
+.resume-teaser-actions { display: flex; gap: 14px; flex-shrink: 0; }
+
+/* ---------- CONTACT ---------- */
+.contact-inner {
+  width: var(--w-card); max-width: calc(100% - 144px); margin: 0 auto; text-align: center;
+}
+.contact-inner .section-title { margin-bottom: 18px; }
+.contact-lead {
+  font-size: 16px; font-weight: 300; color: rgba(28, 28, 28, 0.65);
+  line-height: 1.7; max-width: 460px; margin: 0 auto 32px;
+}
+.contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.contact-actions .book-call-btn { margin-top: 0; }
+.contact-links {
+  margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line);
+  display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+}
+.contact-links a {
+  font-size: 12px; font-weight: 300; color: rgba(28, 28, 28, 0.6);
+  letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;
+  transition: color var(--dur-hover);
+}
+.contact-links a:hover { color: var(--dark); }
+
+/* ---------- FOOTER (home variant) ---------- */
+.footer--home { --footer-mt: 10px; --footer-tagline-y: 65%; }
+
+/* ---------- RESPONSIVE ---------- */
+/* index.html previously shipped with no media queries at all. */
+@media (max-width: 1200px) {
+  .work-features, .plugin-grid { max-width: calc(100% - 96px); }
+  .plugin-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1100px) {
+  /* Track padding and card width must agree, or cards sit off-centre. */
+  .exp-carousel-track { padding: 0 var(--gutter-sm); }
+  .exp-card { flex: 0 0 calc(100vw - (var(--gutter-sm) * 2)); max-width: none; }
+  .exp-card--ai .exp-card-text { width: auto; max-width: none; right: 40px; }
+}
+@media (max-width: 940px) {
+  .work-feature { grid-template-columns: 1fr; }
+  .work-feature-art { min-height: 220px; }
+}
+@media (max-width: 860px) {
+  /* The floating centre link has no room once the menu collapses to a
+     hamburger — its place is taken by the matching item inside the menu
+     list, which the desktop rule above hides. */
+  .nav-thoughts { display: none; }
+  .nav-thoughts-item { display: list-item; }
+  /* The compact uppercase treatment is for the desktop bar; the full-screen
+     mobile menu keeps the same large, plain-case links every other page's
+     menu uses — same specificity as base.css's own mobile rule, so without
+     this, home's later stylesheet load order would silently win and leave
+     mobile nav links too small to be a comfortable touch target. */
+  .nav--home .nav-links a { font-size: 22px; letter-spacing: 0; text-transform: none; }
+
+  #hero { min-height: 600px; padding: 110px 0 32px; }
+  .hero-headline-lead { font-size: clamp(40px, 13vw, 64px); }
+  .hero-headline-sub { font-size: clamp(26px, 8vw, 40px); }
+  .hero-corner { bottom: 24px; font-size: 12px; }
+  .hero-corner--left { left: var(--gutter-sm); }
+  .hero-corner--right { right: var(--gutter-sm); }
+  .hero-cup { height: clamp(180px, 26vh, 260px); margin-top: 16px; }
+  #work, #ai, #plugins, #about, #resume, #contact { margin-top: 110px; }
+  .work-features, .plugin-grid, .about-layout, .resume-teaser, .contact-inner { max-width: calc(100% - 48px); }
+  .plugin-grid { grid-template-columns: 1fr; }
+  .work-feature-body { padding: 32px 24px; }
+  .work-feature-body h3 { font-size: 26px; }
+  .work-feature-meta { gap: 20px; }
+  .exp-card { height: 460px; }
+  .exp-card-text { left: var(--gutter-sm); bottom: 32px; width: calc(100% - 48px); }
+  .exp-card-text h2, .exp-card--ai .exp-card-text h2 { font-size: 24px; }
+  .exp-card--ai .exp-card-text { right: var(--gutter-sm); }
+  .about-layout { flex-direction: column; gap: 32px; }
+  .about-image { flex: 0 0 auto; width: 100%; max-width: 360px; }
+  .resume-teaser { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .resume-teaser-actions { width: 100%; }
+}

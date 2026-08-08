@@ -1,0 +1,120 @@
+/* ============================================================
+   ARTICLE / ESSAY KIT  (blog-*)
+   Shared by the three experiment write-ups. Merged from
+   experiment-bunny-carrot, experiment-design-cop and
+   experiment-small-business-design, which were identical
+   apart from the extra blocks each one happened to use.
+   ============================================================ */
+
+:root { --fade-y: 20px; }
+
+/* ---------- HERO ---------- */
+.blog-hero {
+  width: 100%; height: 100vh; min-height: 600px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: var(--blog-hero-align, flex-end);
+}
+.blog-hero-bg {
+  position: absolute; inset: 0;
+  background: var(--blog-hero-bg, linear-gradient(135deg, #1C1C1C 0%, #2E2520 60%, #3A2E26 100%));
+  background-size: cover; background-position: center;
+}
+
+/* Per-essay artwork.
+   NOTE: a url() written inside a custom property resolves against the
+   stylesheet that consumes the var(), not the HTML that declares it — so
+   these paths must live here, in assets/css/, and not in an inline style. */
+.blog-hero--design-cop { --blog-hero-bg: url('../img/design-cop.webp'); }
+.blog-hero--bunny-carrot { --blog-hero-bg: url('../img/bunny-carrot.webp'); }
+.blog-hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--blog-hero-overlay, linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 55%));
+}
+.blog-hero-content {
+  position: relative; z-index: 1;
+  padding: var(--blog-hero-pad, 0 var(--gutter) var(--gutter));
+  max-width: 860px;
+}
+.blog-hero-tag {
+  font-size: var(--fs-kicker); font-weight: 300; letter-spacing: var(--ls-kicker);
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;
+}
+.blog-hero-title {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: var(--fs-hero); color: var(--white);
+  line-height: 1.15; letter-spacing: 0.02em; margin-bottom: 24px;
+}
+.blog-hero-subtitle {
+  font-size: 16px; font-weight: 300; color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6; max-width: 520px;
+}
+.blog-hero-date {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5); margin-top: 32px;
+}
+
+/* ---------- ARTICLE ---------- */
+.blog-article { max-width: 720px; margin: 0 auto; padding: 100px 40px 0; }
+.blog-section { margin-bottom: 72px; }
+.blog-section h2 { font-size: var(--fs-h2); font-weight: 400; color: var(--dark); line-height: 1.25; margin-bottom: 24px; }
+.blog-section h3 { font-size: var(--fs-h3); font-weight: 500; color: var(--dark); line-height: 1.35; margin: 36px 0 14px; }
+.blog-section p { font-size: var(--fs-body); font-weight: 300; color: #2a2a2a; line-height: 1.75; margin-bottom: 18px; }
+.blog-section p:last-child { margin-bottom: 0; }
+.blog-section ul { margin: 0 0 18px 18px; }
+.blog-section li { font-size: var(--fs-body); font-weight: 300; color: #2a2a2a; line-height: 1.75; margin-bottom: 6px; }
+
+.blog-pullquote {
+  border-left: 2px solid var(--dark); padding: 4px 0 4px 28px; margin: 48px 0;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 26px; color: var(--dark);
+  line-height: 1.4; letter-spacing: 0.01em;
+}
+/* The small-business essay quotes in italic Hanken Grotesk, matching
+   .cs-pullquote on the case studies, rather than the display face the
+   other two essays use. */
+.blog-pullquote--quiet {
+  font-family: 'Hanken Grotesk', sans-serif; font-size: 22px; font-weight: 300;
+  line-height: 1.5; letter-spacing: 0; font-style: italic;
+}
+
+.blog-code {
+  font-family: monospace; font-size: 14px;
+  background: rgba(28, 28, 28, 0.05); border-left: 2px solid rgba(28, 28, 28, 0.15);
+  padding: 16px 20px; margin: 32px 0; color: #2a2a2a; line-height: 1.6;
+}
+
+/* ---------- PARTS TABLE ---------- */
+.blog-parts { width: 100%; border-collapse: collapse; margin: 32px 0; }
+.blog-parts td {
+  font-size: 15px; font-weight: 300; color: #2a2a2a; line-height: 1.6;
+  padding: 14px 0; border-bottom: 1px solid rgba(28, 28, 28, 0.08); vertical-align: top;
+}
+.blog-parts td:first-child { font-weight: 400; width: 80px; padding-right: 28px; white-space: nowrap; }
+
+/* ---------- ITERATIONS ---------- */
+.blog-iterations { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+.blog-iter { display: flex; gap: 24px; padding: 18px 0; border-bottom: 1px solid rgba(28, 28, 28, 0.08); align-items: flex-start; }
+.blog-iter:first-child { border-top: 1px solid rgba(28, 28, 28, 0.08); }
+.blog-iter-num { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: var(--dark); flex-shrink: 0; width: 32px; }
+.blog-iter-text { font-size: 15px; font-weight: 300; color: #2a2a2a; line-height: 1.65; }
+
+/* ---------- MEDIA ---------- */
+.blog-img { margin: 40px 0; }
+.blog-img img { width: 100%; height: auto; display: block; }
+.blog-img-caption { margin-top: 12px; font-size: var(--fs-meta); font-weight: 300; color: var(--muted); line-height: 1.5; }
+
+/* ---------- CTA ---------- */
+.blog-cta-wrap { margin-top: 80px; padding-top: 48px; border-top: 1px solid rgba(28, 28, 28, 0.1); }
+.blog-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: var(--fs-meta); font-weight: 300; letter-spacing: var(--ls-btn); text-transform: uppercase;
+  color: var(--white); background: var(--dark); padding: 14px 28px;
+  text-decoration: none; transition: background var(--dur-hover);
+}
+.blog-cta:hover { background: #333333; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 760px) {
+  .blog-hero-content { padding: 0 var(--gutter-sm) 48px; }
+  .blog-hero-title { font-size: 38px; }
+  .blog-article { padding: 80px var(--gutter-sm) 0; }
+  .blog-pullquote { font-size: 21px; }
+}

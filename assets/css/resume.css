@@ -1,0 +1,146 @@
+/* ============================================================
+   RESUME
+   Reuses .worked-item, .tech-tag, .link-row and the button styles
+   from components.css. Only the page shell is new.
+   ============================================================ */
+
+.resume-head {
+  padding: 180px var(--gutter) 0;
+  max-width: 1040px; margin: 0 auto;
+}
+.resume-kicker {
+  font-size: var(--fs-kicker); font-weight: 300; letter-spacing: var(--ls-kicker);
+  text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+}
+.resume-name {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: var(--fs-display); color: var(--dark);
+  line-height: 1.15; letter-spacing: 0.02em; margin-bottom: 20px;
+}
+.resume-lead {
+  font-size: var(--fs-body); font-weight: 300; color: #2a2a2a;
+  line-height: 1.75; max-width: 620px;
+}
+.resume-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+.resume-actions .book-call-btn { margin-top: 0; }
+
+.resume-facts {
+  display: flex; flex-wrap: wrap; gap: 48px;
+  margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line);
+}
+.resume-facts h4 {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(28, 28, 28, 0.45); margin-bottom: 8px;
+}
+.resume-facts p { font-size: 14px; font-weight: 300; color: var(--dark); line-height: 1.5; }
+
+.resume-body { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+.resume-section { margin-top: 96px; }
+.resume-section > h2 {
+  font-size: var(--fs-h2); font-weight: 400; color: var(--dark);
+  line-height: 1.25; margin-bottom: 32px;
+  padding-bottom: 18px; border-bottom: 1px solid var(--line);
+}
+.resume-section .worked-list { width: 100%; max-width: none; }
+
+/* Company names carry the display face, same as .resume-name. */
+.worked-company {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+  font-size: 26px; line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+/* Bulleted achievements under a role. Same type colour and weight as
+   .worked-desc, but wide and looser — these are read, not scanned. */
+.worked-points { list-style: none; margin-top: 18px; max-width: 720px; }
+.worked-points li {
+  position: relative; padding-left: 20px; margin-top: 10px;
+  font-size: 15px; font-weight: 300; color: var(--dark); line-height: 1.6;
+}
+.worked-points li:first-child { margin-top: 0; }
+.worked-points li::before {
+  content: ''; position: absolute; left: 2px; top: 10px;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(28, 28, 28, 0.35);
+}
+
+/* Skill columns, built from the .cs-card border treatment. */
+.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.skill-block { border: 1px solid var(--line); background: rgba(255, 255, 255, 0.35); padding: 26px; }
+.skill-block h3 {
+  font-size: 12px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dark); margin-bottom: 16px;
+}
+.skill-block .tech-tags { gap: 8px; }
+
+.resume-note {
+  margin-top: 96px; padding-top: 40px; border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.resume-note p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .resume-head { padding: 130px var(--gutter-sm) 0; }
+  .resume-body { padding: 0 var(--gutter-sm); }
+  .resume-name { font-size: 34px; }
+  .resume-facts { gap: 24px; }
+  .resume-section { margin-top: 64px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .worked-points { max-width: none; }
+}
+
+/* ============================================================
+   PRINT — also the source for assets/anand-patil-resume.pdf,
+   which is generated from this page via headless Chrome.
+
+   Must stay LAST in this file. An A4 content box is ~688px wide,
+   so the 860px block above also matches when printing; only source
+   order stops its phone padding from landing on the page.
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+
+  html, body { background: #fff; color: #1c1c1c; }
+
+  /* Site chrome and anything interactive has no meaning on paper. */
+  nav, footer, .resume-actions, .resume-note { display: none !important; }
+
+  /* The scroll-reveal transition would otherwise print at opacity 0. */
+  .js-ready .fade-up, .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+  .resume-head { padding: 0; max-width: none; }
+  .resume-body { padding: 0; max-width: none; }
+  .resume-name { font-size: 32px; margin-bottom: 10px; }
+  .resume-lead { font-size: 11px; line-height: 1.55; max-width: none; }
+  .resume-kicker { display: none; }
+
+  .resume-facts { gap: 28px; margin-top: 14px; padding-top: 12px; }
+  .resume-facts h4 { font-size: 8px; margin-bottom: 4px; }
+  .resume-facts p { font-size: 10px; }
+
+  .resume-section { margin-top: 22px; }
+  /* Never leave a section heading stranded at the foot of a page. */
+  .resume-section > h2 {
+    font-size: 14px; margin-bottom: 12px; padding-bottom: 7px;
+    break-after: avoid; page-break-after: avoid;
+  }
+
+  .worked-list { gap: 12px; }
+  .worked-item { padding-bottom: 12px; break-inside: avoid; page-break-inside: avoid; }
+  .worked-row { align-items: baseline; }
+  .worked-company { font-size: 15px; }
+  .worked-role { font-size: 10px; margin-top: 3px; }
+  .worked-date { font-size: 8px; letter-spacing: 0.2em; width: auto; text-align: right; padding-top: 0; }
+  .worked-points { margin-top: 7px; max-width: none; }
+  .worked-points li { font-size: 9.5px; line-height: 1.45; margin-top: 3px; padding-left: 12px; }
+  .worked-points li::before { top: 5px; width: 2.5px; height: 2.5px; left: 1px; }
+  .worked-desc { font-size: 9.5px; width: auto; margin-top: 7px; }
+
+  .skill-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .skill-block { padding: 10px; break-inside: avoid; }
+  .skill-block h3 { font-size: 8px; margin-bottom: 7px; }
+  .tech-tag { font-size: 8px; }
+
+  /* Relative filenames are useless on paper; the section header carries
+     the context, so the link text stands on its own. */
+  .link-row a { text-decoration: none; border-bottom: 0; }
+}

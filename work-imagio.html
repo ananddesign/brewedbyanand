@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imagio — Brewed by Anand</title>
+  <meta name="description" content="Imagio — an AI-powered photography studio that lets jewellery brands create new product shots without organising another photoshoot." />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/case-study.css" />
+  <style>
+    /* ============================================================
+       IMAGIO — page-scoped moments. Composes the shared cs- kit;
+       tokens only.
+       ============================================================ */
+
+    /* Hero controls line — what the studio lets you change */
+    .im-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 34px; }
+    .im-hero-flow span {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.22); padding: 9px 14px; white-space: nowrap;
+    }
+
+    /* Studio control grid — the dials of a digital photoshoot */
+    .im-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0; }
+    .im-control {
+      border: 1px solid var(--line); padding: 22px 20px; background: rgba(255, 255, 255, 0.45);
+    }
+    .im-control .n {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); display: block; margin-bottom: 10px;
+    }
+    .im-control .l {
+      font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px;
+      color: var(--dark); line-height: 1.1;
+    }
+    @media (max-width: 760px) { .im-controls { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html" aria-label="Brewed by Anand — home">
+      <img class="nav-logo-white" src="assets/img/logo-white.svg" alt="Brewed by Anand" width="334" height="117" />
+      <img class="nav-logo-black" src="assets/img/sign.svg" alt="" aria-hidden="true" width="177" height="112" />
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navRight">
+      <span></span><span></span>
+    </button>
+    <div class="nav-right" id="navRight">
+      <ul class="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#ai">AI Products</a></li>
+        <li><a href="index.html#plugins">Plugins</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <a class="nav-book-btn" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </nav>
+
+  <!-- 01 — HERO -->
+  <section class="cs-hero" style="--cs-hero-bg: linear-gradient(150deg, #1B1610 0%, #241C12 55%, #17120C 100%); --cs-hero-tint: radial-gradient(120% 90% at 78% 14%, rgba(185,163,126,0.26) 0%, rgba(11,11,12,0) 60%); --cs-hero-overlay: linear-gradient(to top, rgba(12,10,7,0.82) 0%, rgba(12,10,7,0.08) 60%);">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-content">
+      <p class="cs-hero-tag">Case Study &#8212; Imagio</p>
+      <h1 class="cs-hero-title">Reimagining jewellery photography with AI.</h1>
+      <p class="cs-hero-subtitle">Imagio is an AI-powered photography studio that lets jewellery brands create new product shots without organising another photoshoot. Upload one photograph, then change the shoot as easily as you&#8217;d change a setting.</p>
+      <div class="im-hero-flow" aria-label="Controllable dimensions of the studio">
+        <span>Angle</span><span>Lighting</span><span>Lens</span><span>Pose</span><span>Background</span><span>Presentation</span>
+      </div>
+      <div class="cs-hero-meta">
+        <div>
+          <h4>Role</h4>
+          <p>Product Design &#183; UX &#183;<br />Product Build</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <p>Web</p>
+        </div>
+        <div>
+          <h4>Stack</h4>
+          <p>Next.js &#183; TypeScript &#183; Three.js &#183;<br />Supabase &#183; Polar &#183; OpenAI</p>
+        </div>
+        <div>
+          <h4>Type</h4>
+          <p>0&#8594;1 AI product, built end to end</p>
+        </div>
+      </div>
+    </div>
+    <span class="cs-hero-scroll">Scroll</span>
+  </section>
+
+  <!-- ARTICLE -->
+  <article class="cs-article">
+
+    <!-- 02 — PROBLEM -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">02 &#8212; The problem</p>
+      <h2>Jewellery photography is expensive and repetitive.</h2>
+      <p>A single product may need multiple angles, lighting setups, lenses, poses and backgrounds&#8212;often requiring new shoots, new models and fresh production time for what is, essentially, the same piece seen differently.</p>
+      <p>So I wanted to explore a simple question:</p>
+      <div class="cs-pullquote">What if changing a photoshoot was as easy as changing a setting?</div>
+    </div>
+
+    <!-- 03 — THE IDEA -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">03 &#8212; The idea</p>
+      <h2>A digital photography studio, not a prompt box.</h2>
+      <p>Instead of treating generative AI as a text field to wish into, I designed Imagio as a studio. A user uploads an existing jewellery photograph and experiments with the same variables a real shoot would&#8212;except every dial is now immediate.</p>
+      <div class="im-controls" aria-label="Studio controls">
+        <div class="im-control"><span class="n">Control</span><span class="l">Camera angle</span></div>
+        <div class="im-control"><span class="n">Control</span><span class="l">Lighting</span></div>
+        <div class="im-control"><span class="n">Control</span><span class="l">Lens</span></div>
+        <div class="im-control"><span class="n">Control</span><span class="l">Pose</span></div>
+        <div class="im-control"><span class="n">Control</span><span class="l">Background</span></div>
+        <div class="im-control"><span class="n">Control</span><span class="l">Presentation</span></div>
+      </div>
+      <p>The AI generates a new version, but the studio is what gives the user real authorship over the creative direction&#8212;rather than the lottery of a single prompt.</p>
+    </div>
+
+    <!-- 04 — DESIGNING THE STUDIO -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">04 &#8212; Designing the studio</p>
+      <h2>Familiar photography concepts, generative underneath.</h2>
+      <p>A 3D camera and lighting viewport helps users understand and manipulate the scene the way a photographer thinks about it&#8212;where the camera sits, where the light falls. Presets, reusable poses and recipes then make repeatable workflows possible, so a look developed once can be applied across a catalogue.</p>
+      <p>Around the creative core, the studio handles the practical parts of an actual product:</p>
+      <div class="cs-flow">
+        <span class="cs-flow-step">Projects</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Upload</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Configure</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Generate</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Compare</span>
+        <span class="cs-flow-arrow">&#8594;</span>
+        <span class="cs-flow-step">Save</span>
+      </div>
+      <p>Generations are stored in history, projects auto-save, and a credit-based system supports different subscription tiers&#8212;the unglamorous scaffolding that separates a demo from something a brand can actually rely on.</p>
+    </div>
+
+    <!-- 05 — BUILDING -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">05 &#8212; Building the product</p>
+      <h2>Beyond a prototype, into a working product.</h2>
+      <p>I took Imagio past a visual prototype and built the working product with Next.js, TypeScript, Three.js, Supabase, Polar and OpenAI&#8217;s image-generation model. That meant designing for the states a real generative product lives in&#8212;not just the happy path.</p>
+      <div class="cs-cards cs-cards-3">
+        <div class="cs-card"><h4>Generation states</h4><p>Queued, generating, ready&#8212;the wait is part of the experience, not an error screen.</p></div>
+        <div class="cs-card"><h4>Failed generations</h4><p>The model doesn&#8217;t always cooperate; the product has to fail gracefully and keep credits honest.</p></div>
+        <div class="cs-card"><h4>Credits &amp; tiers</h4><p>A credit system that maps cleanly onto subscription tiers and real generation cost.</p></div>
+        <div class="cs-card"><h4>Storage &amp; history</h4><p>Every generation kept and retrievable, so iteration has a memory.</p></div>
+        <div class="cs-card"><h4>Auth &amp; persistence</h4><p>Accounts, and projects that auto-save so nothing creative is lost between sessions.</p></div>
+        <div class="cs-card"><h4>Studio architecture</h4><p>The underlying model that makes angle, light and lens composable rather than hard-coded.</p></div>
+      </div>
+    </div>
+
+    <!-- 06 — TAKEAWAY -->
+    <div class="cs-section fade-up">
+      <p class="cs-kicker">06 &#8212; The takeaway</p>
+      <h2>What happens when AI becomes the studio itself?</h2>
+      <p>Imagio explores what happens when the model isn&#8217;t just another tool inside the studio&#8212;it becomes the studio. The goal was to move away from &#8220;write a prompt and hope for the result&#8221; toward a familiar creative workflow where designers can direct, experiment and iterate.</p>
+      <div class="cs-statement">&#8220;Direct the shoot. Don&#8217;t gamble on a sentence.&#8221;</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cs-cta-wrap fade-up">
+      <span class="cs-cta-note">Want a walkthrough of the studio?</span>
+      <a class="cs-cta" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="footer--rule">
+    <p class="footer-tagline">Always brewing something new</p>
+  </footer>
+
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

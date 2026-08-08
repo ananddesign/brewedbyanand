@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loomcraft — The Buildable Video Editor</title>
+  <meta name="description" content="A cloud video editor where creatives build, remix, and customize their own design tools right on the timeline." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="brand" aria-label="Loomcraft home">
+        <span class="brand__dot"></span>
+        Loomcraft
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#blocks">Product</a>
+        <a href="#blocks">Blocks</a>
+        <a href="#templates">Templates</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#spotlight">Blog</a>
+      </nav>
+      <div class="nav__cta">
+        <a href="#" class="btn btn--ghost">Log in</a>
+        <a href="#" class="btn btn--solid">Try for free</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="eyebrow">Engineered for creativity</p>
+      <h1 class="hero__title">The video editor you can <span class="grad">build</span> yourself.</h1>
+      <p class="hero__sub">
+        Loomcraft is the first editor where creatives design, remix, and wire up
+        custom tools right on the timeline — with dials, prompts, or a few lines of code.
+      </p>
+      <div class="hero__actions">
+        <a href="#" class="btn btn--solid btn--lg">Get started</a>
+        <a href="#blocks" class="btn btn--ghost btn--lg">See how it works →</a>
+      </div>
+
+      <div class="hero__stage" aria-hidden="true">
+        <div class="editor">
+          <div class="editor__bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="editor__file">untitled — loomcraft</span>
+          </div>
+          <div class="editor__canvas">
+            <div class="preview">
+              <div class="preview__blob"></div>
+              <div class="preview__text">MOTION</div>
+            </div>
+            <aside class="panel">
+              <p class="panel__label">Glow</p>
+              <label class="ctl"><span>Intensity</span><input type="range" min="0" max="100" value="72"></label>
+              <label class="ctl"><span>Radius</span><input type="range" min="0" max="100" value="40"></label>
+              <label class="ctl"><span>Spread</span><input type="range" min="0" max="100" value="58"></label>
+              <p class="panel__label">Type</p>
+              <label class="ctl"><span>Weight</span><input type="range" min="0" max="100" value="85"></label>
+            </aside>
+          </div>
+          <div class="timeline">
+            <div class="track"><span class="clip a" style="left:2%;width:34%"></span><span class="clip b" style="left:38%;width:22%"></span></div>
+            <div class="track"><span class="clip c" style="left:10%;width:46%"></span></div>
+            <div class="track"><span class="clip d" style="left:4%;width:18%"></span><span class="clip a" style="left:58%;width:30%"></span></div>
+            <div class="playhead"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Logo marquee ===== -->
+  <section class="logos">
+    <p class="logos__label">Trusted by studios and teams building the next thing</p>
+    <div class="marquee">
+      <div class="marquee__row" id="marqueeRow">
+        <!-- filled by script -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Building blocks ===== -->
+  <section class="section" id="blocks">
+    <div class="container">
+      <header class="section__head">
+        <p class="eyebrow">Building blocks</p>
+        <h2 class="section__title">A library of effects you can drop in and dial in.</h2>
+        <p class="section__lede">Motion graphics, kinetic type, 3D, and shader effects — curated, tweakable, and ready for the timeline.</p>
+      </header>
+      <div class="blocks">
+        <article class="block"><div class="block__demo demo-inflate"></div><h3>Inflate</h3><p>Soft, springy scale-ups with weighted overshoot.</p></article>
+        <article class="block"><div class="block__demo demo-glow"></div><h3>Glow</h3><p>Screen-blended bloom that reacts to luminance.</p></article>
+        <article class="block"><div class="block__demo demo-focus"></div><h3>Focus</h3><p>Depth-aware blur to pull the eye where you want.</p></article>
+        <article class="block"><div class="block__demo demo-halftone"></div><h3>Halftone</h3><p>Print-style dot patterns driven by contrast.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Customization ===== -->
+  <section class="section section--alt" id="customize">
+    <div class="container split">
+      <div class="split__copy">
+        <p class="eyebrow">Infinitely yours</p>
+        <h2 class="section__title">Tune it with dials, sliders, prompts — or code.</h2>
+        <p class="section__lede">Every block exposes its guts. Nudge a slider for a quick change, describe what you want in plain language, or open the editor and rewrite the shader. Your tool, your rules.</p>
+        <ul class="checks">
+          <li>Live parameters that update as you scrub</li>
+          <li>Prompt-to-effect for fast exploration</li>
+          <li>Full code access when you need precision</li>
+        </ul>
+      </div>
+      <div class="split__media">
+        <div class="codecard">
+          <div class="codecard__bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+<pre class="codecard__body"><code><span class="c-key">effect</span> Glow {
+  <span class="c-prop">intensity</span>: <span class="c-num">0.72</span>,
+  <span class="c-prop">radius</span>:    <span class="c-num">40</span>px,
+  <span class="c-prop">blend</span>:     <span class="c-str">"screen"</span>,
+}
+
+<span class="c-comment">// remix on the fly</span>
+Glow.<span class="c-fn">bind</span>(dial.<span class="c-prop">A</span>)</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== All-in-one ===== -->
+  <section class="section" id="allinone">
+    <div class="container">
+      <header class="section__head">
+        <p class="eyebrow">All in one place</p>
+        <h2 class="section__title">Import, edit, enhance, ship.</h2>
+      </header>
+      <div class="pillars">
+        <article class="pillar"><span class="pillar__num">01</span><h3>Import</h3><p>Pull in footage, audio, and design assets from anywhere your team already works.</p></article>
+        <article class="pillar"><span class="pillar__num">02</span><h3>Edit</h3><p>A fast, familiar timeline with keyframes, layers, and non-destructive edits.</p></article>
+        <article class="pillar"><span class="pillar__num">03</span><h3>Enhance</h3><p>Layer on animations and effects from your block library — or ones you built.</p></article>
+        <article class="pillar"><span class="pillar__num">04</span><h3>Ship</h3><p>Collaborate, review, and export to every format and aspect ratio up to 60fps.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Creation methods ===== -->
+  <section class="section section--alt" id="methods">
+    <div class="container">
+      <header class="section__head">
+        <p class="eyebrow">Three ways to create</p>
+        <h2 class="section__title">Start however you think best.</h2>
+      </header>
+      <div class="methods">
+        <article class="method"><h3>Remix</h3><p>Begin from a template and reshape it until it's unmistakably yours.</p></article>
+        <article class="method"><h3>Describe</h3><p>Tell Loomcraft what you're after and let it draft the first pass.</p></article>
+        <article class="method"><h3>Code</h3><p>Drop into the editor and program exactly the behavior you need.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Templates ===== -->
+  <section class="section" id="templates">
+    <div class="container">
+      <header class="section__head">
+        <p class="eyebrow">Templates</p>
+        <h2 class="section__title">Ready-made starting points for every industry.</h2>
+      </header>
+      <div class="tabs" id="tabs">
+        <button class="tab is-active" data-cat="beauty">Beauty</button>
+        <button class="tab" data-cat="apparel">Apparel</button>
+        <button class="tab" data-cat="food">Food &amp; Beverage</button>
+        <button class="tab" data-cat="software">Software</button>
+      </div>
+      <div class="template-grid" id="templateGrid"><!-- filled by script --></div>
+    </div>
+  </section>
+
+  <!-- ===== Benefits ===== -->
+  <section class="section section--alt" id="benefits">
+    <div class="container">
+      <div class="benefits">
+        <article class="benefit"><h3>Produce more, faster</h3><p>Scale one edit into every format your channels demand without redoing the work.</p></article>
+        <article class="benefit"><h3>Effects with an edge</h3><p>Reach for cutting-edge shaders and motion your competitors can't buy off the shelf.</p></article>
+        <article class="benefit"><h3>Programmable by design</h3><p>High-performance workflows you can script, template, and reuse across the team.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Spotlight ===== -->
+  <section class="section" id="spotlight">
+    <div class="container">
+      <header class="section__head">
+        <p class="eyebrow">Made with Loomcraft</p>
+        <h2 class="section__title">Work from creators pushing the format.</h2>
+      </header>
+      <div class="spotlight">
+        <figure class="shot shot--tall"><div class="shot__img g1"></div><figcaption>Northlight Studio</figcaption></figure>
+        <figure class="shot"><div class="shot__img g2"></div><figcaption>Dedcast</figcaption></figure>
+        <figure class="shot"><div class="shot__img g3"></div><figcaption>Kiel &amp; Co.</figcaption></figure>
+        <figure class="shot shot--wide"><div class="shot__img g4"></div><figcaption>Field Notes Film</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pricing CTA ===== -->
+  <section class="section cta" id="pricing">
+    <div class="container cta__inner">
+      <h2 class="cta__title">Build your first tool today.</h2>
+      <p class="cta__sub">Free to start. No card required.</p>
+      <a href="#" class="btn btn--solid btn--lg">Get started</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="brand"><span class="brand__dot"></span>Loomcraft</a>
+        <p>The buildable video editor.</p>
+      </div>
+      <nav class="footer__cols">
+        <div><h4>Product</h4><a href="#blocks">Blocks</a><a href="#templates">Templates</a><a href="#pricing">Pricing</a></div>
+        <div><h4>Company</h4><a href="#spotlight">Blog</a><a href="#">About</a><a href="#">Careers</a></div>
+        <div><h4>Resources</h4><a href="#">Figma plugin</a><a href="#">Docs</a><a href="#">Support</a></div>
+        <div><h4>Social</h4><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">X</a></div>
+      </nav>
+    </div>
+    <div class="container footer__base">
+      <span>© <span id="year"></span> Loomcraft. Placeholder demo — not affiliated with any real product.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+/* ============================================================
+   BASE — tokens, reset, nav, footer, motion
+   Shared by every page. Values are lifted verbatim from the
+   original inline stylesheets; nothing here is a new number.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../fonts/InstrumentSerif-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../fonts/InstrumentSerif-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('../fonts/HankenGrotesk-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('../fonts/HankenGrotesk-Italic-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Colour */
+  --cream: #EAEAEA;
+  --dark: #1C1C1C;
+  --terracotta: #1C1C1C; /* legacy alias: kept so existing rules keep working */
+  --white: #ffffff;
+  --line: rgba(28, 28, 28, 0.12);
+  --muted: rgba(28, 28, 28, 0.55);
+  --ink: #0B0B0C;
+  --ink-2: #141416;
+  --gold: #B9A37E;
+  --brand-blue: #1E2A9E;
+  --brand-blue-hover: #2E3FC0;
+
+  /* Type scale — named from sizes already in use */
+  --fs-hero: 64px;
+  --fs-display: 53.4px;
+  --fs-h2: 32px;
+  --fs-h3: 20px;
+  --fs-body: 17px;
+  --fs-small: 14.5px;
+  --fs-meta: 13px;
+  --fs-kicker: 11px;
+  --ls-kicker: 0.3em;
+  --ls-btn: 0.18em;
+
+  /* Layout */
+  --w-wide: 1053px;
+  --w-card: 706px;
+  --w-read: 760px;
+  --gutter: 72px;
+  --gutter-sm: 24px;
+  --space-section: 197px;
+  --space-block: 110px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-fade: 0.65s;
+  --dur-hover: 0.2s;
+  --dur-nav: 0.4s;
+  --fade-y: 24px;
+
+  /* Per-page hooks */
+  --nav-logo-h: 36px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  font-family: 'Hanken Grotesk', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ---------- NAV ---------- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 36px var(--gutter);
+  background: transparent;
+  transition: padding var(--dur-nav) ease, background var(--dur-nav) ease, box-shadow var(--dur-nav) ease;
+}
+nav.scrolled {
+  padding: 18px var(--gutter);
+  background: rgba(234, 234, 234, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(28, 28, 28, 0.08);
+}
+
+.nav-logo { text-decoration: none; display: block; color: inherit; transition: opacity var(--dur-hover); }
+.nav-logo:hover { opacity: 0.7; }
+/* Keep every display rule at the same specificity as the variant classes,
+   so `.nav-logo img` can't win the cascade and show both logos at once. */
+.nav-logo img { height: var(--nav-logo-h); width: auto; }
+.nav-logo-white { display: block; }
+.nav-logo-black { display: none; }
+nav.scrolled .nav-logo-white { display: none; }
+nav.scrolled .nav-logo-black { display: block; }
+
+.nav-right { display: flex; align-items: center; gap: 40px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-weight: 300; font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color var(--dur-nav) ease, opacity var(--dur-hover);
+}
+.nav-links a:hover { opacity: 0.6; }
+nav.scrolled .nav-links a { color: var(--brand-blue); }
+
+.nav-book-btn {
+  font-size: var(--fs-meta); font-weight: 300;
+  letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 10px 22px;
+  backdrop-filter: blur(4px);
+  transition: background var(--dur-nav) ease, border-color var(--dur-nav) ease, color var(--dur-nav) ease;
+  white-space: nowrap;
+}
+.nav-book-btn:hover { background: rgba(255, 255, 255, 0.35); }
+nav.scrolled .nav-book-btn { background: var(--brand-blue); border-color: var(--brand-blue); color: var(--white); }
+nav.scrolled .nav-book-btn:hover { background: var(--brand-blue-hover); }
+
+/* Pages whose hero is light (the home page) need the dark logo and blue
+   links from the outset, rather than the white-on-dark default. */
+.nav--on-light .nav-logo-white { display: none; }
+.nav--on-light .nav-logo-black { display: block; }
+.nav--on-light .nav-links a { color: var(--brand-blue); }
+.nav--on-light .nav-book-btn {
+  background: var(--brand-blue); border-color: var(--brand-blue); color: var(--white);
+}
+.nav--on-light .nav-book-btn:hover { background: var(--brand-blue-hover); }
+
+/* Mobile menu trigger — the only genuinely new component in the nav.
+   Hidden on desktop; the responsive block below turns it on. */
+.nav-toggle {
+  display: none;
+  width: 40px; height: 40px;
+  padding: 0; margin: 0;
+  background: none; border: 0; cursor: pointer;
+  position: relative; z-index: 2;
+}
+.nav-toggle span {
+  position: absolute; left: 9px; right: 9px; height: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: transform var(--dur-hover) ease, opacity var(--dur-hover) ease, background var(--dur-nav) ease;
+}
+.nav-toggle span:nth-child(1) { top: 15px; }
+.nav-toggle span:nth-child(2) { top: 24px; }
+nav.scrolled .nav-toggle span,
+.nav--on-light .nav-toggle span { background: var(--dark); }
+nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
+nav.nav-open .nav-toggle span:nth-child(2) { transform: translateY(-4.5px) rotate(-45deg); }
+
+/* ---------- FOOTER ---------- */
+footer { background: var(--cream); }
+.footer-tagline {
+  font-size: 14px; font-weight: 300; color: var(--dark);
+  letter-spacing: 0.15em; line-height: 1.6; text-transform: lowercase;
+}
+
+/* Variant A — image footer (home + essays) */
+.footer--image {
+  margin-top: var(--footer-mt, 120px);
+  position: relative; overflow: hidden;
+}
+.footer--image picture { display: block; }
+.footer--image .footer-bg { width: 100%; height: auto; display: block; }
+.footer--image .footer-tagline {
+  position: absolute;
+  top: var(--footer-tagline-y, 50%);
+  left: var(--gutter);
+  transform: translateY(-50%);
+}
+
+/* Variant B — rule footer (case studies) */
+.footer--rule {
+  margin-top: 120px;
+  padding: 60px var(--gutter);
+  border-top: 1px solid rgba(28, 28, 28, 0.08);
+}
+
+/* ---------- MOTION ---------- */
+.js-ready .fade-up {
+  opacity: 0;
+  transform: translateY(var(--fade-y));
+  transition: opacity var(--dur-fade) ease, transform var(--dur-fade) ease;
+}
+.js-ready .fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up-d1 { transition-delay: 0.1s; }
+.fade-up-d2 { transition-delay: 0.22s; }
+.fade-up-d3 { transition-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-ready .fade-up { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- RESPONSIVE (shared chrome) ---------- */
+@media (max-width: 860px) {
+  nav, nav.scrolled { padding-left: var(--gutter-sm); padding-right: var(--gutter-sm); }
+  .nav-toggle { display: block; }
+  .nav-right {
+    position: fixed; inset: 0 0 auto; top: 0;
+    flex-direction: column; align-items: flex-start; justify-content: center;
+    gap: 28px;
+    height: 100vh;
+    padding: 0 var(--gutter-sm);
+    background: rgba(234, 234, 234, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transform: translateX(100%);
+    transition: transform 0.45s var(--ease-out);
+    z-index: 1;
+  }
+  nav.nav-open .nav-right { transform: translateX(0); }
+  .nav-links { flex-direction: column; gap: 20px; }
+  .nav-links a,
+  nav.scrolled .nav-links a,
+  .nav--on-light .nav-links a { color: var(--brand-blue); font-size: 22px; }
+  .nav-book-btn,
+  .nav--on-light .nav-book-btn,
+  nav.scrolled .nav-book-btn { background: var(--brand-blue); border-color: var(--brand-blue); color: var(--white); }
+  .footer--image .footer-tagline { left: var(--gutter-sm); }
+  .footer--rule { padding: 48px var(--gutter-sm); }
+}
