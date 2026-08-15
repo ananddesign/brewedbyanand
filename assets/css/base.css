@@ -46,6 +46,7 @@
   --gold: #B9A37E;
   --brand-blue: #1E2A9E;
   --brand-blue-hover: #2E3FC0;
+  --brand-blue-soft: #9AA6E8; /* lighter blue — for accents on dark surfaces where #1E2A9E is too low-contrast */
 
   /* Type scale — named from sizes already in use */
   --fs-hero: 64px;

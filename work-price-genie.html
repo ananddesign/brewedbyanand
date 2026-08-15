@@ -6,182 +6,11 @@
   <title>Price Genie — Brewed by Anand</title>
   <meta name="description" content="Price Genie — a 0→1 experiment on Pincode that challenged store-first commerce with an item-first shopping model." />
   <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/case-study.css" />
-  <style>
-    /* ============================================================
-       PRICE GENIE — page-scoped layout moments.
-       Everything here composes the shared kit; tokens only.
-       ============================================================ */
-
-    /* Hero flow line — the 30-second read under the subtitle */
-    .pg-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
-    .pg-hero-flow span {
-      font-size: 10px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.62);
-      border: 1px solid rgba(255, 255, 255, 0.22); padding: 9px 15px; white-space: nowrap;
-    }
-    .pg-hero-flow em { font-style: normal; color: rgba(255, 255, 255, 0.35); font-size: 13px; }
-
-    /* Phone-shaped placeholder — tall, narrow, honest */
-    .pg-phone {
-      aspect-ratio: 9 / 18; width: 100%;
-      border: 1px dashed rgba(28, 28, 28, 0.3); background: rgba(28, 28, 28, 0.03);
-      display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;
-    }
-    .pg-phone span {
-      font-size: 10.5px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(28, 28, 28, 0.4); line-height: 1.8;
-    }
-    .pg-phone:has(> img) { border: 0; padding: 0; background: none; }
-    .pg-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-    .cs-bleed .pg-phone { border-color: rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.03); }
-    .cs-bleed .pg-phone span { color: rgba(255, 255, 255, 0.38); }
-
-    /* Screenshot drop-in: the <img> loads the real screen; if the file
-       isn't there yet, onerror removes it and this label names the file
-       to save. onload removes the label so only the screenshot remains. */
-    .pg-drop code { font-family: inherit; letter-spacing: 0.1em; color: rgba(28, 28, 28, 0.62); }
-    .cs-bleed .pg-drop code { color: rgba(255, 255, 255, 0.6); }
-
-    /* A lone full-screen shot sits on a soft pad at true phone width and
-       centered, instead of stretching across the measure. Grids, the hero
-       strip and the final sequence keep their edge-to-edge thumbnails. */
-    .cs-img > .cs-img-frame:has(> img.pg-shot) {
-      background: #E7EDE4;
-      padding: 46px 24px;
-      display: flex; justify-content: center; align-items: flex-start;
-    }
-    .cs-img > .cs-img-frame > img.pg-shot {
-      max-width: 300px; width: 100%; height: auto;
-      border-radius: 18px;
-      box-shadow: 0 16px 38px rgba(20, 22, 28, 0.18);
-    }
-    /* Grids opt back out — they were designed to fill their columns. */
-    .cs-img-grid .cs-img > .cs-img-frame:has(> img.pg-shot),
-    .cs-img-grid-3 .cs-img > .cs-img-frame:has(> img.pg-shot) { background: none; padding: 0; }
-    .cs-img-grid .cs-img > .cs-img-frame > img.pg-shot,
-    .cs-img-grid-3 .cs-img > .cs-img-frame > img.pg-shot { max-width: none; border-radius: 0; box-shadow: none; }
-    @media (max-width: 760px) {
-      .cs-img > .cs-img-frame:has(> img.pg-shot) { padding: 30px 16px; }
-      .cs-img > .cs-img-frame > img.pg-shot { max-width: 260px; }
-    }
-
-    /* Model comparison — the page's strongest visual moment */
-    .pg-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 46px 0 38px; }
-    .pg-compare-col { border-radius: 26px; padding: 40px 34px 46px; background: #fff; text-align: center; }
-    .pg-compare-col.now { background: #21402F; }
-    .pg-compare-label {
-      font-family: 'Instrument Serif', serif; font-style: normal;
-      font-size: 27px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--ink); margin-bottom: 30px;
-    }
-    .pg-compare-col.now .pg-compare-label { color: #F2EEE4; }
-    .pg-compare-steps { display: flex; flex-direction: column; gap: 10px; }
-    .pg-compare-steps span {
-      font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
-      color: #1C1C1C; background: #ECECEC; border-radius: 999px; padding: 16px 18px;
-    }
-    .pg-compare-col.now .pg-compare-steps span { color: rgba(255, 255, 255, 0.9); background: rgba(255, 255, 255, 0.09); }
-    .pg-chev { display: flex; justify-content: center; align-items: center; height: 12px; }
-    .pg-chev svg { display: block; }
-
-    /* Schematic UI — hairline typographic sketches of the product,
-       deliberately drawn in the page's own language, not fake screenshots */
-    .pg-ui { border: 1px solid var(--line); background: rgba(255, 255, 255, 0.45); margin: 40px 0; }
-    .pg-ui-head {
-      display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
-      padding: 18px 22px; border-bottom: 1px solid var(--line);
-    }
-    .pg-ui-store { font-size: 15px; font-weight: 500; color: var(--dark); }
-    .pg-ui-badge {
-      font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--dark); border: 1px solid rgba(28, 28, 28, 0.35); padding: 5px 10px; white-space: nowrap;
-    }
-    .pg-ui-badge.full { background: var(--dark); color: var(--white); border-color: var(--dark); }
-    .pg-ui-row { display: flex; flex-wrap: wrap; gap: 8px 28px; padding: 15px 22px; border-bottom: 1px solid var(--line); }
-    .pg-ui-row:last-child { border-bottom: none; }
-    .pg-ui-kv { font-size: 13px; font-weight: 300; color: #3a3a3a; }
-    .pg-ui-kv b { font-weight: 500; color: var(--dark); }
-    .pg-ui-items { display: flex; flex-wrap: wrap; gap: 8px; padding: 15px 22px; border-bottom: 1px solid var(--line); }
-    .pg-ui-items span {
-      font-size: 12px; font-weight: 300; color: #3a3a3a;
-      border: 1px solid rgba(28, 28, 28, 0.18); padding: 6px 12px;
-    }
-    .pg-ui-items span.miss { color: rgba(28, 28, 28, 0.35); border-style: dashed; text-decoration: line-through; }
-    .pg-ui-cta {
-      display: block; text-align: center; padding: 14px 22px;
-      font-size: 11px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white);
-      background: var(--dark);
-    }
-    .pg-ui-group-label {
-      padding: 13px 22px 0; font-size: 10px; font-weight: 400; letter-spacing: 0.24em;
-      text-transform: uppercase; color: var(--muted);
-    }
-    .pg-ui-save {
-      padding: 15px 22px; font-size: 14px; font-weight: 400; color: var(--dark);
-      border-bottom: 1px solid var(--line); background: rgba(28, 28, 28, 0.035);
-    }
-    .pg-ui-caption { margin-top: 12px; font-size: var(--fs-meta); font-weight: 300; color: var(--muted); line-height: 1.5; }
-
-    /* System diagram */
-    .pg-system { border: 1px solid var(--line); margin: 44px 0; }
-    .pg-system-row { padding: 24px; border-bottom: 1px solid var(--line); text-align: center; }
-    .pg-system-row:last-child { border-bottom: none; }
-    .pg-system-row.core { background: var(--ink); }
-    .pg-system-label {
-      font-size: 10px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 10px;
-    }
-    .pg-system-row.core .pg-system-label { color: var(--gold); }
-    .pg-system-value { font-size: 16px; font-weight: 400; color: var(--dark); letter-spacing: 0.02em; }
-    .pg-system-row.core .pg-system-value { color: var(--white); }
-    .pg-system-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px; }
-    .pg-system-chips span {
-      font-size: 11px; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255, 255, 255, 0.25); padding: 8px 14px;
-    }
-
-    /* Final experience — horizontal sequence */
-    .pg-seq { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 48px 0 8px; }
-    .pg-seq-step { display: flex; flex-direction: column; gap: 14px; }
-    .pg-seq-num { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: rgba(255, 255, 255, 0.35); }
-    .pg-seq-label { font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75); line-height: 1.6; }
-
-    /* Learnings — status-tagged rows */
-    .pg-learning { border-top: 1px solid var(--line); padding: 28px 0; display: flex; gap: 24px; align-items: flex-start; }
-    .pg-learning:last-of-type { border-bottom: 1px solid var(--line); }
-    .pg-learn-tag {
-      flex: 0 0 116px; margin-top: 3px;
-      font-size: 9.5px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
-      text-align: center; padding: 6px 0; border: 1px solid rgba(28, 28, 28, 0.3); color: var(--muted);
-    }
-    .pg-learn-tag.observed { border-color: var(--dark); color: var(--dark); }
-    .pg-learn-tag.next { border-style: dashed; }
-    .pg-learning-body h4 { font-size: 17.5px; font-weight: 500; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
-    .pg-learning-body p { font-size: 15px !important; line-height: 1.7 !important; margin-bottom: 0 !important; }
-
-    /* Closing mark */
-    .pg-close { text-align: center; margin: 64px 0 0; }
-    .pg-close-step {
-      display: inline-block; font-size: 13px; font-weight: 300; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--muted);
-    }
-    .pg-close-step.to { color: var(--dark); font-weight: 500; }
-    .pg-close-arrow { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 26px; color: rgba(28, 28, 28, 0.35); margin: 14px 0; }
-
-    @media (max-width: 760px) {
-      .pg-compare { grid-template-columns: 1fr; }
-      .pg-seq { grid-template-columns: 1fr; gap: 24px; }
-      .pg-seq .pg-phone { max-width: 240px; }
-      .pg-learning { flex-direction: column; gap: 12px; }
-      .pg-learn-tag { flex: none; padding: 6px 14px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/pg.css" />
 </head>
-<body>
+<body class="pg">
 
-  <!-- NAV -->
+  <!-- NAV (preserved) -->
   <nav id="mainNav">
     <a class="nav-logo" href="index.html" aria-label="Brewed by Anand — home">
       <img class="nav-logo-white" src="assets/img/logo-white.svg" alt="Brewed by Anand" width="334" height="117" />
@@ -203,562 +32,644 @@
     </div>
   </nav>
 
-  <!-- 01 — HERO -->
-  <section class="cs-hero" style="--cs-hero-bg: #14161C url('/assets/img/price-genie/hero.jpg') right center/cover no-repeat; --cs-hero-tint: none; --cs-hero-overlay: linear-gradient(105deg, rgba(10,11,12,0.9) 0%, rgba(10,11,12,0.62) 40%, rgba(10,11,12,0.2) 68%, rgba(10,11,12,0) 100%), linear-gradient(to top, rgba(10,11,12,0.92) 0%, rgba(10,11,12,0.15) 58%);">
-    <div class="cs-hero-bg"></div>
-    <div class="cs-hero-content">
-      <p class="cs-hero-tag">Case Study &#8212; Pincode</p>
-      <h1 class="cs-hero-title">Reimagining how people shop across local stores.</h1>
-      <p class="cs-hero-subtitle">Price Genie explored a new shopping model for Pincode where users could discover the products they wanted first, compare fulfilment options, and let the system construct the best basket across nearby stores.</p>
-      <div class="pg-hero-flow" aria-label="Product discovery, then store comparison, then fulfilment">
-        <span>Product discovery</span><em>&#8594;</em>
-        <span>Store comparison</span><em>&#8594;</em>
-        <span>Fulfilment</span>
+  <!-- PROGRESS INDEX -->
+  <nav class="pg-progress" aria-label="Case study sections">
+    <a href="#context"><span class="lbl">Context</span><span class="bar"></span></a>
+    <a href="#problem"><span class="lbl">Problem</span><span class="bar"></span></a>
+    <a href="#opportunity"><span class="lbl">Opportunity</span><span class="bar"></span></a>
+    <a href="#system"><span class="lbl">System</span><span class="bar"></span></a>
+    <a href="#design"><span class="lbl">Design</span><span class="bar"></span></a>
+    <a href="#experiment"><span class="lbl">Experiment</span><span class="bar"></span></a>
+    <a href="#learnings"><span class="lbl">Learnings</span><span class="bar"></span></a>
+  </nav>
+
+  <!-- ============================================================
+       01 — HERO
+       ============================================================ -->
+  <header class="pg-hero" id="top">
+    <div class="pg-hero-bg">
+      <img src="assets/img/price-genie/hero.jpg" alt="The Price Genie app on a phone, surrounded by fresh produce on a kitchen counter." />
+    </div>
+    <div class="pg-hero-inner">
+      <div class="pg-hero-content">
+        <p class="pg-hero-eyebrow" data-hero style="--hd:0">Case Study — Pincode</p>
+        <h1 class="pg-hero-title" data-hero style="--hd:1">Reimagining how people shop across local stores.</h1>
+        <p class="pg-hero-desc" data-hero style="--hd:2">Price Genie explored a new shopping model for Pincode where users could discover the products they wanted first, compare fulfilment options, and let the system construct the best basket across nearby stores.</p>
+        <dl class="pg-hero-meta" data-hero style="--hd:3">
+          <div><dt>Role</dt><dd>Product Designer</dd></div>
+          <div><dt>Scope</dt><dd>Product strategy · UX · Interaction · Prototyping</dd></div>
+          <div><dt>Platform</dt><dd>Mobile</dd></div>
+          <div><dt>Type</dt><dd>0→1 product experiment</dd></div>
+        </dl>
       </div>
-      <div class="cs-hero-meta">
+    </div>
+    <div class="pg-hero-scroll" aria-hidden="true"><span>Scroll</span></div>
+  </header>
+
+  <main>
+
+    <!-- STORYBOARD — the three surfaces, layered -->
+    <section class="pg-section pg-section--tight">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal>Product discovery &nbsp;→&nbsp; Store comparison &nbsp;→&nbsp; Fulfilment</p>
+        <div class="pg-storyboard" data-reveal="scale" style="--d:1">
+          <figure class="s2"><img src="assets/img/price-genie/stores-list.png" alt="Store comparison — nearby stores ranked by fulfilment, price and delivery." loading="lazy" /></figure>
+          <figure class="s1"><img src="assets/img/price-genie/pg-landing.png" alt="Product discovery — building a store-agnostic shopping list." loading="lazy" /></figure>
+          <figure class="s3"><img src="assets/img/price-genie/cart-groups.png" alt="Fulfilment — a multi-store cart grouped by delivery time." loading="lazy" /></figure>
+        </div>
+        <p class="pg-cap" data-reveal style="margin:34px auto 0;text-align:center;max-width:52ch;">The three surfaces this case study is about: discovering products, comparing fulfilment, and understanding the resulting basket.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 — CONTEXT
+         ============================================================ -->
+    <section class="pg-section" id="context">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">02</span> &mdash; Context</p>
+        <h2 class="pg-statement" data-reveal>Pincode was built around stores.</h2>
+
+        <div class="pg-model" role="img" aria-label="The original sequence: store, then products, then cart, then checkout.">
+          <span class="pg-model-node" style="--d:0">Store</span>
+          <span class="pg-model-link" style="--d:1"></span>
+          <span class="pg-model-node" style="--d:1">Products</span>
+          <span class="pg-model-link" style="--d:2"></span>
+          <span class="pg-model-node" style="--d:2">Cart</span>
+          <span class="pg-model-link" style="--d:3"></span>
+          <span class="pg-model-node" style="--d:3">Checkout</span>
+        </div>
+
+        <div class="pg-grid" style="align-items:start;">
+          <div style="grid-column: span 7;">
+            <p class="pg-body" data-reveal>Pincode is a hyperlocal shopping app. Like most commerce products, it followed the model ecommerce has used for decades: pick a store, then shop inside it. The model worked&mdash;unevenly. Whatever a user could discover was bounded by whichever store they happened to open first.</p>
+          </div>
+          <div style="grid-column: span 5;">
+            <div class="pg-datanote" data-reveal style="--d:1;margin-block:0;">
+              <div>
+                <div class="pg-datanote-fig">49%</div>
+                <div class="pg-datanote-lbl">Grocery share</div>
+              </div>
+              <div>
+                <div class="pg-datanote-fig">34%</div>
+                <div class="pg-datanote-lbl">Food share</div>
+              </div>
+            </div>
+            <p class="pg-small" data-reveal style="--d:2;margin-top:20px;max-width:34ch;">Two categories carried the app. Penetration across everything else stayed low&mdash;discovery was capped by the store-first funnel.</p>
+          </div>
+        </div>
+
+        <blockquote class="pg-quote" data-reveal style="margin:clamp(56px,8vw,110px) 0 0;max-width:20ch;">Users don&rsquo;t necessarily care from which store their orders are delivered.</blockquote>
+        <div class="pg-measure" style="margin-top:34px;">
+          <p class="pg-body" data-reveal>They care about finding the products they need, at a good price, with a good delivery promise. The store is a means to that end&mdash;yet it was the first and most binding decision in the flow.</p>
+          <p class="pg-body" data-reveal style="--d:1"><strong>The store-first model was becoming a constraint on product discovery.</strong></p>
+        </div>
+
+        <div class="pg-duo pg-hoverable">
+          <figure class="a pg-screen" data-reveal style="margin:0;">
+            <img src="assets/img/price-genie/home.png" alt="Pincode home — find stores by category." loading="lazy" />
+          </figure>
+          <figure class="b pg-screen" data-reveal style="--d:1;margin:0;">
+            <img src="assets/img/price-genie/categories.png" alt="Category browsing that still resolves to a single store's shelf." loading="lazy" />
+          </figure>
+        </div>
+        <p class="pg-cap" data-reveal>The original entry points: pick a store, or browse a category that still resolves to one store&rsquo;s shelf.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 — PROBLEM
+         ============================================================ -->
+    <section class="pg-section" id="problem">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">03</span> &mdash; Problem</p>
+        <h2 class="pg-display" data-reveal style="max-width:20ch;">The problem wasn&rsquo;t the cart. It was the shopping model.</h2>
+
+        <div class="pg-conseq" data-reveal="fade">
+          <p class="pg-conseq-core">Item unavailable</p>
+          <div class="pg-conseq-stem" aria-hidden="true"></div>
+          <ol class="pg-conseq-list">
+            <li class="pg-conseq-item" style="--i:0"><span class="num">01</span><span class="txt">Search another store</span></li>
+            <li class="pg-conseq-item" style="--i:1"><span class="num">02</span><span class="txt">Compromise on product</span></li>
+            <li class="pg-conseq-item" style="--i:2"><span class="num">03</span><span class="txt">Compromise on price / delivery</span></li>
+            <li class="pg-conseq-item" style="--i:3"><span class="num">04</span><span class="txt">Abandon the basket</span></li>
+          </ol>
+        </div>
+
+        <div class="pg-measure">
+          <p class="pg-body" data-reveal>When users begin by choosing a store, their product discovery is constrained by that store&rsquo;s inventory. The moment the store doesn&rsquo;t have something, every path forward costs the user.</p>
+          <p class="pg-body" data-reveal style="--d:1">None of these are interface failures. A better cart, a better search bar, a better store page&mdash;none of them fix a sequence that forces the least-informed decision first. The problem was systemic, and it needed a model-level answer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 — THE SHIFT (scroll-controlled transformation)
+         ============================================================ -->
+    <section class="pg-section" id="opportunity">
+      <div class="pg-wrap">
+        <div class="pg-shift-layout">
+          <aside class="pg-shift-aside">
+            <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">04</span> &mdash; The shift</p>
+            <p class="pg-shift-statement" data-reveal style="--d:1">What if shopping started with what people wanted?</p>
+          </aside>
+          <div class="pg-shift-track">
+            <div class="pg-shift-viewport" role="img" aria-label="An illustrative model transforming store-first shopping into an item-first fulfilment model, where the store becomes one signal of fulfilment rather than the first decision.">
+              <!-- State 1 — store-first -->
+              <div class="pg-shift-frame f1 is-on">
+                <p class="pg-shift-flowlabel">Store-first</p>
+                <div class="pg-shift-node lead">Choose a store</div>
+                <div class="pg-shift-arrow"></div>
+                <div class="pg-shift-node">Browse products</div>
+                <div class="pg-shift-arrow"></div>
+                <div class="pg-shift-node">Build cart</div>
+              </div>
+              <!-- State 2 — the question -->
+              <div class="pg-shift-frame f2">
+                <p class="pg-shift-q">What if we started with the basket?</p>
+              </div>
+              <!-- State 3 — item-first -->
+              <div class="pg-shift-frame f3 now">
+                <p class="pg-shift-flowlabel">Item-first</p>
+                <div class="pg-shift-node lead">Choose products</div>
+                <div class="pg-shift-arrow"></div>
+                <div class="pg-shift-node">Compare fulfilment</div>
+                <div class="pg-shift-arrow"></div>
+                <div class="pg-shift-node">Build basket</div>
+                <div class="pg-shift-chips">
+                  <span class="store">Store</span><span>Availability</span><span>Price</span><span>Delivery</span><span>Offers</span>
+                </div>
+              </div>
+              <!-- State 4 — the fulfilment model -->
+              <div class="pg-shift-frame f4 now">
+                <p class="pg-shift-flowlabel">The fulfilment model</p>
+                <div class="pg-shift-node">Products</div>
+                <div class="pg-shift-arrow"></div>
+                <div class="pg-shift-node lead">Fulfilment</div>
+                <div class="pg-shift-chips">
+                  <span class="store">Store</span><span>Availability</span><span>Price</span><span>Delivery</span><span>Offers</span>
+                </div>
+                <div class="pg-shift-arrow"></div>
+                <div class="pg-shift-node">Basket</div>
+                <p class="pg-shift-note">The store didn&rsquo;t disappear. Its role changed &mdash; from the first decision to one signal of fulfilment.</p>
+              </div>
+            </div>
+            <div class="pg-shift-phase" data-phase="0"></div>
+            <div class="pg-shift-phase" data-phase="1"></div>
+            <div class="pg-shift-phase" data-phase="2"></div>
+            <div class="pg-shift-phase" data-phase="3"></div>
+          </div>
+        </div>
+
+        <blockquote class="pg-quote pg-quote--accent" data-reveal style="max-width:24ch;margin-top:clamp(32px,5vw,64px);">Instead of asking users where they wanted to shop, Price Genie started with what they wanted to buy.</blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 — HYPOTHESIS
+         ============================================================ -->
+    <section class="pg-section" id="hypothesis">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">05</span> &mdash; Hypothesis</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:20ch;margin-bottom:clamp(40px,5vw,64px);">Could item-first shopping help users build better baskets?</h2>
+
+        <div class="pg-hyp">
+          <div class="pg-hyp-item">
+            <div class="pg-hyp-num">01</div>
+            <div>
+              <p class="pg-hyp-statement">Add more of the products people actually need.</p>
+              <p class="pg-hyp-note pg-body">If adding an item no longer commits you to a store, the basket should converge on the real shopping list&mdash;not the subset one store happens to carry.</p>
+            </div>
+          </div>
+          <div class="pg-hyp-item">
+            <div class="pg-hyp-num">02</div>
+            <div>
+              <p class="pg-hyp-statement">Consider multiple stores if it improved fulfilment.</p>
+              <p class="pg-hyp-note pg-body">Store loyalty on hyperlocal platforms is thin. Would users accept fulfilment from unfamiliar stores when availability, price, and delivery were clearly better?</p>
+            </div>
+          </div>
+          <div class="pg-hyp-item">
+            <div class="pg-hyp-num">03</div>
+            <div>
+              <p class="pg-hyp-statement">Trade store preference for better price and delivery.</p>
+              <p class="pg-hyp-note pg-body">The model only works if the comparison surface makes the trade obvious&mdash;users won&rsquo;t abandon a known store for an abstract promise.</p>
+            </div>
+          </div>
+          <div class="pg-hyp-item">
+            <div class="pg-hyp-num">04</div>
+            <div>
+              <p class="pg-hyp-statement">Complete larger baskets without increasing cancellations.</p>
+              <p class="pg-hyp-note pg-body">Bigger baskets are only commercially healthy if the marketplace can actually fulfil them. Cancellations were the guardrail metric for the whole experiment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         06 — METRICS
+         ============================================================ -->
+    <section class="pg-section" id="metrics">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">06</span> &mdash; What we measured</p>
+        <h2 class="pg-statement" data-reveal>We measured three things.</h2>
+
+        <div class="pg-metrics">
+          <div class="pg-metric" data-reveal>
+            <div class="pg-metric-num">01</div>
+            <div class="pg-metric-name">Discovery</div>
+            <div class="pg-metric-list"><span>Avg. items added</span><span class="pg-small">Are users able to find more of what they need?</span></div>
+          </div>
+          <div class="pg-metric" data-reveal style="--d:1">
+            <div class="pg-metric-num">02</div>
+            <div class="pg-metric-name">Fulfilment</div>
+            <div class="pg-metric-list"><span>Avg. stores with all items</span><span>Avg. stores with N−1 / N−2 items</span><span class="pg-small">Can the marketplace actually serve those baskets?</span></div>
+          </div>
+          <div class="pg-metric" data-reveal style="--d:2">
+            <div class="pg-metric-num">03</div>
+            <div class="pg-metric-name">Business</div>
+            <div class="pg-metric-list"><span>Cart value per user per month</span><span>Cancellations per order</span><span class="pg-small">Does the new model create commercially healthy orders?</span></div>
+          </div>
+        </div>
+        <p class="pg-body pg-measure" data-reveal style="margin-top:clamp(34px,4vw,52px);">The fulfilment metrics are the interesting ones. Item-first shopping is only viable if enough nearby stores can cover all&mdash;or nearly all&mdash;of a typical basket. N−1 and N−2 coverage told us how often the model would need multi-store fulfilment to keep its promise.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         07 — SYSTEM
+         ============================================================ -->
+    <section class="pg-section" id="system">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">07</span> &mdash; System</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:22ch;">The user shouldn&rsquo;t have to understand the complexity underneath.</h2>
+        <p class="pg-body pg-measure" data-reveal style="--d:1;margin-top:24px;">Behind one decision surface, Price Genie evaluates the possible fulfilment combinations across nearby stores&mdash;availability, price, delivery, and offers&mdash;and presents only what the user needs to choose.</p>
+
+        <div class="pg-sys">
+          <svg class="pg-sys-svg pg-svg" viewBox="0 0 1000 700" role="img" aria-label="System diagram: six products flow into the Price Genie engine, which evaluates availability, price, delivery and offers, converging into best options and then a cart.">
+            <!-- connecting lines (draw) -->
+            <g fill="none" stroke="rgba(27,26,21,0.28)" stroke-width="1.2">
+              <path pathLength="1" d="M170 78 C 300 150, 420 190, 500 250" />
+              <path pathLength="1" d="M302 78 C 360 150, 450 200, 500 250" />
+              <path pathLength="1" d="M434 78 C 460 150, 490 200, 500 250" />
+              <path pathLength="1" d="M566 78 C 540 150, 510 200, 500 250" />
+              <path pathLength="1" d="M698 78 C 640 150, 550 200, 500 250" />
+              <path pathLength="1" d="M830 78 C 700 150, 580 190, 500 250" />
+              <!-- engine to dims -->
+              <path pathLength="1" d="M330 336 L 260 402" />
+              <path pathLength="1" d="M430 336 L 420 402" />
+              <path pathLength="1" d="M570 336 L 580 402" />
+              <path pathLength="1" d="M670 336 L 740 402" />
+              <!-- dims converge to best options -->
+              <path pathLength="1" d="M260 430 C 320 500, 430 505, 500 520" />
+              <path pathLength="1" d="M420 430 C 450 490, 480 505, 500 520" />
+              <path pathLength="1" d="M580 430 C 550 490, 520 505, 500 520" />
+              <path pathLength="1" d="M740 430 C 680 500, 570 505, 500 520" />
+              <!-- best options to cart -->
+              <path pathLength="1" d="M500 566 L 500 618" />
+            </g>
+
+            <!-- nodes -->
+            <g class="pg-sys-node">
+              <text class="node-txt" x="500" y="40" text-anchor="middle" fill="#6f6a5f">User needs · 6 products</text>
+              <g fill="#1b1a15">
+                <circle cx="170" cy="72" r="5"/><circle cx="302" cy="72" r="5"/><circle cx="434" cy="72" r="5"/>
+                <circle cx="566" cy="72" r="5"/><circle cx="698" cy="72" r="5"/><circle cx="830" cy="72" r="5"/>
+              </g>
+              <rect x="250" y="246" width="500" height="94" rx="6" fill="#F3EFE7" stroke="#1F3D2E" stroke-width="1.4"/>
+              <text x="500" y="288" text-anchor="middle" font-family="'Instrument Serif', serif" font-size="27" fill="#1F3D2E">Price Genie</text>
+              <text x="500" y="314" text-anchor="middle" font-family="'Hanken Grotesk', sans-serif" font-size="12" letter-spacing="0.8" fill="#6F6A5F">Evaluates fulfilment across multiple signals</text>
+            </g>
+
+            <g class="pg-sys-dim">
+              <text class="node-txt" x="260" y="424" text-anchor="middle" fill="#1F3D2E">Availability</text>
+              <text class="node-txt" x="420" y="424" text-anchor="middle" fill="#1F3D2E">Price</text>
+              <text class="node-txt" x="580" y="424" text-anchor="middle" fill="#1F3D2E">Delivery</text>
+              <text class="node-txt" x="740" y="424" text-anchor="middle" fill="#1F3D2E">Offers</text>
+            </g>
+
+            <g class="pg-sys-terminal">
+              <rect x="386" y="522" width="228" height="46" fill="none" stroke="#1b1a15" stroke-width="1.2"/>
+              <text class="node-txt" x="500" y="550" text-anchor="middle" fill="#1b1a15">Best options</text>
+              <rect x="430" y="620" width="140" height="46" rx="6" fill="#1F3D2E"/>
+              <text class="node-txt" x="500" y="648" text-anchor="middle" fill="#F2EEE4">Cart</text>
+            </g>
+          </svg>
+        </div>
+        <p class="pg-cap" data-reveal style="text-align:center;max-width:60ch;margin-inline:auto;">A complex system underneath, a simple decision surface above. Values illustrative.</p>
+
+        <blockquote class="pg-quote" data-reveal style="max-width:22ch;margin:clamp(56px,8vw,110px) auto 0;text-align:center;">&ldquo;Expose complexity only when it helps the user make a decision.&rdquo;</blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         08 — INTERFACE (review list)
+         ============================================================ -->
+    <section class="pg-section" id="interface">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">08</span> &mdash; Interface</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:18ch;">The store-agnostic list is where the system begins.</h2>
+        <div class="pg-review pg-hoverable" data-reveal="scale" style="--d:1;margin-top:clamp(40px,5vw,64px);">
+          <figure class="pg-screen pg-screen--wide" style="margin:0;">
+            <img src="assets/img/price-genie/review-list.png" alt="Price Genie review list — a store-agnostic shopping list with a Find best stores action." loading="lazy" />
+          </figure>
+        </div>
+        <div class="pg-tracked" data-reveal style="justify-content:center;margin-top:26px;">
+          <span>Product input</span><span>Store-agnostic</span><span>Find best stores</span>
+        </div>
+        <p class="pg-cap" data-reveal style="text-align:center;margin-inline:auto;">The list is the input the engine evaluates against every nearby store at once.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         09–14 — DESIGN DECISIONS
+         ============================================================ -->
+    <section class="pg-section" id="design">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">09</span> &mdash; Design decisions</p>
+        <h2 class="pg-statement" data-reveal>Six decisions, one principle.</h2>
+      </div>
+
+      <!-- DD01 — Fulfilment at a glance (sticky) -->
+      <div class="pg-wrap pg-dd" style="margin-top:clamp(48px,7vw,90px);padding-top:clamp(48px,6vw,80px);">
+        <div class="pg-dd-split">
+          <div class="pg-dd-sticky pg-hoverable" data-reveal="scale">
+            <figure class="pg-screen" style="margin:0;">
+              <img src="assets/img/price-genie/store-collapsed.png" alt="Collapsed store card — 6 of 6 items available, delivery, price, savings and a create-cart action." loading="lazy" />
+            </figure>
+          </div>
+          <div class="pg-dd-copy">
+            <div class="pg-dd-head">
+              <span class="pg-dd-tag" data-reveal>Design decision 01</span>
+              <h3 class="pg-dd-title" data-reveal style="--d:1">Start with the store that can fulfil the whole basket.</h3>
+            </div>
+            <p class="pg-body" data-reveal>When a store can fulfil 100% of the requested items, we collapse the details and make the fulfilment status immediately scannable.</p>
+            <div class="pg-tracked" data-reveal style="--d:1"><span>6 / 6 items</span><span>60 min</span><span>₹1,240</span><span>₹180 saved</span></div>
+            <p class="pg-body" data-reveal style="--d:1">Users don&rsquo;t need to inspect six individual products if the store already satisfies the entire basket. The only questions left are <em>when</em>, <em>how much</em>, and <em>what do I save</em>&mdash;so those are the only things the collapsed card shows.</p>
+            <p class="pg-small" data-reveal>Highlighted values are illustrative.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DD02 — Inventory on demand (collapse → expand) -->
+      <div class="pg-wrap pg-dd" style="padding-top:clamp(56px,7vw,96px);">
+        <div class="pg-dd-head">
+          <span class="pg-dd-tag" data-reveal>Design decision 02</span>
+          <h3 class="pg-dd-title" data-reveal style="--d:1">Expand only when comparison is useful.</h3>
+        </div>
+        <div class="pg-measure">
+          <p class="pg-body" data-reveal>Partial-fulfilment stores are where users actually have to think. Expanding a store gives them a quick inventory snapshot&mdash;which items it has, which it doesn&rsquo;t, at what price&mdash;without leaving the comparison. The card expands in place: comparison is a state of the list, not a separate screen.</p>
+        </div>
+        <div class="pg-states pg-hoverable">
+          <div data-reveal>
+            <p class="lbl">Collapsed</p>
+            <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/store-collapsed.png" alt="Collapsed store card." loading="lazy" /></figure>
+          </div>
+          <div class="pg-states-arrow" data-reveal style="--d:1" aria-hidden="true">→</div>
+          <div data-reveal style="--d:2">
+            <p class="lbl">Expanded</p>
+            <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/store-expanded.png" alt="Expanded store card — inventory snapshot with per-item prices and the missing item named." loading="lazy" /></figure>
+          </div>
+        </div>
+        <p class="pg-cap" data-reveal style="text-align:center;margin-inline:auto;">Availability, price and delivery are the primary decision variables&mdash;so the expanded state is built entirely from them.</p>
+      </div>
+
+      <!-- DD03 — Item-first, store-transparent -->
+      <div class="pg-wrap pg-dd" style="padding-top:clamp(56px,7vw,96px);">
+        <div class="pg-dd-head">
+          <span class="pg-dd-tag" data-reveal>Design decision 03</span>
+        </div>
+        <h3 class="pg-bigline" data-reveal>Item-first doesn&rsquo;t mean store-blind.</h3>
+        <div class="pg-dd-split" style="margin-top:clamp(40px,5vw,64px);">
+          <div class="pg-hoverable" data-reveal="scale">
+            <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/stores-partial.png" alt="Stores list stating that all items are not available in a single store, listing stores that carry some items." loading="lazy" /></figure>
+          </div>
+          <div class="pg-dd-copy">
+            <p class="pg-body" data-reveal>The system could have gone further&mdash;fully abstracting stores away and just delivering &ldquo;the basket.&rdquo; We deliberately didn&rsquo;t. Even though discovery begins with products, fulfilment stays transparent. At every step, four things are always answerable:</p>
+            <dl class="pg-tracked" data-reveal style="--d:1;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div><span style="display:block;border:1px solid var(--line-2);padding:14px 16px;"><strong>Who</strong> &mdash; the store</span></div>
+              <div><span style="display:block;border:1px solid var(--line-2);padding:14px 16px;"><strong>When</strong> &mdash; the delivery</span></div>
+              <div><span style="display:block;border:1px solid var(--line-2);padding:14px 16px;"><strong>How much</strong> &mdash; final price</span></div>
+              <div><span style="display:block;border:1px solid var(--line-2);padding:14px 16px;"><strong>Saved</strong> &mdash; the savings</span></div>
+            </dl>
+            <p class="pg-body" data-reveal>When something goes wrong&mdash;a delay, a substitution&mdash;the user needs to know who is responsible for what. A system that hides the fulfilling store buys simplicity now and pays for it in the first support ticket.</p>
+          </div>
+        </div>
+        <blockquote class="pg-bigline pg-quote--accent" data-reveal style="font-style:normal;margin-top:clamp(48px,7vw,92px);">Abstract the complexity, not the accountability.</blockquote>
+      </div>
+
+      <!-- DD04 — Multi-store cart -->
+      <div class="pg-wrap pg-dd" style="padding-top:clamp(56px,7vw,96px);">
+        <div class="pg-dd-head">
+          <span class="pg-dd-tag" data-reveal>Design decision 04</span>
+        </div>
+        <h3 class="pg-bigline" data-reveal style="max-width:16ch;">The cart had to stop pretending there was one store.</h3>
+        <div class="pg-dd-split" style="margin-top:clamp(40px,5vw,64px);">
+          <div class="pg-dd-copy">
+            <p class="pg-body" data-reveal>The multi-store cart is a consequence of the model, not the innovation itself. When no single store can serve the whole list well, the best basket spans stores&mdash;and the cart became a representation of how the order would actually be fulfilled.</p>
+            <div class="pg-timeline" data-reveal style="--d:1">
+              <div class="pg-tl-stop"><div class="pg-tl-when">Delivery 01</div><div class="pg-tl-meta">60 min · Simply Namdhari&rsquo;s</div></div>
+              <div class="pg-tl-stop"><div class="pg-tl-when">Delivery 02</div><div class="pg-tl-meta">90 min · MK Retail</div></div>
+            </div>
+            <p class="pg-body" data-reveal>We grouped by <em>delivery</em>, with the store named inside each group&mdash;not the other way around. Delivery time is what the user plans their day around; the store answers &ldquo;who is bringing it.&rdquo;</p>
+          </div>
+          <div class="pg-hoverable" data-reveal="scale" style="--d:1">
+            <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/cart-full.png" alt="Multi-store cart with items grouped under two deliveries, a savings banner and bill details." loading="lazy" /></figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- DD05 — Delivery & slots -->
+      <div class="pg-wrap pg-dd" style="padding-top:clamp(56px,7vw,96px);">
+        <div class="pg-dd-head">
+          <span class="pg-dd-tag" data-reveal>Design decision 05</span>
+          <h3 class="pg-dd-title" data-reveal style="--d:1">Make delivery complexity visible, but easy to scan.</h3>
+        </div>
+        <div class="pg-timeline" data-reveal role="img" aria-label="A timeline: now, then a delivery at sixty minutes, then a delivery at ninety minutes.">
+          <div class="pg-tl-stop"><div class="pg-tl-when">Now</div><div class="pg-tl-meta">Order placed</div></div>
+          <div class="pg-tl-stop"><div class="pg-tl-when">60 min</div><div class="pg-tl-meta">Simply Namdhari&rsquo;s · 2 items</div></div>
+          <div class="pg-tl-stop"><div class="pg-tl-when">90 min</div><div class="pg-tl-meta">MK Retail · 2 items</div></div>
+        </div>
+        <div class="pg-dd-split" style="margin-top:clamp(30px,4vw,52px);">
+          <div class="pg-hoverable" data-reveal="scale">
+            <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/cart-groups.png" alt="Cart showing a 60-minute delivery from one store and a 90-minute delivery from another, each with its own items." loading="lazy" /></figure>
+          </div>
+          <div class="pg-dd-copy">
+            <p class="pg-body" data-reveal>Users need immediate visibility into three things: where the order is coming from, what arrives when, and which items belong to each delivery. The discipline was in what we didn&rsquo;t show&mdash;routing, store handoffs, slot logic all stayed backstage.</p>
+            <blockquote class="pg-quote" data-reveal style="--d:1;font-size:clamp(1.6rem,3vw,2.6rem);">These items.<br />This store.<br />This time.</blockquote>
+          </div>
+        </div>
+      </div>
+
+      <!-- DD06 — Offers & savings -->
+      <div class="pg-wrap pg-dd" style="padding-top:clamp(56px,7vw,96px);">
+        <div class="pg-dd-head">
+          <span class="pg-dd-tag" data-reveal>Design decision 06</span>
+        </div>
+        <h3 class="pg-bigline" data-reveal>Make the payoff tangible.</h3>
+        <div class="pg-payoff" style="margin-top:clamp(40px,5vw,64px);">
+          <div data-reveal>
+            <div class="pg-payoff-fig">₹370</div>
+            <div class="pg-payoff-sub">Saved on this order</div>
+            <div class="pg-payoff-off">Multiple offers applied</div>
+            <p class="pg-body" data-reveal style="--d:1;margin-top:28px;max-width:40ch;">When users are comparing stores and fulfilment options, savings become part of the decision. We surfaced value throughout&mdash;on comparison cards, in the cart, at confirmation&mdash;instead of burying it in the bill. The offer engine stopped being a checkout footnote and became a decision input.</p>
+            <p class="pg-small" data-reveal style="margin-top:14px;">The ₹370 shown is illustrative of the treatment, not a measured result.</p>
+          </div>
+          <div class="pg-hoverable" data-reveal="scale" style="--d:1">
+            <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/cart-full.png" alt="Cart header showing savings including free delivery and a discount, with a multiple-offers-applied banner." loading="lazy" /></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         15 — THE WALKTHROUGH (sticky)
+         ============================================================ -->
+    <section class="pg-section" id="walkthrough">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">15</span> &mdash; The walkthrough</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:16ch;margin-bottom:clamp(20px,3vw,40px);">From need, to basket, to fulfilment.</h2>
+      </div>
+      <div class="pg-wrap">
+        <div class="pg-walk">
+          <div class="pg-walk-stage" aria-hidden="true">
+            <div class="pg-walk-device">
+              <div class="pg-walk-notch"></div>
+              <div class="pg-walk-frame">
+                <img src="assets/img/price-genie/browse-beverages.png" alt="" data-w="0" />
+                <img src="assets/img/price-genie/stores-list.png" alt="" data-w="1" />
+                <img src="assets/img/price-genie/store-expanded.png" alt="" data-w="2" />
+                <img src="assets/img/price-genie/cart-groups.png" alt="" data-w="3" />
+                <img src="assets/img/price-genie/cart-full.png" alt="" data-w="4" />
+              </div>
+            </div>
+          </div>
+          <div class="pg-walk-steps">
+            <div class="pg-walk-step">
+              <img class="mobile-img" src="assets/img/price-genie/browse-beverages.png" alt="Browsing beverages and adding products." loading="lazy" />
+              <span class="n">01</span>
+              <h3>Discover products</h3>
+              <p class="pg-body">Shopping begins with what you need&mdash;browse categories and add products to a store-agnostic list.</p>
+            </div>
+            <div class="pg-walk-step">
+              <img class="mobile-img" src="assets/img/price-genie/stores-list.png" alt="Comparing nearby stores." loading="lazy" />
+              <span class="n">02</span>
+              <h3>Compare stores</h3>
+              <p class="pg-body">The system ranks nearby stores by how much of the list they fulfil, at what price, with what delivery.</p>
+            </div>
+            <div class="pg-walk-step">
+              <img class="mobile-img" src="assets/img/price-genie/store-expanded.png" alt="Inspecting availability in an expanded store card." loading="lazy" />
+              <span class="n">03</span>
+              <h3>Inspect availability</h3>
+              <p class="pg-body">Expand a store for an inventory snapshot&mdash;what it has, what it doesn&rsquo;t, at what price&mdash;without leaving the comparison.</p>
+            </div>
+            <div class="pg-walk-step">
+              <img class="mobile-img" src="assets/img/price-genie/cart-groups.png" alt="Building a multi-store basket." loading="lazy" />
+              <span class="n">04</span>
+              <h3>Build a multi-store basket</h3>
+              <p class="pg-body">When one store can&rsquo;t cover the list, the best basket spans stores&mdash;grouped by delivery, not hidden.</p>
+            </div>
+            <div class="pg-walk-step">
+              <img class="mobile-img" src="assets/img/price-genie/cart-full.png" alt="Reviewing delivery and savings before payment." loading="lazy" />
+              <span class="n">05</span>
+              <h3>See delivery + savings</h3>
+              <p class="pg-body">Each delivery reads like a promise&mdash;these items, this store, this time&mdash;with savings surfaced, not buried.</p>
+            </div>
+          </div>
+          <div class="pg-walk-rail" aria-hidden="true">
+            <span class="seg is-on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         16 — EXPERIMENT (quiet pause)
+         ============================================================ -->
+    <section class="pg-section" id="experiment">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">16</span> &mdash; Experiment</p>
+        <h2 class="pg-display" data-reveal style="max-width:16ch;">We weren&rsquo;t redesigning a cart. We were testing a new shopping behaviour.</h2>
+        <div class="pg-measure" style="margin-top:clamp(40px,5vw,64px);">
+          <p class="pg-body" data-reveal>The core question the experiment was built to answer: can item-first discovery increase product discovery without creating unacceptable fulfilment complexity?</p>
+          <p class="pg-body" data-reveal style="--d:1">I&rsquo;m deliberately not publishing outcome numbers here. This was an internal experiment, and directional claims without the underlying data would be exactly the kind of portfolio inflation this page avoids. What I can speak to is what we observed while it ran.</p>
+        </div>
         <div>
-          <h4>Role</h4>
-          <p>Product Designer</p>
-        </div>
-        <div>
-          <h4>Scope</h4>
-          <p>Product strategy &#183; UX &#183;<br />Interaction &#183; Prototyping</p>
-        </div>
-        <div>
-          <h4>Platform</h4>
-          <p>Mobile</p>
-        </div>
-        <div>
-          <h4>Type</h4>
-          <p>0&#8594;1 product experiment</p>
+          <p class="pg-eyebrow" data-reveal style="margin-top:clamp(30px,4vw,48px);margin-bottom:14px;">Tracked</p>
+          <div class="pg-tracked" data-reveal style="--d:1"><span>Items added</span><span>Store fulfilment (N, N−1, N−2)</span><span>Cart value</span><span>Cancellations</span></div>
         </div>
       </div>
-    </div>
-    <span class="cs-hero-scroll">Scroll</span>
-  </section>
+    </section>
 
-  <!-- ARTICLE -->
-  <article class="cs-article">
+    <!-- ============================================================
+         17 — LEARNINGS (evidence timeline)
+         ============================================================ -->
+    <section class="pg-section" id="learnings">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">17</span> &mdash; Learnings</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:18ch;">The biggest learning wasn&rsquo;t about the cart.</h2>
 
-    <!-- Hero visual strip -->
-    <div class="cs-section fade-up">
-      <div class="cs-img-grid-3" style="margin-top:0;">
-        <div class="cs-img">
-          <div class="pg-phone">
-            <img class="pg-shot" src="assets/img/price-genie/pg-landing.png" alt="Price Genie landing — add items to a shopping list across categories" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Product discovery &#183; <code>pg-landing.png</code></span>
-          </div>
-        </div>
-        <div class="cs-img">
-          <div class="pg-phone">
-            <img class="pg-shot" src="assets/img/price-genie/stores-list.png" alt="Price Genie store results — nearby stores compared on fulfilment, price and delivery" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Store comparison &#183; <code>stores-list.png</code></span>
-          </div>
-        </div>
-        <div class="cs-img">
-          <div class="pg-phone">
-            <img class="pg-shot" src="assets/img/price-genie/cart-groups.png" alt="Price Genie multi-store cart grouped by delivery time" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Multi-store cart &#183; <code>cart-groups.png</code></span>
-          </div>
-        </div>
-      </div>
-      <p class="cs-img-caption">The three surfaces this case study is about: discovering products, comparing fulfilment, and understanding the resulting basket.</p>
-    </div>
-
-    <!-- 02 — CONTEXT -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">02 &#8212; Context</p>
-      <h2>Pincode was built around stores.</h2>
-      <p>Pincode is a hyperlocal shopping app. Like most commerce products, it followed the model ecommerce has used for decades: pick a store, then shop inside it.</p>
-      <div class="cs-flow-vertical">
-        <span class="cs-flow-step">Store</span>
-        <span class="cs-flow-arrow">&#8595;</span>
-        <span class="cs-flow-step">Products</span>
-        <span class="cs-flow-arrow">&#8595;</span>
-        <span class="cs-flow-step">Cart</span>
-        <span class="cs-flow-arrow">&#8595;</span>
-        <span class="cs-flow-step">Checkout</span>
-      </div>
-      <p>The model worked&#8212;unevenly. Grocery held a 49% share and Food 34%, while penetration across other categories stayed low. Whatever a user could discover was bounded by whichever store they happened to open first.</p>
-      <div class="cs-pullquote">Users don&#8217;t necessarily care from which store their orders are delivered.</div>
-      <p>They care about finding the products they need, at a good price, with a good delivery promise. The store is a means to that end&#8212;yet it was the first and most binding decision in the flow.</p>
-      <p><strong>The store-first model was becoming a constraint on product discovery.</strong></p>
-      <div class="cs-img-grid">
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/home.png" alt="Pincode home — find stores by category" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Store-first home &#183; <code>home.png</code></span>
-          </div>
-        </div>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/categories.png" alt="Pincode category browsing across grocery and beverages" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Category browse &#183; <code>categories.png</code></span>
-          </div>
-        </div>
-      </div>
-      <p class="cs-img-caption">The original entry points: pick a store, or browse a category that still resolves to one store&#8217;s shelf.</p>
-    </div>
-
-    <!-- 03 — PROBLEM -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">03 &#8212; Problem</p>
-      <h2>The problem wasn&#8217;t the cart. It was the shopping model.</h2>
-      <p>When users begin by choosing a store, their product discovery is constrained by that store&#8217;s inventory. The moment the store doesn&#8217;t have something, every path forward costs the user:</p>
-      <div class="cs-flow">
-        <span class="cs-flow-step">Item unavailable</span>
-        <span class="cs-flow-arrow">&#8594;</span>
-        <span class="cs-flow-step">Search another store</span>
-        <span class="cs-flow-arrow">or</span>
-        <span class="cs-flow-step">Compromise on product</span>
-        <span class="cs-flow-arrow">or</span>
-        <span class="cs-flow-step">Compromise on price / delivery</span>
-        <span class="cs-flow-arrow">or</span>
-        <span class="cs-flow-step">Abandon the basket</span>
-      </div>
-      <p>None of these are interface failures. A better cart, a better search bar, a better store page&#8212;none of them fix a sequence that forces the least-informed decision first. The problem was systemic, and it needed a model-level answer.</p>
-    </div>
-
-    <!-- 04 — OPPORTUNITY -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">04 &#8212; Opportunity</p>
-      <h2>What if we reversed the model?</h2>
-      <div class="pg-compare">
-        <div class="pg-compare-col">
-          <p class="pg-compare-label">Store First</p>
-          <div class="pg-compare-steps">
-            <span>Choose Store</span>
-            <span>Browse Products</span>
-            <span>Build Cart</span>
-          </div>
-        </div>
-        <div class="pg-compare-col now">
-          <p class="pg-compare-label">Price Genie</p>
-          <div class="pg-compare-steps">
-            <span>Choose Products</span>
-            <i class="pg-chev" aria-hidden="true"><svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6.5 6 6.5-6" stroke="rgba(255,255,255,0.42)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
-            <span>Compare Fulfilment</span>
-            <i class="pg-chev" aria-hidden="true"><svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6.5 6 6.5-6" stroke="rgba(255,255,255,0.42)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
-            <span>Build the Basket</span>
-          </div>
-        </div>
-      </div>
-      <p>Instead of asking users where they wanted to shop, Price Genie started with what they wanted to buy. Store-first discovery is bounded by one store&#8217;s shelf and pushes every gap onto the user; item-first discovery is bounded by the whole marketplace, and the system absorbs the gaps.</p>
-    </div>
-
-    <!-- 05 — HYPOTHESIS -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">05 &#8212; Hypothesis</p>
-      <h2>Could item-first shopping help users build better baskets?</h2>
-      <p>This was an experiment, not a redesign. We wanted to understand whether users would:</p>
-      <div style="margin-top:36px;">
-        <div class="cs-insight">
-          <span class="cs-insight-num">H1</span>
-          <div class="cs-insight-body">
-            <h4>Add more of the products they actually need</h4>
-            <p>If adding an item no longer commits you to a store, the basket should converge on the real shopping list&#8212;not the subset one store happens to carry.</p>
-          </div>
-        </div>
-        <div class="cs-insight">
-          <span class="cs-insight-num">H2</span>
-          <div class="cs-insight-body">
-            <h4>Consider multiple stores if it improved fulfilment</h4>
-            <p>Store loyalty on hyperlocal platforms is thin. Would users accept fulfilment from unfamiliar stores when availability, price, and delivery were clearly better?</p>
-          </div>
-        </div>
-        <div class="cs-insight">
-          <span class="cs-insight-num">H3</span>
-          <div class="cs-insight-body">
-            <h4>Trade store preference for better price and delivery</h4>
-            <p>The model only works if the comparison surface makes the trade obvious&#8212;users won&#8217;t abandon a known store for an abstract promise.</p>
-          </div>
-        </div>
-        <div class="cs-insight">
-          <span class="cs-insight-num">H4</span>
-          <div class="cs-insight-body">
-            <h4>Complete larger baskets without increasing cancellations</h4>
-            <p>Bigger baskets are only commercially healthy if the marketplace can actually fulfil them. Cancellations were the guardrail metric for the whole experiment.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 06 — SUCCESS METRICS -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">06 &#8212; Metrics we tracked</p>
-      <h2>We measured three things.</h2>
-      <p>Each hypothesis mapped to a measurable question. These are the metrics the experiment instrumented&#8212;grouped by what they answer.</p>
-      <div class="cs-scorecard">
-        <div class="cs-scorecard-row">
-          <div class="cs-scorecard-dim">Discovery</div>
-          <div class="cs-scorecard-metrics">
-            <span>Avg. items added</span>
-          </div>
-        </div>
-        <div class="cs-scorecard-row">
-          <div class="cs-scorecard-dim">Fulfilment</div>
-          <div class="cs-scorecard-metrics">
-            <span>Avg. stores with all items</span>
-            <span>Avg. stores with N&#8722;1 / N&#8722;2 items</span>
-          </div>
-        </div>
-        <div class="cs-scorecard-row">
-          <div class="cs-scorecard-dim">Business</div>
-          <div class="cs-scorecard-metrics">
-            <span>Cart value per user per month</span>
-            <span>Cancellations per order</span>
-          </div>
-        </div>
-      </div>
-      <p><strong>Discovery</strong> asks: are users able to find more of what they need? <strong>Fulfilment</strong> asks: can the marketplace actually serve those baskets? <strong>Business</strong> asks: does the new model create commercially healthy orders?</p>
-      <p>The fulfilment metrics are the interesting ones. Item-first shopping is only viable if enough nearby stores can cover all&#8212;or nearly all&#8212;of a typical basket. N&#8722;1 and N&#8722;2 coverage told us how often the model would need multi-store fulfilment to keep its promise.</p>
-    </div>
-
-    <!-- 07 — SYSTEM -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">07 &#8212; System</p>
-      <h2>The user shouldn&#8217;t have to understand the complexity underneath.</h2>
-      <p>Behind one decision surface, Price Genie evaluates the possible fulfilment combinations across nearby stores&#8212;availability, price, delivery, and offers&#8212;and presents the information users need to make a confident choice.</p>
-      <div class="pg-system" role="img" aria-label="System diagram: user needs six products; Price Genie evaluates nearby stores on availability, price, delivery and offers; best options are presented; the user builds a cart.">
-        <div class="pg-system-row">
-          <p class="pg-system-label">User needs</p>
-          <p class="pg-system-value">6 products</p>
-        </div>
-        <div class="pg-system-row core">
-          <p class="pg-system-label">Price Genie evaluates nearby stores</p>
-          <div class="pg-system-chips">
-            <span>Availability</span>
-            <span>Price</span>
-            <span>Delivery</span>
-            <span>Offers</span>
-          </div>
-        </div>
-        <div class="pg-system-row">
-          <p class="pg-system-label">Presented to the user</p>
-          <p class="pg-system-value">Best options</p>
-        </div>
-        <div class="pg-system-row">
-          <p class="pg-system-label">Outcome</p>
-          <p class="pg-system-value">Cart</p>
-        </div>
-      </div>
-      <div class="cs-statement">&#8220;Expose complexity only when it helps the user make a decision.&#8221;</div>
-      <p>Every design decision that follows is an application of this principle: collapse what the user doesn&#8217;t need, expand what helps them choose, and never hide what they&#8217;re accountable for.</p>
-      <div class="cs-img">
-        <div class="cs-img-frame med">
-          <img class="pg-shot" src="assets/img/price-genie/review-list.png" alt="Price Genie review list — the store-agnostic shopping list before matching, with a Find best stores action" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-          <span class="pg-drop">Review list, then &#8220;Find best stores&#8221; &#183; <code>review-list.png</code></span>
-        </div>
-        <p class="cs-img-caption">The store-agnostic list is the input the engine evaluates against every nearby store at once.</p>
-      </div>
-    </div>
-
-    <!-- 08 — DESIGN DECISION: FULFILMENT AT A GLANCE -->
-    <div class="cs-section fade-up">
-      <div class="cs-chapter" style="margin-top:0;">
-        <p class="cs-chapter-num">Design decision 01 &#8212; Fulfilment at a glance</p>
-        <h3>Start with the store that can fulfil the whole basket.</h3>
-        <p>When a store can fulfil 100% of the requested items, we collapse the details and make the fulfilment status immediately scannable.</p>
-        <div class="pg-ui" role="img" aria-label="Schematic of a collapsed store card showing 6 of 6 items available, delivery time, final price, savings, and a create-cart action.">
-          <div class="pg-ui-head">
-            <span class="pg-ui-store">Store A</span>
-            <span class="pg-ui-badge full">6 / 6 items available</span>
-          </div>
-          <div class="pg-ui-row">
-            <span class="pg-ui-kv">Delivery <b>in 60 min</b></span>
-            <span class="pg-ui-kv">Final price <b>&#8377;1,240</b></span>
-            <span class="pg-ui-kv">Savings <b>&#8377;180</b></span>
-          </div>
-          <span class="pg-ui-cta">Create cart</span>
-        </div>
-        <p class="pg-ui-caption">Schematic of the collapsed store card. Values illustrative.</p>
-        <p>The reasoning: users don&#8217;t need to inspect six individual products if the store already satisfies the entire basket. The only questions left are <em>when</em>, <em>how much</em>, and <em>what do I save</em>&#8212;so those are the only things the collapsed card shows.</p>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/store-collapsed.png" alt="Price Genie store detail — 6 of 6 items available, delivery window, savings and Create Cart" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Collapsed full-fulfilment card &#183; <code>store-collapsed.png</code></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 09 — DESIGN DECISION: INVENTORY ON DEMAND -->
-    <div class="cs-section fade-up">
-      <div class="cs-chapter" style="margin-top:0;">
-        <p class="cs-chapter-num">Design decision 02 &#8212; Inventory on demand</p>
-        <h3>Expand only when comparison is useful.</h3>
-        <p>Partial-fulfilment stores are where users actually have to think. Expanding a store gives them a quick inventory snapshot&#8212;which items it has, which it doesn&#8217;t, at what price&#8212;without taking them away from the comparison experience.</p>
-        <div class="pg-ui" role="img" aria-label="Schematic of an expanded store card showing five of six items available, with the missing item marked, plus delivery and price.">
-          <div class="pg-ui-head">
-            <span class="pg-ui-store">Store B</span>
-            <span class="pg-ui-badge">5 / 6 items available</span>
-          </div>
-          <div class="pg-ui-items">
-            <span>Coke</span>
-            <span>Rice 5kg</span>
-            <span>Milk 1L</span>
-            <span>Bread</span>
-            <span>Eggs (12)</span>
-            <span class="miss">Paneer 200g</span>
-          </div>
-          <div class="pg-ui-row">
-            <span class="pg-ui-kv">Delivery <b>in 45 min</b></span>
-            <span class="pg-ui-kv">Final price <b>&#8377;1,190</b></span>
-            <span class="pg-ui-kv">Savings <b>&#8377;140</b></span>
-          </div>
-        </div>
-        <p class="pg-ui-caption">Schematic of the expanded state. The missing item is named, not hidden.</p>
-        <p>Availability, price, and delivery are the primary decision variables&#8212;so the expanded state is built entirely from them. The card expands in place: comparison is a state of the list, not a separate screen, because leaving the list resets the user&#8217;s mental ranking of the options.</p>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/store-expanded.png" alt="Price Genie expanded store card showing an inventory snapshot with product thumbnails and prices" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Expanded inventory snapshot &#183; <code>store-expanded.png</code></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 10 — DESIGN DECISION: ITEM-FIRST BUT STORE-TRANSPARENT -->
-    <div class="cs-section fade-up">
-      <div class="cs-chapter" style="margin-top:0;">
-        <p class="cs-chapter-num">Design decision 03 &#8212; Item-first, store-transparent</p>
-        <h3>Item-first doesn&#8217;t mean store-blind.</h3>
-        <p>The system could have gone further&#8212;fully abstracting stores away and just delivering &#8220;the basket.&#8221; We deliberately didn&#8217;t. Even though discovery begins with products, fulfilment stays transparent. At every step users can see:</p>
-        <ul>
-          <li>which store fulfils the order</li>
-          <li>how quickly it arrives</li>
-          <li>what the final price is</li>
-          <li>what savings are applied</li>
-        </ul>
-        <div class="cs-pullquote">Abstract the complexity, not the accountability.</div>
-        <p>This is a trust principle, not a layout choice. When something goes wrong with an order&#8212;a delay, a substitution&#8212;the user needs to know who is responsible for what. A system that hides the fulfilling store buys simplicity now and pays for it in the first support ticket.</p>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/stores-partial.png" alt="Price Genie stores list stating that all items are not available in a single store, listing stores that carry some of the items" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Partial-fulfilment, named honestly &#183; <code>stores-partial.png</code></span>
-          </div>
-          <p class="cs-img-caption">When no single store covers the list, the system says so plainly rather than quietly dropping items.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 11 — DESIGN DECISION: MULTI-STORE CART -->
-    <div class="cs-section fade-up">
-      <div class="cs-chapter" style="margin-top:0;">
-        <p class="cs-chapter-num">Design decision 04 &#8212; The multi-store cart</p>
-        <h3>Once the basket spans stores, the cart needs a new mental model.</h3>
-        <p>The multi-store cart is a consequence of the model, not the innovation itself. When no single store can serve the whole list well, the best basket spans stores&#8212;and the cart has to stop pretending otherwise.</p>
-        <p>The cart was no longer simply a list of products. It became a representation of how the order would actually be fulfilled.</p>
-        <div class="pg-ui" role="img" aria-label="Schematic of a multi-store cart grouped by delivery: one delivery in 60 minutes from Simply Namdhari's, one in 90 minutes from MK Retail.">
-          <p class="pg-ui-group-label">Delivery in 60 min</p>
-          <div class="pg-ui-head" style="border-bottom:none; padding-top:10px;">
-            <span class="pg-ui-store">Simply Namdhari&#8217;s</span>
-          </div>
-          <div class="pg-ui-items">
-            <span>Coke</span>
-            <span>Rice 5kg</span>
-          </div>
-          <p class="pg-ui-group-label">Delivery in 90 min</p>
-          <div class="pg-ui-head" style="border-bottom:none; padding-top:10px;">
-            <span class="pg-ui-store">MK Retail</span>
-          </div>
-          <div class="pg-ui-items" style="border-bottom:none;">
-            <span>Milk 1L</span>
-            <span>Paneer 200g</span>
-          </div>
-        </div>
-        <p class="pg-ui-caption">Schematic of the multi-store cart, grouped by delivery. Items illustrative.</p>
-        <p>We grouped by <em>delivery</em>, with the store named inside each group&#8212;not the other way around. Delivery time is what the user plans their day around; the store is the answer to &#8220;who is bringing it.&#8221; Merging delivery and slot context into the group header meant one glance answers both &#8220;what arrives&#8221; and &#8220;when.&#8221;</p>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/cart-full.png" alt="Price Genie multi-store cart with items grouped under two deliveries, savings banner and bill details" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">The multi-store cart &#183; <code>cart-full.png</code></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 12 — DESIGN DECISION: DELIVERY + SLOTS -->
-    <div class="cs-section fade-up">
-      <div class="cs-chapter" style="margin-top:0;">
-        <p class="cs-chapter-num">Design decision 05 &#8212; Delivery &amp; slots</p>
-        <h3>Make delivery complexity visible, but easy to scan.</h3>
-        <p>When an order is fulfilled by multiple stores, users need immediate visibility into three things: where the order is coming from, what arrives when, and which items belong to each delivery.</p>
-        <p>The discipline was in what we didn&#8217;t show. Routing, store handoffs, slot allocation logic&#8212;all of it stayed backstage. The goal is clarity about the user&#8217;s own order, not a window into marketplace operations. Each delivery group reads like a small promise: these items, this store, this time.</p>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/cart-groups.png" alt="Price Genie cart showing a 60-minute delivery from one store and a 90-minute delivery from another, each with its own items" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Delivery groups: 60 min &amp; 90 min &#183; <code>cart-groups.png</code></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 13 — DESIGN DECISION: OFFERS + SAVINGS -->
-    <div class="cs-section fade-up">
-      <div class="cs-chapter" style="margin-top:0;">
-        <p class="cs-chapter-num">Design decision 06 &#8212; Offers &amp; savings</p>
-        <h3>Make the payoff tangible.</h3>
-        <p>Item-first shopping asks users to change a habit. The system has to keep showing them why it&#8217;s worth it.</p>
-        <div class="pg-ui" role="img" aria-label="Schematic of the savings confirmation: 370 rupees saved on this order, multiple offers applied.">
-          <div class="pg-ui-save">Yay! &#8377;370 saved on this order</div>
-          <div class="pg-ui-row" style="border-bottom:none;">
-            <span class="pg-ui-kv">Multiple offers applied</span>
-          </div>
-        </div>
-        <p class="pg-ui-caption">Schematic of the savings treatment at cart level. Values illustrative.</p>
-        <p>When users are comparing stores and fulfilment options, savings become part of the decision. We surfaced value throughout the experience&#8212;on comparison cards, in the cart, at confirmation&#8212;instead of burying it inside the bill. The offer engine stopped being a checkout footnote and became a decision input.</p>
-        <div class="cs-img">
-          <div class="cs-img-frame med">
-            <img class="pg-shot" src="assets/img/price-genie/cart-full.png" alt="Price Genie cart header showing 370 rupees saved including free delivery and a 40 percent discount, with a multiple-offers-applied banner" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-            <span class="pg-drop">Savings surfaced in the cart &#183; <code>cart-full.png</code></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 14 — FINAL EXPERIENCE (full-bleed) -->
-    <div class="cs-bleed fade-up">
-      <div class="cs-bleed-inner">
-        <p class="cs-kicker">14 &#8212; The final experience</p>
-        <h2>From need &#8594; basket &#8594; fulfilment.</h2>
-        <div class="pg-seq">
-          <div class="pg-seq-step">
-            <span class="pg-seq-num">01</span>
-            <div class="pg-phone">
-              <img class="pg-shot" src="assets/img/price-genie/browse-beverages.png" alt="Browsing beverages and adding products" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-              <span class="pg-drop"><code>browse-beverages.png</code></span>
-            </div>
-            <span class="pg-seq-label">Discover products</span>
-          </div>
-          <div class="pg-seq-step">
-            <span class="pg-seq-num">02</span>
-            <div class="pg-phone">
-              <img class="pg-shot" src="assets/img/price-genie/stores-list.png" alt="Comparing nearby stores" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-              <span class="pg-drop"><code>stores-list.png</code></span>
-            </div>
-            <span class="pg-seq-label">Compare stores</span>
-          </div>
-          <div class="pg-seq-step">
-            <span class="pg-seq-num">03</span>
-            <div class="pg-phone">
-              <img class="pg-shot" src="assets/img/price-genie/store-expanded.png" alt="Inspecting availability in an expanded store card" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-              <span class="pg-drop"><code>store-expanded.png</code></span>
-            </div>
-            <span class="pg-seq-label">Inspect availability</span>
-          </div>
-          <div class="pg-seq-step">
-            <span class="pg-seq-num">04</span>
-            <div class="pg-phone">
-              <img class="pg-shot" src="assets/img/price-genie/cart-groups.png" alt="Building a multi-store basket" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-              <span class="pg-drop"><code>cart-groups.png</code></span>
-            </div>
-            <span class="pg-seq-label">Build multi-store basket</span>
-          </div>
-          <div class="pg-seq-step">
-            <span class="pg-seq-num">05</span>
-            <div class="pg-phone">
-              <img class="pg-shot" src="assets/img/price-genie/cart-full.png" alt="Reviewing delivery and savings before payment" loading="lazy" onerror="this.remove()" onload="var s=this.parentElement.querySelector('.pg-drop'); if(s) s.remove();" />
-              <span class="pg-drop"><code>cart-full.png</code></span>
-            </div>
-            <span class="pg-seq-label">See delivery + savings</span>
-          </div>
-        </div>
-        <p class="cs-img-caption">The end-to-end flow, in shipped product screens.</p>
-      </div>
-    </div>
-
-    <!-- 15 — EXPERIMENT / RESULTS -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">15 &#8212; Experiment</p>
-      <h2>We weren&#8217;t redesigning a cart. We were testing a new shopping behaviour.</h2>
-      <p>The core question the experiment was built to answer:</p>
-      <div class="cs-pullquote">Can item-first discovery increase product discovery without creating unacceptable fulfilment complexity?</div>
-      <p>The experiment instrumented the metrics defined up front&#8212;items added, store fulfilment coverage, cart value, and cancellations. I&#8217;m deliberately not publishing outcome numbers here: this was an internal experiment, and directional claims without the underlying data would be exactly the kind of portfolio inflation this page avoids.</p>
-      <div class="cs-scorecard">
-        <div class="cs-scorecard-row">
-          <div class="cs-scorecard-dim">Tracked</div>
-          <div class="cs-scorecard-metrics">
-            <span>Items added</span>
-            <span>Store fulfilment (N, N&#8722;1, N&#8722;2)</span>
-            <span>Cart value</span>
-            <span>Cancellations</span>
-          </div>
-        </div>
-      </div>
-      <p>What I can speak to honestly is what we observed qualitatively while the experiment ran&#8212;which is the next section.</p>
-    </div>
-
-    <!-- 16 — LEARNINGS -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">16 &#8212; Learnings</p>
-      <h2>The biggest learning wasn&#8217;t about the cart.</h2>
-      <p>Each learning below is labelled by its evidence level&#8212;what we observed directly, what the work taught us, and what still needs a test.</p>
-      <div style="margin-top:36px;">
-        <div class="pg-learning">
-          <span class="pg-learn-tag observed">Observed</span>
-          <div class="pg-learning-body">
+        <div class="pg-evi">
+          <span class="pg-evi-line" aria-hidden="true"></span>
+          <div class="pg-evi-item">
+            <p class="pg-evi-tag">Observed</p>
             <h4>Users care more about finding the right products than choosing a specific store.</h4>
-            <p>Session after session, store choice was instrumental. Users engaged with the comparison surface as a means to complete their list, not to browse merchants.</p>
+            <p class="pg-body">Session after session, store choice was instrumental. Users engaged with the comparison surface to complete their list, not to browse merchants.</p>
           </div>
-        </div>
-        <div class="pg-learning">
-          <span class="pg-learn-tag observed">Observed</span>
-          <div class="pg-learning-body">
+          <div class="pg-evi-item">
+            <p class="pg-evi-tag">Observed</p>
             <h4>Multi-store fulfilment is acceptable when the value is clear.</h4>
-            <p>Users didn&#8217;t reject split deliveries outright&#8212;they weighed them. When the payoff (availability or savings) was visible next to the cost (a second delivery window), the trade was made willingly.</p>
+            <p class="pg-body">Users didn&rsquo;t reject split deliveries outright&mdash;they weighed them. When the payoff was visible next to the cost of a second window, the trade was made willingly.</p>
           </div>
-        </div>
-        <div class="pg-learning">
-          <span class="pg-learn-tag">Learned</span>
-          <div class="pg-learning-body">
+          <div class="pg-evi-item">
+            <p class="pg-evi-tag">Learned</p>
             <h4>Marketplace complexity needs to stay behind a simple decision surface.</h4>
-            <p>Every time backend complexity leaked into the interface&#8212;slot logic, partial matches, offer conditions&#8212;decision confidence dropped. The collapse/expand pattern existed to manage exactly this.</p>
+            <p class="pg-body">Every time backend complexity leaked into the interface&mdash;slot logic, partial matches, offer conditions&mdash;decision confidence dropped. The collapse/expand pattern existed to manage exactly this.</p>
           </div>
-        </div>
-        <div class="pg-learning">
-          <span class="pg-learn-tag">Learned</span>
-          <div class="pg-learning-body">
+          <div class="pg-evi-item">
+            <p class="pg-evi-tag">Learned</p>
             <h4>Price, availability and delivery are one decision, not three.</h4>
-            <p>Users never evaluated these factors independently. A great price with a missing item isn&#8217;t a great price. The comparison card had to present them as a single fulfilment proposition.</p>
+            <p class="pg-body">Users never evaluated these independently. A great price with a missing item isn&rsquo;t a great price. The card had to present them as a single fulfilment proposition.</p>
           </div>
-        </div>
-        <div class="pg-learning">
-          <span class="pg-learn-tag next">Next to test</span>
-          <div class="pg-learning-body">
-            <h4>Where the model breaks: basket sizes the marketplace can&#8217;t cover.</h4>
-            <p>The N&#8722;1 / N&#8722;2 coverage question&#8212;how often nearby supply can genuinely serve a full basket&#8212;determines whether item-first scales beyond dense areas. That&#8217;s a supply question as much as a design one.</p>
+          <div class="pg-evi-item">
+            <p class="pg-evi-tag next">Next to test</p>
+            <h4>Where the model breaks: basket sizes the marketplace can&rsquo;t cover.</h4>
+            <p class="pg-body">How often nearby supply can genuinely serve a full basket determines whether item-first scales beyond dense areas. That&rsquo;s a supply question as much as a design one.</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- 17 — REFLECTION -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">17 &#8212; Reflection</p>
-      <h2>Designing the interface was only half the problem.</h2>
-      <p>Price Genie taught me that marketplace UX isn&#8217;t just about helping users navigate products. It&#8217;s about making the underlying complexity of supply, fulfilment, price and delivery understandable enough for users to make confident choices.</p>
-      <p>The design work that mattered most never looked like design: deciding what the system should evaluate versus what the user should decide, where complexity earns its place on screen, and what a cart even <em>is</em> when fulfilment spans stores. The interface was the last mile of a strategy argument.</p>
-      <div class="pg-close" aria-label="Store-first to item-first">
-        <span class="pg-close-step">Store-first</span>
-        <div class="pg-close-arrow">&#8595;</div>
-        <span class="pg-close-step to">Item-first</span>
+    <!-- ============================================================
+         18 — REFLECTION
+         ============================================================ -->
+    <section class="pg-section" id="reflection">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">18</span> &mdash; Reflection</p>
+        <h2 class="pg-display" data-reveal style="max-width:16ch;">Designing the interface was only half the problem.</h2>
+        <div class="pg-measure" style="margin-top:clamp(40px,5vw,64px);">
+          <p class="pg-body" data-reveal>Price Genie taught me that marketplace UX isn&rsquo;t just about helping users navigate products. It&rsquo;s about making the underlying complexity of supply, fulfilment, price and delivery understandable enough for users to make confident choices.</p>
+          <p class="pg-body" data-reveal style="--d:1">The design work that mattered most never looked like design: deciding what the system should evaluate versus what the user should decide, where complexity earns its place on screen, and what a cart even <em>is</em> when fulfilment spans stores. The interface was the last mile of a strategy argument.</p>
+        </div>
+
       </div>
-    </div>
+      <div class="pg-endspace" aria-hidden="true"></div>
+    </section>
 
     <!-- CTA -->
-    <div class="cs-cta-wrap fade-up">
-      <span class="cs-cta-note">Want the full walkthrough with screens?</span>
-      <a class="cs-cta" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    <div class="pg-wrap">
+      <div class="pg-cta">
+        <span class="pg-cta-note">Want the full walkthrough with screens?</span>
+        <a href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+      </div>
     </div>
 
-  </article>
+  </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (preserved) -->
   <footer class="footer--rule">
     <p class="footer-tagline">Always brewing something new</p>
   </footer>
 
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/pg.js" defer></script>
 </body>
 </html>

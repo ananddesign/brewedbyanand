@@ -4,14 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QWEEN — Brewed by Anand</title>
-  <meta name="description" content="QWEEN — moving the certainty of a luxury jewellery showroom online, across discovery, collection and a nine-chapter product experience." />
+  <meta name="description" content="QWEEN — designing confidence for luxury jewellery commerce. How the product page became a confidence-building experience for high-consideration purchases." />
   <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/case-study.css" />
+  <link rel="stylesheet" href="assets/css/qween.css" />
 </head>
-<body>
+<!--
+  NOTE FOR EDITING
+  ----------------
+  Every visual on this page is a designed placeholder ("plate"). To ship a
+  real screenshot, drop an <img src="..." alt="..."> as the FIRST child of any
+  .qw-plate and delete the .qw-plate-note sibling — the frame styling stays.
+  The PDP references the live Cherry Pop Hoops product page; capture that at
+  high resolution to fill the 05 plates. No numbers or claims are invented:
+  outcomes are qualitative, and trust programmes are named as provided.
+-->
+<body class="qw">
 
-  <!-- NAV -->
+  <!-- NAV (preserved) -->
   <nav id="mainNav">
     <a class="nav-logo" href="index.html" aria-label="Brewed by Anand — home">
       <img class="nav-logo-white" src="assets/img/logo-white.svg" alt="Brewed by Anand" width="334" height="117" />
@@ -33,1015 +42,526 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="cs-hero" style="--cs-hero-bg: var(--ink);">
-    <div class="cs-hero-bg"></div>
-    <div class="cs-hero-content">
-      <p class="cs-hero-tag">Case Study &#8212; QWEEN</p>
-      <h1 class="cs-hero-title">Designing the Digital Experience for a Luxury Jewellery House</h1>
-      <p class="cs-hero-subtitle">Luxury jewellery is bought in a room with soft light, a velvet tray, and someone who knows your name. QWEEN needed that same certainty on a phone screen&#8212;without the room, the tray, or the person.</p>
-      <div class="cs-hero-meta">
-        <div>
-          <h4>Role</h4>
-          <p>Product Designer<br />End-to-end experience</p>
-        </div>
-        <div>
-          <h4>Duration</h4>
-          <p>~1 year<br />Ongoing</p>
-        </div>
-        <div>
-          <h4>Team</h4>
-          <p>Founders, Engineering,<br />Merchandising, Content, Photography</p>
-        </div>
-        <div>
-          <h4>Scope</h4>
-          <p>Ecommerce, Design System,<br />Motion, Responsive</p>
+  <!-- PROGRESS INDEX -->
+  <nav class="qw-progress" aria-label="Case study chapters">
+    <a href="#gap"><span class="lbl">The gap</span><span class="bar"></span></a>
+    <a href="#insight"><span class="lbl">Insight</span><span class="bar"></span></a>
+    <a href="#principles"><span class="lbl">Principles</span><span class="bar"></span></a>
+    <a href="#shift"><span class="lbl">The shift</span><span class="bar"></span></a>
+    <a href="#pdp"><span class="lbl">The PDP</span><span class="bar"></span></a>
+    <a href="#trust"><span class="lbl">Trust</span><span class="bar"></span></a>
+    <a href="#concierge"><span class="lbl">Human + digital</span><span class="bar"></span></a>
+    <a href="#ownership"><span class="lbl">Ownership</span><span class="bar"></span></a>
+    <a href="#ecosystem"><span class="lbl">Beyond the PDP</span><span class="bar"></span></a>
+    <a href="#outcome"><span class="lbl">Outcome</span><span class="bar"></span></a>
+    <a href="#reflection"><span class="lbl">Reflection</span><span class="bar"></span></a>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <header class="qw-hero" id="top">
+    <div class="qw-hero-bg">
+      <div class="qw-plate" role="img" aria-label="The QWEEN product detail page — the Cherry Pop Hoops, shown as the hero product visual.">
+        <!-- Replace with the strongest QWEEN PDP visual (Cherry Pop Hoops, full-bleed). -->
+        <div class="qw-plate-note">
+          <span class="qw-plate-kind">Hero — QWEEN PDP</span>
+          <span class="qw-plate-desc">The Cherry Pop Hoops product experience, at full bleed</span>
+          <span class="qw-plate-swap">Drop the live PDP screenshot here</span>
         </div>
       </div>
     </div>
-    <span class="cs-hero-scroll">Scroll</span>
-  </section>
-
-  <!-- ARTICLE -->
-  <article class="cs-article">
-
-    <!-- 01 EXECUTIVE SUMMARY -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">01 &#8212; Executive Summary</p>
-      <h2>An ecommerce problem disguised as a confidence problem</h2>
-      <p>QWEEN sells fine jewellery in India at price points where a single order can cost more than a laptop. The site worked. People browsed it. Very few of them bought.</p>
-      <p>The instinct in that situation is to optimise the funnel&#8212;faster checkout, better filters, more urgency. We did the opposite. The blocker was never speed. It was that a buyer standing in front of a &#8377;2,00,000 decision had no way to reach the certainty a showroom gives them in four minutes: seeing the piece at true scale, understanding what the stone actually is, knowing it can be returned, and feeling like the brand is a house rather than a storefront.</p>
-      <p>So the work became: rebuild the experience around the moments where confidence is won or lost. That meant a discovery model organised around intent instead of inventory, a collection experience that reads as editorial rather than catalogue, and&#8212;most of all&#8212;a product detail experience rebuilt from the ground up as a nine-chapter argument for a single piece.</p>
-      <p>Two further ideas came out of the work that we did not build: an AI concierge that replaces the sales associate&#8217;s judgement, and an immersive try-on and atelier experience. Both are documented here as future vision, not as shipped product.</p>
-      <div class="cs-img">
-        <div class="cs-img-frame tall"><span>[PLACEHOLDER &#8212; Hero Image] Composite of the shipped experience: PDP on desktop, collection on mobile, one editorial still</span></div>
-        <p class="cs-img-caption">The three surfaces this case study is mostly about: discovery, collection, and product detail.</p>
+    <div class="qw-hero-inner">
+      <div class="qw-hero-content">
+        <p class="qw-hero-eyebrow" data-hero style="--hd:0">QWEEN · Product Design · Luxury Commerce</p>
+        <h1 class="qw-hero-title" data-hero style="--hd:1">Designing confidence for luxury jewellery commerce.</h1>
+        <p class="qw-hero-desc" data-hero style="--hd:2">How we transformed the jewellery product page from a catalogue of products into a confidence-building experience for high-consideration purchases.</p>
+        <dl class="qw-hero-meta" data-hero style="--hd:3">
+          <div><dt>Role</dt><dd>Product Designer · end-to-end</dd></div>
+          <div><dt>Scope</dt><dd>Ecommerce · Design system · Motion · Responsive</dd></div>
+          <div><dt>Platform</dt><dd>Responsive web · mobile-first</dd></div>
+          <div><dt>Status</dt><dd>Shipped · ongoing</dd></div>
+        </dl>
       </div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Executive Summary</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Give a director the entire argument in ninety seconds, so everything after it is optional depth rather than required reading.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">One wide composite still. Real product photography at full bleed, devices inset at small scale. No device-frame collage.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">None. This section should be readable without scroll trickery&#8212;it is the one place a reader might be skimming on a phone in a hiring queue.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Single fade-and-rise on the composite at 0.65s, ease-out. Text arrives without motion.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Single 760px measure. Full-bleed image break under the last paragraph.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Most portfolio readers decide within one screen. This section is the decision.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Ship the composite as a single optimised WebP under 300KB with an AVIF source. It is the LCP element.</div></div>
-        </div>
-      </details>
     </div>
+    <div class="qw-hero-scroll" aria-hidden="true"><span>Scroll</span></div>
+  </header>
 
-    <!-- 02 THE OPPORTUNITY -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">02 &#8212; The Opportunity</p>
-      <h2>Indian luxury moved online. The experience didn&#8217;t.</h2>
-      <p>Indian jewellery retail is enormous, culturally central, and&#8212;at the luxury end&#8212;still overwhelmingly offline. That is not a technology gap. Every major house has a website. It is an experience gap: the sites exist to display inventory, and buying jewellery has almost nothing to do with browsing inventory.</p>
-      <p>What a buyer is actually doing is resolving a series of doubts. Is this the right piece for the occasion. Is the stone what they say it is. Will it look like this on me. Can I undo this if I&#8217;m wrong. Is this brand going to exist in ten years when I need it resized.</p>
-      <p>A showroom answers all five without being asked. Most jewellery ecommerce answers none of them, and compensates with discounting&#8212;which in luxury is not a neutral act. Every banner that shouts erodes the thing the customer is paying for.</p>
-      <div class="cs-pullquote">The opportunity was not to sell jewellery online. It was to move the showroom&#8217;s certainty online, and leave the showroom&#8217;s pressure behind.</div>
-      <p>That framing set the ambition for the whole engagement: not a store, an ecosystem&#8212;discovery, collection, product, and eventually service&#8212;where each surface does one part of the confidence job and hands off cleanly to the next.</p>
-      <div class="cs-img">
-        <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Market Landscape] Positioning map: Indian jewellery brands plotted on inventory-led vs. experience-led, mass vs. luxury</span></div>
+  <main>
+
+    <!-- STORYBOARD — the three confidence surfaces -->
+    <section class="qw-section qw-section--tight">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal>Desire &nbsp;→&nbsp; Understanding &nbsp;→&nbsp; Trust</p>
+        <div class="qw-storyboard" data-reveal="scale">
+          <div class="qw-plate s2" role="img" aria-label="Product story — why the piece exists."><div class="qw-plate-note"><span class="qw-plate-kind">Story</span><span class="qw-plate-desc">Why the piece exists</span></div></div>
+          <div class="qw-plate s1" role="img" aria-label="The PDP hero — establishing the piece at true scale."><div class="qw-plate-note"><span class="qw-plate-kind">PDP</span><span class="qw-plate-desc">The piece at true scale</span></div></div>
+          <div class="qw-plate s3" role="img" aria-label="Trust — certification and assurance before price."><div class="qw-plate-note"><span class="qw-plate-kind">Trust</span><span class="qw-plate-desc">Assurance before price</span></div></div>
+        </div>
+        <p class="qw-cap" data-reveal style="margin:34px auto 0;text-align:center;max-width:56ch;">The product page carries the confidence burden — so it is where most of this case study lives.</p>
       </div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; The Opportunity</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Establish that this was a market-level opportunity, not a client asking for a redesign. Proves business framing before any craft is shown.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">A quiet 2&#215;2 positioning map, drawn in the same hairline language as the rest of the page. No logos of competitors.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Optional: hovering a quadrant dims the others to 30% opacity. Nothing clickable.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Axes draw in over 600ms on entry, points fade in staggered 40ms apart. Runs once.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Text measure, then a centred diagram at 100% of the measure.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Directors read for whether a designer understands the business they were designing inside.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Inline SVG with <code>stroke-dasharray</code> draw-on. Keep under 6KB.</div></div>
-        </div>
-      </details>
-    </div>
+    </section>
 
-    <!-- 03 UNDERSTANDING LUXURY COMMERCE -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">03 &#8212; Understanding Luxury Commerce</p>
-      <h2>Luxury inverts almost every ecommerce best practice</h2>
-      <p>Before designing anything I wrote down the rules I was about to break, and why. Standard ecommerce heuristics are optimised for a fast, low-stakes, high-frequency purchase. Fine jewellery is slow, high-stakes, and rare. Most of the playbook inverts.</p>
-      <div class="cs-cards">
-        <div class="cs-card">
-          <h4>Speed &#8594; Pace</h4>
-          <p>Mass retail removes seconds from the path to cart. Luxury needs the opposite: enough time on the piece for desire to form. Friction removed from the wrong place reads as cheapness.</p>
+    <!-- ============================================================
+         01 — THE CONFIDENCE GAP
+         ============================================================ -->
+    <section class="qw-section" id="gap">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">01</span> &mdash; The problem</p>
+        <h2 class="qw-display" data-reveal style="max-width:22ch;">Luxury jewellery is easy to browse online. It&rsquo;s harder to feel confident buying it online.</h2>
+
+        <div class="qw-measure" style="margin-top:clamp(34px,5vw,56px);">
+          <p class="qw-body" data-reveal>QWEEN sells fine jewellery at price points where a single order can cost more than a laptop. The site worked. People browsed it. Very few of them bought. The instinct in that situation is to optimise the funnel &mdash; faster checkout, better filters, more urgency. The blocker was never speed.</p>
+          <p class="qw-body" data-reveal style="--d:1">A buyer standing in front of a &#8377;2,00,000 decision has no way to reach the certainty a showroom gives them in four minutes: seeing the piece at true scale, understanding what the stone actually is, knowing it can be returned, and feeling like the brand is a house rather than a storefront. Fine jewellery is slow, high-stakes and rare &mdash; and most of the ecommerce playbook, tuned for fast and low-stakes, inverts.</p>
         </div>
-        <div class="cs-card">
-          <h4>Density &#8594; Restraint</h4>
-          <p>Showing more products per screen raises exposure and lowers perceived value. Fewer, larger, better-photographed pieces outperform grids in every luxury benchmark I could find, and in our own testing.</p>
+
+        <!-- SHOWROOM vs ECOMMERCE -->
+        <div class="qw-versus" role="group" aria-label="The showroom resolves seven moments of doubt; traditional ecommerce answers four steps.">
+          <div class="qw-versus-col now" data-reveal>
+            <h3>The showroom</h3>
+            <div class="qw-versus-step">See</div>
+            <div class="qw-versus-step">Touch</div>
+            <div class="qw-versus-step">Try</div>
+            <div class="qw-versus-step">Ask</div>
+            <div class="qw-versus-step">Understand</div>
+            <div class="qw-versus-step">Trust</div>
+            <div class="qw-versus-step">Buy</div>
+          </div>
+          <div class="qw-versus-mid" data-reveal style="--d:1" aria-hidden="true">vs.</div>
+          <div class="qw-versus-col muted" data-reveal style="--d:1">
+            <h3>Traditional ecommerce</h3>
+            <div class="qw-versus-step">Image</div>
+            <div class="qw-versus-step">Specs</div>
+            <div class="qw-versus-step">Price</div>
+            <div class="qw-versus-step">Buy</div>
+          </div>
         </div>
-        <div class="cs-card">
-          <h4>Urgency &#8594; Assurance</h4>
-          <p>Countdown timers and low-stock badges work on impulse categories. On a &#8377;2,00,000 purchase they trigger suspicion. The equivalent lever in luxury is certification, returns, and provenance.</p>
-        </div>
-        <div class="cs-card">
-          <h4>Persuasion &#8594; Information</h4>
-          <p>The luxury buyer is not resisting a sale; they are missing facts. Give them the cut, the clarity, the setting, the sizing, the policy&#8212;and the sale is already made.</p>
-        </div>
+
+        <blockquote class="qw-quote" data-reveal style="max-width:24ch;">The buyer isn&rsquo;t resisting a sale. They&rsquo;re missing the certainty a showroom gives for free.</blockquote>
       </div>
-      <p>One nuance specific to India shaped a lot of downstream decisions: jewellery here is simultaneously an emotional object, a ceremonial object, and a financial asset. The same buyer wants to feel something and to verify something. An experience that only romanticises fails the second need; one that only specifies fails the first. Almost every layout decision in the PDP is an attempt to serve both in the correct order.</p>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Understanding Luxury Commerce</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Show that the unconventional decisions later in the page were reasoned, not stylistic.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">No image. Four hairline blocks. The absence of imagery here is deliberate pacing before the research section.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">None.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Blocks stagger up 60ms apart on entry.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Two-column grid collapsing to one under 760px.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">It pre-empts the reviewer&#8217;s objection &#8212; &#8220;why is this so sparse?&#8221; &#8212; before they can raise it.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Pure CSS grid. No JS.</div></div>
+    </section>
+
+    <!-- ============================================================
+         02 — THE INSIGHT  (dark band)
+         ============================================================ -->
+    <section class="qw-section qw-band" id="insight">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">02</span> &mdash; The insight</p>
+        <h2 class="qw-display" data-reveal style="max-width:20ch;">Don&rsquo;t replicate the showroom. Recreate what makes the showroom work.</h2>
+
+        <div class="qw-measure" style="margin-top:clamp(34px,5vw,56px);">
+          <p class="qw-body" data-reveal>Time spent with the people who sell jewellery for a living was the most useful research of the project. A sales associate carries a compressed, tested model of what a buyer needs and in what order &mdash; it just lives in their head. Buyer conversations, session recordings and drop-off analysis confirmed the same pattern. Five things surfaced, and each one has a named consequence later in the product.</p>
         </div>
-      </details>
-    </div>
 
-    <!-- 04 RESEARCH — dark band -->
-    <div class="cs-bleed fade-up">
-      <div class="cs-bleed-inner">
-        <p class="cs-kicker">04 &#8212; Research</p>
-        <h2>Five things buyers told us that changed the product</h2>
-        <p>Research ran alongside build rather than before it: buyer conversations, session recordings, drop-off analysis, and time spent with the people who sell jewellery for a living. The last of those was the most useful. Sales associates have a compressed, tested model of what a buyer needs and in what order&#8212;it just lives in their heads.</p>
+        <div class="qw-trust-list" style="margin-top:clamp(40px,5vw,64px);" role="list">
+          <div class="qw-trust-item" role="listitem"><div><h4>Scale is the first unanswered question &mdash; and it&rsquo;s never asked.</h4><p>Buyers don&rsquo;t say &ldquo;I can&rsquo;t tell how big it is.&rdquo; They zoom, hesitate, leave. On-model imagery resolves more doubt than dimensions in millimetres.</p></div><span class="mk">01</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>Returns and certification are read before price.</h4><p>Above a threshold, buyers hunt for the returns window and the certificate before engaging with the piece. Trust is a gate, not a footer.</p></div><span class="mk">02</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>Specifications are wanted by a minority, needed by everyone.</h4><p>Few read the full breakdown; almost all check that it exists. Depth is a credibility signal even when unread.</p></div><span class="mk">03</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>People shop by occasion, not category.</h4><p>The model is &ldquo;something for my sister&rsquo;s wedding,&rdquo; not &ldquo;pendants, 18kt, under &#8377;X.&rdquo; Category-first forced a translation buyers were bad at.</p></div><span class="mk">04</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>The decision is rarely made alone.</h4><p>Sharing a piece with a partner or parent was a routine, unsupported step. A link without context broke the conversation the buyer was trying to have.</p></div><span class="mk">05</span></div>
+        </div>
 
-        <div style="margin-top:40px;">
-          <div class="cs-insight">
-            <span class="cs-insight-num">01</span>
-            <div class="cs-insight-body">
-              <h4>Scale is the first unanswered question, and it is never asked.</h4>
-              <p>Buyers do not say &#8220;I can&#8217;t tell how big it is.&#8221; They zoom, they hesitate, they leave. On-model and on-hand imagery resolved more hesitation than any amount of copy about dimensions in millimetres.</p>
+        <p class="qw-eyebrow qw-chaptertag" data-reveal style="margin-top:clamp(64px,9vw,110px);margin-bottom:clamp(28px,4vw,40px);">The five confidence moments</p>
+        <div class="qw-seq" role="img" aria-label="The confidence sequence: desire, experience, understand, trust, decide.">
+          <span class="qw-seq-node" style="--d:0"><span class="idx">01</span>Desire</span>
+          <span class="qw-seq-link" style="--d:1"></span>
+          <span class="qw-seq-node" style="--d:1"><span class="idx">02</span>Experience</span>
+          <span class="qw-seq-link" style="--d:2"></span>
+          <span class="qw-seq-node" style="--d:2"><span class="idx">03</span>Understand</span>
+          <span class="qw-seq-link" style="--d:3"></span>
+          <span class="qw-seq-node" style="--d:3"><span class="idx">04</span>Trust</span>
+          <span class="qw-seq-link" style="--d:4"></span>
+          <span class="qw-seq-node" style="--d:4"><span class="idx">05</span>Decide</span>
+        </div>
+        <p class="qw-body qw-measure" data-reveal style="margin-top:clamp(30px,4vw,48px);color:rgba(255,255,255,0.78);">These aren&rsquo;t features. They&rsquo;re the moments where confidence is won or lost &mdash; and the order they arrive in is not negotiable. Everything after this chapter is an attempt to answer them in sequence.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 — DESIGN PRINCIPLES
+         ============================================================ -->
+    <section class="qw-section" id="principles">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">03</span> &mdash; The approach</p>
+        <h2 class="qw-statement" data-reveal>Designing for confidence, not just conversion.</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">Principles are only useful when they can settle an argument. Each of these carried a rule, so debates about taste became debates about the rule.</p>
+
+        <div class="qw-principles">
+          <div class="qw-principle" data-reveal="fade">
+            <div class="qw-principle-copy">
+              <div class="qw-principle-idx">01</div>
+              <h3 class="qw-principle-name">Create desire</h3>
+              <p class="qw-body">Let the jewellery sell itself before asking customers to evaluate it. The piece is the interface; chrome recedes, and no UI element overlaps product photography except a near-silent purchase bar.</p>
+            </div>
+            <div class="qw-principle-media">
+              <div class="qw-plate qw-plate--wide" role="img" aria-label="Product photography occupying the majority of the viewport."><div class="qw-plate-note"><span class="qw-plate-kind">Principle 01</span><span class="qw-plate-desc">The piece occupies the viewport</span></div></div>
             </div>
           </div>
-          <div class="cs-insight">
-            <span class="cs-insight-num">02</span>
-            <div class="cs-insight-body">
-              <h4>Returns policy is read before price on high-value items.</h4>
-              <p>In session recordings, buyers above a certain price threshold went looking for returns and certification before they engaged with the piece itself. Trust is a gate, not a footer.</p>
+          <div class="qw-principle" data-reveal="fade">
+            <div class="qw-principle-copy">
+              <div class="qw-principle-idx">02</div>
+              <h3 class="qw-principle-name">Make it tangible</h3>
+              <p class="qw-body">Reduce the distance between digital and physical. Answer scale by comparison, not measurement &mdash; and let the buyer see how a piece behaves before they commit.</p>
+            </div>
+            <div class="qw-principle-media">
+              <div class="qw-plate qw-plate--wide" role="img" aria-label="On-model and interactive views that make scale tangible."><div class="qw-plate-note"><span class="qw-plate-kind">Principle 02</span><span class="qw-plate-desc">On-model, at true scale</span></div></div>
             </div>
           </div>
-          <div class="cs-insight">
-            <span class="cs-insight-num">03</span>
-            <div class="cs-insight-body">
-              <h4>Diamond specifications are wanted by a minority and needed by everyone.</h4>
-              <p>Few buyers read the full 4Cs breakdown. Almost all of them checked that it existed. Specification depth functions as a credibility signal even when unread&#8212;which argues for present-but-collapsed, not removed.</p>
+          <div class="qw-principle" data-reveal="fade">
+            <div class="qw-principle-copy">
+              <div class="qw-principle-idx">03</div>
+              <h3 class="qw-principle-name">Explain progressively</h3>
+              <p class="qw-body">Reveal information when customers need it. A summary line is always visible; the full specification is one interaction away. Present, complete, never imposed.</p>
+            </div>
+            <div class="qw-principle-media">
+              <div class="qw-plate qw-plate--wide" role="img" aria-label="A collapsed specification summary that expands on demand."><div class="qw-plate-note"><span class="qw-plate-kind">Principle 03</span><span class="qw-plate-desc">Summary now, depth on demand</span></div></div>
             </div>
           </div>
-          <div class="cs-insight">
-            <span class="cs-insight-num">04</span>
-            <div class="cs-insight-body">
-              <h4>People shop by occasion, not by category.</h4>
-              <p>The mental model is &#8220;something for my sister&#8217;s wedding,&#8221; not &#8220;pendants, 18kt, under &#8377;X.&#8221; Category-first navigation forced a translation step buyers were bad at, and that translation is exactly where they dropped.</p>
+          <div class="qw-principle" data-reveal="fade">
+            <div class="qw-principle-copy">
+              <div class="qw-principle-idx">04</div>
+              <h3 class="qw-principle-name">Put trust before commitment</h3>
+              <p class="qw-body">Make reassurance part of the purchase journey. Certification, hallmarking and returns move out of the footer and in front of the price, where the doubt actually occurs.</p>
+            </div>
+            <div class="qw-principle-media">
+              <div class="qw-plate qw-plate--wide" role="img" aria-label="A trust band placed above the price."><div class="qw-plate-note"><span class="qw-plate-kind">Principle 04</span><span class="qw-plate-desc">Assurance ahead of price</span></div></div>
             </div>
           </div>
-          <div class="cs-insight">
-            <span class="cs-insight-num">05</span>
-            <div class="cs-insight-body">
-              <h4>The decision is rarely made alone.</h4>
-              <p>Sharing a piece with a partner or parent was a routine step in the journey and a completely unsupported one. A shared link that arrived without price context, or without the imagery, broke the conversation the buyer was trying to have.</p>
+          <div class="qw-principle" data-reveal="fade">
+            <div class="qw-principle-copy">
+              <div class="qw-principle-idx">05</div>
+              <h3 class="qw-principle-name">Keep a human door open</h3>
+              <p class="qw-body">Self-service shouldn&rsquo;t mean being left alone. A way to reach a person stays within reach throughout, so the experience never traps a hesitant buyer.</p>
+            </div>
+            <div class="qw-principle-media">
+              <div class="qw-plate qw-plate--wide" role="img" aria-label="A quiet concierge entry point kept within reach."><div class="qw-plate-note"><span class="qw-plate-kind">Principle 05</span><span class="qw-plate-desc">A person, one tap away</span></div></div>
             </div>
           </div>
         </div>
-        <div class="cs-img">
-          <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; User Journey] Buyer journey map: consideration &#8594; validation &#8594; consultation &#8594; purchase, with drop-off and doubt annotated at each stage</span></div>
-          <p class="cs-img-caption">The journey is not a funnel. It loops through consultation before it closes.</p>
-        </div>
-        <details class="cs-note">
-          <summary>Design direction &#8212; Research</summary>
-          <div class="cs-note-body">
-            <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Convert observation into five load-bearing insights, each of which is visibly cashed out later in the page.</div></div>
-            <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">One journey map, drawn as a horizontal band with a doubt-intensity line running beneath it. Optionally two stills from session recordings, anonymised.</div></div>
-            <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Each insight could link forward to the section that acts on it. Subtle underline on hover only.</div></div>
-            <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Numerals fade from 0 to 28% opacity as each row enters. Rows stagger 80ms.</div></div>
-            <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Full-bleed dark band. The tonal shift marks the transition from context into evidence.</div></div>
-            <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Research sections are where most case studies become decorative. Every insight here has a named consequence.</div></div>
-            <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Dark band uses <code>100vw</code> negative-margin break-out; guard against horizontal overflow with <code>overflow-x:hidden</code> on body.</div></div>
-          </div>
-        </details>
       </div>
-    </div>
+    </section>
 
-    <!-- 05 PRODUCT VISION -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">05 &#8212; Product Vision</p>
-      <div class="cs-statement">Move the certainty of the showroom online, and leave its pressure behind.</div>
-      <p>That sentence did more work than any spec document. It is falsifiable, which is what makes it useful: any proposed feature could be tested against it. Does this increase certainty? Does it introduce pressure? A low-stock badge fails the second test. A returns statement at the point of hesitation passes the first.</p>
-      <p>Underneath it sat three commitments that shaped scope for the year:</p>
-      <ul>
-        <li><strong>The piece is the interface.</strong> Photography and product are the primary surface; chrome recedes.</li>
-        <li><strong>Every claim is verifiable.</strong> If we say it, we can show the certificate, the policy, or the hallmark.</li>
-        <li><strong>One system, every surface.</strong> Discovery, collection, and product share tokens, motion, and vocabulary&#8212;so the brand feels like a house rather than a set of pages.</li>
-      </ul>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Product Vision</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Give the reader the decision rule that the rest of the case study is applied against.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Type only. The statement is the visual.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">None. Resist the urge.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Line-by-line mask reveal, 500ms per line, 80ms apart. Reduced-motion falls back to a plain fade.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Centred display type with generous space above and below&#8212;this is a breath between research and system.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">A vision statement that can reject features is strategy. One that can&#8217;t is decoration.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Clip-path or overflow-hidden line wrappers; avoid per-character splitting for accessibility and screen-reader sanity.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 06 EXPERIENCE PRINCIPLES -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">06 &#8212; Experience Principles</p>
-      <h2>Four principles, each with a decision it was allowed to make</h2>
-      <p>Principles are only useful when they can settle an argument. Each of these came with a concrete rule attached, so that debates about taste became debates about the rule.</p>
-
-      <div class="cs-decision-grid">
-        <div class="cs-decision-label">Reverence</div>
-        <div class="cs-decision-text">The product occupies the majority of any viewport it appears in. Rule: no UI element may overlap product photography except the sticky purchase bar, and only below the fold.</div>
-        <div class="cs-decision-label">Evidence</div>
-        <div class="cs-decision-text">Every trust claim resolves to an artefact. Rule: no marketing adjective ships without a linked certificate, policy, or specification behind it.</div>
-        <div class="cs-decision-label">Pace</div>
-        <div class="cs-decision-text">The experience is allowed to be slower than a mass retailer. Rule: motion durations sit in the 400&#8211;900ms band, never below 200ms except for direct-manipulation feedback.</div>
-        <div class="cs-decision-label">Quiet</div>
-        <div class="cs-decision-text">Nothing animates for attention, only for continuity. Rule: no looping animation, no autoplay with sound, no motion that begins without a user action or a scroll position.</div>
-      </div>
-      <p>The Quiet principle was the most contested and the most valuable. It killed a carousel auto-rotation, a homepage video loop, and two separate proposals for animated promotional strips. Each of those would have raised short-term engagement and lowered the thing the brand was selling.</p>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Experience Principles</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Demonstrate design leadership: principles that constrained the team, including its designer.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Hairline table. Optionally one &#8220;rejected by principle&#8221; artefact per row, shown small and greyed.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Hover a row to reveal the artefact it rejected. Keep it optional&#8212;must read fully without hover on touch.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Rows reveal top-to-bottom with a 1px rule drawing across before the text fades in.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Label column fixed at 110px, text column fluid.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Naming what a principle killed is the difference between a principle and a poster.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Table semantics if the artefact column ships; definition list otherwise.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 07 PRODUCT ECOSYSTEM -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">07 &#8212; Product Ecosystem</p>
-      <h2>Four surfaces, one job each</h2>
-      <p>The failure mode of a jewellery site is that every page tries to do everything: the homepage sells, the listing page sells, the product page sells. Nothing hands off, so nothing builds. We assigned each surface a single job and let it be incomplete on its own.</p>
-      <div class="cs-flow-vertical">
-        <span class="cs-flow-step">Discovery &#8212; orient by intent</span>
-        <span class="cs-flow-arrow">&#8595;</span>
-        <span class="cs-flow-step">Collection &#8212; build desire in context</span>
-        <span class="cs-flow-arrow">&#8595;</span>
-        <span class="cs-flow-step hl">Product &#8212; convert desire into confidence</span>
-        <span class="cs-flow-arrow">&#8595;</span>
-        <span class="cs-flow-step">Purchase &#8212; remove the last doubt</span>
-      </div>
-      <p><strong>Discovery</strong> answers &#8220;where do I start.&#8221; It never tries to close. <strong>Collection</strong> answers &#8220;what world is this piece from,&#8221; because a piece seen alone is a product and a piece seen in a collection is a choice. <strong>Product</strong> carries the entire confidence burden&#8212;which is why it is the longest section of this case study. <strong>Purchase</strong> exists only to not lose what the previous three earned.</p>
-      <p>The structural consequence: cross-surface consistency stopped being an aesthetic concern and became a functional one. A buyer who moves from collection to product and back should not feel a seam, because the seam is where the doubt re-enters.</p>
-      <div class="cs-img">
-        <div class="cs-img-frame tall"><span>[PLACEHOLDER &#8212; Ecosystem Map] Surface map showing the four surfaces, the handoff between them, and which research insight each one answers</span></div>
-      </div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Product Ecosystem</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Show systems thinking at the level above screens, and set up why PDP gets the most space.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">A single architecture diagram, hairline, no colour except one accent on the PDP node.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Sticky diagram while the four paragraphs scroll past, with the active node highlighting per paragraph.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Node highlight cross-fades over 300ms; connector lines draw once on first entry.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Split: diagram sticky left at 40%, narrative scrolling right at 60%. Stacks on mobile with the diagram first.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">It reframes the reader from &#8220;pages&#8221; to &#8220;system&#8221; before the deep craft sections.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">IntersectionObserver keyed to paragraph blocks; <code>position:sticky</code> with a top offset matching nav height.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 08 DESIGN SYSTEM -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">08 &#8212; Design System</p>
-      <h2>A system built to protect restraint</h2>
-      <p>Most design systems exist to make teams faster. This one existed to make a specific kind of mistake hard. In luxury the failure mode is accretion: a badge here, a banner there, a slightly louder button for a campaign&#8212;and eighteen months later the brand looks like everyone else.</p>
-      <p>So the system was built with deliberately few affordances. One button hierarchy, not four. A type scale with large jumps so there is no comfortable middle to hide a compromise in. A palette with almost no colour, which means any colour introduced later has to be argued for.</p>
-
-      <div class="cs-tokens">
-        <div class="cs-token">
-          <div class="cs-token-swatch" style="background:#0B0B0C;"></div>
-          <div class="cs-token-name">Ink</div>
-          <div class="cs-token-val">Primary surface</div>
-        </div>
-        <div class="cs-token">
-          <div class="cs-token-swatch" style="background:#F0EBE5;"></div>
-          <div class="cs-token-name">Bone</div>
-          <div class="cs-token-val">Editorial surface</div>
-        </div>
-        <div class="cs-token">
-          <div class="cs-token-swatch" style="background:#B9A37E;"></div>
-          <div class="cs-token-name">Gilt</div>
-          <div class="cs-token-val">Accent, sparing</div>
-        </div>
-        <div class="cs-token">
-          <div class="cs-token-swatch" style="background:linear-gradient(90deg,rgba(28,28,28,0.12) 0%, rgba(28,28,28,0.12) 100%);"></div>
-          <div class="cs-token-name">Hairline</div>
-          <div class="cs-token-val">1px, 12% ink</div>
-        </div>
-      </div>
-
-      <h3>What the system actually standardised</h3>
-      <p><strong>Type.</strong> A display serif for product and collection names, a neutral sans for everything else, and a scale with only five steps. The gap between steps is wide enough that choosing the wrong one is obvious in review.</p>
-      <p><strong>Space.</strong> An 8px base with a preference for the largest viable value. The system&#8217;s default is more space, and tightening requires a reason.</p>
-      <p><strong>Motion.</strong> Three durations and two easing curves, defined as tokens rather than left to implementation. This is the part engineering valued most&#8212;before it existed, every animation was a negotiation.</p>
-      <p><strong>Imagery.</strong> Aspect ratios, crop rules, background treatment, and a shot list per product type. This lived in the design system rather than in a brand deck, because it is the component that most determines whether the site feels expensive.</p>
-      <div class="cs-img-grid">
-        <div class="cs-img">
-          <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Design System] Type scale and spacing specimen</span></div>
-        </div>
-        <div class="cs-img">
-          <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Component Library] Core components: gallery, spec block, purchase bar, collection card</span></div>
-        </div>
-      </div>
-      <div class="cs-pullquote">The photography rules belonged in the design system, not the brand book. On a jewellery site, the image is the component.</div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Design System</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Prove systems thinking, and show the system was designed against a specific failure mode rather than assembled by convention.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Token strip, type specimen, component sheet. Real screenshots from the working library, not recreated slides.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Horizontal scroll strip for components on desktop, drag or wheel, with a progress hairline.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Swatches wipe in left-to-right, 420ms, 40ms stagger. Nothing loops.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Four-column token grid, then a two-up image pair, then a full-measure pull quote.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Anyone can show a colour palette. Explaining what the palette prevents is the signal.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Tokens as CSS custom properties mirrored from the Figma variable set; motion tokens exported as named cubic-beziers.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 09 DISCOVERY EXPERIENCE -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">09 &#8212; Discovery Experience</p>
-      <h2>Organised by occasion, because that is how people arrive</h2>
-      <p>The old entry point was a category grid: rings, earrings, necklaces, bangles. It matched the warehouse and not the buyer. Research insight four said people arrive with an occasion&#8212;a wedding, an anniversary, a first gift&#8212;and were being asked to translate it into a product category before they could move.</p>
-      <p>Discovery was rebuilt to accept intent directly. Occasion-led entry points sit at the top, category remains available for the buyer who already knows, and collection is offered as a third path for the buyer who is browsing for pleasure rather than purpose.</p>
-      <div class="cs-flow">
-        <span class="cs-flow-step">Occasion</span>
-        <span class="cs-flow-arrow">/</span>
-        <span class="cs-flow-step">Collection</span>
-        <span class="cs-flow-arrow">/</span>
-        <span class="cs-flow-step">Category</span>
-        <span class="cs-flow-arrow">&#8594;</span>
-        <span class="cs-flow-step hl">Curated set</span>
-      </div>
-      <p>The tradeoff we accepted: three entry points is more surface than one, and there is a real risk of a buyer feeling asked to choose how to choose. We mitigated it by ranking&#8212;occasion is visually dominant, category is a quiet utility row&#8212;rather than by presenting them as equals.</p>
-      <p>The harder editorial problem was that occasion-led discovery only works if merchandising can maintain it. A &#8220;Wedding&#8221; entry point that returns a stale or thin set is worse than no entry point at all. So the model shipped with a merchandising contract: minimum set size, refresh cadence, and a fallback rule when inventory can&#8217;t support an occasion. Design decisions that depend on someone else&#8217;s ongoing work need that work designed too.</p>
-      <div class="cs-img">
-        <div class="cs-img-frame tall"><span>[PLACEHOLDER &#8212; Discovery Screens] Occasion-led entry, curated set result, and the quiet category utility row &#8212; desktop and mobile</span></div>
-      </div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Discovery Experience</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Show information architecture reasoning and the operational thinking behind an IA that depends on merchandising.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Full-bleed photography-led entry points; one before/after of the old category grid, small and captioned.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Hovering an occasion cross-fades its backing image to a second frame; cursor becomes a thin ring.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Image cross-fade 600ms with a 1.03&#8594;1.0 scale settle. No parallax on entry points&#8212;it undermines the photography.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Two-up asymmetric image blocks, unequal widths, aligned to a shared baseline.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">The merchandising contract is the detail that separates a designer from someone who ships mockups.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Preload the second hover frame on pointer-enter intent, not on page load.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 10 COLLECTION EXPERIENCE -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">10 &#8212; Collection Experience</p>
-      <h2>A collection is an argument, not a filter result</h2>
-      <p>A listing page shows what matched. A collection page explains why these pieces belong together. The difference matters commercially: a buyer who understands a collection&#8217;s idea will consider pieces they would have filtered out, and will pay more for one of them.</p>
-      <p>So the collection experience was designed as editorial. It opens with the collection&#8217;s premise&#8212;the material, the reference, the intent&#8212;before it shows a single price. Pieces are laid out at deliberately uneven scale, because equal-sized cards imply equal importance and no collection is actually flat.</p>
-      <h3>The density decision</h3>
-      <p>The instinct from the commerce side was more pieces above the fold. We tested the opposite: fewer, larger, with generous space. Larger presentation raised engagement per piece and, more usefully, raised the rate at which people reached the product detail page at all. A grid of twelve small pieces produces scanning. Three large ones produce looking.</p>
-      <p>The tradeoff is real and I want to name it: this layout is worse for a buyer who knows exactly what they want and is comparing eight options. That buyer is served by category browse and search, deliberately, rather than by compromising the collection page into a hybrid that serves neither.</p>
-      <div class="cs-img-grid">
-        <div class="cs-img">
-          <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Collection Layout] Editorial collection page, desktop</span></div>
-        </div>
-        <div class="cs-img">
-          <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Density Study] Twelve-up grid vs. three-up editorial, side by side</span></div>
-        </div>
-      </div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Collection Experience</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Show visual design judgement being defended with a measured outcome and an honest tradeoff.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Full-bleed collection still, then the density A/B shown at true relative scale.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Horizontal scroll storytelling for the collection premise, transitioning into vertical scroll for the pieces.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Slow scroll-linked parallax on collection imagery, maximum 8% travel. Piece names mask-reveal on entry.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Asymmetric editorial grid; alternate image alignment left and right to keep the eye moving.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">It shows a designer who can argue against a commercial instinct with evidence rather than taste.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Scroll-linked effects via <code>scroll-timeline</code> where supported, IntersectionObserver fallback. Disable under reduced-motion.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 11 PDP — dark band, largest section -->
-    <div class="cs-bleed fade-up">
-      <div class="cs-bleed-inner">
-        <p class="cs-kicker">11 &#8212; Product Detail Experience</p>
-        <h2>Nine chapters, one decision</h2>
-        <p>Everything before this page builds desire. This page has to convert it into a decision worth six figures, made alone, on a phone, without a person in the room. It is the hardest surface in the product and it received the most work.</p>
-        <p>I stopped treating it as a page. A PDP that works is a sequence of answers in the order the doubts arrive&#8212;and the order is not negotiable. Scale before specification. Trust before price justification. Confidence before commitment. Each chapter below is one answer.</p>
-
-        <div class="cs-index" role="navigation" aria-label="Product detail chapters">
-          <a href="#pdp-01"><span class="cs-index-num">01</span><span class="cs-index-label">Hero Gallery &#8212; establishing scale</span></a>
-          <a href="#pdp-02"><span class="cs-index-num">02</span><span class="cs-index-label">Product Story &#8212; why this piece exists</span></a>
-          <a href="#pdp-03"><span class="cs-index-num">03</span><span class="cs-index-label">Trust &#8212; the gate before the price</span></a>
-          <a href="#pdp-04"><span class="cs-index-num">04</span><span class="cs-index-label">Diamond Details &#8212; depth without density</span></a>
-          <a href="#pdp-05"><span class="cs-index-num">05</span><span class="cs-index-label">Confidence &#8212; removing the last objection</span></a>
-          <a href="#pdp-06"><span class="cs-index-num">06</span><span class="cs-index-label">Sticky Purchase &#8212; present, never pushy</span></a>
-          <a href="#pdp-07"><span class="cs-index-num">07</span><span class="cs-index-label">Microinteractions &#8212; the feel of quality</span></a>
-          <a href="#pdp-08"><span class="cs-index-num">08</span><span class="cs-index-label">Visual Hierarchy &#8212; what the eye does first</span></a>
-          <a href="#pdp-09"><span class="cs-index-num">09</span><span class="cs-index-label">Luxury Motion &#8212; pace as a material</span></a>
-        </div>
-
-        <!-- PDP 01 -->
-        <div class="cs-chapter" id="pdp-01">
-          <p class="cs-chapter-num">Chapter 01 &#8212; Hero Gallery</p>
-          <h3>Establishing scale before anything else</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Buyers could not tell how large a piece was. Every product looked the same size on screen regardless of whether it was a 4mm stud or a statement collar. Dimensions in millimetres did not fix it&#8212;almost nobody can picture 9mm on an ear.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">Scale is answered by comparison, not measurement. The gallery leads with a full-bleed hero at true crop, then an on-model or on-hand frame within the first two positions&#8212;before detail macros. Macro shots are seductive and actively mislead on scale, so they were demoted.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">Macro imagery is the most beautiful asset a jewellery brand owns and it now appears third. We gave up some immediate visual impact to prevent a hesitation that was measurably costing us the session.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Zoom usage dropped and scroll depth increased&#8212;the signature of a question being answered rather than avoided. It also gave photography a fixed shot list, which raised catalogue consistency.</div>
-          </div>
-          <div class="cs-img">
-            <div class="cs-img-frame tall"><span>[PLACEHOLDER &#8212; Hero Gallery] Full-bleed hero, on-model frame, macro detail &#8212; in shipped order</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Hero Gallery</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">No overlay copy on the hero. The only text near the gallery is the piece name and a single line of material description.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Full-viewport-height hero on desktop; 4:5 on mobile. Neutral, consistent background across the catalogue.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Click-to-zoom opens a full-screen viewer with pan; on mobile, pinch. Thumbnails are a vertical rail on desktop, a dot indicator on mobile.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Zoom uses a shared-element transition&#8212;the tapped image scales into place over 480ms rather than a modal appearing. Continuity, not spectacle.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Gallery occupies 60% of desktop width, product information 40%, information column scrolls independently.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">It is the first chapter because it is the first doubt.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Responsive <code>srcset</code> with an AVIF/WebP pair; preload only the first frame; lazy-load the rest with a low-quality placeholder.</div></div>
+    <!-- ============================================================
+         04 — THE DESIGN SHIFT (scroll-controlled)
+         ============================================================ -->
+    <section class="qw-section" id="shift">
+      <div class="qw-wrap">
+        <div class="qw-shift-layout">
+          <aside class="qw-shift-aside">
+            <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">04</span> &mdash; The system</p>
+            <p class="qw-shift-statement" data-reveal style="--d:1">From product page to confidence journey.</p>
+          </aside>
+          <div class="qw-shift-track">
+            <div class="qw-shift-viewport" role="img" aria-label="The product page transforms from a four-step catalogue sequence into a seven-moment confidence journey.">
+              <div class="qw-shift-frame f1 is-on">
+                <p class="qw-shift-flowlabel">Before &mdash; the catalogue page</p>
+                <div class="qw-shift-row">
+                  <span class="qw-shift-node dim">Image</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node dim">Specs</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node dim">Price</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node dim">Buy</span>
+                </div>
+              </div>
+              <div class="qw-shift-frame f2">
+                <p class="qw-shift-q">What if the page answered doubts in the order they arrive?</p>
+              </div>
+              <div class="qw-shift-frame f3 now">
+                <p class="qw-shift-flowlabel">QWEEN &mdash; the confidence journey</p>
+                <div class="qw-shift-row">
+                  <span class="qw-shift-node lead">Desire</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node">Experience</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node">Understand</span>
+                </div>
+                <div class="qw-shift-row" style="margin-top:12px;">
+                  <span class="qw-shift-node">Trust</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node">Get help</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node">Decide</span><span class="qw-shift-sep">→</span>
+                  <span class="qw-shift-node">Own</span>
+                </div>
+                <p class="qw-shift-note">Same facts, resequenced. Trust before price. Scale before specification. Story before both.</p>
+              </div>
             </div>
-          </details>
+            <div class="qw-shift-phase" data-phase="0"></div>
+            <div class="qw-shift-phase" data-phase="1"></div>
+            <div class="qw-shift-phase" data-phase="2"></div>
+          </div>
         </div>
+        <blockquote class="qw-quote qw-quote--accent" data-reveal style="max-width:24ch;margin-top:clamp(32px,5vw,64px);">A PDP that works isn&rsquo;t a page. It&rsquo;s a sequence of answers.</blockquote>
+      </div>
+    </section>
 
-        <!-- PDP 02 -->
-        <div class="cs-chapter" id="pdp-02">
-          <p class="cs-chapter-num">Chapter 02 &#8212; Product Story</p>
-          <h3>Why this piece exists</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Product descriptions were specification restated as prose. They occupied the most valuable copy position on the page and gave the buyer nothing they could not read in the spec block below.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">In a showroom, the associate tells you about the piece&#8212;the reference it draws on, the setting technique, why the stones are cut that way. That story is what converts an object into a possession. We gave it a dedicated chapter with its own imagery, separated entirely from the specification block.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">Every piece now needs written narrative, which is a real, recurring content cost. We reduced it with a story template per collection and a required-fields structure, but it remains ongoing work the brand has to fund.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Time on page rose in the story section specifically, and the language began appearing in customer conversations&#8212;buyers repeating the story back is the clearest evidence it did its job.</div>
+    <!-- ============================================================
+         05 — THE PDP  (the hero chapter)
+         ============================================================ -->
+    <section class="qw-section" id="pdp">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">05</span> &mdash; The product experience</p>
+        <h2 class="qw-display" data-reveal style="max-width:16ch;">The PDP became the confidence engine.</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">Everything before this page builds desire. This page has to convert it into a decision worth six figures &mdash; made alone, on a phone, without a person in the room. It is the hardest surface in the product and it received the most work.</p>
+      </div>
+
+      <!-- oversized PDP object, near full-bleed -->
+      <div class="qw-wrap qw-pdp-hero">
+        <div class="qw-plate qw-plate--pano qw-hoverable" data-reveal="scale" role="img" aria-label="The full QWEEN Cherry Pop Hoops product detail page, shown as the central artefact of the case study.">
+          <div class="qw-plate-note">
+            <span class="qw-plate-kind">The artefact — Cherry Pop Hoops PDP</span>
+            <span class="qw-plate-desc">The live product page, treated as the hero object of the whole study</span>
+            <span class="qw-plate-swap">Replace with a high-resolution capture of the live PDP</span>
           </div>
-          <div class="cs-img">
-            <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Product Story] Editorial split: narrative copy left, atelier or craft photography right</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Product Story</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Three short paragraphs maximum: the reference, the making, the wearing. No superlatives without an object attached.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Craft and atelier photography rather than product-on-white. Hands, tools, workbench.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Sticky imagery while narrative scrolls, image changing at paragraph boundaries.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Cross-fade between craft images at 700ms; paragraphs fade up 24px, 60ms stagger.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">50/50 split, image sticky, copy scrolling. Stacks with the image first on mobile.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Story is the only part of a luxury PDP a competitor cannot copy from a spec sheet.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Story fields modelled in the CMS as structured content, not a rich-text blob, so layout stays predictable.</div></div>
-            </div>
-          </details>
         </div>
+        <p class="qw-cap" data-reveal style="text-align:center;margin-inline:auto;">The PDP is the central artefact — shown large, never as a thumbnail inside a card.</p>
+      </div>
 
-        <!-- PDP 03 -->
-        <div class="cs-chapter" id="pdp-03">
-          <p class="cs-chapter-num">Chapter 03 &#8212; Trust</p>
-          <h3>The gate that sits before the price</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Certification, hallmarking, and returns lived in the footer and in a policy page. Session recordings showed buyers hunting for them mid-consideration, leaving the product page to find them, and frequently not returning.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">Trust is not a reassurance to deliver after the sell&#8212;on high-value items it is a precondition for engaging with the sell at all. We moved certification, hallmark, returns window, and lifetime service into a dedicated band immediately after the story, stated plainly and linked to the actual documents.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">It pushes price further down the page, which contradicts standard ecommerce practice and made the commerce team nervous. We accepted it because the research was unambiguous: buyers were seeking this information before price, not after.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Off-page navigation to the policy pages fell during product sessions, and the pattern was reused across the catalogue as a standard component rather than per-product copy.</div>
-          </div>
-          <div class="cs-img">
-            <div class="cs-img-frame short"><span>[PLACEHOLDER &#8212; Trust Band] Certification, hallmark, returns window, and lifetime service, each linked to its artefact</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Trust</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Plain declaratives. &#8220;Certified by [lab]. Hallmarked. 15-day returns. Lifetime cleaning and resizing.&#8221; No adjectives.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Hairline-divided row of four. No badge iconography&#8212;trust badges read as third-party ecommerce, which is the opposite of the intent.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Each item expands in place to show the certificate image or policy detail. Never a new tab.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Height auto-transition at 320ms with the disclosure rule drawing outward from centre.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Four-up on desktop, two-up on tablet, stacked list on mobile. Full-measure width.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Reordering trust above price is a genuine, defensible, research-backed inversion of convention.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Native <code>&lt;details&gt;</code> elements for keyboard and screen-reader support; certificate images lazy-loaded on open.</div></div>
-            </div>
-          </details>
-        </div>
-
-        <!-- PDP 04 -->
-        <div class="cs-chapter" id="pdp-04">
-          <p class="cs-chapter-num">Chapter 04 &#8212; Diamond Details</p>
-          <h3>Depth for the few, credibility for everyone</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Full 4Cs data&#8212;cut, colour, clarity, carat, plus setting, metal purity, and stone count&#8212;is essential to a small minority of buyers and overwhelming to the rest. Showing everything made the page feel like a spreadsheet; showing nothing made it feel evasive.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">Research insight three resolved this: buyers check that the detail exists far more often than they read it. So the summary line is always visible&#8212;stone count, total carat weight, metal&#8212;with the full breakdown one interaction away. Present, complete, not imposed.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">Progressive disclosure hides information from the expert buyer who wants it immediately, costing them a click. Given that group is a minority and highly motivated, that click is cheap; overwhelming the majority is not.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">The expand rate was low, as predicted, and that was the point&#8212;the component earns its place by existing. It also became the standard pattern for every specification-heavy element on the site.</div>
-          </div>
-          <div class="cs-img-grid">
-            <div class="cs-img">
-              <div class="cs-img-frame short"><span>[PLACEHOLDER &#8212; Spec Summary] Collapsed state</span></div>
-            </div>
-            <div class="cs-img">
-              <div class="cs-img-frame short"><span>[PLACEHOLDER &#8212; Spec Expanded] Full 4Cs and setting breakdown</span></div>
+      <!-- 05.1 DESIRE -->
+      <div class="qw-wrap" style="padding-top:clamp(40px,6vw,80px);">
+        <div class="qw-split qw-split--rev">
+          <div class="qw-split-media">
+            <div class="qw-split-sticky">
+              <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="A large editorial crop of the hero product imagery."><div class="qw-plate-note"><span class="qw-plate-kind">05.1 — Desire</span><span class="qw-plate-desc">Hero imagery, oversized crop</span></div></div>
             </div>
           </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Diamond Details</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Summary line reads as a sentence, not a table: &#8220;14 round brilliant diamonds, 1.02ct total, set in 18kt gold.&#8221;</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Expanded state is a hairline table with tabular figures. Optional annotated diagram of the setting.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Single expand for the whole block, not one per attribute&#8212;multiple accordions here read as bureaucracy.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Rows reveal 30ms apart after the container height settles. Total under 500ms.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Full measure. Numbers right-aligned in a tabular-numeral font feature.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">It is a clean demonstration of designing for two audiences on one surface without compromising either.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Enable <code>font-variant-numeric: tabular-nums</code>; render the full table in the DOM for SEO and screen readers, collapsed via CSS.</div></div>
+          <div class="qw-split-copy">
+            <div class="qw-subchapter" data-reveal><span class="num">05.1</span><span class="lbl">Desire</span></div>
+            <h3 class="qw-h" data-reveal>Start with desire.</h3>
+            <p class="qw-body" data-reveal>Before customers evaluate the product, they need to want it. The gallery leads with a full-bleed hero at true crop, then an on-model or on-hand frame within the first two positions &mdash; establishing scale by comparison before any detail macro. Macro shots are the most seductive asset a jewellery brand owns, and they mislead on size, so they were deliberately demoted.</p>
+            <p class="qw-body" data-reveal>Beneath the imagery sits the product story &mdash; the reference it draws on, the setting technique, why the stones are cut that way. In a showroom the associate tells you this; it&rsquo;s what converts an object into a possession. It gets its own space, separated entirely from the specification block.</p>
+            <blockquote class="qw-quote" data-reveal style="font-size:clamp(1.3rem,2.2vw,1.9rem);">Before customers evaluate the product, they need to want it.</blockquote>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05.2 EXPERIENCE — sticky -->
+      <div class="qw-wrap" style="padding-top:clamp(48px,7vw,96px);">
+        <div class="qw-subchapter" data-reveal><span class="num">05.2</span><span class="lbl">Experience</span></div>
+        <h3 class="qw-h" data-reveal style="max-width:18ch;">Make the product tangible.</h3>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:18px;">Photography is a fixed viewpoint under fixed light. The experience layer closes the distance to the physical piece &mdash; letting the buyer bring it closer, place it on themselves, and see how it behaves.</p>
+      </div>
+      <div class="qw-wrap">
+        <div class="qw-stick">
+          <div class="qw-stick-stage" aria-hidden="true">
+            <div class="qw-stick-viewport">
+              <div class="qw-plate qw-stick-plate is-active" data-w="0"><div class="qw-plate-note"><span class="qw-plate-kind">Explore in 3D</span><span class="qw-plate-desc">Rotate the piece</span></div></div>
+              <div class="qw-plate qw-stick-plate" data-w="1"><div class="qw-plate-note"><span class="qw-plate-kind">Try it on</span><span class="qw-plate-desc">On your own hand or ear</span></div></div>
+              <div class="qw-plate qw-stick-plate" data-w="2"><div class="qw-plate-note"><span class="qw-plate-kind">See it live</span><span class="qw-plate-desc">How it behaves in light</span></div></div>
             </div>
-          </details>
-        </div>
-
-        <!-- PDP 05 -->
-        <div class="cs-chapter" id="pdp-05">
-          <p class="cs-chapter-num">Chapter 05 &#8212; Confidence</p>
-          <h3>Removing the last objection before it is spoken</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Buyers reached the bottom of the page informed and still did not commit. The remaining doubts were not about the product: what if the size is wrong, what if it looks different in person, what if I need to talk to someone, what if my partner disagrees.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">Each of those has a concrete answer&#8212;sizing guidance, returns, a way to reach a person, and a share that carries full context. They were built as a single confidence chapter placed immediately before the commitment point, in the order the doubts surface.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">Naming objections in the interface can plant them. We tested framing carefully and settled on stating the remedy rather than the risk&#8212;&#8220;free resizing, always&#8221; rather than &#8220;worried about size?&#8221;</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Share became a meaningfully used action, which validated research insight five: the decision is made with someone else, and the product had simply never supported that conversation.</div>
           </div>
-          <div class="cs-img">
-            <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Confidence Block] Sizing guidance, returns restatement, contact-a-person, and rich share</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Confidence</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Remedy-first phrasing throughout. &#8220;Resized free, for life.&#8221; &#8220;Speak to a specialist.&#8221; &#8220;Send this to someone.&#8221;</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Quiet. This chapter should feel like the calmest part of the page&#8212;it is where a hesitant buyer is standing.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Share produces a rich preview with imagery, name, and price. Sizing opens an in-page guide, never a PDF.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Minimal. A 200ms confirmation state on share copy. Nothing celebratory.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Single column, wide leading, more vertical space than any other chapter.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">It shows designing for the emotional state of the user at a precise scroll position, not for a page in the abstract.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Per-product Open Graph and Twitter card metadata; Web Share API on mobile with a copy-link fallback.</div></div>
+          <div class="qw-stick-steps">
+            <div class="qw-stick-step">
+              <div class="qw-plate qw-plate--tall mobile-plate"><div class="qw-plate-note"><span class="qw-plate-kind">Explore in 3D</span></div></div>
+              <span class="n">01</span>
+              <h4>Explore in 3D</h4>
+              <p class="qw-body">Rotate the piece to answer what a single photograph can&rsquo;t &mdash; proportion, depth, the way a setting sits. Direct manipulation, so the response is instant.</p>
             </div>
-          </details>
-        </div>
-
-        <!-- PDP 06 -->
-        <div class="cs-chapter" id="pdp-06">
-          <p class="cs-chapter-num">Chapter 06 &#8212; Sticky Purchase</p>
-          <h3>Present at every moment, pushy at none</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">A long, chaptered PDP creates a real risk: the buyer decides at the story section and then has to scroll to find how to act. But a permanent, prominent buy bar on a luxury page reads as pressure&#8212;the exact thing the vision statement forbids.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">The purchase bar appears only after the gallery is complete, sits at low visual weight&#8212;name, price, one action&#8212;and never overlaps product photography. It is the one element permitted to persist, and it earns that by being nearly silent.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">A louder bar would almost certainly convert better in the short term. We chose the version that keeps the page feeling like a showroom rather than a checkout, and accepted a lower ceiling on impulse conversion.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Add-to-bag actions distributed across the full length of the page rather than clustering at the top&#8212;evidence that buyers were deciding at their own point in the sequence, which is what the whole architecture was for.</div>
-          </div>
-          <div class="cs-img">
-            <div class="cs-img-frame short"><span>[PLACEHOLDER &#8212; Sticky Purchase] Bar states: hidden during gallery, resting, engaged</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Sticky Purchase</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Piece name, price, one verb. No secondary actions, no shipping strapline, no urgency.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Translucent ink with a hairline top rule and heavy backdrop blur. Height under 72px on desktop.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Appears once the gallery leaves the viewport; hides again on scroll-up near the top of the page.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Slides up 16px with a fade at 380ms. Never bounces, never pulses.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Full-width on mobile, right-aligned and inset on desktop so it does not sit under the product column.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Restraint in the highest-pressure component on the site is where the principle is actually tested.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">IntersectionObserver on the gallery sentinel; account for iOS safe-area inset at the bottom.</div></div>
+            <div class="qw-stick-step">
+              <div class="qw-plate qw-plate--tall mobile-plate"><div class="qw-plate-note"><span class="qw-plate-kind">Try it on</span></div></div>
+              <span class="n">02</span>
+              <h4>Try it on.</h4>
+              <p class="qw-body">Place the piece on the buyer&rsquo;s own hand, ear or neck at true scale &mdash; resolving the most common reason a considered buyer defers: &ldquo;how will this look on me?&rdquo;</p>
             </div>
-          </details>
-        </div>
-
-        <!-- PDP 07 -->
-        <div class="cs-chapter" id="pdp-07">
-          <p class="cs-chapter-num">Chapter 07 &#8212; Microinteractions</p>
-          <h3>The feel of quality lives in 200 milliseconds</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">The page looked right in static review and felt cheap in the browser. Default easing, instant state changes, and abrupt image swaps were undoing the impression the photography created.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">Perceived quality is largely a function of transition behaviour. We specified every state change on the page&#8212;hover, focus, expand, image swap, add-to-bag&#8212;with a named duration and curve from the motion tokens, and reviewed them in the browser rather than in Figma.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">Motion specification is engineering time that produces no new functionality, and it is the first thing cut under deadline. We protected it by shipping tokens instead of per-component requests, which made the correct behaviour the default.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Qualitative feedback shifted from &#8220;it looks premium&#8221; to &#8220;it feels premium.&#8221; The tokens also removed motion from code review as a recurring topic&#8212;it had been settled once, centrally.</div>
-          </div>
-          <div class="cs-img">
-            <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Motion Study] Slow-motion capture of hover, gallery swap, expand, and add-to-bag</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Microinteractions</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">None in the interface. In the case study, annotate each clip with its duration and curve.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Screen recordings slowed to 25%, cropped tight to the component, on a black field.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Clips play on scroll-into-view, muted, once. A replay control, no autoplay loop.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Hover 240ms ease-out; image swap 520ms custom curve; expand 320ms; add-to-bag confirmation 200ms.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Three-up grid of short clips with duration labels beneath.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Motion tokens are a systems answer to a craft problem&#8212;the kind of move a staff-level designer makes.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">MP4 with <code>playsinline</code> and <code>muted</code>; poster frames to avoid layout shift; respect <code>prefers-reduced-motion</code> by showing the poster only.</div></div>
+            <div class="qw-stick-step">
+              <div class="qw-plate qw-plate--tall mobile-plate"><div class="qw-plate-note"><span class="qw-plate-kind">See it live</span></div></div>
+              <span class="n">03</span>
+              <h4>See it live.</h4>
+              <p class="qw-body">See how the stones behave as light moves &mdash; the thing people tilt a piece under the showroom lamp to check. The experience never begins without the buyer&rsquo;s action.</p>
             </div>
-          </details>
+          </div>
         </div>
+      </div>
 
-        <!-- PDP 08 -->
-        <div class="cs-chapter" id="pdp-08">
-          <p class="cs-chapter-num">Chapter 08 &#8212; Visual Hierarchy</p>
-          <h3>Deciding what the eye does first</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Nine chapters is a lot of page. Without a strict hierarchy the buyer gets a wall of equally-weighted content and loses the thread the sequence was designed to create.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">Only three elements are permitted to be visually dominant: the product image, the piece name, and the price. Everything else sits at least two steps down the type scale. Chapter transitions are marked by space, not by rules or headings&#8212;whitespace carries the rhythm.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">A long page with heavy whitespace means more scrolling, which conventional wisdom treats as a cost. On a considered purchase, scroll depth was correlated with intent, not with friction, so we let the page be long.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">The hierarchy became the reusable template for every content-heavy surface on the site, including collection and editorial pages.</div>
+      <!-- 05.3 UNDERSTAND — annotated -->
+      <div class="qw-wrap" style="padding-top:clamp(48px,7vw,96px);">
+        <div class="qw-subchapter" data-reveal><span class="num">05.3</span><span class="lbl">Understand</span></div>
+        <div class="qw-split">
+          <div class="qw-split-media">
+            <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="An annotated crop of the product specification block."><div class="qw-plate-note"><span class="qw-plate-kind">05.3 — Understand</span><span class="qw-plate-desc">The specification, annotated</span></div></div>
           </div>
-          <div class="cs-img">
-            <div class="cs-img-frame tall"><span>[PLACEHOLDER &#8212; Hierarchy Study] Full PDP at reduced scale with attention weighting overlaid</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Visual Hierarchy</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Annotate the three dominant elements directly on the study; leave the rest unlabelled to make the point visually.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">A single tall image of the full page, plus a blurred version showing where weight lands when detail is removed.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Toggle between the clear and blurred views&#8212;the squint test made interactive.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Cross-fade between the two states at 400ms.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Full-measure tall image, caption beneath.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">The blur test is the fastest way to prove hierarchy claims to a design director.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Two images with a CSS opacity cross-fade; both preloaded to avoid a flash on toggle.</div></div>
+          <div class="qw-split-copy">
+            <h3 class="qw-h" data-reveal>Answer the questions that matter.</h3>
+            <p class="qw-body" data-reveal>The summary line reads as a sentence, not a table &mdash; stone count, total carat weight, metal &mdash; with the full breakdown one interaction away. Research said buyers check that the detail exists far more often than they read it, so it&rsquo;s present and complete, but never imposed on the majority.</p>
+            <div class="qw-annot" data-reveal>
+              <div class="qw-annot-tags">
+                <div class="qw-annot-tag"><span class="k">Material</span><span class="v">Metal and purity, stated plainly in the summary line.</span></div>
+                <div class="qw-annot-tag"><span class="k">Stone</span><span class="v">Cut, count and total carat weight &mdash; the credibility signal.</span></div>
+                <div class="qw-annot-tag"><span class="k">Construction</span><span class="v">Setting technique and finish, revealed on expand.</span></div>
+                <div class="qw-annot-tag"><span class="k">Specification</span><span class="v">The full 4Cs table, present for the few who read it.</span></div>
+              </div>
             </div>
-          </details>
+            <p class="qw-body" data-reveal>Give customers enough product truth to make an informed decision without overwhelming them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         06 — TRUST  (dark band, major moment)
+         ============================================================ -->
+    <section class="qw-section qw-band" id="trust">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">06</span> &mdash; Trust</p>
+        <h2 class="qw-display" data-reveal style="max-width:14ch;">Trust before price.</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;color:rgba(255,255,255,0.78);">Certification and returns used to live in the footer. Session recordings showed buyers leaving the product page to hunt for them mid-consideration &mdash; and frequently not returning. On a high-value item, trust isn&rsquo;t reassurance delivered after the sell. It&rsquo;s a precondition for engaging with the sell at all.</p>
+
+        <div class="qw-trust">
+          <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="The trust band on the product page, shown as a large crop."><div class="qw-plate-note"><span class="qw-plate-kind">The trust band</span><span class="qw-plate-desc">Product truth, stated above the price</span></div></div>
+          <div class="qw-trust-details">
+            <div class="qw-plate qw-plate--square qw-hoverable" data-reveal="scale" style="--d:1" role="img" aria-label="A detail crop of the certificate view."><div class="qw-plate-note"><span class="qw-plate-kind">Detail</span><span class="qw-plate-desc">The certificate, in place</span></div></div>
+            <div class="qw-plate qw-plate--square qw-hoverable" data-reveal="scale" style="--d:2" role="img" aria-label="A detail crop of the assurance and buyback terms."><div class="qw-plate-note"><span class="qw-plate-kind">Detail</span><span class="qw-plate-desc">Assurance &amp; buyback terms</span></div></div>
+          </div>
         </div>
 
-        <!-- PDP 09 -->
-        <div class="cs-chapter" id="pdp-09">
-          <p class="cs-chapter-num">Chapter 09 &#8212; Luxury Motion</p>
-          <h3>Pace as a material</h3>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">Problem</div>
-            <div class="cs-decision-text">Standard web motion durations&#8212;150 to 250ms&#8212;are tuned for efficiency. Applied to this page they made an expensive object feel like a utility app.</div>
-            <div class="cs-decision-label">Reasoning</div>
-            <div class="cs-decision-text">We deliberately slowed non-feedback motion into a 400&#8211;900ms band, with easing weighted toward a long settle rather than a fast start. Direct-manipulation feedback stayed fast, because slow feedback is not luxurious, it is broken.</div>
-            <div class="cs-decision-label">Tradeoff</div>
-            <div class="cs-decision-text">Slower motion measurably increases task time. On a considered purchase that is acceptable; on the checkout flow it is not, so checkout kept standard durations. The system encodes this as two motion contexts rather than one.</div>
-            <div class="cs-decision-label">Outcome</div>
-            <div class="cs-decision-text">Motion became a brand asset rather than a technical detail, and the two-context model prevented the slow curves leaking into transactional flows where they would have hurt.</div>
+        <div class="qw-trust-list" role="list">
+          <div class="qw-trust-item" role="listitem"><div><h4>Natural Stones</h4><p>Stated as product truth, not a marketing adjective &mdash; the material the buyer is actually paying for.</p></div><span class="mk">Product truth</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>IGI Certified</h4><p>Certification linked to the actual document, expandable in place rather than opening a new tab.</p></div><span class="mk">Reassurance</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>5 Year Stone Value Assurance</h4><p>A commitment stated plainly at the point of hesitation, before the price is reached.</p></div><span class="mk">Reassurance</span></div>
+          <div class="qw-trust-item" role="listitem"><div><h4>Lifetime Buyback &amp; Exchange</h4><p>The relationship framed as ongoing &mdash; the reassurance that undoes &ldquo;what if I&rsquo;m wrong.&rdquo;</p></div><span class="mk">Confidence</span></div>
+        </div>
+
+        <blockquote class="qw-quote qw-quote--accent" data-reveal style="max-width:22ch;margin-top:clamp(52px,8vw,100px);">Trust isn&rsquo;t a footer detail. It is part of the product experience.</blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         07 — HUMAN + DIGITAL (concierge)
+         ============================================================ -->
+    <section class="qw-section" id="concierge">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">07</span> &mdash; Concierge</p>
+        <span class="qw-flag" data-reveal>Concept exploration &mdash; not shipped</span>
+        <h2 class="qw-statement" data-reveal>Self-service shouldn&rsquo;t mean being left alone.</h2>
+
+        <div class="qw-split" style="margin-top:clamp(40px,5vw,64px);">
+          <div class="qw-split-media">
+            <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="A concierge interaction offered alongside self-guided exploration."><div class="qw-plate-note"><span class="qw-plate-kind">QWEEN Concierge</span><span class="qw-plate-desc">A person, kept within reach</span></div></div>
           </div>
-          <div class="cs-pullquote">Slow is not the same as luxurious. Slow feedback is a bug. Slow transition is a choice.</div>
-          <div class="cs-img">
-            <div class="cs-img-frame short"><span>[PLACEHOLDER &#8212; Motion Tokens] Duration and easing token sheet, with the considered and transactional contexts side by side</span></div>
-          </div>
-          <details class="cs-note">
-            <summary>Design direction &#8212; Luxury Motion</summary>
-            <div class="cs-note-body">
-              <div class="cs-note-row"><div class="cs-note-row-label">Suggested copy</div><div class="cs-note-row-text">Label each token with its context and a one-line rule for when to use it.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Visual</div><div class="cs-note-row-text">Easing curves drawn as small graphs with the durations alongside; one animated example per curve.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Hover a curve to replay its example. No autoplay.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">The examples are the animation. Keep the surrounding page still here.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Two-column token sheet, considered context left, transactional right.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Knowing where the slow curves must not go is the more senior half of the insight.</div></div>
-              <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Export as CSS custom properties, e.g. <code>--ease-considered</code> and <code>--dur-considered</code>, consumed by every component.</div></div>
+          <div class="qw-split-copy">
+            <p class="qw-body" data-reveal>The single highest-value thing a showroom provides is a person who has sold jewellery for fifteen years. They can hear &ldquo;something for my sister&rsquo;s wedding, she wears mostly gold, budget around this&rdquo; and produce four correct options in ninety seconds. Self-service replaces that with filters, which require the buyer to already know the answer.</p>
+            <p class="qw-body" data-reveal>So the door to a person stays open throughout &mdash; not as a support link buried in a menu, but as a hand-off available exactly where hesitation tends to occur. The buyer explores freely; the moment they stall, help is one step away, and it arrives already knowing what they were looking at.</p>
+            <div class="qw-flow" role="img" aria-label="The concierge hand-off: explore yourself, then need help, then reach the QWEEN concierge.">
+              <span class="qw-flow-step">Explore yourself</span>
+              <span class="qw-flow-link" aria-hidden="true"></span>
+              <span class="qw-flow-step">Need help?</span>
+              <span class="qw-flow-link" aria-hidden="true"></span>
+              <span class="qw-flow-step hl">QWEEN Concierge</span>
             </div>
-          </details>
-        </div>
-      </div>
-    </div>
-
-    <!-- 12 LUXURY MICROINTERACTIONS -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">12 &#8212; Luxury Microinteractions</p>
-      <h2>The details that only register when they are missing</h2>
-      <p>Beyond the product page, a small set of interactions carried a disproportionate share of the brand impression. Each one is trivial in isolation and cumulatively decisive.</p>
-      <div class="cs-cards-3 cs-cards">
-        <div class="cs-card">
-          <h4>Image Loading</h4>
-          <p>A low-quality placeholder that resolves rather than a skeleton that flashes. Jewellery imagery is heavy; the loading behaviour is part of the experience, not an exception to it.</p>
-        </div>
-        <div class="cs-card">
-          <h4>Cursor</h4>
-          <p>A thin ring on interactive imagery that scales on hover. Restrained enough to read as craft rather than as a portfolio trick.</p>
-        </div>
-        <div class="cs-card">
-          <h4>Add to Bag</h4>
-          <p>A quiet confirmation in place, with the bag count settling rather than popping. No modal, no confetti, no interruption of the browse.</p>
-        </div>
-        <div class="cs-card">
-          <h4>Page Transition</h4>
-          <p>Collection to product carries the tapped image forward as a shared element, so the piece is never lost and re-found.</p>
-        </div>
-        <div class="cs-card">
-          <h4>Scroll</h4>
-          <p>Slight easing on scroll on desktop only. Tested and rejected on mobile, where it fights the platform&#8217;s own physics.</p>
-        </div>
-        <div class="cs-card">
-          <h4>Focus States</h4>
-          <p>Designed rather than defaulted. A hairline offset ring in the accent tone&#8212;visible, keyboard-complete, and not a browser blue rectangle on top of the photography.</p>
-        </div>
-      </div>
-      <p>The scroll-easing decision is the one I&#8217;d point to. It was clearly better on desktop and clearly worse on mobile, and shipping it everywhere would have been the easier call. Platform-appropriate beats consistent when the platform has an opinion.</p>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Luxury Microinteractions</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Show interaction design craft at a level of detail most case studies skip.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Six short looping-once clips, one per interaction, tightly cropped.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Clips play on hover on desktop, on scroll-into-view on mobile.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Card grid staggers in 50ms apart.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Three-column grid on desktop, single column on mobile.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">The rejected mobile scroll-easing is the strongest single line in the section&#8212;it shows judgement, not just execution.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Keep total clip weight under 2MB; encode at low bitrate since all clips are small and cropped.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 13 CROSS-FUNCTIONAL COLLABORATION -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">13 &#8212; Cross-functional Collaboration</p>
-      <h2>The work that never appears in a Figma file</h2>
-      <p>Most of what determined whether this experience shipped as designed happened outside design tools.</p>
-      <h3>With engineering</h3>
-      <p>The gallery, the sticky bar, and the motion system all had performance implications on the mid-range Android devices that make up a large share of Indian traffic. We set a performance budget before designing&#8212;image weight per page, JavaScript ceiling, target interaction latency&#8212;and treated it as a design constraint rather than an optimisation phase. Two proposals died in that budget, which is the budget working.</p>
-      <p>Motion tokens were the highest-leverage thing I gave engineering. Before them, every animation was an individual conversation. After them, correct was the default and deviation required a reason.</p>
-      <h3>With merchandising</h3>
-      <p>Occasion-led discovery and collection storytelling both depend on continuous curation. I worked with merchandising to define what each surface needs&#8212;set sizes, refresh cadence, fallback rules&#8212;so that the IA was operable rather than aspirational. An IA that requires work nobody has agreed to do will quietly degrade within a quarter.</p>
-      <h3>With photography and content</h3>
-      <p>The shot list is a design artefact. Establishing scale in chapter one only works if every product has an on-model or on-hand frame, which means the requirement has to reach the studio before the shoot. I wrote the shot list into the design system and reviewed the first two catalogue batches personally.</p>
-      <h3>With the founders</h3>
-      <p>The recurring conversation was restraint versus promotion. The vision statement did most of that arguing for me: proposals were tested against &#8220;does this add certainty or add pressure&#8221; rather than against my preferences. Having a shared rule turns taste disagreements into decisions.</p>
-      <div class="cs-pullquote">A design system that engineering owns, a taxonomy merchandising can maintain, and a shot list photography receives before the shoot. That is where the experience is actually protected.</div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Cross-functional Collaboration</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Demonstrate design leadership and the ability to make an experience survive contact with an organisation.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Working artefacts: the performance budget, the shot list, a page from the motion token spec. Real documents, lightly redacted.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">Artefacts open at full size on click.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Minimal. This section should read as documentary evidence.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Four subsections with hairline separation; artefacts inset at 60% measure.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Hiring managers are buying reliability across functions, not screens.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Redact commercial figures from any artefact before publishing.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 14 IMPACT -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">14 &#8212; Impact</p>
-      <h2>What changed</h2>
-      <p>The work is ongoing and the numbers below should be read as directional. QWEEN is a growing brand rather than a controlled experiment, so traffic mix and catalogue both changed across the period.</p>
-      <div class="cs-metrics">
-        <div class="cs-metric">
-          <div class="cs-metric-value">[X%]</div>
-          <div class="cs-metric-label">Product page engagement</div>
-          <p>Depth and time on the chaptered PDP against the previous single-view page.</p>
-        </div>
-        <div class="cs-metric">
-          <div class="cs-metric-value">[X%]</div>
-          <div class="cs-metric-label">Add-to-bag rate</div>
-          <p>Measured across comparable catalogue segments before and after the PDP rebuild.</p>
-        </div>
-        <div class="cs-metric">
-          <div class="cs-metric-value">[X%]</div>
-          <div class="cs-metric-label">Discovery-to-product rate</div>
-          <p>Occasion-led entry against the previous category-first grid.</p>
-        </div>
-        <div class="cs-metric">
-          <div class="cs-metric-value">[X%]</div>
-          <div class="cs-metric-label">Share actions per session</div>
-          <p>A behaviour the previous experience did not support at all.</p>
-        </div>
-      </div>
-      <p><strong>For buyers</strong>, the questions that used to end a session now have answers in the place the question occurs.</p>
-      <p><strong>For the business</strong>, the design system and the content model outlived any individual page. New collections launch against an existing structure instead of a new design cycle, which is the compounding return.</p>
-      <p><strong>For the team</strong>, motion tokens, a photography shot list, and a merchandising contract turned recurring debates into settled defaults.</p>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Impact</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Close the business loop honestly, including the limits of the measurement.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">Four large numerals. Optionally one before/after funnel chart.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">None.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Count-up on entry, 900ms, once. Skip entirely under reduced-motion.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Two-by-two metric grid, then three qualitative paragraphs.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Stating the measurement caveat raises credibility rather than lowering it.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Replace every <code>[X%]</code> with real figures before publishing, or delete the metric grid and keep only the qualitative outcomes. Do not ship placeholders as numbers.</div></div>
-        </div>
-      </details>
-    </div>
-
-    <!-- 15 FUTURE VISION — dark band -->
-    <div class="cs-bleed fade-up">
-      <div class="cs-bleed-inner">
-        <p class="cs-kicker">15 &#8212; Future Vision</p>
-        <span class="cs-concept-flag">Concept Exploration &#8212; Not Shipped</span>
-        <h2>Two opportunities the work uncovered</h2>
-        <p>Designing the shipped experience surfaced two problems it could not solve. Both are documented below as strategic proposals with a defined MVP, a north star, and success metrics. Neither has been built, and neither is part of the live QWEEN product.</p>
-        <div class="cs-concept-note">
-          <p><strong>Explicit note.</strong> Everything in sections 15A and 15B is unbuilt concept work. It is included because the reasoning is part of how I think about product opportunity, not because it shipped.</p>
-        </div>
-
-        <!-- 15A AI CONCIERGE -->
-        <div class="cs-chapter" id="ai-concierge">
-          <p class="cs-chapter-num">15A &#8212; Concept Exploration</p>
-          <h3>AI Concierge Experience</h3>
-          <p><strong>Problem.</strong> The single highest-value thing a showroom provides is a person who has sold jewellery for fifteen years. They can hear &#8220;something for my sister&#8217;s wedding, she wears mostly gold, budget around this&#8221; and produce four correct options in ninety seconds. The website replaces that with filters, which require the buyer to already know the answer.</p>
-          <p><strong>Opportunity.</strong> The gap is not search quality. It is that the buyer&#8217;s input is naturally expressed as context&#8212;occasion, recipient, taste, budget, constraint&#8212;and the interface only accepts attributes. An interface that accepts context directly could close a gap that no amount of filter refinement will.</p>
-          <p><strong>Vision.</strong> A concierge that behaves like the associate: asks two or three clarifying questions, proposes a small, reasoned set, explains why each piece fits, and hands off to a human for anything involving customisation, valuation, or genuine hesitation. The explanation matters more than the recommendation&#8212;in this category, an unexplained suggestion is not trusted.</p>
-          <p><strong>User journey.</strong></p>
-          <div class="cs-flow-vertical">
-            <span class="cs-flow-step">States intent in natural language</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step">Two or three clarifying questions</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step hl">Small curated set, each with reasoning</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step">Refines conversationally</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step">Handoff to a specialist, with full context</span>
-          </div>
-          <p><strong>Expected business impact.</strong> Higher discovery-to-product conversion for buyers arriving without a category in mind; qualified handoffs that reach a human already contextualised; and&#8212;probably most valuable&#8212;a continuous record of what buyers actually ask for, which is merchandising intelligence the current site does not capture at all.</p>
-          <p><strong>Success metrics.</strong> Concierge-assisted sessions reaching a product page; recommendation acceptance rate; handoff-to-consultation rate; and a satisfaction measure on whether the explanation helped. The last one is the real test&#8212;a concierge that recommends well but explains poorly fails in this category.</p>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">MVP</div>
-            <div class="cs-decision-text">A guided intent flow on discovery&#8212;occasion, recipient, budget, metal preference&#8212;returning a curated set with a written rationale per piece. Retrieval over the existing catalogue and merchandising notes. Deliberately narrow: no open-ended chat, no styling advice, no customisation.</div>
-            <div class="cs-decision-label">North Star</div>
-            <div class="cs-decision-text">A persistent relationship that remembers past purchases, occasions, and family sizing; anticipates anniversaries; and moves fluidly between assisted and human service. The digital equivalent of a house that knows you.</div>
-            <div class="cs-decision-label">Key risk</div>
-            <div class="cs-decision-text">A concierge that hallucinates a specification or a price on a six-figure item causes brand damage that far exceeds the conversion upside. Every claim it makes must be retrieved from the catalogue, never generated&#8212;which is a hard product constraint, not a tuning problem.</div>
-          </div>
-          <div class="cs-img">
-            <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Concept] AI Concierge concept frames &#8212; guided intent, curated set with reasoning, specialist handoff. Concept exploration, not a shipped feature.</span></div>
-          </div>
-        </div>
-
-        <!-- 15B IMMERSIVE -->
-        <div class="cs-chapter" id="immersive">
-          <p class="cs-chapter-num">15B &#8212; Concept Exploration</p>
-          <h3>Immersive Luxury Experience</h3>
-          <p><strong>Problem.</strong> Two doubts survive every improvement made to the shipped PDP: how will this look on me, and how does it behave in real light. Photography, however good, is a fixed viewpoint under fixed lighting. It cannot answer either question, and they are the two most common reasons a considered buyer defers.</p>
-          <p><strong>Opportunity.</strong> Jewellery is unusually well suited to this. The objects are small, rigid, highly reflective, and worn in a small number of predictable positions&#8212;the technical problem is far more tractable than it is for apparel, and the payoff is larger because the stakes per item are higher.</p>
-          <p><strong>Vision.</strong> Two capabilities. A try-on that places the piece accurately on the buyer&#8217;s own hand, ear, or neck at true scale. And an atelier view that lets the piece be rotated and re-lit, so the buyer can see how the stones behave in daylight versus evening light&#8212;the thing people tilt a piece under the showroom lamp to check.</p>
-          <p><strong>User journey.</strong></p>
-          <div class="cs-flow-vertical">
-            <span class="cs-flow-step">Product detail page</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step hl">See it on you / see it in light</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step">Adjust angle, lighting, scale</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step">Capture and share for a second opinion</span>
-            <span class="cs-flow-arrow">&#8595;</span>
-            <span class="cs-flow-step">Return to purchase with the doubt resolved</span>
-          </div>
-          <p><strong>Expected business impact.</strong> Direct effect on the two largest sources of hesitation on high-value items, and a likely reduction in size- and appearance-related returns, which are the most expensive returns in the category. The share step also strengthens the consultation loop research insight five identified.</p>
-          <p><strong>Success metrics.</strong> Try-on engagement rate on eligible products; conversion difference between sessions that used it and comparable sessions that did not; appearance-related return rate; and share rate from within the immersive view.</p>
-          <div class="cs-decision-grid">
-            <div class="cs-decision-label">MVP</div>
-            <div class="cs-decision-text">Try-on for one category with stable tracking&#8212;most likely earrings or rings&#8212;on a limited hero set, browser-based with no app install. Scoped narrow enough to test whether it changes behaviour before investing in catalogue-wide 3D asset production.</div>
-            <div class="cs-decision-label">North Star</div>
-            <div class="cs-decision-text">Every piece in the catalogue viewable on the buyer, at true scale, under lighting they control, from a link they can send to someone else. The showroom&#8217;s two remaining advantages, closed.</div>
-            <div class="cs-decision-label">Key risk</div>
-            <div class="cs-decision-text">A try-on that renders poorly is worse than none&#8212;it makes an expensive object look cheap. The quality bar is a gate on shipping at all, and the asset production cost per piece is the real constraint, not the rendering technology.</div>
-          </div>
-          <div class="cs-img">
-            <div class="cs-img-frame med"><span>[PLACEHOLDER &#8212; Concept] Immersive concept frames &#8212; try-on at true scale, atelier lighting view, capture and share. Concept exploration, not a shipped feature.</span></div>
+            <p class="qw-small" data-reveal>Documented as a concept exploration. The reasoning is part of how the confidence problem was framed; it is not a shipped feature.</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- 16 LESSONS LEARNED -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">16 &#8212; Lessons Learned</p>
-      <h2>Four things this project taught me</h2>
-      <div class="cs-insight">
-        <span class="cs-insight-num">01</span>
-        <div class="cs-insight-body">
-          <h4>In luxury, the constraint is the product.</h4>
-          <p>Every meaningful decision here was about what not to include. That is uncomfortable, because a designer&#8217;s visible output is what they added. The value was mostly in what got argued out.</p>
-        </div>
-      </div>
-      <div class="cs-insight">
-        <span class="cs-insight-num">02</span>
-        <div class="cs-insight-body">
-          <h4>Order of information beats quality of information.</h4>
-          <p>The PDP&#8217;s content did not change dramatically. Its sequence did. Trust before price, scale before specification, story before both&#8212;the same facts in the order doubts arrive did most of the work.</p>
-        </div>
-      </div>
-      <div class="cs-insight">
-        <span class="cs-insight-num">03</span>
-        <div class="cs-insight-body">
-          <h4>An IA is only as good as the operation behind it.</h4>
-          <p>Occasion-led discovery is the right model and it fails within a quarter without curation. I now design the operational requirement alongside the structure, and treat an unfunded requirement as a design flaw.</p>
-        </div>
-      </div>
-      <div class="cs-insight">
-        <span class="cs-insight-num">04</span>
-        <div class="cs-insight-body">
-          <h4>Motion belongs in the design system, not in the handoff.</h4>
-          <p>Specifying motion per component does not scale and does not survive deadline pressure. Tokens made quality the default and removed a recurring negotiation from every build.</p>
-        </div>
-      </div>
-      <details class="cs-note">
-        <summary>Design direction &#8212; Lessons Learned</summary>
-        <div class="cs-note-body">
-          <div class="cs-note-row"><div class="cs-note-row-label">Purpose</div><div class="cs-note-row-text">Show self-assessment that is specific enough to be useful rather than performed humility.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Suggested visual</div><div class="cs-note-row-text">None. Type only, matching the research section&#8217;s numbered rhythm so the two bookend each other.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Interaction</div><div class="cs-note-row-text">None.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Animation</div><div class="cs-note-row-text">Same numeral fade as section 04, for structural rhyme.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Layout</div><div class="cs-note-row-text">Numbered rows on the standard measure.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Why it matters</div><div class="cs-note-row-text">Each lesson names a behaviour change, not a feeling.</div></div>
-          <div class="cs-note-row"><div class="cs-note-row-label">Implementation</div><div class="cs-note-row-text">Reuse the insight component. No new CSS.</div></div>
-        </div>
-      </details>
-    </div>
+    <!-- ============================================================
+         08 — OWNERSHIP
+         ============================================================ -->
+    <section class="qw-section" id="ownership">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">08</span> &mdash; Ownership</p>
+        <h2 class="qw-statement" data-reveal>The relationship doesn&rsquo;t end at checkout.</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">One of the doubts a showroom quietly answers is &ldquo;will this brand exist in ten years when I need it resized?&rdquo; The experience treats ownership as part of the purchase, not an afterthought &mdash; lifetime cleaning and resizing, a clear returns window, and the buyback and exchange that make a high-value decision reversible.</p>
 
-    <!-- 17 REFLECTION -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">17 &#8212; Reflection</p>
-      <h2>What I&#8217;d do differently</h2>
-      <p><strong>Design the content model before the pages.</strong> The story chapter, the specification block, and the trust band all depend on structured content the brand has to produce continuously. We designed the surfaces and retrofitted the model, which meant early catalogue batches were uneven. I&#8217;d now build the content model first and let it constrain the layout.</p>
-      <p><strong>Bring photography in at week one.</strong> The shot list turned out to be one of the highest-impact design artefacts on the project and it was written late. On a category where the image is the product, the studio brief is a design deliverable, not a downstream dependency.</p>
-      <p><strong>Instrument the doubts, not just the funnel.</strong> We measured drop-off well and hesitation poorly. Zoom frequency, spec-expand rate, scroll reversal, share behaviour&#8212;those are the signals that map to the model of the buyer we were designing for, and I&#8217;d put them in place from the start.</p>
-      <div class="cs-pullquote">The showroom is not competition for the website. It is the specification.</div>
-      <p>QWEEN changed how I think about categories where the purchase is rare, expensive, and emotional. The design problem in those categories is almost never navigation. It is doubt&#8212;and doubt is answered in a specific order, at a specific moment, by a specific artefact. Find the order and the interface mostly designs itself.</p>
-    </div>
+        <div class="qw-seq" role="img" aria-label="The ownership lifecycle: purchase, live with it, care, exchange or buyback.">
+          <span class="qw-seq-node" style="--d:0">Purchase</span>
+          <span class="qw-seq-link" style="--d:1"></span>
+          <span class="qw-seq-node" style="--d:1">Live with it</span>
+          <span class="qw-seq-link" style="--d:2"></span>
+          <span class="qw-seq-node" style="--d:2">Care</span>
+          <span class="qw-seq-link" style="--d:3"></span>
+          <span class="qw-seq-node" style="--d:3">Exchange / Buyback</span>
+        </div>
+        <blockquote class="qw-quote" data-reveal style="max-width:26ch;">A reversible decision is an easier decision. Ownership is where a high-value purchase is finally de-risked.</blockquote>
+      </div>
+    </section>
 
-    <!-- 18 APPENDIX -->
-    <div class="cs-section fade-up">
-      <p class="cs-kicker">18 &#8212; Appendix</p>
-      <h2>Scope, artefacts, and what is not shown</h2>
-      <div class="cs-appendix-row">
-        <div class="cs-appendix-label">Role</div>
-        <div class="cs-appendix-text">Product Designer, end-to-end. Research, information architecture, interaction design, visual design, motion, design system, and design QA through release.</div>
+    <!-- ============================================================
+         09 — THE BROADER EXPERIENCE (short)
+         ============================================================ -->
+    <section class="qw-section qw-section--tight" id="ecosystem">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">09</span> &mdash; Beyond the PDP</p>
+        <h2 class="qw-h" data-reveal style="max-width:24ch;">The PDP was one expression of a larger QWEEN experience.</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:20px;">Discovery is organised by occasion rather than category, because that is how buyers arrive. Collection reads as editorial rather than catalogue. Each surface does one part of the confidence job and hands off cleanly &mdash; but the product page is where the burden is carried, so it is where this study stays.</p>
+        <div class="qw-seq qw-seq--quiet" role="img" aria-label="The broader experience: discover, desire, experience, trust, concierge, store, own.">
+          <span class="qw-seq-node">Discover</span><span class="qw-seq-link"></span>
+          <span class="qw-seq-node">Desire</span><span class="qw-seq-link"></span>
+          <span class="qw-seq-node">Experience</span><span class="qw-seq-link"></span>
+          <span class="qw-seq-node">Trust</span><span class="qw-seq-link"></span>
+          <span class="qw-seq-node">Concierge</span><span class="qw-seq-link"></span>
+          <span class="qw-seq-node">Store</span><span class="qw-seq-link"></span>
+          <span class="qw-seq-node">Own</span>
+        </div>
       </div>
-      <div class="cs-appendix-row">
-        <div class="cs-appendix-label">Shipped</div>
-        <div class="cs-appendix-text">Discovery experience, collection experience, product detail experience, design system, motion system, responsive behaviour across breakpoints.</div>
+    </section>
+
+    <!-- ============================================================
+         10 — OUTCOME
+         ============================================================ -->
+    <section class="qw-section" id="outcome">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">10</span> &mdash; Outcome</p>
+        <h2 class="qw-display" data-reveal style="max-width:12ch;">The shift.</h2>
+
+        <div class="qw-outcome" role="group" aria-label="Before: a product catalogue of four steps. After: a confidence journey of seven moments.">
+          <div class="qw-outcome-col was" data-reveal>
+            <h3>Before</h3>
+            <div class="sub">Product catalogue</div>
+            <div class="qw-outcome-step">Image</div>
+            <div class="qw-outcome-step">Specs</div>
+            <div class="qw-outcome-step">Price</div>
+            <div class="qw-outcome-step">Buy</div>
+          </div>
+          <div class="qw-outcome-mid" data-reveal style="--d:1" aria-hidden="true">→</div>
+          <div class="qw-outcome-col now" data-reveal style="--d:1">
+            <h3>After</h3>
+            <div class="sub">Confidence journey</div>
+            <div class="qw-outcome-step">Desire</div>
+            <div class="qw-outcome-step">Experience</div>
+            <div class="qw-outcome-step">Understand</div>
+            <div class="qw-outcome-step">Trust</div>
+            <div class="qw-outcome-step">Concierge</div>
+            <div class="qw-outcome-step">Decide</div>
+            <div class="qw-outcome-step">Own</div>
+          </div>
+        </div>
+
+        <div class="qw-measure">
+          <p class="qw-body" data-reveal><strong>For buyers</strong>, the questions that used to end a session now have answers in the place the question occurs.</p>
+          <p class="qw-body" data-reveal style="--d:1"><strong>For the business</strong>, the design system and content model outlived any individual page &mdash; new collections launch against an existing structure instead of a new design cycle.</p>
+          <p class="qw-body" data-reveal style="--d:2"><strong>For the team</strong>, motion tokens, a photography shot list and a merchandising contract turned recurring debates into settled defaults.</p>
+          <p class="qw-small" data-reveal style="margin-top:18px;">QWEEN is a growing brand rather than a controlled experiment, so this study reports qualitative shifts rather than before-and-after numbers.</p>
+        </div>
       </div>
-      <div class="cs-appendix-row">
-        <div class="cs-appendix-label">Not shipped</div>
-        <div class="cs-appendix-text">AI Concierge and Immersive Luxury Experience. Both are concept explorations documented in section 15 and were never released.</div>
+    </section>
+
+    <!-- ============================================================
+         11 — REFLECTION
+         ============================================================ -->
+    <section class="qw-section qw-band" id="reflection">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">11</span> &mdash; Reflection</p>
+        <h2 class="qw-display" data-reveal style="max-width:18ch;">Luxury ecommerce isn&rsquo;t about adding more information.</h2>
+        <div class="qw-measure" style="margin-top:clamp(34px,5vw,56px);">
+          <p class="qw-body" data-reveal style="color:rgba(255,255,255,0.78);">The PDP&rsquo;s content didn&rsquo;t change dramatically. Its sequence did. Trust before price, scale before specification, story before both &mdash; the same facts in the order doubts arrive did most of the work. In luxury, the constraint is the product: every meaningful decision here was about what <em>not</em> to include.</p>
+          <p class="qw-body" data-reveal style="--d:1;color:rgba(255,255,255,0.78);">The design problem in categories where the purchase is rare, expensive and emotional is almost never navigation. It is doubt. The goal is to understand which uncertainty is preventing someone from moving forward &mdash; and design the experience around resolving it. Find the order, and the interface mostly designs itself.</p>
+        </div>
+        <blockquote class="qw-quote qw-quote--accent" data-reveal style="max-width:20ch;margin-top:clamp(48px,7vw,90px);">The showroom is not competition for the website. It is the specification.</blockquote>
       </div>
-      <div class="cs-appendix-row">
-        <div class="cs-appendix-label">Collaborators</div>
-        <div class="cs-appendix-text">Founders, engineering, merchandising, content, and photography. Design decisions described here were mine; the outcomes were the team&#8217;s.</div>
-      </div>
-      <div class="cs-appendix-row">
-        <div class="cs-appendix-label">Measurement</div>
-        <div class="cs-appendix-text">Figures are directional. The brand grew across the period and the catalogue changed, so before-and-after comparisons are not controlled experiments.</div>
-      </div>
-      <div class="cs-appendix-row">
-        <div class="cs-appendix-label">Confidentiality</div>
-        <div class="cs-appendix-text">Revenue figures, margin, supplier terms, and unreleased collections are excluded. Available to discuss under NDA.</div>
-      </div>
-      <div class="cs-img">
-        <div class="cs-img-frame short"><span>[PLACEHOLDER &#8212; Process] Working artefacts: wireframes, IA maps, motion spec pages, shot list</span></div>
-      </div>
-    </div>
+    </section>
 
     <!-- CTA -->
-    <div class="cs-cta-wrap fade-up">
-      <span class="cs-cta-note">Want the full walkthrough with screens?</span>
-      <a class="cs-cta" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+    <div class="qw-wrap">
+      <div class="qw-cta">
+        <span class="qw-cta-note">Want the full walkthrough with screens?</span>
+        <a href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
+      </div>
     </div>
 
-  </article>
+  </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (preserved) -->
   <footer class="footer--rule">
     <p class="footer-tagline">Always brewing something new</p>
   </footer>
 
-  <button class="notes-toggle" id="notesToggle" aria-pressed="false">Design notes</button>
-
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/qween.js" defer></script>
 </body>
 </html>

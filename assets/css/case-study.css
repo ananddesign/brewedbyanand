@@ -17,7 +17,7 @@
 .cs-hero-bg { position: absolute; inset: 0; background: var(--cs-hero-bg, var(--ink)); }
 .cs-hero-bg::before {
   content: ''; position: absolute; inset: 0;
-  background: var(--cs-hero-tint, radial-gradient(120% 90% at 78% 18%, rgba(185,163,126,0.16) 0%, rgba(11,11,12,0) 62%));
+  background: var(--cs-hero-tint, radial-gradient(120% 90% at 78% 18%, rgba(122,138,235,0.18) 0%, rgba(11,11,12,0) 62%));
 }
 .cs-hero-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -58,7 +58,7 @@
   font-size: var(--fs-kicker); font-weight: 300; letter-spacing: var(--ls-kicker);
   text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
 }
-.cs-section h2 { font-size: var(--fs-h2); font-weight: 400; color: var(--dark); line-height: 1.25; margin-bottom: 24px; }
+.cs-section h2 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: var(--fs-h2); font-weight: 400; color: var(--dark); letter-spacing: 0.02em; line-height: 1.25; margin-bottom: 24px; }
 .cs-section h3 { font-size: var(--fs-h3); font-weight: 500; color: var(--dark); line-height: 1.35; margin: 40px 0 14px; }
 .cs-section p { font-size: var(--fs-body); font-weight: 300; color: #2a2a2a; line-height: 1.75; margin-bottom: 18px; }
 .cs-section p:last-child { margin-bottom: 0; }
@@ -66,7 +66,7 @@
 .cs-section li { font-size: var(--fs-body); font-weight: 300; color: #2a2a2a; line-height: 1.75; margin-bottom: 6px; }
 
 .cs-pullquote {
-  border-left: 2px solid var(--dark); padding: 4px 0 4px 28px; margin: 48px 0;
+  border-left: 2px solid var(--brand-blue); padding: 4px 0 4px 28px; margin: 48px 0;
   font-size: 22px; font-weight: 300; color: var(--dark); line-height: 1.5; font-style: italic;
 }
 .cs-statement {
@@ -104,7 +104,7 @@
   font-size: 12px; font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--dark); white-space: nowrap; background: rgba(255, 255, 255, 0.4);
 }
-.cs-flow-step.hl { background: var(--dark); color: var(--white); border-color: var(--dark); }
+.cs-flow-step.hl { background: var(--brand-blue); color: var(--white); border-color: var(--brand-blue); }
 .cs-flow-arrow { font-size: 14px; color: var(--muted); font-weight: 300; }
 .cs-flow-vertical { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 40px 0; }
 .cs-flow-vertical .cs-flow-arrow { padding-left: 22px; }
@@ -157,7 +157,7 @@
   font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase;
   padding: 6px 12px; border: 1px solid rgba(28, 28, 28, 0.35); color: var(--muted); white-space: nowrap;
 }
-.cs-option-tag.win { border-color: var(--dark); background: var(--dark); color: var(--white); }
+.cs-option-tag.win { border-color: var(--brand-blue); background: var(--brand-blue); color: var(--white); }
 .cs-option-body { padding: 20px 26px; }
 .cs-option-body p { font-size: var(--fs-small) !important; line-height: 1.7 !important; margin-bottom: 10px !important; color: #3a3a3a !important; }
 .cs-option-body p:last-child { margin-bottom: 0 !important; }
@@ -192,12 +192,12 @@
 /* ---------- CONCEPT BADGE ---------- */
 .cs-concept-flag {
   display: inline-flex; align-items: center; gap: 10px;
-  border: 1px solid var(--gold); color: var(--gold);
+  border: 1px solid var(--brand-blue); color: var(--brand-blue);
   font-size: 10px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
   padding: 9px 16px; margin-bottom: 22px;
 }
-.cs-concept-flag::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
-.cs-concept-note { border: 1px solid rgba(185, 163, 126, 0.45); background: rgba(185, 163, 126, 0.06); padding: 20px 24px; margin: 32px 0; }
+.cs-concept-flag::before { content: ''; width: 5px; height: 5px; background: var(--brand-blue); border-radius: 50%; }
+.cs-concept-note { border: 1px solid rgba(30, 42, 158, 0.35); background: rgba(30, 42, 158, 0.05); padding: 20px 24px; margin: 32px 0; }
 .cs-concept-note p { font-size: 14px !important; line-height: 1.7 !important; color: rgba(255, 255, 255, 0.7) !important; margin-bottom: 0 !important; }
 
 /* ---------- DESIGN NOTES (toggleable) ---------- */
@@ -223,7 +223,7 @@ body:not(.notes-on) .cs-note { display: none; }
   padding: 12px 18px; cursor: pointer; transition: opacity var(--dur-hover);
 }
 .notes-toggle:hover { opacity: 0.82; }
-body.notes-on .notes-toggle { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+body.notes-on .notes-toggle { background: var(--brand-blue); border-color: var(--brand-blue); color: var(--white); }
 
 /* ---------- CHAPTER INDEX ---------- */
 .cs-index { border-top: 1px solid rgba(255, 255, 255, 0.16); border-bottom: 1px solid rgba(255, 255, 255, 0.16); margin: 44px 0; }
@@ -233,7 +233,7 @@ body.notes-on .notes-toggle { background: var(--gold); border-color: var(--gold)
 }
 .cs-index a:last-child { border-bottom: none; }
 .cs-index a:hover { opacity: 0.6; }
-.cs-index-num { font-size: var(--fs-kicker); font-weight: 300; letter-spacing: 0.2em; color: var(--gold); }
+.cs-index-num { font-size: var(--fs-kicker); font-weight: 300; letter-spacing: 0.2em; color: var(--brand-blue-soft); }
 .cs-index-label { font-size: var(--fs-small); font-weight: 300; color: rgba(255, 255, 255, 0.82); }
 
 /* ---------- TOKEN STRIP ---------- */
@@ -258,10 +258,10 @@ body.notes-on .notes-toggle { background: var(--gold); border-color: var(--gold)
 .cs-cta {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: var(--fs-meta); font-weight: 300; letter-spacing: var(--ls-btn); text-transform: uppercase;
-  color: var(--white); background: var(--dark); padding: 14px 28px;
+  color: var(--white); background: var(--brand-blue); padding: 14px 28px;
   text-decoration: none; transition: background var(--dur-hover);
 }
-.cs-cta:hover { background: #333333; }
+.cs-cta:hover { background: var(--brand-blue-hover); }
 .cs-cta-note { font-size: var(--fs-meta); font-weight: 300; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
 /* ---------- FULL-BLEED DARK BAND ---------- */
@@ -279,7 +279,7 @@ body.notes-on .notes-toggle { background: var(--gold); border-color: var(--gold)
 .cs-bleed .cs-img-frame { border-color: rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.03); }
 .cs-bleed .cs-img-frame span { color: rgba(255, 255, 255, 0.38); }
 .cs-bleed .cs-img-caption { color: rgba(255, 255, 255, 0.45); }
-.cs-bleed .cs-pullquote { border-left-color: var(--gold); color: rgba(255, 255, 255, 0.9); }
+.cs-bleed .cs-pullquote { border-left-color: var(--brand-blue-soft); color: rgba(255, 255, 255, 0.9); }
 .cs-bleed .cs-card { border-color: rgba(255, 255, 255, 0.16); background: rgba(255, 255, 255, 0.03); }
 .cs-bleed .cs-card h4 { color: var(--white); }
 .cs-bleed .cs-card p { color: rgba(255, 255, 255, 0.66) !important; }
@@ -288,7 +288,7 @@ body.notes-on .notes-toggle { background: var(--gold); border-color: var(--gold)
 .cs-bleed .cs-decision-label { color: rgba(255, 255, 255, 0.45); border-right-color: rgba(255, 255, 255, 0.16); }
 .cs-bleed .cs-decision-text { color: rgba(255, 255, 255, 0.72); }
 .cs-bleed .cs-chapter { border-top-color: rgba(255, 255, 255, 0.16); }
-.cs-bleed .cs-chapter-num { color: var(--gold); }
+.cs-bleed .cs-chapter-num { color: var(--brand-blue-soft); }
 .cs-bleed .cs-note { border-color: rgba(255, 255, 255, 0.16); background: rgba(255, 255, 255, 0.02); }
 .cs-bleed .cs-note summary { color: rgba(255, 255, 255, 0.5); }
 .cs-bleed .cs-note-row-label { color: rgba(255, 255, 255, 0.4); }
@@ -299,7 +299,7 @@ body.notes-on .notes-toggle { background: var(--gold); border-color: var(--gold)
 .cs-bleed .cs-insight-num { color: rgba(255, 255, 255, 0.28); }
 .cs-bleed .cs-insight-body h4 { color: var(--white); }
 .cs-bleed .cs-flow-step { border-color: rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.04); color: rgba(255, 255, 255, 0.85); }
-.cs-bleed .cs-flow-step.hl { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.cs-bleed .cs-flow-step.hl { background: var(--brand-blue-soft); border-color: var(--brand-blue-soft); color: var(--ink); }
 .cs-bleed .cs-flow-arrow { color: rgba(255, 255, 255, 0.4); }
 .cs-bleed .cs-scorecard { border-color: rgba(255, 255, 255, 0.16); }
 .cs-bleed .cs-scorecard-row { border-bottom-color: rgba(255, 255, 255, 0.16); }
