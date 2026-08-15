@@ -254,7 +254,26 @@ a.hero-corner:hover { opacity: 0.65; }
 
 /* AI product cards carry more than the old experiment cards did:
    a stack, a problem line, and up to four links. */
-.exp-card--ai .exp-card-text { width: 460px; max-width: calc(100% - 152px); gap: 14px; pointer-events: auto; }
+/* Each card now carries a product thumbnail behind that copy (see --card-img
+   in index.html). A left-weighted scrim restores the legibility the old solid
+   --card-bg used to give, without hiding the image on the right. */
+/* Fill the card edge-to-edge with the thumbnail (no cover-crop). The
+   thumbnails are authored close to the card's 2.23:1, so the stretch is
+   slight; swap to `contain` here if a wider source ever needs letterboxing
+   over distortion. */
+.exp-card--ai { background-size: 100% 100%; }
+/* imagio + cityscope sources are much wider (~2.57:1) than the 2.23:1 card,
+   so a straight fill squashes them ~15%. Show them whole instead — the small
+   letterbox falls on the card colour and reads as intentional framing. */
+.exp-card--ai[data-url="work-imagio.html"],
+.exp-card--ai[data-url="work-cityscope.html"] {
+  background-size: contain; background-repeat: no-repeat;
+}
+.exp-card--ai::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(100deg, rgba(8,10,12,0.9) 0%, rgba(8,10,12,0.72) 32%, rgba(8,10,12,0.32) 58%, rgba(8,10,12,0.06) 82%);
+}
+.exp-card--ai .exp-card-text { z-index: 1; width: 460px; max-width: calc(100% - 152px); gap: 14px; pointer-events: auto; }
 .exp-card--ai .exp-card-text h2 { font-size: 32px; }
 .exp-card-eyebrow {
   font-size: 10px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase;
