@@ -8,8 +8,74 @@
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
   <link rel="stylesheet" href="assets/css/home.css" />
+  <link rel="stylesheet" href="assets/css/intro.css" />
+  <!-- Intro gate. Runs before the body paints so the decision (play vs
+       skip) is made with zero flash. Plays once per session; ?intro=true
+       forces a replay for development. Reduced-motion and already-seen
+       visitors skip straight to the page. A 7s failsafe strips the overlay
+       if the module ever fails to take over. -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var force = p.get('intro') === 'true';
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var seen = false;
+      try { seen = sessionStorage.getItem('introSeen') === '1'; } catch (e) {}
+      var root = document.documentElement;
+      if (force || (!reduced && !seen)) {
+        root.className += ' intro-play intro-holding';
+        setTimeout(function () {
+          var el = document.getElementById('intro');
+          if (el && el.dataset.done !== '1') {
+            el.remove();
+            root.classList.remove('intro-play', 'intro-holding');
+            var hh = document.querySelector('.hero-headline');
+            if (hh) hh.classList.add('is-revealed');
+          }
+        }, 7000);
+      } else {
+        root.className += ' intro-skip';
+      }
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- ============================================================
+       PORTFOLIO INTRO OVERLAY
+       Static markup so the solid blue paints on the very first frame.
+       assets/js/intro.js drives the sequence and removes this node when
+       it completes. The blue is an SVG whose organic aperture is punched
+       transparent (a growing hole) to reveal the real page beneath — one
+       continuous reveal, no separate grey layer. Above the blue: the
+       steam stage (rising from the bottom) and the centred copy.
+       ============================================================ -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <svg class="intro-blue" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Roughen the aperture edge with turbulence-driven displacement,
+             then feather it a few soft pixels. Not a circle, not a wipe. -->
+        <filter id="introGoo" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.011 0.015" numOctaves="3" seed="9" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G" result="d" />
+          <feGaussianBlur in="d" stdDeviation="0.4" />
+        </filter>
+        <!-- White keeps the blue; the growing black circle punches a
+             transparent hole, revealing the portfolio behind it. Radius
+             animated 0 → full by intro.js. -->
+        <mask id="introMask" maskUnits="userSpaceOnUse" x="-30" y="-30" width="160" height="160">
+          <rect x="-30" y="-30" width="160" height="160" fill="#fff" />
+          <circle id="introMaskCircle" cx="50" cy="50" r="0" fill="#000" filter="url(#introGoo)" />
+        </mask>
+      </defs>
+      <rect x="-30" y="-30" width="160" height="160" fill="#1F2A9E" mask="url(#introMask)" />
+    </svg>
+    <div class="intro-stage" id="introStage"></div>
+    <div class="intro-copy" id="introCopy" aria-hidden="true">
+      <span class="intro-copy-text">Good things are brewing</span>
+    </div>
+  </div>
+
 
   <!-- NAV -->
   <nav id="mainNav" class="nav--on-light nav--home">
@@ -38,9 +104,14 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-content">
-      <h1 class="hero-headline fade-up fade-up-d1">
-        <span class="hero-headline-lead"><span class="hero-headline-swash">F</span>uelled by coffee</span>
-        <span class="hero-headline-sub">driven by designs</span>
+      <!-- Two-level reveal (per revealanimation.js): each line is a clipped
+           mask wrapping an inner element that slides in from xPercent 50 → 0
+           with an expo-out ease, the two lines staggered. Triggered by
+           .is-revealed — on view when the intro is skipped, or at the
+           aperture beat when the intro plays. -->
+      <h1 class="hero-headline">
+        <span class="hl-mask"><span class="hl-in hero-headline-lead"><span class="hero-headline-swash">F</span>uelled by coffee</span></span>
+        <span class="hl-mask"><span class="hl-in hero-headline-sub">driven by designs</span></span>
       </h1>
       <!-- 3D cup. Decorative: the hero reads the same with the canvas empty. -->
       <div class="hero-cup fade-up fade-up-d3" id="heroCup" aria-hidden="true"></div>
@@ -227,28 +298,10 @@
       </div>
 
       <div class="plugin-card">
-        <div class="plugin-art plugin-art--bunny-carrot"></div>
-        <div class="plugin-body">
-          <p class="plugin-type">WebGL Experiment</p>
-          <h3>Bunny Carrot Chase</h3>
-          <p>A Three.js character built from pure geometry &#8212; no Blender, no .obj files. One HTML file, opens on any phone.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Three.js</span>
-            <span class="tech-tag">WebGL</span>
-          </div>
-          <div class="link-row">
-            <a href="experiment-bunny-carrot.html">Write-up</a>
-            <!-- No public repo yet. Once pushed, paste:
-              <a href="https://github.com/ananddesign/REPO" target="_blank" rel="noopener">GitHub</a> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="plugin-card">
-        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-3.webp</span></div>
+        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-motion.webp</span></div>
         <div class="plugin-body">
           <p class="plugin-type">TODO &#8212; type</p>
-          <h3>Plugin Three</h3>
+          <h3>Motion plugin</h3>
           <p>TODO &#8212; one sentence on the problem it solves.</p>
           <div class="tech-tags"><span class="tech-tag">TODO</span></div>
           <div class="link-row">
@@ -258,27 +311,14 @@
       </div>
 
       <div class="plugin-card">
-        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-4.webp</span></div>
+        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-ticket.webp</span></div>
         <div class="plugin-body">
           <p class="plugin-type">TODO &#8212; type</p>
-          <h3>Plugin Four</h3>
+          <h3>Ticket extension</h3>
           <p>TODO &#8212; one sentence on the problem it solves.</p>
           <div class="tech-tags"><span class="tech-tag">TODO</span></div>
           <div class="link-row">
             <a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="plugin-card">
-        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-5.webp</span></div>
-        <div class="plugin-body">
-          <p class="plugin-type">Essay</p>
-          <h3>Small business, no canvas</h3>
-          <p>Building a small business app changed how I think about design tools &#8212; no canvas, no code, no AI.</p>
-          <div class="tech-tags"><span class="tech-tag">Writing</span></div>
-          <div class="link-row">
-            <a href="experiment-small-business-design.html">Read essay</a>
           </div>
         </div>
       </div>
@@ -379,6 +419,7 @@
     }
   }
   </script>
+  <script type="module" src="assets/js/intro.js"></script>
   <script type="module" src="assets/js/hero-cup.js"></script>
 </body>
 </html>
