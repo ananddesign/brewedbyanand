@@ -257,18 +257,12 @@ a.hero-corner:hover { opacity: 0.65; }
 /* Each card now carries a product thumbnail behind that copy (see --card-img
    in index.html). A left-weighted scrim restores the legibility the old solid
    --card-bg used to give, without hiding the image on the right. */
-/* Fill the card edge-to-edge with the thumbnail (no cover-crop). The
-   thumbnails are authored close to the card's 2.23:1, so the stretch is
-   slight; swap to `contain` here if a wider source ever needs letterboxing
-   over distortion. */
-.exp-card--ai { background-size: 100% 100%; }
-/* imagio + cityscope sources are much wider (~2.57:1) than the 2.23:1 card,
-   so a straight fill squashes them ~15%. Show them whole instead — the small
-   letterbox falls on the card colour and reads as intentional framing. */
-.exp-card--ai[data-url="work-imagio.html"],
-.exp-card--ai[data-url="work-cityscope.html"] {
-  background-size: contain; background-repeat: no-repeat;
-}
+/* The thumbnail fills the card edge-to-edge (background-size: cover, from
+   .exp-card). Cover — not fill or contain — is deliberate: the sources vary
+   in ratio (2.05–2.57:1) and cover crops the overflow rather than stretching
+   them or letterboxing a coloured bar, so no border or distortion shows.
+   (JUGL's baked black matte was trimmed from the source so nothing frames it.) */
+.exp-card--ai { background-position: center; }
 .exp-card--ai::before {
   content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background: linear-gradient(100deg, rgba(8,10,12,0.9) 0%, rgba(8,10,12,0.72) 32%, rgba(8,10,12,0.32) 58%, rgba(8,10,12,0.06) 82%);
