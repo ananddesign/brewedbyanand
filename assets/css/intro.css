@@ -1,0 +1,125 @@
+/* ============================================================
+   PORTFOLIO INTRO  —  counter preloader → block-wipe reveal
+   A full-viewport overlay: two blue panels backing a giant counter
+   that rolls 00 → 27 → 65 → 98 → 99, then the panels wipe upward
+   (GSAP clip-path) to reveal the real homepage beneath, while the
+   nav slides in and the hero headline plays its clipped reveal.
+   The page underneath is never restyled. If JS is off the intro is
+   never shown (display:none until html.intro-play), so the site can
+   never be trapped.
+   ============================================================ */
+
+:root {
+  --intro-blue: #1F2A9E;   /* flat brand blue — the preloader backdrop */
+  --intro-cream: #EFEDE8;  /* counter, spinner */
+}
+
+/* ---------- Play / skip gating ---------- */
+.intro { display: none; }
+html.intro-play .intro { display: block; }
+
+/* Scroll frozen for the length of the sequence, released when the
+   script strips .intro-play off <html>. */
+html.intro-play,
+html.intro-play body { overflow: hidden; height: 100%; }
+
+/* Hold the hero's own entrance (corners, cup) until the blocks lift,
+   so it develops in behind the wipe. */
+html.intro-play.intro-holding #hero .fade-up {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+  transition: none !important;
+}
+/* Nav starts lifted out of frame; slides in (CSS, "hop" ease) when the
+   blocks wipe and .nav-in is set — decoupled from GSAP so it can never be
+   left stranded off-screen. */
+html.intro-play #mainNav { transform: translateY(-120%); will-change: transform; }
+html.intro-play #mainNav.nav-in {
+  transform: translateY(0);
+  transition: transform 1.2s cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+/* ---------- Overlay shell ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  z-index: 2147483000;
+  overflow: hidden;
+  cursor: default;
+  background: var(--intro-blue);   /* guards the very first paint */
+}
+
+/* Two side-by-side blue panels. GSAP wipes their clip-path upward to a
+   zero-height strip at the top, revealing the page. */
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.intro-block {
+  flex: 1;
+  height: 100%;
+  background: var(--intro-blue);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+}
+
+/* ---------- Counter ---------- */
+/* Five two-digit groups stacked at the exact centre; each rolls up
+   through its clip mask as the next rolls in — an odometer. */
+.intro-counter {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.count {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+.intro-counter .digit {
+  /* the clip mask — the h1 starts pushed below it and rolls up through */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  padding-top: 1rem;
+}
+.intro-counter .digit h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(6rem, 24vw, 15rem);
+  line-height: 1;
+  color: var(--intro-cream);
+  -webkit-font-smoothing: antialiased;
+  transform: translateY(120%);   /* hidden below the mask until it rolls in */
+  will-change: transform;
+}
+
+/* ---------- Spinner ---------- */
+.intro-spinner-container {
+  position: absolute;
+  bottom: 10%; left: 50%;
+  transform: translateX(-50%);
+}
+.intro-spinner {
+  width: 50px; height: 50px;
+  border: 1.4px solid var(--intro-cream);
+  border-top-color: rgba(239, 237, 232, 0.125);
+  border-radius: 50%;
+  animation: introSpin 1s linear infinite;
+}
+@keyframes introSpin { to { transform: rotate(360deg); } }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none !important; }
+  html.intro-play,
+  html.intro-play body { overflow: auto; height: auto; }
+  html.intro-play #mainNav { transform: none; }
+  html.intro-play.intro-holding #hero .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

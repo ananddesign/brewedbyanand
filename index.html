@@ -31,6 +31,8 @@
             root.classList.remove('intro-play', 'intro-holding');
             var hh = document.querySelector('.hero-headline');
             if (hh) hh.classList.add('is-revealed');
+            var nv = document.getElementById('mainNav');
+            if (nv) nv.style.transform = '';   /* clear any GSAP-set slide-in offset */
           }
         }, 7000);
       } else {
@@ -42,38 +44,26 @@
 <body>
 
   <!-- ============================================================
-       PORTFOLIO INTRO OVERLAY
-       Static markup so the solid blue paints on the very first frame.
-       assets/js/intro.js drives the sequence and removes this node when
-       it completes. The blue is an SVG whose organic aperture is punched
-       transparent (a growing hole) to reveal the real page beneath — one
-       continuous reveal, no separate grey layer. Above the blue: the
-       steam stage (rising from the bottom) and the centred copy.
+       PORTFOLIO INTRO OVERLAY  (counter preloader → block-wipe reveal)
+       Static markup so the blue blocks paint on the very first frame.
+       assets/js/intro.js runs one GSAP timeline: a giant counter rolls
+       00 → 27 → 65 → 98 → 99, then the two blue panels wipe upward to
+       reveal the real homepage, with the nav sliding in and the hero
+       headline playing its clipped-line reveal. Removed when done.
        ============================================================ -->
   <div class="intro" id="intro" aria-hidden="true">
-    <svg class="intro-blue" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <!-- Roughen the aperture edge with turbulence-driven displacement,
-             then feather it a few soft pixels. Not a circle, not a wipe. -->
-        <filter id="introGoo" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
-          <feTurbulence type="fractalNoise" baseFrequency="0.011 0.015" numOctaves="3" seed="9" result="n" />
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G" result="d" />
-          <feGaussianBlur in="d" stdDeviation="0.4" />
-        </filter>
-        <!-- White keeps the blue; the growing black circle punches a
-             transparent hole, revealing the portfolio behind it. Radius
-             animated 0 → full by intro.js. -->
-        <mask id="introMask" maskUnits="userSpaceOnUse" x="-30" y="-30" width="160" height="160">
-          <rect x="-30" y="-30" width="160" height="160" fill="#fff" />
-          <circle id="introMaskCircle" cx="50" cy="50" r="0" fill="#000" filter="url(#introGoo)" />
-        </mask>
-      </defs>
-      <rect x="-30" y="-30" width="160" height="160" fill="#1F2A9E" mask="url(#introMask)" />
-    </svg>
-    <div class="intro-stage" id="introStage"></div>
-    <div class="intro-copy" id="introCopy" aria-hidden="true">
-      <span class="intro-copy-text">Good things are brewing</span>
+    <div class="intro-overlay">
+      <div class="intro-block"></div>
+      <div class="intro-block"></div>
     </div>
+    <div class="intro-counter" id="introCounter">
+      <div class="count"><div class="digit"><h1>0</h1></div><div class="digit"><h1>0</h1></div></div>
+      <div class="count"><div class="digit"><h1>2</h1></div><div class="digit"><h1>7</h1></div></div>
+      <div class="count"><div class="digit"><h1>6</h1></div><div class="digit"><h1>5</h1></div></div>
+      <div class="count"><div class="digit"><h1>9</h1></div><div class="digit"><h1>8</h1></div></div>
+      <div class="count"><div class="digit"><h1>9</h1></div><div class="digit"><h1>9</h1></div></div>
+    </div>
+    <div class="intro-spinner-container"><div class="intro-spinner"></div></div>
   </div>
 
 
@@ -415,7 +405,9 @@
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/",
+      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/index.js",
+      "gsap/CustomEase": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/CustomEase.js"
     }
   }
   </script>

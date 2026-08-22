@@ -69,6 +69,40 @@ body { --nav-logo-h: 73px; }
    1440px frame width the design was built at; the swash alone runs
    smaller, at 93.986px, an ~0.831 ratio carried through below). */
 .hero-headline { display: flex; flex-direction: column; align-items: center; }
+
+/* Reveal masks. Each line clips its inner element, which slides in from
+   xPercent 50 → 0 with an expo-out ease, the second line staggered behind
+   the first — the effect from revealanimation.js, reproduced with the
+   site's own CSS transitions (no GSAP). The mask shrink-wraps the line so
+   the horizontal slide is actually clipped; bottom padding + a matching
+   negative gap give the italic descenders room without loosening the
+   original line rhythm. Plays when .is-revealed is set (on view when the
+   intro is skipped; at the aperture beat when the intro plays). */
+.hl-mask {
+  display: inline-block; max-width: 100%;
+  overflow: hidden;
+  /* Horizontal room so the Tempting "F" swash's left flourish isn't
+     clipped; the negative margin keeps layout/centring unchanged. The
+     rightward slide never enters the left gap, so the reveal still reads
+     as a clean wipe. Bottom room is for the italic descenders. */
+  padding: 0 0.7em 0.18em;
+  margin: 0 -0.7em;
+}
+.hl-mask + .hl-mask { margin-top: calc(0.06em - 0.18em); }
+.hl-in { display: inline-block; }
+/* Masked/animated only once JS is active — no-JS visitors just see the
+   headline in place. */
+.js-ready .hl-in {
+  transform: translateX(50%);
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.js-ready .hero-headline.is-revealed .hl-in { transform: translateX(0); }
+.js-ready .hero-headline.is-revealed .hl-mask:nth-of-type(2) .hl-in { transition-delay: 0.05s; }
+@media (prefers-reduced-motion: reduce) {
+  .js-ready .hl-in { transform: none; transition: none; }
+}
+
 /* Both lines (and, by inheritance, the Tempting swash nested in .lead)
    are set to weight 500 on the record — but neither Instrument Serif nor
    Tempting ships anything beyond their single static 400 cut, so this
@@ -79,13 +113,13 @@ body { --nav-logo-h: 73px; }
    lines start rendering it automatically — no other change needed. */
 .hero-headline-lead,
 .hero-headline-sub {
-  display: block; font-family: 'Instrument Serif', serif;
+  display: inline-block; font-family: 'Instrument Serif', serif;
   color: var(--brand-blue); letter-spacing: -0.02em; line-height: 1;
   font-size: clamp(48px, 7.85vw, 113px);
   font-weight: 500; font-synthesis: none;
 }
 .hero-headline-lead { font-style: italic; }
-.hero-headline-sub { font-style: normal; margin-top: 0.06em; }
+.hero-headline-sub { font-style: normal; }
 .hero-headline-swash {
   font-family: 'Tempting', cursive; font-style: normal;
   font-size: clamp(40px, 6.53vw, 94px); letter-spacing: -0.02em;

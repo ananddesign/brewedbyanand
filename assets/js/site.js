@@ -156,6 +156,22 @@
     goTo(0, false);
   }
 
+  /* ---------- Hero headline reveal ---------- */
+  /* The clipped-line slide (see .hl-mask/.hl-in in home.css). When the
+     intro is playing it owns the timing and fires this at the aperture
+     beat; otherwise it's an on-view reveal — and since the hero is above
+     the fold, that's effectively on load. */
+  var heroHeadline = document.querySelector('.hero-headline');
+  if (heroHeadline && !document.documentElement.classList.contains('intro-play')) {
+    if (reduced) {
+      heroHeadline.classList.add('is-revealed');
+    } else {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { heroHeadline.classList.add('is-revealed'); });
+      });
+    }
+  }
+
   /* ---------- Case-study design notes toggle ---------- */
   var notes = document.getElementById('notesToggle');
   if (notes) {
