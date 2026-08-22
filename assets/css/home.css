@@ -167,7 +167,7 @@ a.hero-corner:hover { opacity: 0.65; }
 .hero-cup-grab:active { cursor: grabbing; }
 
 /* ---------- SECTION SHELLS ---------- */
-#work, #ai, #plugins, #about, #resume { margin-top: var(--space-section); }
+#work, #ai, #plugins, #about { margin-top: var(--space-section); }
 #contact { margin-top: var(--space-section); }
 
 /* ---------- FEATURED WORK ---------- */
@@ -370,16 +370,6 @@ a.hero-corner:hover { opacity: 0.65; }
 .about-image { flex: 0 0 480px; }
 .about-image img { width: 100%; height: auto; display: block; }
 
-/* ---------- RESUME TEASER ---------- */
-.resume-teaser {
-  width: var(--w-card); max-width: calc(100% - 144px); margin: 0 auto;
-  border: 1px solid var(--line); background: rgba(255, 255, 255, 0.3);
-  padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px;
-}
-.resume-teaser h3 { font-size: 20px; font-weight: 500; color: var(--dark); margin-bottom: 10px; }
-.resume-teaser p { font-size: 14px; font-weight: 300; color: rgba(28, 28, 28, 0.6); line-height: 1.65; max-width: 380px; }
-.resume-teaser-actions { display: flex; gap: 14px; flex-shrink: 0; }
-
 /* ---------- CONTACT ---------- */
 .contact-inner {
   width: var(--w-card); max-width: calc(100% - 144px); margin: 0 auto; text-align: center;
@@ -441,8 +431,8 @@ a.hero-corner:hover { opacity: 0.65; }
   .hero-corner--left { left: var(--gutter-sm); }
   .hero-corner--right { right: var(--gutter-sm); }
   .hero-cup { height: clamp(180px, 26vh, 260px); margin-top: 16px; }
-  #work, #ai, #plugins, #about, #resume, #contact { margin-top: 110px; }
-  .work-features, .plugin-grid, .about-layout, .resume-teaser, .contact-inner { max-width: calc(100% - 48px); }
+  #work, #ai, #plugins, #about, #contact { margin-top: 110px; }
+  .work-features, .plugin-grid, .about-layout, .contact-inner { max-width: calc(100% - 48px); }
   .plugin-grid { grid-template-columns: 1fr; }
   .work-feature-body { padding: 32px 24px; }
   .work-feature-body h3 { font-size: 26px; }
@@ -453,6 +443,4 @@ a.hero-corner:hover { opacity: 0.65; }
   .exp-card--ai .exp-card-text { right: var(--gutter-sm); }
   .about-layout { flex-direction: column; gap: 32px; }
   .about-image { flex: 0 0 auto; width: 100%; max-width: 360px; }
-  .resume-teaser { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
-  .resume-teaser-actions { width: 100%; }
 }
