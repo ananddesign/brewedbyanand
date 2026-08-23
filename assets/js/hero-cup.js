@@ -116,11 +116,15 @@ if (mount) {
     pivot.add(model);
 
     /* Coffee. A flat disc, not part of the scan — measured against this
-       specific model's rim (the mug fits to height 1.7, so the lip sits
-       right at that top) and set in far enough that it clears the low
-       side of the lip. */
+       specific model's rim (fit via a circle through the topmost ring
+       of vertices: centre (-0.1346, 0.0003), radius 0.325 in local
+       units). The handle pulls the model's bounding-box centre off the
+       body's true axis, so the disc needs its own x offset rather than
+       sitting at the pivot origin like the model does. Sized in a
+       touch from the true rim radius so it clears the low side of the
+       lip. */
     const coffee = new THREE.Mesh(
-      new THREE.CircleGeometry(0.58, 64),
+      new THREE.CircleGeometry(0.8, 64),
       new THREE.MeshStandardMaterial({
         color: 0x0c0705,
         /* Low enough to still read as liquid, high enough that the
@@ -132,7 +136,7 @@ if (mount) {
       })
     );
     coffee.rotation.x = -Math.PI / 2;
-    coffee.position.y = 1.64;
+    coffee.position.set(-0.348, 1.64, 0);
     coffee.receiveShadow = true;
     pivot.add(coffee);
 
