@@ -35,7 +35,11 @@ function boot() {
   const SLOW = Math.max(1, parseFloat(params.get('slow')) || 1);
   const FREEZE = params.has('freeze') ? parseFloat(params.get('freeze')) : null;
 
-  const STEP = 0.7;   /* counter pace — tightened from the spec's 1.0s */
+  /* Each number rolls in, HOLDS (so it's actually readable — without the
+     hold the odometer sits mid-roll almost the whole time and reads as
+     clipped slivers), then rolls out as the next rolls in. */
+  const IN = 0.4, HOLD = 0.35, OUT = 0.4;
+  const BEAT = IN + HOLD;   /* gap between successive numbers rolling in */
   const counts = overlay.querySelectorAll('.count');
 
   /* Fire the real page's own entrance as the blocks lift: release the
@@ -57,17 +61,18 @@ function boot() {
      pixel y (~115px) that would otherwise stack under the percent and keep
      the digits pushed down; y:0 clears it and yPercent:120 restores the same
      hidden position, now owned by GSAP. */
-  gsap.set(overlay.querySelectorAll('.count .digit h1'), { y: 0, yPercent: 120 });
+  gsap.set(overlay.querySelectorAll('.count .digit h1'), { y: 0, yPercent: 180 });
 
   /* 1. Counter roll — each pair rolls up into its mask at index*STEP and
      out one beat later, a continuous odometer. */
   counts.forEach((count, index) => {
     const digits = count.querySelectorAll('.digit h1');
-    tl.to(digits, { yPercent: 0, duration: STEP, stagger: 0.05 }, index * STEP);
-    tl.to(digits, { yPercent: -100, duration: STEP, stagger: 0.05 }, index * STEP + STEP);
+    const at = index * BEAT;
+    tl.to(digits, { yPercent: 0, duration: IN, stagger: 0.05 }, at);
+    tl.to(digits, { yPercent: -180, duration: OUT, stagger: 0.05 }, at + BEAT);
   });
 
-  const countersEnd = counts.length * STEP;   /* last pair has rolled out */
+  const countersEnd = counts.length * BEAT + OUT;   /* last pair has rolled out */
 
   /* 2. Spinner out. */
   tl.to('.intro-spinner', { opacity: 0, duration: 0.3 }, countersEnd);

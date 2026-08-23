@@ -79,21 +79,29 @@ html.intro-play #mainNav.nav-in {
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  /* the digit size lives here so .digit's em units resolve to it */
+  font-size: clamp(6rem, 24vw, 15rem);
 }
 .intro-counter .digit {
-  /* the clip mask — the h1 starts pushed below it and rolls up through */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  padding-top: 1rem;
+  /* Mask ONLY vertically (that's all the roll needs); the horizontal edges
+     are pushed way out (-100%…200%) so the italic serif swashes and tails,
+     which extend sideways past the glyph's narrow box, are never shaved.
+     Taller than the glyph and flex-centred for symmetric top/bottom room. */
+  clip-path: polygon(-100% 0%, 200% 0%, 200% 100%, -100% 100%);
+  height: 1.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .intro-counter .digit h1 {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(6rem, 24vw, 15rem);
+  font-size: 1em;
   line-height: 1;
   color: var(--intro-cream);
   -webkit-font-smoothing: antialiased;
-  transform: translateY(120%);   /* hidden below the mask until it rolls in */
+  transform: translateY(180%);   /* hidden below the mask until it rolls in */
   will-change: transform;
 }
 
