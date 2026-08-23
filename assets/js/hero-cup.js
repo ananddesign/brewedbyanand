@@ -8,7 +8,6 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { createClayTexture } from './hero/marble-texture.js';
 
 const mount = document.getElementById('heroCup');
 if (mount) {
@@ -85,22 +84,19 @@ if (mount) {
       /* Photogrammetry bakes both faces; single-sided renders cleaner
          and halves the shadow work. */
       o.material.side = THREE.FrontSide;
-      o.material.envMapIntensity = 1.15;
 
-      /* Unglazed brown stoneware: built from the scan's own albedo (so
-         the sculpted shading survives) with mottled firing-variation
-         painted on top. High roughness and a low envMapIntensity are
-         what actually sell "rough" — a matte clay surface shouldn't
-         pick up the room's reflection the way glazed ceramic or
-         polished stone would. */
-      if (o.material.map) {
-        o.material.map = createClayTexture(o.material.map.image);
-        o.material.color.set(0xffffff);
-        o.material.roughness = 0.92;
-        o.material.metalness = 0;
-        o.material.envMapIntensity = 0.25;
-        o.material.needsUpdate = true;
-      }
+      /* Plain glazed white ceramic — no printed mark. The scan's baked
+         texture carries a scattered decal we don't want, so drop the
+         map entirely rather than fight its UV layout; a flat white
+         moderate-roughness material reads as glaze without the hard
+         specular hotspot a mirror-smooth material would catch from
+         the key light. */
+      o.material.map = null;
+      o.material.color.set(0xffffff);
+      o.material.roughness = 0.55;
+      o.material.metalness = 0;
+      o.material.envMapIntensity = 0.6;
+      o.material.needsUpdate = true;
     });
 
     /* Normalise whatever scale and origin the export shipped with:
@@ -120,11 +116,11 @@ if (mount) {
     pivot.add(model);
 
     /* Coffee. A flat disc, not part of the scan — measured against this
-       specific model's rim (inner radius ~0.77-0.90, top ~1.70, with a
-       few centimetres of organic wobble) and set in far enough that it
-       clears the low side of the lip. */
+       specific model's rim (the mug fits to height 1.7, so the lip sits
+       right at that top) and set in far enough that it clears the low
+       side of the lip. */
     const coffee = new THREE.Mesh(
-      new THREE.CircleGeometry(0.72, 64),
+      new THREE.CircleGeometry(0.58, 64),
       new THREE.MeshStandardMaterial({
         color: 0x0c0705,
         /* Low enough to still read as liquid, high enough that the
@@ -136,7 +132,7 @@ if (mount) {
       })
     );
     coffee.rotation.x = -Math.PI / 2;
-    coffee.position.y = 1.62;
+    coffee.position.y = 1.64;
     coffee.receiveShadow = true;
     pivot.add(coffee);
 
