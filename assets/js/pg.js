@@ -102,23 +102,28 @@
     var frames = Array.prototype.slice.call(doc.querySelectorAll('.pg-shift-frame'));
     if (!phases.length || !frames.length) return;
     var setFrame = function (i) {
-      frames.forEach(function (f, k) { f.classList.toggle('is-on', k === i); });
+      frames.forEach(function (f, k) {
+        f.classList.toggle('is-on', k === i);
+        f.classList.toggle('is-past', k < i);
+        f.style.setProperty('--depth', Math.max(0, i - k));
+      });
     };
     setFrame(0);
-    if (reduced || !('IntersectionObserver' in window)) return; /* CSS shows frames statically */
-    var visible = new Set();
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) visible.add(e.target); else visible.delete(e.target);
-      });
-      var idx = 0;
-      phases.forEach(function (p, i) { if (visible.has(p)) idx = i; });
-      if (!visible.size) {
-        phases.forEach(function (p, i) { if (p.getBoundingClientRect().top < window.innerHeight * 0.5) idx = i; });
-      }
-      setFrame(idx);
-    }, { threshold: 0.5, rootMargin: '-25% 0px -35% 0px' });
-    phases.forEach(function (p) { obs.observe(p); });
+    if (reduced) return; /* CSS shows frames statically */
+    /* active step = last phase whose top has crossed mid-screen. (A 0.5-threshold
+       observer never fired here: an 86vh phase can't be half-inside a 40vh band.) */
+    var current = -1, ticking = false;
+    function update() {
+      var idx = 0, mid = window.innerHeight * 0.5;
+      phases.forEach(function (p, i) { if (p.getBoundingClientRect().top < mid) idx = i; });
+      if (idx !== current) { current = idx; setFrame(idx); }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   /* ---------- progress index (active chapter) ---------- */
@@ -155,6 +160,41 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     Object.keys(map).forEach(function (id) { obs.observe(doc.getElementById(id)); });
+  })();
+
+  /* ---------- nav: hide on scroll down, return on scroll up ---------- */
+  (function () {
+    var nav = doc.getElementById('mainNav');
+    if (!nav) return;
+    var lastY = window.pageYOffset, ticking = false;
+    function update() {
+      var y = window.pageYOffset;
+      var menuOpen = nav.querySelector('.nav-toggle[aria-expanded="true"]');
+      if (menuOpen || y < 80 || y < lastY - 4) nav.classList.remove('nav--hidden');
+      else if (y > lastY + 4) nav.classList.add('nav--hidden');
+      lastY = y; ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+  })();
+
+  /* ---------- fit headline + screen in one viewport ---------- */
+  (function () {
+    var figs = doc.querySelectorAll('.pg-dd .pg-screen, .pg-review .pg-screen');
+    if (!figs.length) return;
+    function fit() {
+      figs.forEach(function (fig) {
+        var block = fig.closest('.pg-dd, .pg-wrap');
+        var head = block && block.querySelector('.pg-dd-tag, .pg-eyebrow');
+        var above = head ? fig.getBoundingClientRect().top - head.getBoundingClientRect().top : 0;
+        // only headlines stacked above the screen count; side-by-side copy does not
+        fig.style.setProperty('--pg-above', Math.max(0, Math.round(above)) + 'px');
+      });
+    }
+    fit();
+    window.addEventListener('load', fit);
+    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 150); });
   })();
 
 })();

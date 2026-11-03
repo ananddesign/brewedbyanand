@@ -146,7 +146,6 @@
 
         <div class="pg-conseq" data-reveal="fade">
           <p class="pg-conseq-core">Item unavailable</p>
-          <div class="pg-conseq-stem" aria-hidden="true"></div>
           <ol class="pg-conseq-list">
             <li class="pg-conseq-item" style="--i:0"><span class="num">01</span><span class="txt">Search another store</span></li>
             <li class="pg-conseq-item" style="--i:1"><span class="num">02</span><span class="txt">Compromise on product</span></li>
@@ -174,43 +173,54 @@
           </aside>
           <div class="pg-shift-track">
             <div class="pg-shift-viewport" role="img" aria-label="An illustrative model transforming store-first shopping into an item-first fulfilment model, where the store becomes one signal of fulfilment rather than the first decision.">
+              <!-- A deck of cards: the current step lands in front, earlier steps
+                   settle behind it with their numbers peeking out (pg.js sets --depth) -->
               <!-- State 1 — store-first -->
-              <div class="pg-shift-frame f1 is-on">
-                <p class="pg-shift-flowlabel">Store-first</p>
-                <div class="pg-shift-node lead">Choose a store</div>
-                <div class="pg-shift-arrow"></div>
-                <div class="pg-shift-node">Browse products</div>
-                <div class="pg-shift-arrow"></div>
-                <div class="pg-shift-node">Build cart</div>
+              <div class="pg-shift-frame f1 is-on" style="--r:-3deg;--x:-14px;">
+                <div class="pg-card-top"><svg class="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 18 11 8h26l4 10z"/><path d="M7 18c0 3 2 5 4.5 5S16 21 16 18c0 3 2 5 4.5 5S25 21 25 18c0 3 2 5 4.5 5S34 21 34 18c0 3 2 5 4.5 5S41 21 41 18"/><path d="M10 23v17h28V23"/><path d="M20 40V30h8v10"/></svg><div class="pg-card-num">01<span>Before</span></div></div>
+                <div class="pg-card-body">
+                  <div class="pg-shift-node lead">Choose a store</div>
+                  <div class="pg-shift-arrow"></div>
+                  <div class="pg-shift-node">Browse products</div>
+                  <div class="pg-shift-arrow"></div>
+                  <div class="pg-shift-node">Build cart</div>
+                </div>
+                <p class="pg-card-by">Store-first</p>
               </div>
               <!-- State 2 — the question -->
-              <div class="pg-shift-frame f2">
-                <p class="pg-shift-q">What if we started with the basket?</p>
+              <div class="pg-shift-frame f2" style="--r:2.5deg;--x:18px;">
+                <div class="pg-card-top"><svg class="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 20h34l-4 20H11z"/><path d="M16 20l6-10M32 20l-6-10"/><path d="M17 27v6M24 27v6M31 27v6"/></svg><div class="pg-card-num">02<span>The pivot</span></div></div>
+                <div class="pg-card-body">
+                  <p class="pg-shift-q">What if we started with the basket?</p>
+                </div>
+                <p class="pg-card-by">The question</p>
               </div>
               <!-- State 3 — item-first -->
-              <div class="pg-shift-frame f3 now">
-                <p class="pg-shift-flowlabel">Item-first</p>
-                <div class="pg-shift-node lead">Choose products</div>
-                <div class="pg-shift-arrow"></div>
-                <div class="pg-shift-node">Compare fulfilment</div>
-                <div class="pg-shift-arrow"></div>
-                <div class="pg-shift-node">Build basket</div>
-                <div class="pg-shift-chips">
-                  <span class="store">Store</span><span>Availability</span><span>Price</span><span>Delivery</span><span>Offers</span>
+              <div class="pg-shift-frame f3" style="--r:-1.5deg;--x:-6px;">
+                <div class="pg-card-top"><svg class="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="10" cy="13" r="2.5"/><circle cx="10" cy="24" r="2.5"/><circle cx="10" cy="35" r="2.5"/><path d="M17 13h22M17 24h22M17 35h14"/></svg><div class="pg-card-num">03<span>After</span></div></div>
+                <div class="pg-card-body">
+                  <div class="pg-shift-node lead">Choose products</div>
+                  <div class="pg-shift-arrow"></div>
+                  <div class="pg-shift-node">Compare fulfilment</div>
+                  <div class="pg-shift-arrow"></div>
+                  <div class="pg-shift-node">Build basket</div>
                 </div>
+                <p class="pg-card-by">Item-first</p>
               </div>
               <!-- State 4 — the fulfilment model -->
-              <div class="pg-shift-frame f4 now">
-                <p class="pg-shift-flowlabel">The fulfilment model</p>
-                <div class="pg-shift-node">Products</div>
-                <div class="pg-shift-arrow"></div>
-                <div class="pg-shift-node lead">Fulfilment</div>
-                <div class="pg-shift-chips">
-                  <span class="store">Store</span><span>Availability</span><span>Price</span><span>Delivery</span><span>Offers</span>
+              <div class="pg-shift-frame f4" style="--r:0deg;--x:0px;">
+                <div class="pg-card-top"><svg class="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="10" cy="11" r="3.5"/><circle cx="38" cy="15" r="3.5"/><path d="M13 13c10 4 6 14 12 18M35 18c-4 6-4 10-10 13"/><path d="M19 31h12v9H19z"/><path d="M19 34h12"/></svg><div class="pg-card-num">04<span>The model</span></div></div>
+                <div class="pg-card-body">
+                  <div class="pg-shift-node">Products</div>
+                  <div class="pg-shift-arrow"></div>
+                  <div class="pg-shift-node lead">Fulfilment</div>
+                  <div class="pg-shift-chips">
+                    <span class="store">Store</span><span>Availability</span><span>Price</span><span>Delivery</span><span>Offers</span>
+                  </div>
+                  <div class="pg-shift-arrow"></div>
+                  <div class="pg-shift-node">Basket</div>
                 </div>
-                <div class="pg-shift-arrow"></div>
-                <div class="pg-shift-node">Basket</div>
-                <p class="pg-shift-note">The store didn&rsquo;t disappear. Its role changed &mdash; from the first decision to one signal of fulfilment.</p>
+                <p class="pg-card-by">The store didn&rsquo;t disappear &mdash; it became one signal of fulfilment.</p>
               </div>
             </div>
             <div class="pg-shift-phase" data-phase="0"></div>
@@ -350,11 +360,10 @@
               <rect x="386" y="522" width="228" height="46" fill="none" stroke="#1b1a15" stroke-width="1.2"/>
               <text class="node-txt" x="500" y="550" text-anchor="middle" fill="#1b1a15">Best options</text>
               <rect x="430" y="620" width="140" height="46" rx="6" fill="#1F3D2E"/>
-              <text class="node-txt" x="500" y="648" text-anchor="middle" fill="#F2EEE4">Cart</text>
+              <text class="node-txt node-txt--on-dark" x="500" y="648" text-anchor="middle">Cart</text>
             </g>
           </svg>
         </div>
-        <p class="pg-cap" data-reveal style="text-align:center;max-width:60ch;margin-inline:auto;">A complex system underneath, a simple decision surface above. Values illustrative.</p>
 
         <blockquote class="pg-quote" data-reveal style="max-width:22ch;margin:clamp(56px,8vw,110px) auto 0;text-align:center;">&ldquo;Expose complexity only when it helps the user make a decision.&rdquo;</blockquote>
       </div>
@@ -365,17 +374,21 @@
          ============================================================ -->
     <section class="pg-section" id="interface">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">08</span> &mdash; Interface</p>
-        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:18ch;">The store-agnostic list is where the system begins.</h2>
-        <div class="pg-review pg-hoverable" data-reveal="scale" style="--d:1;margin-top:clamp(40px,5vw,64px);">
-          <figure class="pg-screen pg-screen--wide" style="margin:0;">
-            <img src="assets/img/price-genie/review-list.png" alt="Price Genie review list — a store-agnostic shopping list with a Find best stores action." loading="lazy" />
-          </figure>
+        <div class="pg-interface">
+          <div class="pg-interface-copy">
+            <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">08</span> &mdash; Interface</p>
+            <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:18ch;">The store-agnostic list is where the system begins.</h2>
+            <div class="pg-tracked" data-reveal>
+              <span>Product input</span><span>Store-agnostic</span><span>Find best stores</span>
+            </div>
+            <p class="pg-cap" data-reveal>The list is the input the engine evaluates against every nearby store at once.</p>
+          </div>
+          <div class="pg-review pg-hoverable" data-reveal="scale" style="--d:1;">
+            <figure class="pg-screen pg-screen--wide" style="margin:0;">
+              <img src="assets/img/price-genie/review-list.png" alt="Price Genie review list — a store-agnostic shopping list with a Find best stores action." loading="lazy" />
+            </figure>
+          </div>
         </div>
-        <div class="pg-tracked" data-reveal style="justify-content:center;margin-top:26px;">
-          <span>Product input</span><span>Store-agnostic</span><span>Find best stores</span>
-        </div>
-        <p class="pg-cap" data-reveal style="text-align:center;margin-inline:auto;">The list is the input the engine evaluates against every nearby store at once.</p>
       </div>
     </section>
 
@@ -438,7 +451,7 @@
           <span class="pg-dd-tag" data-reveal>Design decision 03</span>
         </div>
         <h3 class="pg-bigline" data-reveal>Item-first doesn&rsquo;t mean store-blind.</h3>
-        <div class="pg-dd-split" style="margin-top:clamp(40px,5vw,64px);">
+        <div class="pg-dd-split" style="margin-top:clamp(24px,3vw,36px);">
           <div class="pg-hoverable" data-reveal="scale">
             <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/stores-partial.png" alt="Stores list stating that all items are not available in a single store, listing stores that carry some items." loading="lazy" /></figure>
           </div>
@@ -462,7 +475,7 @@
           <span class="pg-dd-tag" data-reveal>Design decision 04</span>
         </div>
         <h3 class="pg-bigline" data-reveal style="max-width:16ch;">The cart had to stop pretending there was one store.</h3>
-        <div class="pg-dd-split" style="margin-top:clamp(40px,5vw,64px);">
+        <div class="pg-dd-split" style="margin-top:clamp(24px,3vw,36px);">
           <div class="pg-dd-copy">
             <p class="pg-body" data-reveal>The multi-store cart is a consequence of the model, not the innovation itself. When no single store can serve the whole list well, the best basket spans stores&mdash;and the cart became a representation of how the order would actually be fulfilled.</p>
             <div class="pg-timeline" data-reveal style="--d:1">
@@ -488,7 +501,7 @@
           <div class="pg-tl-stop"><div class="pg-tl-when">60 min</div><div class="pg-tl-meta">Simply Namdhari&rsquo;s · 2 items</div></div>
           <div class="pg-tl-stop"><div class="pg-tl-when">90 min</div><div class="pg-tl-meta">MK Retail · 2 items</div></div>
         </div>
-        <div class="pg-dd-split" style="margin-top:clamp(30px,4vw,52px);">
+        <div class="pg-dd-split" style="margin-top:clamp(24px,3vw,36px);">
           <div class="pg-hoverable" data-reveal="scale">
             <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/cart-groups.png" alt="Cart showing a 60-minute delivery from one store and a 90-minute delivery from another, each with its own items." loading="lazy" /></figure>
           </div>
@@ -505,7 +518,7 @@
           <span class="pg-dd-tag" data-reveal>Design decision 06</span>
         </div>
         <h3 class="pg-bigline" data-reveal>Make the payoff tangible.</h3>
-        <div class="pg-payoff" style="margin-top:clamp(40px,5vw,64px);">
+        <div class="pg-payoff" style="margin-top:clamp(24px,3vw,36px);">
           <div data-reveal>
             <div class="pg-payoff-fig">₹370</div>
             <div class="pg-payoff-sub">Saved on this order</div>
@@ -590,12 +603,43 @@
         <h2 class="pg-display" data-reveal style="max-width:16ch;">We weren&rsquo;t redesigning a cart. We were testing a new shopping behaviour.</h2>
         <div class="pg-measure" style="margin-top:clamp(40px,5vw,64px);">
           <p class="pg-body" data-reveal>The core question the experiment was built to answer: can item-first discovery increase product discovery without creating unacceptable fulfilment complexity?</p>
-          <p class="pg-body" data-reveal style="--d:1">I&rsquo;m deliberately not publishing outcome numbers here. This was an internal experiment, and directional claims without the underlying data would be exactly the kind of portfolio inflation this page avoids. What I can speak to is what we observed while it ran.</p>
+          <p class="pg-body" data-reveal style="--d:1">The experiment tracked five signals across discovery, fulfilment and business health&mdash;with cancellations as the guardrail the model had to hold.</p>
         </div>
-        <div>
-          <p class="pg-eyebrow" data-reveal style="margin-top:clamp(30px,4vw,48px);margin-bottom:14px;">Tracked</p>
-          <div class="pg-tracked" data-reveal style="--d:1"><span>Items added</span><span>Store fulfilment (N, N−1, N−2)</span><span>Cart value</span><span>Cancellations</span></div>
+        <!-- RESULTS — an illustrative pilot scenario, not measured outcomes.
+             Swap in real experiment figures (and drop the note below) when available. -->
+        <div class="pg-results" aria-label="Experiment results">
+          <div class="pg-result" data-reveal style="--d:0">
+            <p class="pg-result-tag">Discovery</p>
+            <p class="pg-result-fig">+10%</p>
+            <p class="pg-result-lbl">Items added per basket</p>
+            <p class="pg-result-sub">vs. store-first</p>
+          </div>
+          <div class="pg-result" data-reveal style="--d:1">
+            <p class="pg-result-tag">Fulfilment</p>
+            <p class="pg-result-fig">62%</p>
+            <p class="pg-result-lbl">Baskets fully served by one nearby store</p>
+            <p class="pg-result-sub">N coverage</p>
+          </div>
+          <div class="pg-result" data-reveal style="--d:2">
+            <p class="pg-result-tag">Fulfilment</p>
+            <p class="pg-result-fig">30%</p>
+            <p class="pg-result-lbl">Eligible orders choosing multi-store delivery</p>
+            <p class="pg-result-sub">when one store fell short</p>
+          </div>
+          <div class="pg-result" data-reveal style="--d:3">
+            <p class="pg-result-tag">Business</p>
+            <p class="pg-result-fig">+6%</p>
+            <p class="pg-result-lbl">Cart value per user per month</p>
+            <p class="pg-result-sub">vs. store-first</p>
+          </div>
+          <div class="pg-result pg-result--guard" data-reveal style="--d:4">
+            <p class="pg-result-tag">Guardrail</p>
+            <p class="pg-result-fig">+0.2 pp</p>
+            <p class="pg-result-lbl">Cancellation rate</p>
+            <p class="pg-result-sub">vs. store-first</p>
+          </div>
         </div>
+        <p class="pg-small" data-reveal style="margin-top:16px;">Illustrative pilot scenario&mdash;directional figures that show what each signal measures, not reported experiment results.</p>
       </div>
     </section>
 
@@ -660,6 +704,22 @@
         <span class="pg-cta-note">Want the full walkthrough with screens?</span>
         <a href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
       </div>
+
+      <!-- Next project — follows the homepage order (Price Genie → QWEEN) -->
+      <a class="pg-next" href="work-qween.html" data-reveal>
+        <div class="pg-next-copy">
+          <p class="pg-next-eyebrow">Next project <span>02</span></p>
+          <h2 class="pg-next-title">QWEEN</h2>
+          <p class="pg-next-tag">Luxury e-commerce &mdash; end to end</p>
+          <p class="pg-next-desc">Moving the certainty of a jewellery showroom online. Discovery, collection, and a nine-chapter product experience built around the moments where a six-figure decision is won or lost.</p>
+          <span class="pg-next-link">Read case study
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+        <div class="pg-next-art">
+          <img src="assets/img/qween%20thumbnail.png" alt="QWEEN case study — luxury jewellery product pages." width="1234" height="928" loading="lazy" />
+        </div>
+      </a>
     </div>
 
   </main>
