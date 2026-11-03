@@ -124,7 +124,8 @@ body.qw-anim [data-reveal].is-in { opacity: 1; transform: none; }
 
 /* ---------- PROGRESS INDEX ---------- */
 .qw-progress {
-  position: fixed; right: 30px; top: 50%; transform: translateY(-50%);
+  /* left:auto undoes base.css's full-width `nav` rule, so the rail hugs its ticks */
+  position: fixed; left: auto; right: 30px; top: 50%; transform: translateY(-50%); padding: 0;
   z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 13px;
   opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease);
 }
@@ -143,6 +144,11 @@ body.qw-anim [data-reveal].is-in { opacity: 1; transform: none; }
 .qw-progress a:hover .lbl { opacity: 0.8; transform: none; }
 .qw-progress a.is-active .lbl { opacity: 0.9; transform: none; color: var(--text); }
 @media (max-width: 1180px) { .qw-progress { display: none; } }
+/* while the index is on screen, content stays clear of its column:
+   30px offset + ~140px rail (widest label) + breathing room, minus any centring margin */
+@media (min-width: 1181px) {
+  .qw-wrap { padding-right: max(var(--gutter), calc(210px - max(0px, (100vw - var(--content)) / 2))); }
+}
 
 /* ============================================================
    IMAGE / PLATE TREATMENTS
