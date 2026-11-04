@@ -10,11 +10,17 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Nav: shrink on scroll ---------- */
+  /* ---------- Nav: shrink on scroll; hide going down, reveal going up ---------- */
   var nav = document.getElementById('mainNav');
   if (nav) {
+    var lastY = window.scrollY;
     var onScroll = function () {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
+      var y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 40);
+      if (Math.abs(y - lastY) > 6) {
+        nav.classList.toggle('nav-hidden', y > lastY && y > 120 && !nav.classList.contains('nav-open'));
+        lastY = y;
+      }
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });

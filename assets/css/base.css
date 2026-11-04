@@ -95,8 +95,9 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 36px var(--gutter);
   background: transparent;
-  transition: padding var(--dur-nav) ease, background var(--dur-nav) ease, box-shadow var(--dur-nav) ease;
+  transition: padding var(--dur-nav) ease, background var(--dur-nav) ease, box-shadow var(--dur-nav) ease, transform 0.35s ease;
 }
+nav.nav-hidden { transform: translateY(-100%); }
 nav.scrolled {
   padding: 18px var(--gutter);
   background: rgba(234, 234, 234, 0.96);

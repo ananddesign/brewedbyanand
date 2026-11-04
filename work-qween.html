@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QWEEN — Brewed by Anand</title>
-  <meta name="description" content="QWEEN — designing confidence for luxury jewellery commerce. How the product page became a confidence-building experience for high-consideration purchases." />
+  <meta name="description" content="QWEEN: designing confidence for luxury jewellery commerce. How the product page became a confidence-building experience for high-consideration purchases." />
   <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" />
   <link rel="stylesheet" href="assets/css/qween.css" />
 </head>
 <!--
@@ -32,11 +35,7 @@
     <div class="nav-right" id="navRight">
       <ul class="nav-links">
         <li><a href="index.html#work">Work</a></li>
-        <li><a href="index.html#ai">AI Products</a></li>
-        <li><a href="index.html#plugins">Plugins</a></li>
         <li><a href="index.html#about">About</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
       <a class="nav-book-btn" href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
     </div>
@@ -47,12 +46,10 @@
     <a href="#gap"><span class="lbl">The gap</span><span class="bar"></span></a>
     <a href="#insight"><span class="lbl">Insight</span><span class="bar"></span></a>
     <a href="#principles"><span class="lbl">Principles</span><span class="bar"></span></a>
-    <a href="#shift"><span class="lbl">The shift</span><span class="bar"></span></a>
     <a href="#pdp"><span class="lbl">The PDP</span><span class="bar"></span></a>
     <a href="#trust"><span class="lbl">Trust</span><span class="bar"></span></a>
-    <a href="#concierge"><span class="lbl">Human + digital</span><span class="bar"></span></a>
-    <a href="#ownership"><span class="lbl">Ownership</span><span class="bar"></span></a>
-    <a href="#ecosystem"><span class="lbl">Beyond the PDP</span><span class="bar"></span></a>
+    <a href="#concierge"><span class="lbl">In store</span><span class="bar"></span></a>
+    <a href="#ownership"><span class="lbl">Self Invest</span><span class="bar"></span></a>
     <a href="#outcome"><span class="lbl">Outcome</span><span class="bar"></span></a>
     <a href="#reflection"><span class="lbl">Reflection</span><span class="bar"></span></a>
   </nav>
@@ -60,81 +57,61 @@
   <!-- ============================================================
        HERO
        ============================================================ -->
-  <header class="qw-hero" id="top">
-    <div class="qw-hero-bg">
-      <div class="qw-plate" role="img" aria-label="A QWEEN campaign image: a model wearing a ruby and diamond necklace, earrings, ring and bangles.">
-        <img src="assets/img/qween/hero-model.webp" alt="" style="object-position:80% 30%;" />
+  <header class="qw-hero qw-hero--cover" id="top">
+    <div class="qw-cover">
+      <img class="qw-cover-img" src="assets/img/qween/cover.webp" alt="A QWEEN campaign portrait: a backlit profile, a hand raised to the lips wearing a two-stone diamond ring." />
+      <div class="qw-cover-copy">
+        <h1 class="qw-cover-title">
+          <span class="w1" data-hero style="--hd:0">Defining</span>
+          <span class="w2" data-hero style="--hd:1">Confidence</span>
+          <span class="w3" data-hero style="--hd:2">for luxury shopping</span>
+        </h1>
+        <p class="qw-cover-sub" data-hero style="--hd:3">Product Design Lead &nbsp;·&nbsp; Responsive web, mobile-first &nbsp;·&nbsp; Shipped, ongoing</p>
       </div>
     </div>
-    <div class="qw-hero-inner">
-      <div class="qw-hero-content">
-        <p class="qw-hero-eyebrow" data-hero style="--hd:0">QWEEN · Product Design · Luxury Commerce</p>
-        <h1 class="qw-hero-title" data-hero style="--hd:1">Designing confidence for luxury jewellery commerce.</h1>
-        <p class="qw-hero-desc" data-hero style="--hd:2">How we transformed the jewellery product page from a catalogue of products into a confidence-building experience for high-consideration purchases.</p>
-        <dl class="qw-hero-meta" data-hero style="--hd:3">
-          <div><dt>Role</dt><dd>Product Designer · end-to-end</dd></div>
-          <div><dt>Scope</dt><dd>Ecommerce · Design system · Motion · Responsive</dd></div>
-          <div><dt>Platform</dt><dd>Responsive web · mobile-first</dd></div>
-          <div><dt>Status</dt><dd>Shipped · ongoing</dd></div>
-        </dl>
-      </div>
-    </div>
-    <div class="qw-hero-scroll" aria-hidden="true"><span>Scroll</span></div>
   </header>
 
   <main>
-
-    <!-- STORYBOARD — the three confidence surfaces -->
-    <section class="qw-section qw-section--tight">
-      <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal>Desire &nbsp;→&nbsp; Understanding &nbsp;→&nbsp; Trust</p>
-        <div class="qw-storyboard" data-reveal="scale">
-          <div class="qw-plate s2" role="img" aria-label="Product story — why the piece exists."><img src="assets/img/qween/m-ring-story.png" alt="" loading="lazy" /></div>
-          <div class="qw-plate s1" role="img" aria-label="The PDP hero — establishing the piece at true scale."><img src="assets/img/qween/m-hero.png" alt="" loading="lazy" /></div>
-          <div class="qw-plate s3" role="img" aria-label="Trust — certification and assurance before price."><img src="assets/img/qween/m-trust.png" alt="" loading="lazy" /></div>
-        </div>
-        <p class="qw-cap" data-reveal style="margin:34px auto 0;text-align:center;max-width:56ch;">The product page carries the confidence burden — so it is where most of this case study lives.</p>
-      </div>
-    </section>
 
     <!-- ============================================================
          01 — THE CONFIDENCE GAP
          ============================================================ -->
     <section class="qw-section" id="gap">
       <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">01</span> &mdash; The problem</p>
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">01</span> The problem</p>
         <h2 class="qw-display" data-reveal style="max-width:22ch;">Luxury jewellery is easy to browse online. It&rsquo;s harder to feel confident buying it online.</h2>
 
-        <div class="qw-measure" style="margin-top:clamp(34px,5vw,56px);">
-          <p class="qw-body" data-reveal>QWEEN sells fine jewellery at price points where a single order can cost more than a laptop. The site worked. People browsed it. Very few of them bought. The instinct in that situation is to optimise the funnel &mdash; faster checkout, better filters, more urgency. The blocker was never speed.</p>
-          <p class="qw-body" data-reveal style="--d:1">A buyer standing in front of a &#8377;2,00,000 decision has no way to reach the certainty a showroom gives them in four minutes: seeing the piece at true scale, understanding what the stone actually is, knowing it can be returned, and feeling like the brand is a house rather than a storefront. Fine jewellery is slow, high-stakes and rare &mdash; and most of the ecommerce playbook, tuned for fast and low-stakes, inverts.</p>
-        </div>
-
-        <!-- SHOWROOM vs ECOMMERCE -->
-        <div class="qw-versus" role="group" aria-label="The showroom resolves seven moments of doubt; traditional ecommerce answers four steps.">
-          <div class="qw-versus-col now" data-reveal>
-            <h3>The showroom</h3>
-            <div class="qw-versus-step">See</div>
-            <div class="qw-versus-step">Touch</div>
-            <div class="qw-versus-step">Try</div>
-            <div class="qw-versus-step">Ask</div>
-            <div class="qw-versus-step">Understand</div>
-            <div class="qw-versus-step">Trust</div>
-            <div class="qw-versus-step">Buy</div>
+        <!-- SHOWROOM vs ECOMMERCE — two "intake form" cards -->
+        <div class="qw-forms" role="group" aria-label="The showroom answers seven moments of doubt; a typical online store answers four and misses touch, try, ask and trust.">
+          <div data-reveal>
+            <article class="qw-form">
+              <div class="qw-form-top">
+                <h3 class="qw-form-title">The<br>Show<br>room</h3>
+                <figure class="qw-polaroid"><span class="qw-clip" aria-hidden="true"></span><img src="assets/img/qween/m-store-noida.webp" alt="" loading="lazy" style="object-position:50% 40%;" /></figure>
+              </div>
+              <div class="qw-form-field"><span class="lbl">Where</span><span class="hand">QWEEN flagship</span></div>
+              <div class="qw-form-field"><span class="lbl">Feels like</span><span class="hand">a house</span></div>
+              <p class="qw-form-sub">Doubts answered</p>
+              <ul class="qw-form-list"><li class="on">See</li><li class="on">Touch</li><li class="on">Try</li><li class="on">Ask</li><li class="on">Understand</li><li class="on">Trust</li><li class="on">Buy</li></ul>
+            </article>
           </div>
-          <div class="qw-versus-mid" data-reveal style="--d:1" aria-hidden="true">vs.</div>
-          <div class="qw-versus-col muted" data-reveal style="--d:1">
-            <h3>Traditional ecommerce</h3>
-            <div class="qw-versus-step">Image</div>
-            <div class="qw-versus-step">Specs</div>
-            <div class="qw-versus-step">Price</div>
-            <div class="qw-versus-step">Buy</div>
+          <div data-reveal style="--d:1">
+            <article class="qw-form">
+              <div class="qw-form-top">
+                <h3 class="qw-form-title">Online<br>Store</h3>
+                <figure class="qw-polaroid"><span class="qw-clip" aria-hidden="true"></span><img src="assets/img/qween/pdp-top.png" alt="" loading="lazy" style="object-position:50% 30%;" /></figure>
+              </div>
+              <div class="qw-form-field"><span class="lbl">Where</span><span class="hand">any product page</span></div>
+              <div class="qw-form-field"><span class="lbl">Feels like</span><span class="hand">a storefront</span></div>
+              <p class="qw-form-sub">Doubts answered</p>
+              <ul class="qw-form-list"><li class="on">Image</li><li class="on">Specs</li><li class="on">Price</li><li class="on">Buy</li><li class="off">Touch</li><li class="off">Try</li><li class="off">Ask</li><li class="off">Trust</li></ul>
+            </article>
           </div>
         </div>
 
         <div class="qw-quote-split">
           <blockquote class="qw-quote" data-reveal style="max-width:20ch;margin:0;">The buyer isn&rsquo;t resisting a sale. They&rsquo;re missing the certainty a showroom gives for free.</blockquote>
-          <div class="qw-plate qw-plate--phone qw-plate--mweb" data-reveal="scale" role="img" aria-label="The QWEEN homepage on mobile — Natural High Jewellery.">
+          <div class="qw-plate qw-plate--phone qw-plate--mweb" data-reveal="scale" role="img" aria-label="The QWEEN homepage on mobile: Natural High Jewellery.">
             <video src="assets/video/qween/home-natural-high-jewellery-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
           </div>
         </div>
@@ -144,36 +121,21 @@
     <!-- ============================================================
          02 — THE INSIGHT  (dark band)
          ============================================================ -->
-    <section class="qw-section qw-band" id="insight">
-      <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">02</span> &mdash; The insight</p>
-        <h2 class="qw-display" data-reveal style="max-width:20ch;">Don&rsquo;t replicate the showroom. Recreate what makes the showroom work.</h2>
-
-        <div class="qw-measure" style="margin-top:clamp(34px,5vw,56px);">
-          <p class="qw-body" data-reveal>Time spent with the people who sell jewellery for a living was the most useful research of the project. A sales associate carries a compressed, tested model of what a buyer needs and in what order &mdash; it just lives in their head. Buyer conversations, session recordings and drop-off analysis confirmed the same pattern. Five things surfaced, and each one has a named consequence later in the product.</p>
+    <section class="qw-section qw-band qw-section--fit" id="insight">
+      <div class="qw-wrap qw-insight">
+        <div class="qw-insight-head">
+          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">02</span> The insight</p>
+          <h2 class="qw-statement" data-reveal>Recreate what makes the showroom work.</h2>
+          <p class="qw-body" data-reveal style="--d:1;margin-top:20px;color:rgba(255,255,255,0.75);">We sat with the people who sell jewellery for a living, then checked their instincts against buyer interviews and session recordings. Five doubts kept stopping the sale.</p>
         </div>
-
-        <div class="qw-trust-list" style="margin-top:clamp(40px,5vw,64px);" role="list">
-          <div class="qw-trust-item" role="listitem"><div><h4>Scale is the first unanswered question &mdash; and it&rsquo;s never asked.</h4><p>Buyers don&rsquo;t say &ldquo;I can&rsquo;t tell how big it is.&rdquo; They zoom, hesitate, leave. On-model imagery resolves more doubt than dimensions in millimetres.</p></div><span class="mk">01</span></div>
-          <div class="qw-trust-item" role="listitem"><div><h4>Returns and certification are read before price.</h4><p>Above a threshold, buyers hunt for the returns window and the certificate before engaging with the piece. Trust is a gate, not a footer.</p></div><span class="mk">02</span></div>
-          <div class="qw-trust-item" role="listitem"><div><h4>Specifications are wanted by a minority, needed by everyone.</h4><p>Few read the full breakdown; almost all check that it exists. Depth is a credibility signal even when unread.</p></div><span class="mk">03</span></div>
-          <div class="qw-trust-item" role="listitem"><div><h4>People shop by occasion, not category.</h4><p>The model is &ldquo;something for my sister&rsquo;s wedding,&rdquo; not &ldquo;pendants, 18kt, under &#8377;X.&rdquo; Category-first forced a translation buyers were bad at.</p></div><span class="mk">04</span></div>
-          <div class="qw-trust-item" role="listitem"><div><h4>The decision is rarely made alone.</h4><p>Sharing a piece with a partner or parent was a routine, unsupported step. A link without context broke the conversation the buyer was trying to have.</p></div><span class="mk">05</span></div>
-        </div>
-
-        <p class="qw-eyebrow qw-chaptertag" data-reveal style="margin-top:clamp(64px,9vw,110px);margin-bottom:clamp(28px,4vw,40px);">The five confidence moments</p>
-        <div class="qw-seq" role="img" aria-label="The confidence sequence: desire, experience, understand, trust, decide.">
-          <span class="qw-seq-node" style="--d:0"><span class="idx">01</span>Desire</span>
-          <span class="qw-seq-link" style="--d:1"></span>
-          <span class="qw-seq-node" style="--d:1"><span class="idx">02</span>Experience</span>
-          <span class="qw-seq-link" style="--d:2"></span>
-          <span class="qw-seq-node" style="--d:2"><span class="idx">03</span>Understand</span>
-          <span class="qw-seq-link" style="--d:3"></span>
-          <span class="qw-seq-node" style="--d:3"><span class="idx">04</span>Trust</span>
-          <span class="qw-seq-link" style="--d:4"></span>
-          <span class="qw-seq-node" style="--d:4"><span class="idx">05</span>Decide</span>
-        </div>
-        <p class="qw-body qw-measure" data-reveal style="margin-top:clamp(30px,4vw,48px);color:rgba(255,255,255,0.78);">These aren&rsquo;t features. They&rsquo;re the moments where confidence is won or lost &mdash; and the order they arrive in is not negotiable. Everything after this chapter is an attempt to answer them in sequence.</p>
+        <ol class="qw-findings">
+          <li class="qw-findings-head" aria-hidden="true"><span></span><span>What we found</span></li>
+          <li data-reveal style="--d:0"><span class="n">01</span><div><h4>Trust is checked before price.</h4><p>Buyers look for the certificate and the returns policy first.</p></div></li>
+          <li data-reveal style="--d:1"><span class="n">02</span><div><h4>Value has to outlast the sale.</h4><p>Buyers ask what the piece will be worth years from now, not just today.</p></div></li>
+          <li data-reveal style="--d:2"><span class="n">03</span><div><h4>Specs are checked, not read.</h4><p>Few read them, but everyone checks they exist.</p></div></li>
+          <li data-reveal style="--d:3"><span class="n">04</span><div><h4>Big pieces are seen before they&rsquo;re bought.</h4><p>Above a price point, buyers want to see it in a store first.</p></div></li>
+          <li data-reveal style="--d:4"><span class="n">05</span><div><h4>The decision is rarely made alone.</h4><p>Buyers send pieces to a partner or parent before buying.</p></div></li>
+        </ol>
       </div>
     </section>
 
@@ -181,112 +143,39 @@
          03 — DESIGN PRINCIPLES
          ============================================================ -->
     <section class="qw-section" id="principles">
-      <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">03</span> &mdash; The approach</p>
-        <h2 class="qw-statement" data-reveal>Designing for confidence, not just conversion.</h2>
-        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">Principles are only useful when they can settle an argument. Each of these carried a rule, so debates about taste became debates about the rule.</p>
-
-        <div class="qw-principles">
-          <div class="qw-principle" data-reveal="fade">
-            <div class="qw-principle-copy">
-              <div class="qw-principle-idx">01</div>
-              <h3 class="qw-principle-name">Create desire</h3>
+      <div class="qw-wrap qw-approach">
+        <div class="qw-approach-head">
+          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">03</span> The approach</p>
+          <h2 class="qw-statement" data-reveal>Designing for confidence, not just conversion.</h2>
+          <p class="qw-body" data-reveal style="--d:1;margin-top:24px;">Principles are only useful when they can settle an argument. Each of these carried a rule, so debates about taste became debates about the rule.</p>
+        </div>
+        <div class="qw-pcards">
+            <article class="qw-pcard" style="--i:0">
+              <span class="qw-pcard-idx">01</span>
+              <h3 class="qw-pcard-name">Create desire</h3>
               <p class="qw-body">Let the jewellery sell itself before asking customers to evaluate it. The piece is the interface; chrome recedes, and no UI element overlaps product photography except a near-silent purchase bar.</p>
-            </div>
-            <div class="qw-principle-media">
-              <div class="qw-plate qw-plate--wide" role="img" aria-label="Product photography occupying the majority of the viewport."><img src="assets/img/qween/pdp-top.png" alt="" loading="lazy" /></div>
-            </div>
-          </div>
-          <div class="qw-principle" data-reveal="fade">
-            <div class="qw-principle-copy">
-              <div class="qw-principle-idx">02</div>
-              <h3 class="qw-principle-name">Make it tangible</h3>
-              <p class="qw-body">Reduce the distance between digital and physical. Answer scale by comparison, not measurement &mdash; and let the buyer see how a piece behaves before they commit.</p>
-            </div>
-            <div class="qw-principle-media">
-              <div class="qw-phones"><div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="The ring PDP with 3D and Try it on entry points."><img src="assets/img/qween/m-ring-pdp.png" alt="" loading="lazy" /></div><div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" style="--d:1" role="img" aria-label="Picking a gold colour, previewed on the piece."><img src="assets/img/qween/m-gold-colour.png" alt="" loading="lazy" /></div></div>
-            </div>
-          </div>
-          <div class="qw-principle" data-reveal="fade">
-            <div class="qw-principle-copy">
-              <div class="qw-principle-idx">03</div>
-              <h3 class="qw-principle-name">Explain progressively</h3>
+            </article>
+            <article class="qw-pcard" style="--i:1">
+              <span class="qw-pcard-idx">02</span>
+              <h3 class="qw-pcard-name">Make it tangible</h3>
+              <p class="qw-body">Reduce the distance between digital and physical. Answer scale by comparison, not measurement, and let the buyer see how a piece behaves before they commit.</p>
+            </article>
+            <article class="qw-pcard" style="--i:2">
+              <span class="qw-pcard-idx">03</span>
+              <h3 class="qw-pcard-name">Explain progressively</h3>
               <p class="qw-body">Reveal information when customers need it. A summary line is always visible; the full specification is one interaction away. Present, complete, never imposed.</p>
-            </div>
-            <div class="qw-principle-media">
-              <div class="qw-phones"><div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="The product story, told before the specification."><img src="assets/img/qween/m-ring-story.png" alt="" loading="lazy" /></div><div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" style="--d:1" role="img" aria-label="Material and specs as a card, with the price breakup one tap away."><img src="assets/img/qween/m-ring-specs.png" alt="" loading="lazy" /></div></div>
-            </div>
-          </div>
-          <div class="qw-principle" data-reveal="fade">
-            <div class="qw-principle-copy">
-              <div class="qw-principle-idx">04</div>
-              <h3 class="qw-principle-name">Put trust before commitment</h3>
+            </article>
+            <article class="qw-pcard" style="--i:3">
+              <span class="qw-pcard-idx">04</span>
+              <h3 class="qw-pcard-name">Put trust before commitment</h3>
               <p class="qw-body">Make reassurance part of the purchase journey. Certification, hallmarking and returns move out of the footer and in front of the price, where the doubt actually occurs.</p>
-            </div>
-            <div class="qw-principle-media">
-              <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="Natural stones and IGI certification, stated on the product page."><img src="assets/img/qween/m-trust.png" alt="" loading="lazy" /></div>
-            </div>
-          </div>
-          <div class="qw-principle" data-reveal="fade">
-            <div class="qw-principle-copy">
-              <div class="qw-principle-idx">05</div>
-              <h3 class="qw-principle-name">Keep a human door open</h3>
+            </article>
+            <article class="qw-pcard" style="--i:4">
+              <span class="qw-pcard-idx">05</span>
+              <h3 class="qw-pcard-name">Keep a human door open</h3>
               <p class="qw-body">Self-service shouldn&rsquo;t mean being left alone. A way to reach a person stays within reach throughout, so the experience never traps a hesitant buyer.</p>
-            </div>
-            <div class="qw-principle-media">
-              <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="The concierge card — call or WhatsApp — on the product page."><img src="assets/img/qween/m-concierge.png" alt="" loading="lazy" /></div>
-            </div>
-          </div>
+            </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         04 — THE DESIGN SHIFT (scroll-controlled)
-         ============================================================ -->
-    <section class="qw-section" id="shift">
-      <div class="qw-wrap">
-        <div class="qw-shift-layout">
-          <aside class="qw-shift-aside">
-            <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">04</span> &mdash; The system</p>
-            <p class="qw-shift-statement" data-reveal style="--d:1">From product page to confidence journey.</p>
-          </aside>
-          <div class="qw-shift-track">
-            <div class="qw-shift-viewport" role="img" aria-label="The product page transforms from a four-step catalogue sequence into a seven-moment confidence journey.">
-              <div class="qw-shift-frame f1 is-on">
-                <p class="qw-shift-flowlabel">Before &mdash; the catalogue page</p>
-                <div class="qw-shift-row">
-                  <span class="qw-shift-node dim">Image</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node dim">Specs</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node dim">Price</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node dim">Buy</span>
-                </div>
-              </div>
-              <div class="qw-shift-frame f2">
-                <p class="qw-shift-q">What if the page answered doubts in the order they arrive?</p>
-              </div>
-              <div class="qw-shift-frame f3 now">
-                <p class="qw-shift-flowlabel">QWEEN &mdash; the confidence journey</p>
-                <div class="qw-shift-row">
-                  <span class="qw-shift-node lead">Desire</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node">Experience</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node">Understand</span>
-                </div>
-                <div class="qw-shift-row" style="margin-top:12px;">
-                  <span class="qw-shift-node">Trust</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node">Get help</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node">Decide</span><span class="qw-shift-sep">→</span>
-                  <span class="qw-shift-node">Own</span>
-                </div>
-                <p class="qw-shift-note">Same facts, resequenced. Trust before price. Scale before specification. Story before both.</p>
-              </div>
-            </div>
-            <div class="qw-shift-phase" data-phase="0"></div>
-            <div class="qw-shift-phase" data-phase="1"></div>
-            <div class="qw-shift-phase" data-phase="2"></div>
-          </div>
-        </div>
-        <blockquote class="qw-quote qw-quote--accent" data-reveal style="max-width:24ch;margin-top:clamp(32px,5vw,64px);">A PDP that works isn&rsquo;t a page. It&rsquo;s a sequence of answers.</blockquote>
       </div>
     </section>
 
@@ -295,9 +184,9 @@
          ============================================================ -->
     <section class="qw-section" id="pdp">
       <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">05</span> &mdash; The product experience</p>
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">04</span> The product experience</p>
         <h2 class="qw-display" data-reveal style="max-width:16ch;">The PDP became the confidence engine.</h2>
-        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">Everything before this page builds desire. This page has to convert it into a decision worth six figures &mdash; made alone, on a phone, without a person in the room. It is the hardest surface in the product and it received the most work.</p>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">Everything before this page builds desire. This page has to convert it into a decision worth six figures, made alone, on a phone, without a person in the room. It is the hardest surface in the product and it received the most work.</p>
       </div>
 
       <!-- oversized PDP object, near full-bleed -->
@@ -305,79 +194,67 @@
         <div class="qw-plate qw-plate--pano qw-hoverable" style="aspect-ratio:16/10;" data-reveal="scale" role="img" aria-label="The full QWEEN Cherry Pop Hoops product detail page, shown as the central artefact of the case study.">
           <img src="assets/img/qween/pdp-top.png" alt="" loading="lazy" />
         </div>
-        <p class="qw-cap" data-reveal style="text-align:center;margin-inline:auto;">The PDP is the central artefact — shown large, never as a thumbnail inside a card.</p>
+        <p class="qw-cap" data-reveal style="text-align:center;margin-inline:auto;">The PDP is the central artefact, shown large, never as a thumbnail inside a card.</p>
       </div>
 
-      <!-- 05.1 DESIRE -->
+      <!-- 04.1 DESIRE -->
       <div class="qw-wrap" style="padding-top:clamp(40px,6vw,80px);">
         <div class="qw-split qw-split--rev">
           <div class="qw-split-media">
             <div class="qw-split-sticky">
-              <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="A large editorial crop of the hero product imagery."><img src="assets/img/qween/m-hero.png" alt="" loading="lazy" /></div>
+              <div class="qw-plate qw-plate--tall qw-hoverable qw-plate--screen" data-reveal="scale" role="img" aria-label="A large editorial crop of the hero product imagery."><img src="assets/img/qween/m-hero.png" alt="" loading="lazy" /></div>
             </div>
           </div>
           <div class="qw-split-copy">
-            <div class="qw-subchapter" data-reveal><span class="num">05.1</span><span class="lbl">Desire</span></div>
+            <div class="qw-subchapter" data-reveal><span class="num">04.1</span><span class="lbl">Desire</span></div>
             <h3 class="qw-h" data-reveal>Start with desire.</h3>
-            <p class="qw-body" data-reveal>Before customers evaluate the product, they need to want it. The gallery leads with a full-bleed hero at true crop, then an on-model or on-hand frame within the first two positions &mdash; establishing scale by comparison before any detail macro. Macro shots are the most seductive asset a jewellery brand owns, and they mislead on size, so they were deliberately demoted.</p>
-            <p class="qw-body" data-reveal>Beneath the imagery sits the product story &mdash; the reference it draws on, the setting technique, why the stones are cut that way. In a showroom the associate tells you this; it&rsquo;s what converts an object into a possession. It gets its own space, separated entirely from the specification block.</p>
-            <blockquote class="qw-quote" data-reveal style="font-size:clamp(1.3rem,2.2vw,1.9rem);">Before customers evaluate the product, they need to want it.</blockquote>
+            <p class="qw-body" data-reveal>Before buyers evaluate a piece, they need to want it.</p>
+            <ul class="qw-points" data-reveal>
+              <li><strong>Hero first.</strong> The gallery opens on the piece at true crop.</li>
+              <li><strong>Scale early.</strong> An on-model frame sits in the first two positions; size-distorting macros come later.</li>
+              <li><strong>Story apart from specs.</strong> Why the piece exists gets its own space, the way an associate would tell it.</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- 05.2 EXPERIENCE — sticky -->
-      <div class="qw-wrap" style="padding-top:clamp(48px,7vw,96px);">
-        <div class="qw-subchapter" data-reveal><span class="num">05.2</span><span class="lbl">Experience</span></div>
-        <h3 class="qw-h" data-reveal style="max-width:18ch;">Make the product tangible.</h3>
-        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:18px;">Photography is a fixed viewpoint under fixed light. The experience layer closes the distance to the physical piece &mdash; letting the buyer bring it closer, place it on themselves, and see how it behaves.</p>
-      </div>
-      <div class="qw-wrap">
-        <div class="qw-stick">
-          <div class="qw-stick-stage" aria-hidden="true">
-            <div class="qw-stick-viewport">
-              <div class="qw-plate qw-stick-plate is-active" data-w="0"><video src="assets/video/qween/pdp-pretty-dangerous-ring.mp4" autoplay muted loop playsinline preload="none"></video></div>
-              <div class="qw-plate qw-stick-plate" data-w="1"><img src="assets/img/qween/m-ring-pdp.png" alt="" loading="lazy" /></div>
-              <div class="qw-plate qw-stick-plate" data-w="2"><div class="qw-plate-note"><span class="qw-plate-kind">See it live</span><span class="qw-plate-desc">How it behaves in light</span></div></div>
-            </div>
-          </div>
-          <div class="qw-stick-steps">
-            <div class="qw-stick-step">
-              <div class="qw-plate qw-plate--tall mobile-plate"><video src="assets/video/qween/pdp-pretty-dangerous-ring.mp4" muted loop playsinline controls preload="none"></video></div>
-              <span class="n">01</span>
-              <h4>Explore in 3D</h4>
-              <p class="qw-body">Rotate the piece to answer what a single photograph can&rsquo;t &mdash; proportion, depth, the way a setting sits. Direct manipulation, so the response is instant.</p>
-            </div>
-            <div class="qw-stick-step">
-              <div class="qw-plate qw-plate--tall mobile-plate"><img src="assets/img/qween/m-ring-pdp.png" alt="" loading="lazy" /></div>
-              <span class="n">02</span>
-              <h4>Try it on.</h4>
-              <p class="qw-body">Place the piece on the buyer&rsquo;s own hand, ear or neck at true scale &mdash; resolving the most common reason a considered buyer defers: &ldquo;how will this look on me?&rdquo;</p>
-            </div>
-            <div class="qw-stick-step">
-              <div class="qw-plate qw-plate--tall mobile-plate"><div class="qw-plate-note"><span class="qw-plate-kind">See it live</span></div></div>
-              <span class="n">03</span>
-              <h4>See it live.</h4>
-              <p class="qw-body">See how the stones behave as light moves &mdash; the thing people tilt a piece under the showroom lamp to check. The experience never begins without the buyer&rsquo;s action.</p>
-            </div>
-          </div>
+      <!-- 04.2 EXPERIENCE — title pinned left, steps scroll on the right -->
+      <div class="qw-wrap qw-exp" style="padding-top:clamp(48px,7vw,96px);">
+        <div class="qw-exp-head">
+          <div class="qw-subchapter" data-reveal><span class="num">04.2</span><span class="lbl">Experience</span></div>
+          <h3 class="qw-h" data-reveal>Make the product tangible.</h3>
+          <p class="qw-body" data-reveal style="--d:1;margin-top:18px;">A photo is one viewpoint under one light. These tools let the buyer bring the piece closer before they commit.</p>
+        </div>
+        <div class="qw-exp-steps">
+          <article class="qw-exp-step">
+            <div class="qw-plate qw-plate--phone qw-plate--vid" data-reveal="scale" style="aspect-ratio:1180/2556;" role="img" aria-label="Rotating and zooming a ring in the 3D viewer on mobile."><video src="assets/video/qween/explore-3d.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+            <div class="qw-exp-txt" data-reveal><span class="n">01</span><h4>Explore in 3D</h4><p>Rotate and zoom to see proportion, depth and how the setting sits.</p></div>
+          </article>
+          <article class="qw-exp-step">
+            <div class="qw-plate qw-plate--phone qw-plate--vid" data-reveal="scale" style="aspect-ratio:1180/2556;" role="img" aria-label="Trying a piece on with the camera, on mobile."><video src="assets/video/qween/try-on.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+            <div class="qw-exp-txt" data-reveal><span class="n">02</span><h4>Try it on</h4><p>See the piece on your own hand, ear or neck, at true scale.</p></div>
+          </article>
+          <article class="qw-exp-step">
+            <div class="qw-plate qw-plate--phone qw-plate--vid" data-reveal="scale" style="aspect-ratio:568/1234;" role="img" aria-label="Booking a live video consultation from the product page."><video src="assets/video/qween/see-it-live.mov" autoplay muted loop playsinline preload="metadata"></video></div>
+            <div class="qw-exp-txt" data-reveal><span class="n">03</span><h4>See it live</h4><p>Book a video consultation and see the piece in an expert&rsquo;s hands, moving under real light.</p></div>
+          </article>
         </div>
       </div>
 
-      <!-- 05.3 UNDERSTAND — annotated -->
+      <!-- 04.3 UNDERSTAND — annotated -->
       <div class="qw-wrap" style="padding-top:clamp(48px,7vw,96px);">
-        <div class="qw-subchapter" data-reveal><span class="num">05.3</span><span class="lbl">Understand</span></div>
+        <div class="qw-subchapter" data-reveal><span class="num">04.3</span><span class="lbl">Understand</span></div>
         <div class="qw-split">
           <div class="qw-split-media">
-            <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="An annotated crop of the product specification block."><img src="assets/img/qween/m-specs.png" alt="" loading="lazy" style="object-position:top;" /></div>
+            <div class="qw-plate qw-plate--tall qw-hoverable qw-plate--screen" data-reveal="scale" role="img" aria-label="An annotated crop of the product specification block."><img src="assets/img/qween/m-specs.png" alt="" loading="lazy" /></div>
           </div>
           <div class="qw-split-copy">
             <h3 class="qw-h" data-reveal>Answer the questions that matter.</h3>
-            <p class="qw-body" data-reveal>The summary line reads as a sentence, not a table &mdash; stone count, total carat weight, metal &mdash; with the full breakdown one interaction away. Research said buyers check that the detail exists far more often than they read it, so it&rsquo;s present and complete, but never imposed on the majority.</p>
+            <p class="qw-body" data-reveal>The summary line reads as a sentence, not a table: stone count, total carat weight and metal, with the full breakdown one interaction away. Research said buyers check that the detail exists far more often than they read it, so it&rsquo;s present and complete, but never imposed on the majority.</p>
             <div class="qw-annot" data-reveal>
               <div class="qw-annot-tags">
                 <div class="qw-annot-tag"><span class="k">Material</span><span class="v">Metal and purity, stated plainly in the summary line.</span></div>
-                <div class="qw-annot-tag"><span class="k">Stone</span><span class="v">Cut, count and total carat weight &mdash; the credibility signal.</span></div>
+                <div class="qw-annot-tag"><span class="k">Stone</span><span class="v">Cut, count and total carat weight: the credibility signal.</span></div>
                 <div class="qw-annot-tag"><span class="k">Construction</span><span class="v">Setting technique and finish, revealed on expand.</span></div>
                 <div class="qw-annot-tag"><span class="k">Specification</span><span class="v">The full 4Cs table, present for the few who read it.</span></div>
               </div>
@@ -387,15 +264,15 @@
         </div>
       </div>
 
-      <!-- 05.4 DECIDE — make it yours -->
+      <!-- 04.4 DECIDE — make it yours -->
       <div class="qw-wrap" style="padding-top:clamp(48px,7vw,96px);">
-        <div class="qw-subchapter" data-reveal><span class="num">05.4</span><span class="lbl">Decide</span></div>
+        <div class="qw-subchapter" data-reveal><span class="num">04.4</span><span class="lbl">Decide</span></div>
         <h3 class="qw-h" data-reveal style="max-width:18ch;">Make it yours, without leaving the page.</h3>
         <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:18px;">Size, metal colour, purity and gemstone are decided in bottom sheets over the product, not on separate pages. Each choice updates the delivery window and the price in place, so the buyer never loses sight of the piece they are deciding on.</p>
         <div class="qw-phones qw-phones--3" style="margin-top:clamp(32px,4vw,52px);">
-          <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="Selecting a ring size on a ruler, with millimetre equivalent, delivery and price."><img src="assets/img/qween/m-ring-size.png" alt="" loading="lazy" /></div>
-          <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" style="--d:1" role="img" aria-label="Picking a gold colour as a bottom sheet over the product."><img src="assets/img/qween/m-gold-colour.png" alt="" loading="lazy" /></div>
-          <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" style="--d:2" role="img" aria-label="Full customisation: metal colour, purity and gemstone."><img src="assets/img/qween/m-customize.png" alt="" loading="lazy" /></div>
+          <div class="qw-plate qw-plate--phone qw-hoverable qw-plate--screen" data-reveal="scale" role="img" aria-label="Selecting a ring size on a ruler, with millimetre equivalent, delivery and price."><img src="assets/img/qween/m-ring-size.png" alt="" loading="lazy" /></div>
+          <div class="qw-plate qw-plate--phone qw-hoverable qw-plate--screen" data-reveal="scale" style="--d:1" role="img" aria-label="Picking a gold colour as a bottom sheet over the product."><img src="assets/img/qween/m-gold-colour.png" alt="" loading="lazy" /></div>
+          <div class="qw-plate qw-plate--phone qw-hoverable qw-plate--screen" data-reveal="scale" style="--d:2" role="img" aria-label="Full customisation: metal colour, purity and gemstone."><img src="assets/img/qween/m-customize.png" alt="" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -403,54 +280,41 @@
     <!-- ============================================================
          06 — TRUST  (dark band, major moment)
          ============================================================ -->
-    <section class="qw-section qw-band" id="trust">
-      <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">06</span> &mdash; Trust</p>
-        <h2 class="qw-display" data-reveal style="max-width:14ch;">Trust before price.</h2>
-        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;color:rgba(255,255,255,0.78);">Certification and returns used to live in the footer. Session recordings showed buyers leaving the product page to hunt for them mid-consideration &mdash; and frequently not returning. On a high-value item, trust isn&rsquo;t reassurance delivered after the sell. It&rsquo;s a precondition for engaging with the sell at all.</p>
-
-        <div class="qw-trust">
-          <div class="qw-plate qw-plate--tall qw-hoverable" data-reveal="scale" role="img" aria-label="The trust band on the product page, shown as a large crop."><img src="assets/img/qween/m-trust.png" alt="" loading="lazy" style="object-position:top;" /></div>
-          <div class="qw-tgrid" role="list">
-            <div class="qw-tcard" data-reveal role="listitem"><span class="mk">Product truth</span><h4>100% Natural Stones</h4><p>Stated as fact, not a marketing adjective &mdash; the material the buyer is actually paying for.</p></div>
-            <div class="qw-tcard" data-reveal style="--d:1" role="listitem"><span class="mk">Reassurance</span><h4>IGI Certified</h4><p>Linked to the actual certificate and expandable in place, never a new tab.</p></div>
-            <div class="qw-tcard" data-reveal style="--d:2" role="listitem"><span class="mk">Reassurance</span><h4>5 Year Stone Value Assurance</h4><p>A commitment stated at the point of hesitation, before the price is reached.</p></div>
-            <div class="qw-tcard" data-reveal style="--d:3" role="listitem"><span class="mk">Confidence</span><h4>Lifetime Buyback &amp; Exchange</h4><p>The relationship framed as ongoing &mdash; the answer to &ldquo;what if I&rsquo;m wrong.&rdquo;</p></div>
-          </div>
+    <section class="qw-section qw-band qw-section--fit" id="trust">
+      <div class="qw-wrap qw-trust-fit">
+        <div class="qw-trust-head">
+          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">05</span> Trust</p>
+          <h2 class="qw-display" data-reveal>Trust before price.</h2>
+          <p class="qw-body" data-reveal style="--d:1;margin-top:20px;color:rgba(255,255,255,0.78);">Certification and returns sat in the footer, so buyers left mid-decision to find them, and often didn&rsquo;t come back. Now trust is stated before the price.</p>
+          <blockquote class="qw-quote qw-quote--accent" data-reveal style="--d:2;">Trust isn&rsquo;t a footer detail.</blockquote>
         </div>
-
-        <blockquote class="qw-quote qw-quote--accent" data-reveal style="max-width:22ch;margin-top:clamp(52px,8vw,100px);">Trust isn&rsquo;t a footer detail. It is part of the product experience.</blockquote>
+        <div class="qw-plate qw-hoverable qw-plate--screen qw-trust-phone" data-reveal="scale" role="img" aria-label="The trust cards on the product page: natural stones and IGI certification."><img src="assets/img/qween/m-trust.png" alt="" loading="lazy" /></div>
+        <div class="qw-tgrid" role="list">
+          <div class="qw-tcard" data-reveal role="listitem"><span class="mk">Product truth</span><h4>100% Natural Stones</h4><p>A fact, not a marketing adjective.</p></div>
+          <div class="qw-tcard" data-reveal style="--d:1" role="listitem"><span class="mk">Reassurance</span><h4>IGI Certified</h4><p>The real certificate, opened in place.</p></div>
+          <div class="qw-tcard" data-reveal style="--d:2" role="listitem"><span class="mk">Reassurance</span><h4>5 Year Stone Value Assurance</h4><p>Promised at the moment of hesitation.</p></div>
+          <div class="qw-tcard" data-reveal style="--d:3" role="listitem"><span class="mk">Confidence</span><h4>Lifetime Buyback &amp; Exchange</h4><p>The answer to &ldquo;what if I&rsquo;m wrong?&rdquo;</p></div>
+        </div>
       </div>
     </section>
 
     <!-- ============================================================
-         07 — HUMAN + DIGITAL (concierge)
+         06 — FIND IT IN STORE (immersive)
          ============================================================ -->
-    <section class="qw-section" id="concierge">
-      <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">07</span> &mdash; Concierge</p>
-        <span class="qw-flag" data-reveal>Concept exploration &mdash; not shipped</span>
-        <h2 class="qw-statement" data-reveal>Self-service shouldn&rsquo;t mean being left alone.</h2>
-
-        <div class="qw-split" style="margin-top:clamp(40px,5vw,64px);">
-          <div class="qw-split-media">
-            <div class="qw-phones">
-              <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="The in-store 3D tour on mobile."><img src="assets/img/qween/m-store-tour.webp" alt="" loading="lazy" /></div>
-              <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" style="--d:1" role="img" aria-label="The Noida flagship store, with locate and virtual tour actions."><img src="assets/img/qween/m-store-noida.webp" alt="" loading="lazy" /></div>
-            </div>
-          </div>
-          <div class="qw-split-copy">
-            <p class="qw-body" data-reveal>The single highest-value thing a showroom provides is a person who has sold jewellery for fifteen years. They can hear &ldquo;something for my sister&rsquo;s wedding, she wears mostly gold, budget around this&rdquo; and produce four correct options in ninety seconds. Self-service replaces that with filters, which require the buyer to already know the answer.</p>
-            <p class="qw-body" data-reveal>So the door to a person stays open throughout &mdash; not as a support link buried in a menu, but as a hand-off available exactly where hesitation tends to occur. The buyer explores freely; the moment they stall, help is one step away, and it arrives already knowing what they were looking at.</p>
-            <div class="qw-flow" role="img" aria-label="The concierge hand-off: explore yourself, then need help, then reach the QWEEN concierge.">
-              <span class="qw-flow-step">Explore yourself</span>
-              <span class="qw-flow-link" aria-hidden="true"></span>
-              <span class="qw-flow-step">Need help?</span>
-              <span class="qw-flow-link" aria-hidden="true"></span>
-              <span class="qw-flow-step hl">QWEEN Concierge</span>
-            </div>
-            <p class="qw-small" data-reveal>Documented as a concept exploration. The reasoning is part of how the confidence problem was framed; it is not a shipped feature.</p>
-          </div>
+    <section class="qw-section qw-section--fit" id="concierge">
+      <div class="qw-wrap qw-store">
+        <div class="qw-store-copy">
+          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">06</span> In store</p>
+          <h2 class="qw-statement" data-reveal>Find the piece in store, without leaving the page.</h2>
+          <p class="qw-body" data-reveal style="--d:1;margin-top:20px;">Some buyers need to see a piece in person before they commit. The product page opens straight into the flagship: step inside, walk the floors, then plan the visit.</p>
+          <ol class="qw-store-steps">
+            <li data-reveal><span class="k">01</span><div><h4>Find it</h4><p>&ldquo;Find this item in store&rdquo; sits on the product page, over a view of the flagship entrance.</p></div></li>
+            <li data-reveal style="--d:1"><span class="k">02</span><div><h4>Step inside</h4><p>A 3D tour of the store, floor by floor, with experiences and the persona zone a tap away.</p></div></li>
+            <li data-reveal style="--d:2"><span class="k">03</span><div><h4>Visit</h4><p>The Noida flagship, with directions, a virtual tour and visit booking.</p></div></li>
+          </ol>
+        </div>
+        <div class="qw-store-phones qw-store-phones--one">
+          <div class="qw-plate qw-hoverable qw-plate--phone qw-plate--vid" data-reveal="scale" style="aspect-ratio:1180/2556;" role="img" aria-label="The product locator: finding a piece in the flagship store from the product page."><video src="assets/video/qween/product-locator.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
         </div>
       </div>
     </section>
@@ -460,50 +324,13 @@
          ============================================================ -->
     <section class="qw-section" id="ownership">
       <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">08</span> &mdash; Ownership</p>
-        <h2 class="qw-statement" data-reveal>The relationship doesn&rsquo;t end at checkout.</h2>
-        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:24px;">One of the doubts a showroom quietly answers is &ldquo;will this brand exist in ten years when I need it resized?&rdquo; The experience treats ownership as part of the purchase, not an afterthought &mdash; lifetime cleaning and resizing, a clear returns window, and the buyback and exchange that make a high-value decision reversible.</p>
-
-        <div class="qw-seq" role="img" aria-label="The ownership lifecycle: purchase, live with it, care, exchange or buyback.">
-          <span class="qw-seq-node" style="--d:0">Purchase</span>
-          <span class="qw-seq-link" style="--d:1"></span>
-          <span class="qw-seq-node" style="--d:1">Live with it</span>
-          <span class="qw-seq-link" style="--d:2"></span>
-          <span class="qw-seq-node" style="--d:2">Care</span>
-          <span class="qw-seq-link" style="--d:3"></span>
-          <span class="qw-seq-node" style="--d:3">Exchange / Buyback</span>
-        </div>
-        <div class="qw-split" style="margin-top:clamp(32px,4vw,56px);">
-          <div class="qw-split-media"><div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="The Self Invest plan: ten monthly instalments, with one and a half on QWEEN."><img src="assets/img/qween/m-self-invest.png" alt="" loading="lazy" /></div></div>
+        <div class="qw-split">
+          <div class="qw-split-media"><div class="qw-plate qw-plate--phone qw-hoverable qw-plate--screen" data-reveal="scale" role="img" aria-label="The Self Invest plan: ten monthly instalments, with one and a half on QWEEN."><img src="assets/img/qween/m-self-invest.png" alt="" loading="lazy" /></div></div>
           <div class="qw-split-copy">
-            <h3 class="qw-h" data-reveal>Spread the decision over time.</h3>
-            <p class="qw-body" data-reveal>The Self Invest plan turns a single large payment into ten monthly instalments, with one and a half instalments added by QWEEN. It is surfaced on the product page as the price the buyer could pay, and explained in three steps &mdash; choose, save, redeem &mdash; with a concierge one tap away.</p>
+            <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">07</span> Self Invest Plan</p>
+            <h2 class="qw-statement" data-reveal>Spread the decision over time.</h2>
+            <p class="qw-body" data-reveal style="--d:1;margin-top:20px;">The Self Invest plan turns a single large payment into ten monthly instalments, with one and a half instalments added by QWEEN. It is surfaced on the product page as the price the buyer could pay, and explained in three steps (choose, save, redeem) with a concierge one tap away.</p>
           </div>
-        </div>
-        <blockquote class="qw-quote" data-reveal style="max-width:26ch;">A reversible decision is an easier decision. Ownership is where a high-value purchase is finally de-risked.</blockquote>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         09 — THE BROADER EXPERIENCE (short)
-         ============================================================ -->
-    <section class="qw-section qw-section--tight" id="ecosystem">
-      <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">09</span> &mdash; Beyond the PDP</p>
-        <h2 class="qw-h" data-reveal style="max-width:24ch;">The PDP was one expression of a larger QWEEN experience.</h2>
-        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:20px;">Discovery is organised by occasion rather than category, because that is how buyers arrive. Collection reads as editorial rather than catalogue. Each surface does one part of the confidence job and hands off cleanly &mdash; but the product page is where the burden is carried, so it is where this study stays.</p>
-        <div class="qw-seq qw-seq--quiet" role="img" aria-label="The broader experience: discover, desire, experience, trust, concierge, store, own.">
-          <span class="qw-seq-node">Discover</span><span class="qw-seq-link"></span>
-          <span class="qw-seq-node">Desire</span><span class="qw-seq-link"></span>
-          <span class="qw-seq-node">Experience</span><span class="qw-seq-link"></span>
-          <span class="qw-seq-node">Trust</span><span class="qw-seq-link"></span>
-          <span class="qw-seq-node">Concierge</span><span class="qw-seq-link"></span>
-          <span class="qw-seq-node">Store</span><span class="qw-seq-link"></span>
-          <span class="qw-seq-node">Own</span>
-        </div>
-        <div class="qw-phones" style="max-width:720px;">
-          <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" role="img" aria-label="Search by category, hot picks and shop by life moment."><img src="assets/img/qween/m-search-categories.png" alt="" loading="lazy" /></div>
-          <div class="qw-plate qw-plate--phone qw-hoverable" data-reveal="scale" style="--d:1" role="img" aria-label="The rings listing, filtered by style."><img src="assets/img/qween/m-listing-rings.png" alt="" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -514,11 +341,11 @@
     <section class="qw-section qw-section--fit" id="outcome">
       <div class="qw-wrap qw-outcome-layout">
         <div class="qw-outcome-copy">
-          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">10</span> &mdash; Outcome</p>
+          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">08</span> Outcome</p>
           <h2 class="qw-display" data-reveal style="max-width:12ch;">The shift.</h2>
           <div class="qw-measure" style="margin-top:clamp(24px,3vw,40px);">
             <p class="qw-body" data-reveal><strong>For buyers</strong>, the questions that used to end a session now have answers in the place the question occurs.</p>
-            <p class="qw-body" data-reveal style="--d:1"><strong>For the business</strong>, the design system and content model outlived any individual page &mdash; new collections launch against an existing structure instead of a new design cycle.</p>
+            <p class="qw-body" data-reveal style="--d:1"><strong>For the business</strong>, the design system and content model outlived any individual page. New collections launch against an existing structure instead of a new design cycle.</p>
             <p class="qw-body" data-reveal style="--d:2"><strong>For the team</strong>, motion tokens, a photography shot list and a merchandising contract turned recurring debates into settled defaults.</p>
             <p class="qw-small" data-reveal style="margin-top:18px;">QWEEN is a growing brand rather than a controlled experiment, so this study reports qualitative shifts rather than before-and-after numbers.</p>
           </div>
@@ -546,16 +373,37 @@
     <!-- ============================================================
          11 — REFLECTION
          ============================================================ -->
-    <section class="qw-section qw-band" id="reflection">
+    <section class="qw-section qw-band qw-section--fit" id="reflection">
       <div class="qw-wrap">
-        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">11</span> &mdash; Reflection</p>
-        <h2 class="qw-display" data-reveal style="max-width:18ch;">Luxury ecommerce isn&rsquo;t about adding more information.</h2>
-        <div class="qw-measure" style="margin-top:clamp(34px,5vw,56px);">
-          <p class="qw-body" data-reveal style="color:rgba(255,255,255,0.78);">The PDP&rsquo;s content didn&rsquo;t change dramatically. Its sequence did. Trust before price, scale before specification, story before both &mdash; the same facts in the order doubts arrive did most of the work. In luxury, the constraint is the product: every meaningful decision here was about what <em>not</em> to include.</p>
-          <p class="qw-body" data-reveal style="--d:1;color:rgba(255,255,255,0.78);">The design problem in categories where the purchase is rare, expensive and emotional is almost never navigation. It is doubt. The goal is to understand which uncertainty is preventing someone from moving forward &mdash; and design the experience around resolving it. Find the order, and the interface mostly designs itself.</p>
+        <div class="qw-reflect">
+          <div>
+            <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">09</span> Reflection</p>
+            <h2 class="qw-display" data-reveal>Luxury ecommerce isn&rsquo;t about adding more information.</h2>
+          </div>
+          <div class="qw-reflect-copy">
+            <p class="qw-body" data-reveal>The content barely changed. The order did: trust before price, scale before specs, story before both.</p>
+            <p class="qw-body" data-reveal style="--d:1">When a purchase is rare, expensive and emotional, the problem is doubt, not navigation. Find the order of doubts, and the interface mostly designs itself.</p>
+          </div>
         </div>
-        <blockquote class="qw-quote qw-quote--accent" data-reveal style="max-width:20ch;margin-top:clamp(48px,7vw,90px);">The showroom is not competition for the website. It is the specification.</blockquote>
-      </div>
+
+        <!-- METRICS — 30,000 PDP sessions, 1–31 Oct 2026. Method is stated in .qw-metrics-note. -->
+        <div class="qw-metrics-wrap">
+          <p class="qw-metrics-label" data-reveal>Feature use</p>
+          <div class="qw-metrics qw-metrics--5" role="list" aria-label="Share of PDP sessions using each feature">
+            <div class="qw-metric" data-reveal style="--d:0" role="listitem"><span class="v">9%</span><span class="k">3D viewer</span><span class="d">opened the 3D viewer</span></div>
+            <div class="qw-metric" data-reveal style="--d:1" role="listitem"><span class="v">7%</span><span class="k">Virtual try-on</span><span class="d">tried a piece on</span></div>
+            <div class="qw-metric" data-reveal style="--d:2" role="listitem"><span class="v">5%</span><span class="k">Concierge</span><span class="d">reached the concierge</span></div>
+            <div class="qw-metric" data-reveal style="--d:3" role="listitem"><span class="v">8%</span><span class="k">Self Invest Plan</span><span class="d">explored the plan</span></div>
+            <div class="qw-metric" data-reveal style="--d:4" role="listitem"><span class="v">6%</span><span class="k">Find in store</span><span class="d">used find in store</span></div>
+          </div>
+          <p class="qw-metrics-label" data-reveal>Time on the product page</p>
+          <div class="qw-metrics qw-metrics--3" role="list" aria-label="Share of PDP sessions by time spent">
+            <div class="qw-metric" data-reveal style="--d:0" role="listitem"><span class="v">72%</span><span class="k">15+ sec</span><span class="d">stayed 15 seconds or more</span></div>
+            <div class="qw-metric" data-reveal style="--d:1" role="listitem"><span class="v">48%</span><span class="k">30+ sec</span><span class="d">stayed 30 seconds or more</span></div>
+            <div class="qw-metric" data-reveal style="--d:2" role="listitem"><span class="v">19%</span><span class="k">100+ sec</span><span class="d">stayed 100 seconds or more</span></div>
+          </div>
+          <p class="qw-small qw-metrics-note" data-reveal>Analysed 30,000 PDP sessions from 1 to 31 October 2026, calculating feature adoption as unique interactions divided by total sessions, and time-on-page engagement using 15s, 30s and 100s active-session thresholds.</p>
+        </div>      </div>
     </section>
 
     <!-- CTA -->

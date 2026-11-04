@@ -89,9 +89,19 @@
     /* Reveal the reading indicator only once past the hero. */
     if (nav) {
       var hero = doc.querySelector('.qw-hero');
+      var darks = Array.prototype.slice.call(doc.querySelectorAll('.qw-band'));
       var toggleVis = function () {
-        var trigger = hero ? hero.offsetHeight * 0.6 : window.innerHeight * 0.6;
-        nav.classList.toggle('is-visible', window.scrollY > trigger);
+        /* Rail appears once the second chapter reaches mid-screen. */
+        var second = doc.querySelectorAll('main > section')[1];
+        var mid = window.innerHeight / 2;
+        nav.classList.toggle('is-visible', second
+          ? second.getBoundingClientRect().top < mid
+          : window.scrollY > (hero ? hero.offsetHeight * 0.6 : mid));
+        /* Invert the rail while it sits over a dark band. */
+        nav.classList.toggle('on-dark', darks.some(function (d) {
+          var r = d.getBoundingClientRect();
+          return r.top <= mid && r.bottom >= mid;
+        }));
       };
       toggleVis();
       window.addEventListener('scroll', toggleVis, { passive: true });
