@@ -36,24 +36,10 @@ body { --nav-logo-h: 73px; }
 }
 
 /* ---------- NAV (home variant) ---------- */
-/* A third zone, floating dead-centre regardless of how wide the logo or
-   the link list either side happen to be — a plain 3-child flex row would
-   only land it at the midpoint of the gap between them, not true centre,
-   since logo and link-list are different widths. */
-.nav-thoughts {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 400;
-  text-transform: uppercase; text-decoration: none; color: var(--brand-blue);
-  transition: opacity var(--dur-hover);
-}
-.nav-thoughts:hover { opacity: 0.65; }
 .nav--home .nav-links a {
   font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 400;
   text-transform: uppercase;
 }
-/* The floating centre link and its in-menu duplicate swap per breakpoint —
-   one element for pointer/keyboard nav either way, never both at once. */
-.nav-thoughts-item { display: none; }
 
 /* ---------- HERO ---------- */
 #hero {
@@ -302,6 +288,25 @@ a.hero-corner:hover { opacity: 0.65; }
 }
 .exp-card--ai .exp-card-text { z-index: 1; width: 460px; max-width: calc(100% - 152px); gap: 14px; pointer-events: auto; }
 .exp-card--ai .exp-card-text h2 { font-size: 32px; }
+/* CityScope's banner is a light photo with the tablet at far right. Where the
+   copy clears the tablet, drop the scrim and go dark on the photo's own
+   backdrop. Narrower than that the copy runs over the tablet, and the default
+   scrim is too thin for white type on a light photo, so it gets a heavier one. */
+.exp-card--cityscope { background-position: right bottom; }
+.exp-card--cityscope::before {
+  background: linear-gradient(100deg, rgba(8,10,12,0.9) 0%, rgba(8,10,12,0.78) 55%, rgba(8,10,12,0.62) 100%);
+}
+@media (min-width: 1101px) {
+  .exp-card--cityscope::before { content: none; }
+  .exp-card--cityscope .exp-card-text { width: 420px; }
+  .exp-card--cityscope .exp-card-text h2 { color: var(--dark); }
+  .exp-card--cityscope .exp-card-text p { color: rgba(28, 28, 28, 0.78); }
+  .exp-card--cityscope .exp-card-text .exp-card-eyebrow { color: rgba(28, 28, 28, 0.6); }
+  .exp-card--cityscope .exp-card-why { border-left-color: rgba(28, 28, 28, 0.25); }
+  .exp-card--cityscope .tech-tag--onlight { border-color: rgba(28, 28, 28, 0.3); color: rgba(28, 28, 28, 0.8); }
+  .exp-card--cityscope .link-row--onlight a { color: rgba(28, 28, 28, 0.8); border-bottom-color: rgba(28, 28, 28, 0.35); }
+  .exp-card--cityscope .link-row--onlight a:hover { color: var(--dark); border-color: var(--dark); }
+}
 .exp-card-eyebrow {
   font-size: 10px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
@@ -324,7 +329,7 @@ a.hero-corner:hover { opacity: 0.65; }
    no elevation on hover. */
 .plugin-grid {
   width: var(--w-wide); max-width: calc(100% - 144px); margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;
 }
 .plugin-card {
   border: 1px solid var(--line); background: rgba(255, 255, 255, 0.3);
@@ -333,13 +338,16 @@ a.hero-corner:hover { opacity: 0.65; }
 }
 .plugin-card:hover { border-color: rgba(28, 28, 28, 0.3); background: rgba(255, 255, 255, 0.5); }
 .plugin-art {
-  height: 150px; position: relative; overflow: hidden;
+  height: 190px; position: relative; overflow: hidden;
   background-image: var(--card-img, none);
   background-color: var(--card-bg, rgba(28, 28, 28, 0.05));
   background-size: cover; background-position: center;
   border-bottom: 1px solid var(--line);
 }
 .plugin-art--design-cop { --card-img: url('../img/design-cop.webp'); }
+.plugin-art--linemotion { --card-img: url('../img/tools/linemotion.jpg'); background-position: right top; }
+.plugin-art--feedback { --card-img: url('../img/tools/feedback.jpg'); background-position: top center; }
+.plugin-art video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .plugin-art--bunny-carrot { --card-img: url('../img/bunny-carrot.webp'); }
 .plugin-art span {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -354,6 +362,7 @@ a.hero-corner:hover { opacity: 0.65; }
 }
 .plugin-body h3 { font-size: 17px; font-weight: 500; color: var(--dark); line-height: 1.3; margin-bottom: 10px; }
 .plugin-body p { font-size: 13.5px; font-weight: 300; color: rgba(28, 28, 28, 0.6); line-height: 1.65; flex: 1; }
+.plugin-body .plugin-type { flex: none; }
 .plugin-body .tech-tags { margin-top: 16px; }
 .plugin-body .tech-tag { font-size: 11px; padding: 4px 9px; }
 .plugin-body .link-row { margin-top: 18px; }
@@ -398,7 +407,7 @@ a.hero-corner:hover { opacity: 0.65; }
 /* index.html previously shipped with no media queries at all. */
 @media (max-width: 1200px) {
   .work-features, .plugin-grid { max-width: calc(100% - 96px); }
-  .plugin-grid { grid-template-columns: repeat(2, 1fr); }
+  .plugin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 1100px) {
   /* Track padding and card width must agree, or cards sit off-centre. */
@@ -411,11 +420,6 @@ a.hero-corner:hover { opacity: 0.65; }
   .work-feature-art { min-height: 220px; }
 }
 @media (max-width: 860px) {
-  /* The floating centre link has no room once the menu collapses to a
-     hamburger — its place is taken by the matching item inside the menu
-     list, which the desktop rule above hides. */
-  .nav-thoughts { display: none; }
-  .nav-thoughts-item { display: list-item; }
   /* The compact uppercase treatment is for the desktop bar; the full-screen
      mobile menu keeps the same large, plain-case links every other page's
      menu uses — same specificity as base.css's own mobile rule, so without
@@ -432,7 +436,7 @@ a.hero-corner:hover { opacity: 0.65; }
   .hero-cup { height: clamp(180px, 26vh, 260px); margin-top: 16px; }
   #work, #ai, #plugins, #about, #contact { margin-top: 110px; }
   .work-features, .plugin-grid, .about-layout, .contact-inner { max-width: calc(100% - 48px); }
-  .plugin-grid { grid-template-columns: 1fr; }
+  .plugin-grid { grid-template-columns: minmax(0, 1fr); }
   .work-feature-body { padding: 32px 24px; }
   .work-feature-body h3 { font-size: 26px; }
   .work-feature-meta { gap: 20px; }
