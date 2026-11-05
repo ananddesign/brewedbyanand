@@ -7,7 +7,7 @@
   <meta name="description" content="Anand Patil — product designer with 9+ years across fintech, e-commerce, SaaS and luxury retail. 0-1 journeys, design systems, and products built end to end." />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/home.css" />
+  <link rel="stylesheet" href="assets/css/home.css?v=4" />
   <link rel="stylesheet" href="assets/css/intro.css" />
   <!-- Intro gate. Runs before the body paints so the decision (play vs
        skip) is made with zero flash. Plays once per session; ?intro=true
@@ -73,16 +73,11 @@
       <img class="nav-logo-white" src="assets/img/logo-white.svg" alt="Brewed by Anand" width="334" height="117" />
       <img class="nav-logo-black" src="assets/img/sign.svg" alt="" aria-hidden="true" width="177" height="112" />
     </a>
-    <!-- Floating centre link, independent of the logo/menu widths either
-         side — see .nav-thoughts in home.css for why this can't just be a
-         flex child. Hidden on mobile; folded into the menu list instead. -->
-    <a class="nav-thoughts" href="#">My Thoughts</a>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navRight">
       <span></span><span></span>
     </button>
     <div class="nav-right" id="navRight">
       <ul class="nav-links">
-        <li class="nav-thoughts-item"><a href="#">My Thoughts</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="#plugins">Experiments</a></li>
@@ -229,11 +224,12 @@
             </div>
             <div class="link-row link-row--onlight">
               <a href="work-imagio.html">Read case study</a>
+              <a href="https://vstudio-kappa.vercel.app/" target="_blank" rel="noopener">See it live</a>
             </div>
           </div>
         </div>
 
-        <div class="exp-card exp-card--ai" data-url="work-cityscope.html" style="--card-bg: #10202A; --card-img: url('/assets/img/city%20scope%20app-thumb.png');">
+        <div class="exp-card exp-card--ai exp-card--cityscope" data-url="work-cityscope.html" style="--card-bg: #D8D1CD; --card-img: url('/assets/img/cityscope/hero-banner.webp');">
           <div class="exp-card-text">
             <p class="exp-card-eyebrow">Next.js &#183; MapLibre &#183; PostGIS</p>
             <h2>CityScope</h2>
@@ -246,6 +242,7 @@
             </div>
             <div class="link-row link-row--onlight">
               <a href="work-cityscope.html">Read case study</a>
+              <a href="https://cityscope-anand.vercel.app/" target="_blank" rel="noopener">See it live</a>
             </div>
           </div>
         </div>
@@ -288,27 +285,44 @@
       </div>
 
       <div class="plugin-card">
-        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-motion.webp</span></div>
+        <div class="plugin-art plugin-art--linemotion"></div>
         <div class="plugin-body">
-          <p class="plugin-type">TODO &#8212; type</p>
-          <h3>Motion plugin</h3>
-          <p>TODO &#8212; one sentence on the problem it solves.</p>
-          <div class="tech-tags"><span class="tech-tag">TODO</span></div>
-          <div class="link-row">
-            <a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a>
+          <p class="plugin-type">Figma Plugin</p>
+          <h3>LineMotion</h3>
+          <p>Scans icons in a selection, previews the line-draw animation live, and exports it as a Lottie file.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Figma API</span>
+            <span class="tech-tag">Lottie</span>
           </div>
         </div>
       </div>
 
       <div class="plugin-card">
-        <div class="plugin-art"><span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-ticket.webp</span></div>
+        <div class="plugin-art plugin-art--video">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Leo desktop assistant demo">
+            <source src="assets/video/tools/leo.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="plugin-body">
-          <p class="plugin-type">TODO &#8212; type</p>
-          <h3>Ticket extension</h3>
-          <p>TODO &#8212; one sentence on the problem it solves.</p>
-          <div class="tech-tags"><span class="tech-tag">TODO</span></div>
-          <div class="link-row">
-            <a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a>
+          <p class="plugin-type">Desktop App</p>
+          <h3>Leo</h3>
+          <p>A desktop assistant that sits on my screen and helps with everyday tasks without breaking my flow.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Desktop</span>
+            <span class="tech-tag">AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-art plugin-art--feedback"></div>
+        <div class="plugin-body">
+          <p class="plugin-type">Chrome Extension</p>
+          <h3>Feedback</h3>
+          <p>Draw arrows on a page, capture an area, and raise a ClickUp ticket in three quick steps.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Chrome</span>
+            <span class="tech-tag">ClickUp API</span>
           </div>
         </div>
       </div>

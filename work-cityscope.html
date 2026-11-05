@@ -7,12 +7,38 @@
   <meta name="description" content="CityScope — a spatial exploration product that turns property search into spatial decision-making, where the map is the product." />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/case-study.css" />
+  <link rel="stylesheet" href="assets/css/case-study.css?v=2" />
   <style>
     /* ============================================================
        CITYSCOPE — page-scoped moments. Composes the shared cs- kit;
        tokens only, no new colour language.
        ============================================================ */
+
+    /* Hero banner — a light image, so the shared white hero type goes dark.
+       The photo's backdrop is a flat #D8D1CD: the image is pinned bottom-right
+       (the hands bleed off those edges) and that colour fills the rest, so the
+       tablet is never cropped. */
+    .cx-hero { --cx-hero-paper: #D8D1CD; height: auto; min-height: max(100vh, 660px); background: var(--cx-hero-paper); padding-top: 120px; }
+    .cx-hero .cs-hero-bg { background: var(--cx-hero-paper) url('assets/img/cityscope/hero-banner.webp') right bottom / 131vw auto no-repeat; }
+    .cx-hero .cs-hero-bg::before, .cx-hero .cs-hero-bg::after { content: none; }
+    .cx-hero .cs-hero-content { max-width: 54vw; }
+    .cx-hero .cs-hero-tag { color: rgba(28, 28, 28, 0.6); }
+    .cx-hero .cs-hero-title { color: var(--dark); }
+    .cx-hero .cs-hero-subtitle { color: rgba(28, 28, 28, 0.78); }
+    .cx-hero .cs-hero-meta { border-top-color: rgba(28, 28, 28, 0.18); gap: 28px 40px; }
+    .cx-hero .cs-hero-meta div h4 { color: rgba(28, 28, 28, 0.55); }
+    .cx-hero .cs-hero-meta div p { color: rgba(28, 28, 28, 0.82); }
+    .cx-hero .cx-hero-flow span { color: rgba(28, 28, 28, 0.7); border-color: rgba(28, 28, 28, 0.25); }
+    .cx-hero .cx-hero-flow em { color: rgba(28, 28, 28, 0.4); }
+    .cx-hero .cs-hero-scroll { display: none; }
+    /* Below this the text can't share a row with the tablet: stack them, and
+       fade the hands' cut edge into the paper colour. */
+    @media (max-width: 960px) {
+      .cx-hero { display: block; padding-top: calc(92vw + 84px); }
+      .cx-hero .cs-hero-bg { inset: 0 0 auto 0; height: 92vw; margin-top: 56px; background-size: 261vw auto; }
+      .cx-hero .cs-hero-bg::after { content: ''; background: linear-gradient(to top, var(--cx-hero-paper) 0%, transparent 22%); }
+      .cx-hero .cs-hero-content { max-width: none; }
+    }
 
     /* Hero flow line — the 30-second read under the subtitle */
     .cx-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
@@ -51,7 +77,7 @@
 <body>
 
   <!-- NAV -->
-  <nav id="mainNav">
+  <nav id="mainNav" class="nav--on-light">
     <a class="nav-logo" href="index.html" aria-label="Brewed by Anand — home">
       <img class="nav-logo-white" src="assets/img/logo-white.svg" alt="Brewed by Anand" width="334" height="117" />
       <img class="nav-logo-black" src="assets/img/sign.svg" alt="" aria-hidden="true" width="177" height="112" />
@@ -69,7 +95,7 @@
   </nav>
 
   <!-- 01 — HERO -->
-  <section class="cs-hero" style="--cs-hero-bg: linear-gradient(150deg, #0E1620 0%, #10202A 55%, #0C1A24 100%); --cs-hero-tint: radial-gradient(120% 90% at 80% 12%, rgba(94,168,196,0.20) 0%, rgba(11,11,12,0) 60%); --cs-hero-overlay: linear-gradient(to top, rgba(8,12,16,0.82) 0%, rgba(8,12,16,0.1) 60%);">
+  <section class="cs-hero cx-hero">
     <div class="cs-hero-bg"></div>
     <div class="cs-hero-content">
       <p class="cs-hero-tag">Case Study &#8212; CityScope</p>
@@ -87,7 +113,7 @@
         </div>
         <div>
           <h4>Platform</h4>
-          <p>Web</p>
+          <p>Web &#183; <a href="https://cityscope-anand.vercel.app/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See it live</a></p>
         </div>
         <div>
           <h4>Stack</h4>
@@ -186,6 +212,10 @@
       <h2>The map was never the feature. It was the argument.</h2>
       <p>Building CityScope reinforced that the hardest design work was deciding what deserved to be an entity, how confidence should be expressed without a paragraph of caveats, and when to switch from showing a place to helping someone judge it. The interface was the last mile of a stance about how people should decide where to live.</p>
       <div class="cs-pullquote">Don&#8217;t answer &#8220;which property?&#8221; Help someone answer &#8220;which part of the city?&#8221;</div>
+      <div class="cs-cta-wrap" style="margin-top:44px;">
+        <span class="cs-cta-note">CityScope is live.</span>
+        <a class="cs-cta" href="https://cityscope-anand.vercel.app/" target="_blank" rel="noopener">See it live</a>
+      </div>
     </div>
 
     <!-- CTA -->

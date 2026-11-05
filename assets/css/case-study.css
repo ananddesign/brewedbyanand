@@ -316,6 +316,7 @@ body.notes-on .notes-toggle { background: var(--brand-blue); border-color: var(-
   .cs-hero-title { font-size: 38px; }
   .cs-hero-meta { gap: 28px; }
   .cs-hero-scroll { display: none; }
+  .cs-flow-step { white-space: normal; max-width: 100%; }
   .cs-article { padding: 80px var(--gutter-sm) 0; }
   .cs-bleed { padding: 72px 0; }
   .cs-bleed-inner { padding: 0 var(--gutter-sm); }
