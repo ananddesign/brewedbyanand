@@ -136,7 +136,7 @@
     if (nav) {
       var hero = doc.querySelector('.pg-hero');
       var toggleVis = function () {
-        var trigger = hero ? hero.offsetHeight * 0.6 : window.innerHeight * 0.6;
+        var trigger = hero ? hero.offsetHeight * 0.85 : window.innerHeight * 0.6; /* clear of the cover artwork */
         nav.classList.toggle('is-visible', window.scrollY > trigger);
       };
       toggleVis();

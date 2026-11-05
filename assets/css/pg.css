@@ -50,7 +50,7 @@ body.pg nav.scrolled { background: rgba(234, 234, 234, 0.9); box-shadow: 0 1px 0
   font-family: var(--font-sans); font-size: 11px; font-weight: 500;
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
 }
-.pg-eyebrow .n { color: var(--accent); }
+.pg-eyebrow .n { color: var(--accent); margin-right: 0.5em; }
 
 .pg-display {
   font-family: var(--font-serif); font-weight: 400; font-style: normal;
@@ -156,27 +156,47 @@ body.pg nav.scrolled { background: rgba(234, 234, 234, 0.9); box-shadow: 0 1px 0
 /* ============================================================
    01 — HERO
    ============================================================ */
-.pg-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; color: #fff; }
-.pg-hero-bg { position: absolute; inset: 0; z-index: 0; }
-.pg-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
-.pg-hero-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background:
-    linear-gradient(100deg, rgba(9,10,7,0.94) 0%, rgba(9,10,7,0.82) 42%, rgba(9,10,7,0.42) 66%, rgba(9,10,7,0.05) 100%),
-    linear-gradient(to top, rgba(9,10,7,0.92) 0%, rgba(9,10,7,0.12) 56%);
+/* cover in the QWEEN language: page-grey ground, Playfair italic lines, one credit line.
+   The artwork's ground is the page grey and its arm runs off the right edge, so it sits
+   flush right at full hero height; the masks melt its left and bottom edges into the page. */
+.pg-hero { position: relative; overflow: hidden; color: var(--text); background: var(--bg); }
+.pg-cover { position: relative; container-type: inline-size; min-height: 100svh; display: flex; align-items: center; }
+.pg-cover-copy {
+  position: relative; z-index: 1; margin-top: -4svh;
+  padding-left: max(var(--gutter), calc((100vw - var(--content)) / 2 + var(--gutter)));
 }
-.pg-hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--content); margin: 0 auto; padding: 0 var(--gutter) clamp(56px, 8vw, 104px); }
-.pg-hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; align-items: end; }
-.pg-hero-eyebrow { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-bottom: 26px; }
-.pg-hero-title {
-  font-family: var(--font-serif); font-weight: 400;
-  font-size: clamp(2.4rem, 4.8vw, 3.9rem); line-height: 1.02; letter-spacing: -0.01em; color: #fff;
-  max-width: 15ch; text-shadow: 0 2px 40px rgba(0, 0, 0, 0.35);
+.pg-cover-title { margin: 0; font-weight: 400; color: #0d0d0f; }
+.pg-cover-title span { display: block; white-space: nowrap; }
+.pg-cover-title .w1, .pg-cover-title .w2 { font-family: 'Playfair Display', var(--font-serif); font-style: italic; font-size: min(6.6cqw, 7rem); line-height: 1.02; letter-spacing: -0.02em; }
+.pg-cover-title .w3 { margin-top: 0.9cqw; font-family: var(--font-serif); font-size: min(3.5cqw, 3.7rem); line-height: 1.1; letter-spacing: -0.01em; }
+.pg-cover-sub { margin-top: min(2.2cqw, 36px); font-size: clamp(0.8rem, 1.05vw, 1rem); line-height: 1.5; color: #2a2522; }
+.pg-cover-img {
+  position: absolute; top: 0; right: 0; display: block; width: auto; height: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%), linear-gradient(to top, transparent, #000 5%);
+  mask-image: linear-gradient(to right, transparent, #000 6%), linear-gradient(to top, transparent, #000 5%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
 }
-.pg-hero-desc { margin-top: 28px; max-width: 44ch; font-size: clamp(1rem, 1.3vw, 1.18rem); line-height: 1.6; color: rgba(255,255,255,0.82); }
-.pg-hero-meta { margin-top: 40px; display: grid; grid-template-columns: repeat(4, auto); gap: 34px 44px; justify-content: start; }
-.pg-hero-meta dt { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 7px; }
-.pg-hero-meta dd { font-size: 0.9rem; line-height: 1.45; color: rgba(255,255,255,0.9); }
+/* phones and portrait tablets: the artwork no longer fits beside the title, so it follows it */
+@media (max-width: 900px), (max-aspect-ratio: 11/10) {
+  .pg-cover { display: block; min-height: 0; }
+  .pg-cover-copy { margin-top: 0; padding: clamp(116px, 16svh, 150px) var(--gutter) 0; }
+  .pg-cover-title .w1, .pg-cover-title .w2 { font-size: min(12cqw, 5.4rem); }
+  .pg-cover-title .w3 { margin-top: 6px; font-size: min(6.6cqw, 3rem); }
+  .pg-cover-sub { margin-top: 16px; }
+  /* the artwork's empty top tucks under the copy */
+  .pg-cover-img {
+    position: static; width: min(100%, 620px); height: auto; margin: -10cqw 0 0 auto;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%); mask-image: linear-gradient(to bottom, transparent, #000 12%);
+  }
+}
+
+/* intro — the project summary that follows the cover */
+.pg-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(28px, 5vw, 80px); align-items: start; margin-bottom: clamp(56px, 7vw, 96px); }
+.pg-intro .pg-lead { max-width: 46ch; font-size: clamp(1.1rem, 1.5vw, 1.35rem); }
+.pg-intro-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 34px; }
+.pg-intro-meta dt { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 7px; }
+.pg-intro-meta dd { margin: 0; font-size: 0.9rem; line-height: 1.45; color: var(--text); }
+@media (max-width: 860px) { .pg-intro { grid-template-columns: 1fr; } }
 
 /* storyboard — layered product screens (overlapping, fixed aspect so tall
    phone shots never overflow their frame) */
@@ -190,11 +210,6 @@ body.pg nav.scrolled { background: rgba(234, 234, 234, 0.9); box-shadow: 0 1px 0
 .pg-storyboard .s1 { width: clamp(158px, 19.5vw, 248px); z-index: 3; transform: translateY(-4%) rotate(-1deg); }
 .pg-storyboard .s2 { z-index: 2; margin-right: -5%; transform: rotate(-2deg); }
 .pg-storyboard .s3 { z-index: 1; margin-left: -5%; transform: rotate(2deg); }
-
-.pg-hero-scroll { position: absolute; right: var(--gutter); bottom: clamp(40px, 6vw, 72px); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.pg-hero-scroll span { writing-mode: vertical-rl; font-size: 9.5px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-.pg-hero-scroll::after { content: ''; width: 1px; height: 46px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent); animation: pgScroll 2.4s var(--ease) infinite; }
-@keyframes pgScroll { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
 /* hero load choreography */
 body.pg .pg-hero [data-hero] { opacity: 0; transform: translateY(30px); }
@@ -456,7 +471,9 @@ body.pg.hero-ready .pg-storyboard figure { transition: opacity 1s var(--ease), t
 .pg-card-num { font-family: var(--font-serif); font-size: clamp(2.2rem, 3.2vw, 2.9rem); line-height: 0.85; letter-spacing: -0.02em; text-align: right; }
 .pg-card-num span { display: block; margin-top: 8px; font-family: var(--font-sans, inherit); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
 .pg-card-body { margin-block: auto; padding-block: 18px; }
-.pg-card-by { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.6; opacity: 0.72; max-width: 40ch; }
+.pg-card-by { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.6; opacity: 0.72; }
+/* card 04's caption is long: tighter tracking keeps it on one line where the deck is side by side */
+@media (min-width: 901px) { .pg-shift-frame.f4 .pg-card-by { white-space: nowrap; letter-spacing: 0.08em; font-size: 10px; } }
 .pg-shift-node { --dot: 10px; display: flex; align-items: center; gap: 14px; font-family: var(--font-serif); font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1; letter-spacing: -0.01em; color: inherit; }
 /* step marker; the dotted connector below runs through its centre */
 .pg-shift-node::before { content: ''; flex: 0 0 var(--dot); width: var(--dot); height: var(--dot); border-radius: 50%; background: currentColor; }
@@ -523,7 +540,6 @@ body.pg.hero-ready .pg-storyboard figure { transition: opacity 1s var(--ease), t
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  .pg-hero-grid { grid-template-columns: 1fr; gap: 30px; }
   .pg-storyboard { height: clamp(320px, 60vw, 460px); order: 2; }
   .pg-dd-split { grid-template-columns: 1fr; }
   .pg-interface { grid-template-columns: 1fr; }
@@ -531,7 +547,6 @@ body.pg.hero-ready .pg-storyboard figure { transition: opacity 1s var(--ease), t
   .pg-payoff { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
-  .pg-hero-meta { grid-template-columns: repeat(2, auto); gap: 24px 40px; }
   .pg-duo { grid-template-columns: 1fr; }
   .pg-duo .b { transform: none; }
   .pg-branch-list { grid-template-columns: 1fr 1fr; }
@@ -549,7 +564,7 @@ body.pg.hero-ready .pg-storyboard figure { transition: opacity 1s var(--ease), t
 @media (min-width: 861px) { .pg-walk-step .mobile-img { display: none; } }
 @media (max-width: 560px) {
   .pg-branch-list { grid-template-columns: 1fr; }
-  .pg-datanote { gap: 40px; }
+  .pg-datanote { flex-wrap: wrap; gap: 24px 40px; }
   .pg-timeline { flex-direction: column; gap: 20px; }
 }
 
@@ -565,7 +580,6 @@ body.pg.hero-ready .pg-storyboard figure { transition: opacity 1s var(--ease), t
   }
   .pg-svg path, .pg-svg line, .pg-svg polyline { stroke-dashoffset: 0 !important; }
   .pg-evi-line::after { transform: scaleY(1) !important; }
-  .pg-hero-scroll::after { display: none; }
   .pg-conseq-core, .pg-conseq-item { opacity: 1 !important; transform: none !important; }
   .pg-shift-viewport { position: static !important; height: auto !important; }
   .pg-shift-viewport { display: grid; gap: 14px; max-width: 540px; }
