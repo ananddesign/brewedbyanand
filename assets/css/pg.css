@@ -191,12 +191,8 @@ body.pg nav.scrolled { background: rgba(234, 234, 234, 0.9); box-shadow: 0 1px 0
 }
 
 /* intro — the project summary that follows the cover */
-.pg-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(28px, 5vw, 80px); align-items: start; margin-bottom: clamp(56px, 7vw, 96px); }
+.pg-intro { margin-bottom: clamp(56px, 7vw, 96px); }
 .pg-intro .pg-lead { max-width: 46ch; font-size: clamp(1.1rem, 1.5vw, 1.35rem); }
-.pg-intro-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 34px; }
-.pg-intro-meta dt { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 7px; }
-.pg-intro-meta dd { margin: 0; font-size: 0.9rem; line-height: 1.45; color: var(--text); }
-@media (max-width: 860px) { .pg-intro { grid-template-columns: 1fr; } }
 
 /* storyboard — layered product screens (overlapping, fixed aspect so tall
    phone shots never overflow their frame) */
