@@ -34,9 +34,11 @@
   <!-- PROGRESS INDEX -->
   <nav class="pg-progress" aria-label="Case study sections">
     <a href="#context"><span class="lbl">Context</span><span class="bar"></span></a>
+    <a href="#process"><span class="lbl">Process</span><span class="bar"></span></a>
     <a href="#problem"><span class="lbl">Problem</span><span class="bar"></span></a>
     <a href="#opportunity"><span class="lbl">Opportunity</span><span class="bar"></span></a>
     <a href="#system"><span class="lbl">System</span><span class="bar"></span></a>
+    <a href="#iterations"><span class="lbl">Iterations</span><span class="bar"></span></a>
     <a href="#design"><span class="lbl">Design</span><span class="bar"></span></a>
     <a href="#experiment"><span class="lbl">Experiment</span><span class="bar"></span></a>
     <a href="#learnings"><span class="lbl">Learnings</span><span class="bar"></span></a>
@@ -66,6 +68,23 @@
       <div class="pg-wrap">
         <div class="pg-intro">
           <p class="pg-lead" data-reveal>Price Genie explored a new shopping model for Pincode where users could discover the products they wanted first, compare fulfilment options, and let the system construct the best basket across nearby stores.</p>
+        </div>
+        <!-- Every blue .pg-todo on this page is a prompt: replace it with your real ownership or validation details. -->
+        <div class="pg-contrib" data-reveal>
+          <div>
+            <h2 class="pg-subhead">My contribution</h2>
+            <p class="pg-body">I worked on Price Genie as product designer, turning the item-first idea into a complete shopping and fulfilment journey.</p>
+          </div>
+          <div class="pg-contrib-cols">
+            <div>
+              <p class="pg-tag">I worked on</p>
+              <ul class="pg-list"><li>The item-first flow, from shopping list to basket</li><li>Store comparison, including the collapsed and expanded cards</li><li>The multi-store cart, grouped by delivery</li><li>Prototypes of the end-to-end journey</li></ul>
+            </div>
+            <div>
+              <p class="pg-tag">I worked with</p>
+              <ul class="pg-list"><li>PM and business on the opportunity and hypotheses</li><li>Engineering and operations on fulfilment constraints</li><li>PM and analytics on what to measure</li></ul>
+            </div>
+          </div>
         </div>
         <p class="pg-eyebrow pg-chaptertag" data-reveal>Product discovery &nbsp;→&nbsp; Store comparison &nbsp;→&nbsp; Fulfilment</p>
         <div class="pg-storyboard" data-reveal="scale" style="--d:1">
@@ -133,11 +152,95 @@
     </section>
 
     <!-- ============================================================
-         03 — PROBLEM
+         03 — PROCESS
+         ============================================================ -->
+    <section class="pg-section" id="process">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">03</span> Process</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:20ch;">How we worked through the problem.</h2>
+        <p class="pg-body pg-measure" data-reveal style="--d:1;margin-top:24px;">Price Genie required more than designing a new shopping flow. The team needed to align on the problem, challenge the existing store-first model, understand operational and technical implications, and shape a new experience that could work across multiple stores.</p>
+
+        <div class="pg-loop" data-reveal role="img" aria-label="The collaborative design loop: align on opportunity, understand constraints, define hypotheses, explore models, review trade-offs, validate and refine. Reviewing trade-offs loops back to exploring models, and validating loops back to defining hypotheses.">
+          <ol class="pg-loop-nodes"><li><span>01</span>Align on opportunity</li><li><span>02</span>Understand constraints</li><li><span>03</span>Define hypotheses</li><li><span>04</span>Explore models</li><li><span>05</span>Review trade-offs</li><li><span>06</span>Validate and refine</li></ol>
+          <svg class="pg-loop-arcs" viewBox="0 0 600 64" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M450 2C450 30 350 30 350 2"/><path d="M550 2C550 62 250 62 250 2"/>
+          </svg>
+          <p class="pg-loop-note">Review trade-offs loops back to Explore models. Validate and refine loops back to Define hypotheses where learning changed the direction.</p>
+        </div>
+
+        <div class="pg-steps">
+          <article class="pg-step" data-reveal style="--d:0">
+            <div class="pg-step-top"><span class="pg-step-num">01</span><h3 class="pg-step-title">Align on opportunity</h3></div>
+            <p class="pg-step-with"><span>With</span> PM, design, business</p>
+            <p class="pg-step-text">Agreed where store-first limited discovery and what item-first could change.</p>
+            <details class="pg-step-more"><summary>Key questions</summary><ul class="pg-list"><li>Where did the current model limit discovery?</li><li>Which user and business problem mattered?</li><li>What would item-first need to change?</li></ul></details>
+            <p class="pg-step-out"><span>Output</span> Shared problem statement</p>
+          </article>
+          <article class="pg-step" data-reveal style="--d:1">
+            <div class="pg-step-top"><span class="pg-step-num">02</span><h3 class="pg-step-title">Understand constraints</h3></div>
+            <p class="pg-step-with"><span>With</span> PM, design, engineering, operations</p>
+            <p class="pg-step-text">Mapped the current journey and what comparing stores would require.</p>
+            <details class="pg-step-more"><summary>Areas covered</summary><ul class="pg-list"><li>How users find products and pick stores</li><li>What availability and store data existed</li><li>How price, offers and delivery affect comparison</li><li>What existing systems could support</li></ul></details>
+            <p class="pg-step-out"><span>Output</span> Journey, constraints and unknowns</p>
+          </article>
+          <article class="pg-step" data-reveal style="--d:2">
+            <div class="pg-step-top"><span class="pg-step-num">03</span><h3 class="pg-step-title">Define hypotheses</h3></div>
+            <p class="pg-step-with"><span>With</span> PM, design, analytics (where relevant)</p>
+            <p class="pg-step-text">Turned the opportunity into hypotheses and signals to track.</p>
+            <p class="pg-step-out"><span>Output</span> Hypotheses and signals</p>
+          </article>
+          <article class="pg-step" data-reveal style="--d:0">
+            <div class="pg-step-top"><span class="pg-step-num">04</span><h3 class="pg-step-title">Explore models</h3></div>
+            <p class="pg-step-with"><span>With</span> PM, design, engineering</p>
+            <p class="pg-step-text">Worked through the model end to end, not screen by screen.</p>
+            <details class="pg-step-more"><summary>Explored</summary><ul class="pg-list"><li>Store-first to item-first discovery</li><li>Comparing fulfilment options</li><li>Full and partial basket coverage</li><li>Store identity and delivery</li><li>Multi-store basket behaviour</li></ul></details>
+            <p class="pg-step-out"><span>Output</span> Direction and key flows</p>
+          </article>
+          <article class="pg-step" data-reveal style="--d:1">
+            <div class="pg-step-top"><span class="pg-step-num">05</span><h3 class="pg-step-title">Review trade-offs</h3></div>
+            <p class="pg-step-with"><span>With</span> PM, design, engineering</p>
+            <p class="pg-step-text">Weighed the experience against user clarity, business intent and constraints.</p>
+            <details class="pg-step-more"><summary>Balanced</summary><ul class="pg-list"><li>Simplicity vs. enough information</li><li>Automation vs. store accountability</li><li>Basket view vs. item-level detail</li><li>Experience vs. operational reality</li></ul></details>
+            <p class="pg-step-out"><span>Output</span> Refined flows and trade-offs</p>
+          </article>
+          <article class="pg-step" data-reveal style="--d:2">
+            <div class="pg-step-top"><span class="pg-step-num">06</span><h3 class="pg-step-title">Validate and refine</h3></div>
+            <p class="pg-step-with"><span>With</span> PM, design, engineering, research (where applicable)</p>
+            <p class="pg-step-text">Reviewed the full journey for coherence. <span class="pg-todo">How this was validated and what it showed</span></p>
+            <details class="pg-step-more"><summary>Aligned on</summary><ul class="pg-list"><li>Journey and key states</li><li>Full, partial and multi-store scenarios</li><li>Empty and changing inventory</li><li>Delivery grouping</li><li>Signals and dependencies</li></ul></details>
+            <p class="pg-step-out"><span>Output</span> <span class="pg-todo">Ready for implementation, validation or next milestone</span></p>
+          </article>
+        </div>
+
+        <!-- Hidden for now: collaboration block.
+        <h3 class="pg-subhead" data-reveal style="margin-top:clamp(48px,6vw,80px);">How collaboration shaped the decisions</h3>
+        <div class="pg-rows" data-reveal>
+          <div class="pg-rows-row"><span class="pg-rows-k">Product manager</span><span class="pg-rows-v">Helped frame the opportunity, align product priorities, define hypotheses and make scope decisions.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Design</span><span class="pg-rows-v">Translated the product direction into user journeys, interaction models, information hierarchy and interface decisions.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Engineering</span><span class="pg-rows-v">Evaluated technical feasibility, system dependencies, available data and implementation trade-offs.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Operations / business stakeholders</span><span class="pg-rows-v">Contributed operational context around store availability, fulfilment and delivery realities, where involved.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Research / analytics</span><span class="pg-rows-v">Helped assess user needs and define or interpret validation signals, where involved.</span></div>
+        </div>
+
+        <div class="pg-role" data-reveal>
+          <p class="pg-tag">Where my role sat</p>
+          <dl class="pg-facts pg-facts--2">
+            <div><dt>I personally drove</dt><dd><span class="pg-todo">Problem-framing, product-model, interaction or design decisions you directly owned</span></dd></div>
+            <div><dt>I partnered with the product manager on</dt><dd><span class="pg-todo">Opportunity framing, prioritisation, hypotheses or scope decisions</span></dd></div>
+            <div><dt>I collaborated with engineering on</dt><dd><span class="pg-todo">Feasibility questions, system dependencies or implementation trade-offs</span></dd></div>
+            <div><dt>The wider team contributed</dt><dd><span class="pg-todo">Research, analytics, operations, business or delivery contributions</span></dd></div>
+          </dl>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 — PROBLEM
          ============================================================ -->
     <section class="pg-section" id="problem">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">03</span> Problem</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">04</span> Problem</p>
         <h2 class="pg-display" data-reveal style="max-width:20ch;">The problem wasn&rsquo;t the cart. It was the shopping model.</h2>
 
         <div class="pg-conseq" data-reveal="fade">
@@ -158,13 +261,13 @@
     </section>
 
     <!-- ============================================================
-         04 — THE SHIFT (scroll-controlled transformation)
+         05 — THE SHIFT (scroll-controlled transformation)
          ============================================================ -->
     <section class="pg-section" id="opportunity">
       <div class="pg-wrap">
         <div class="pg-shift-layout">
           <aside class="pg-shift-aside">
-            <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">04</span> The shift</p>
+            <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">05</span> The shift</p>
             <p class="pg-shift-statement" data-reveal style="--d:1">What if shopping started with what people wanted?</p>
           </aside>
           <div class="pg-shift-track">
@@ -231,11 +334,11 @@
     </section>
 
     <!-- ============================================================
-         05 — HYPOTHESIS
+         06 — HYPOTHESIS
          ============================================================ -->
     <section class="pg-section" id="hypothesis">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">05</span> Hypothesis</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">06</span> Hypothesis</p>
         <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:20ch;margin-bottom:clamp(40px,5vw,64px);">Could item-first shopping help users build better baskets?</h2>
 
         <div class="pg-hyp">
@@ -272,11 +375,11 @@
     </section>
 
     <!-- ============================================================
-         06 — METRICS
+         07 — METRICS
          ============================================================ -->
     <section class="pg-section" id="metrics">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">06</span> What we measured</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">07</span> What we measured</p>
         <h2 class="pg-statement" data-reveal>We measured three things.</h2>
 
         <div class="pg-metrics">
@@ -301,13 +404,13 @@
     </section>
 
     <!-- ============================================================
-         07 — SYSTEM
+         08 — SYSTEM
          ============================================================ -->
     <section class="pg-section" id="system">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">07</span> System</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">08</span> System</p>
         <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:22ch;">The user shouldn&rsquo;t have to understand the complexity underneath.</h2>
-        <p class="pg-body pg-measure" data-reveal style="--d:1;margin-top:24px;">Behind one decision surface, Price Genie evaluates the possible fulfilment combinations across nearby stores (availability, price, delivery and offers) and presents only what the user needs to choose.</p>
+        <p class="pg-body pg-measure" data-reveal style="--d:1;margin-top:24px;">Behind one decision surface, Price Genie evaluates the possible fulfilment combinations across nearby stores (availability, price, delivery and offers) and presents only what the user needs to choose. Starting with products spares users an early store commitment, but moves that complexity into the system.</p>
 
         <div class="pg-sys">
           <svg class="pg-sys-svg pg-svg" viewBox="0 0 1000 700" role="img" aria-label="System diagram: six products flow into the Price Genie engine, which evaluates availability, price, delivery and offers, converging into best options and then a cart.">
@@ -366,13 +469,13 @@
     </section>
 
     <!-- ============================================================
-         08 — INTERFACE (review list)
+         09 — INTERFACE (review list)
          ============================================================ -->
     <section class="pg-section" id="interface">
       <div class="pg-wrap">
         <div class="pg-interface">
           <div class="pg-interface-copy">
-            <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">08</span> Interface</p>
+            <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">09</span> Interface</p>
             <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:18ch;">The store-agnostic list is where the system begins.</h2>
             <div class="pg-tracked" data-reveal>
               <span>Product input</span><span>Store-agnostic</span><span>Find best stores</span>
@@ -389,11 +492,39 @@
     </section>
 
     <!-- ============================================================
-         09–14 — DESIGN DECISIONS
+         10 — ITERATIONS
+         ============================================================ -->
+    <section class="pg-section" id="iterations">
+      <div class="pg-wrap">
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">10</span> Iterations</p>
+        <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:20ch;">How the screens evolved.</h2>
+        <p class="pg-body pg-measure" data-reveal style="--d:1;margin-top:24px;">Three rounds of the landing and stores screens, from a plain first version to a clearer comparison.</p>
+
+        <div class="pg-evo-row pg-evo-row--landing" data-reveal>
+          <p class="pg-tag">Landing</p>
+          <div class="pg-evo-grid">
+            <figure><a class="pg-evo-shot" href="assets/img/price-genie/evo-r1-landing.png" target="_blank" rel="noopener"><img src="assets/img/price-genie/evo-r1-landing.png" alt="Price Genie landing screen, round 1: White header, flat category rows." loading="lazy" /></a><figcaption class="pg-cap"><b>Round 01</b> White header, flat category rows.</figcaption></figure>
+            <figure><a class="pg-evo-shot" href="assets/img/price-genie/evo-r2-landing.png" target="_blank" rel="noopener"><img src="assets/img/price-genie/evo-r2-landing.png" alt="Price Genie landing screen, round 2: Green header, categories grouped in cards." loading="lazy" /></a><figcaption class="pg-cap"><b>Round 02</b> Green header, categories grouped in cards.</figcaption></figure>
+            <figure><a class="pg-evo-shot" href="assets/img/price-genie/evo-r3-landing.png" target="_blank" rel="noopener"><img src="assets/img/price-genie/evo-r3-landing.png" alt="Price Genie landing screen, round 3: Patterned header and a value-led headline." loading="lazy" /></a><figcaption class="pg-cap"><b>Round 03</b> Patterned header and a value-led headline.</figcaption></figure>
+          </div>
+        </div>
+        <div class="pg-evo-row pg-evo-row--stores" data-reveal>
+          <p class="pg-tag">Stores · Open a screen to see it in full</p>
+          <div class="pg-evo-grid">
+            <figure><a class="pg-evo-shot" href="assets/img/price-genie/evo-r1-stores.webp" target="_blank" rel="noopener"><img src="assets/img/price-genie/evo-r1-stores.webp" alt="Price Genie stores screen, round 1: One plain list of stores." loading="lazy" /></a><figcaption class="pg-cap"><b>Round 01</b> One plain list of stores.</figcaption></figure>
+            <figure><a class="pg-evo-shot" href="assets/img/price-genie/evo-r2-stores.webp" target="_blank" rel="noopener"><img src="assets/img/price-genie/evo-r2-stores.webp" alt="Price Genie stores screen, round 2: Sort and availability filters added." loading="lazy" /></a><figcaption class="pg-cap"><b>Round 02</b> Sort and availability filters added.</figcaption></figure>
+            <figure><a class="pg-evo-shot" href="assets/img/price-genie/evo-r3-stores.webp" target="_blank" rel="noopener"><img src="assets/img/price-genie/evo-r3-stores.webp" alt="Price Genie stores screen, round 3: Lowest total leads, and each store shows its gap from it." loading="lazy" /></a><figcaption class="pg-cap"><b>Round 03</b> Lowest total leads, and each store shows its gap from it.</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         11 — DESIGN DECISIONS
          ============================================================ -->
     <section class="pg-section" id="design">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">09</span> Design decisions</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">11</span> Design decisions</p>
         <h2 class="pg-statement" data-reveal>Six decisions, one principle.</h2>
       </div>
 
@@ -438,7 +569,7 @@
             <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/store-expanded.png" alt="Expanded store card: inventory snapshot with per-item prices and the missing item named." loading="lazy" /></figure>
           </div>
         </div>
-        <p class="pg-cap" data-reveal style="text-align:center;margin-inline:auto;">Availability, price and delivery are the primary decision variables, so the expanded state is built entirely from them.</p>
+        <p class="pg-cap" data-reveal style="text-align:center;margin-inline:auto;">We considered ranking stores on availability alone. Availability, price and delivery work as one decision, so the expanded state is built from all three.</p>
       </div>
 
       <!-- DD03 — Item-first, store-transparent -->
@@ -452,7 +583,7 @@
             <figure class="pg-screen" style="margin:0;"><img src="assets/img/price-genie/stores-partial.png" alt="Stores list stating that all items are not available in a single store, listing stores that carry some items." loading="lazy" /></figure>
           </div>
           <div class="pg-dd-copy">
-            <p class="pg-body" data-reveal>The system could have gone further, fully abstracting stores away and just delivering &ldquo;the basket.&rdquo; We deliberately didn&rsquo;t. Even though discovery begins with products, fulfilment stays transparent. At every step, four things are always answerable:</p>
+            <p class="pg-body" data-reveal>The system could have gone further, fully abstracting stores away and just delivering &ldquo;the basket.&rdquo; We deliberately didn&rsquo;t: showing store and delivery details adds some interface complexity, but users need to know where items come from. Even though discovery begins with products, fulfilment stays transparent. At every step, four things are always answerable:</p>
             <dl class="pg-tracked" data-reveal style="--d:1;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
               <div><span style="display:block;border:1px solid var(--line-2);padding:14px 16px;"><strong>Who</strong>: the store</span></div>
               <div><span style="display:block;border:1px solid var(--line-2);padding:14px 16px;"><strong>When</strong>: the delivery</span></div>
@@ -530,11 +661,11 @@
     </section>
 
     <!-- ============================================================
-         15 — THE WALKTHROUGH (sticky)
+         12 — THE WALKTHROUGH (sticky)
          ============================================================ -->
     <section class="pg-section" id="walkthrough">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">15</span> The walkthrough</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">12</span> The walkthrough</p>
         <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:16ch;margin-bottom:clamp(20px,3vw,40px);">From need, to basket, to fulfilment.</h2>
       </div>
       <div class="pg-wrap">
@@ -591,15 +722,15 @@
     </section>
 
     <!-- ============================================================
-         16 — EXPERIMENT (quiet pause)
+         13 — EXPERIMENT (quiet pause)
          ============================================================ -->
     <section class="pg-section" id="experiment">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">16</span> Experiment</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">13</span> Experiment</p>
         <h2 class="pg-display" data-reveal style="max-width:16ch;">We weren&rsquo;t redesigning a cart. We were testing a new shopping behaviour.</h2>
         <div class="pg-measure" style="margin-top:clamp(40px,5vw,64px);">
           <p class="pg-body" data-reveal>The core question the experiment was built to answer: can item-first discovery increase product discovery without creating unacceptable fulfilment complexity?</p>
-          <p class="pg-body" data-reveal style="--d:1">The experiment tracked five signals across discovery, fulfilment and business health, with cancellations as the guardrail the model had to hold.</p>
+          <p class="pg-body" data-reveal style="--d:1"><strong>Illustrative pilot scenario.</strong> The following figures illustrate the signals we would use to evaluate the model. They are directional examples, not reported experiment outcomes.</p>
         </div>
         <!-- RESULTS — an illustrative pilot scenario, not measured outcomes.
              Swap in real experiment figures (and drop the note below) when available. -->
@@ -640,11 +771,11 @@
     </section>
 
     <!-- ============================================================
-         17 — LEARNINGS (evidence timeline)
+         14 — LEARNINGS (evidence timeline)
          ============================================================ -->
     <section class="pg-section" id="learnings">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">17</span> Learnings</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">14</span> Learnings</p>
         <h2 class="pg-h pg-h--mixed" data-reveal style="max-width:18ch;">The biggest learning wasn&rsquo;t about the cart.</h2>
 
         <div class="pg-evi">
@@ -679,11 +810,11 @@
     </section>
 
     <!-- ============================================================
-         18 — REFLECTION
+         15 — REFLECTION
          ============================================================ -->
     <section class="pg-section" id="reflection">
       <div class="pg-wrap">
-        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">18</span> Reflection</p>
+        <p class="pg-eyebrow pg-chaptertag" data-reveal><span class="n">15</span> Reflection</p>
         <h2 class="pg-display" data-reveal style="max-width:16ch;">Designing the interface was only half the problem.</h2>
         <div class="pg-measure" style="margin-top:clamp(40px,5vw,64px);">
           <p class="pg-body" data-reveal>Price Genie taught me that marketplace UX isn&rsquo;t just about helping users navigate products. It&rsquo;s about making the underlying complexity of supply, fulfilment, price and delivery understandable enough for users to make confident choices.</p>
