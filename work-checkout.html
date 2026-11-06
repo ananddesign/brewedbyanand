@@ -52,6 +52,8 @@
     <a href="#previous"><span class="lbl">Previous app</span><span class="bar"></span></a>
     <a href="#checkout"><span class="lbl">Checkout</span><span class="bar"></span></a>
     <a href="#orders"><span class="lbl">Order management</span><span class="bar"></span></a>
+    <a href="#decisions"><span class="lbl">Decisions</span><span class="bar"></span></a>
+    <a href="#iterations"><span class="lbl">Iterations</span><span class="bar"></span></a>
     <a href="#impact"><span class="lbl">Impact</span><span class="bar"></span></a>
   </nav>
 
@@ -297,12 +299,12 @@
     <section class="qw-section qw-band co-decide-band">
       <div class="qw-wrap">
         <div class="qw-subchapter" data-reveal><span class="num">08.2</span><span class="lbl">Direction</span></div>
-        <h2 class="qw-display" data-reveal>We then decided to</h2>
+        <h2 class="qw-display" data-reveal>We set four priorities</h2>
         <ol class="co-decide">
-          <li data-reveal><img src="assets/img/checkout/icons/ghost.svg" alt="" />Not scare the user</li>
-          <li data-reveal style="--d:1"><img src="assets/img/checkout/icons/spark.svg" alt="" />Add some spark to the cart</li>
-          <li data-reveal style="--d:2"><img src="assets/img/checkout/icons/toggle.svg" alt="" />Make it more transparent</li>
-          <li data-reveal style="--d:3"><img src="assets/img/checkout/icons/check.svg" alt="" />Focus on crucial checks</li>
+          <li data-reveal><img src="assets/img/checkout/icons/ghost.svg" alt="" />Reduce checkout anxiety</li>
+          <li data-reveal style="--d:1"><img src="assets/img/checkout/icons/spark.svg" alt="" />Make savings visible</li>
+          <li data-reveal style="--d:2"><img src="assets/img/checkout/icons/toggle.svg" alt="" />Show the final price upfront</li>
+          <li data-reveal style="--d:3"><img src="assets/img/checkout/icons/check.svg" alt="" />Confirm the essentials before payment</li>
         </ol>
       </div>
     </section>
@@ -389,12 +391,12 @@
     <section class="qw-section qw-band co-decide-band">
       <div class="qw-wrap">
         <div class="qw-subchapter" data-reveal><span class="num">09.2</span><span class="lbl">Direction</span></div>
-        <h2 class="qw-display" data-reveal>We then decided to</h2>
+        <h2 class="qw-display" data-reveal>We set four priorities</h2>
         <ol class="co-decide">
-          <li data-reveal><img src="assets/img/checkout/icons/store.svg" alt="" />Make it store-centric</li>
-          <li data-reveal style="--d:1"><img src="assets/img/checkout/icons/heart.svg" alt="" />Make it more human</li>
-          <li data-reveal style="--d:2"><img src="assets/img/checkout/icons/toggle.svg" alt="" />Add transparency</li>
-          <li data-reveal style="--d:3"><img src="assets/img/checkout/icons/cloud.svg" alt="" />Make the user relaxed</li>
+          <li data-reveal><img src="assets/img/checkout/icons/store.svg" alt="" />Make the store&rsquo;s role clear</li>
+          <li data-reveal style="--d:1"><img src="assets/img/checkout/icons/heart.svg" alt="" />Speak in a human voice</li>
+          <li data-reveal style="--d:2"><img src="assets/img/checkout/icons/toggle.svg" alt="" />Set expectations at every step</li>
+          <li data-reveal style="--d:3"><img src="assets/img/checkout/icons/cloud.svg" alt="" />Keep support within reach</li>
         </ol>
       </div>
     </section>
@@ -458,12 +460,117 @@
     </section>
 
     <!-- ============================================================
-         10 — RECEPTION AND IMPACT  (dark band)
+         10 — KEY DECISIONS & TRADE-OFFS  (dark band)
+         ============================================================ -->
+    <section class="qw-section qw-band" id="decisions">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">10</span> Decisions</p>
+        <h2 class="qw-display" data-reveal>Key decisions &amp; trade-offs</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:20px;">The checkout experience needed to reduce uncertainty without losing the context users needed to make informed decisions. These were the key design decisions that shaped the experience.</p>
+        <div class="co-decisions">
+          <article class="co-decision" data-reveal>
+            <div class="co-decision-head"><span>01</span><h3 class="qw-h">Keep the originating store visible</h3></div>
+            <dl class="co-facts co-facts--2">
+              <div><dt>The challenge</dt><dd>Users could be unclear about which store was fulfilling their order and who was responsible for it. Pincode operated as a marketplace rather than owning the storefront or inventory.</dd></div>
+              <div><dt>Options considered</dt><dd><ul><li>Keep Pincode as the dominant identity throughout the journey.</li><li>Emphasise the delivery partner as the primary point of reference.</li><li class="is-chosen">Make the originating store more visible across the order journey.</li></ul></dd></div>
+              <div><dt>Decision</dt><dd>Reinforce the store identity so users could better understand where their order originated and who was fulfilling it.</dd></div>
+              <div><dt>Trade-off</dt><dd>This meant giving more prominence to the store within a Pincode experience. The aim was to make fulfilment ownership clearer without obscuring Pincode&rsquo;s role as the marketplace.</dd></div>
+            </dl>
+          </article>
+          <article class="co-decision" data-reveal>
+            <div class="co-decision-head"><span>02</span><h3 class="qw-h">Communicate order progress within integration constraints</h3></div>
+            <dl class="co-facts co-facts--2">
+              <div><dt>The challenge</dt><dd>Third-party integration limitations meant that delivery-partner details, such as the rider&rsquo;s name and photo, were not always available.</dd></div>
+              <div><dt>Options considered</dt><dd><ul><li>Continue relying on generic status labels.</li><li>Wait until richer delivery-partner information could be made available.</li><li class="is-chosen">Improve the progress experience using the order information already available.</li></ul></dd></div>
+              <div><dt>Decision</dt><dd>Make order progress and expectations clearer through more meaningful status communication and accessible support actions.</dd></div>
+              <div><dt>Trade-off</dt><dd>The experience could not provide complete delivery-person transparency in every case. Instead, it focused on reducing uncertainty with the information and controls available.</dd></div>
+            </dl>
+          </article>
+          <article class="co-decision" data-reveal>
+            <div class="co-decision-head"><span>03</span><h3 class="qw-h">Make delivery information easier to understand</h3></div>
+            <dl class="co-facts co-facts--2">
+              <div><dt>The challenge</dt><dd>Delivery charges, timelines and options could create uncertainty during checkout.</dd></div>
+              <div><dt>Options considered</dt><dd><ul><li>Present all delivery information together upfront.</li><li>Defer some details to a later step.</li><li class="is-chosen">Improve the hierarchy so the most important delivery information was easier to scan, with supporting details available when needed.</li></ul></dd></div>
+              <div><dt>Decision</dt><dd>Refine the presentation and hierarchy of delivery information to help users understand the implications of their choices before placing an order.</dd></div>
+              <div><dt>Trade-off</dt><dd>The design needed to balance a simpler checkout with enough information for users to make an informed decision.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         11 — ITERATIONS
+         ============================================================ -->
+    <section class="qw-section" id="iterations">
+      <div class="qw-wrap">
+        <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">11</span> Iterations</p>
+        <h2 class="qw-display" data-reveal>Iterations: from friction to clarity</h2>
+        <p class="qw-body qw-measure" data-reveal style="--d:1;margin-top:20px;">These iterations show how the experience evolved in response to the issues identified.</p>
+        <div class="co-iters">
+          <article class="co-iter">
+            <div class="co-ba">
+              <figure data-reveal="scale"><div class="co-screen"><img src="assets/img/checkout/cart-before-1.webp" width="720" height="1562" alt="The earlier cart, with a large store card above the items." loading="lazy" /></div><figcaption>Before</figcaption></figure>
+              <figure data-reveal="scale" style="--d:1"><div class="co-screen"><img src="assets/img/checkout/cart-final-1.webp" width="720" height="1488" alt="The final cart, with the items in focus and a compact store header." loading="lazy" /></div><figcaption>After</figcaption></figure>
+            </div>
+            <div class="co-iter-copy" data-reveal>
+              <div class="qw-subchapter"><span class="num">01</span></div>
+              <h3 class="qw-h">Rebalancing the cart hierarchy</h3>
+              <dl class="co-facts">
+                <div><dt>What wasn&rsquo;t working</dt><dd>The store information was taking up significant visual attention, reducing the prominence of the items users had added to their cart.</dd></div>
+                <div><dt>What changed</dt><dd>The cart hierarchy was refined to bring the added items back into focus while retaining the store context users needed.</dd></div>
+                <div><dt>Why</dt><dd>The cart&rsquo;s primary job is to help users review what they intend to purchase. Store context is useful, but it should not compete with that task.</dd></div>
+                <div><dt>What we learned</dt><dd>Supporting information needs to be visible without overpowering the user&rsquo;s primary task.</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="co-iter">
+            <div class="co-ba">
+              <figure data-reveal="scale"><div class="co-screen"><img src="assets/img/checkout/cart-before-2.webp" width="720" height="1558" alt="The earlier delivery option sheet." loading="lazy" /></div><figcaption>Before</figcaption></figure>
+              <figure data-reveal="scale" style="--d:1"><div class="co-screen"><img src="assets/img/checkout/cart-final-2.webp" width="720" height="1488" alt="The final cart, with bill details and the delivery estimate shown above the pay button." loading="lazy" /></div><figcaption>After</figcaption></figure>
+            </div>
+            <div class="co-iter-copy" data-reveal>
+              <div class="qw-subchapter"><span class="num">02</span></div>
+              <h3 class="qw-h">Clarifying delivery options and information</h3>
+              <dl class="co-facts">
+                <div><dt>What wasn&rsquo;t working</dt><dd>Users were dropping off while viewing delivery options, suggesting that the information or choice presentation was creating friction.</dd></div>
+                <div><dt>What changed</dt><dd>The delivery information and options were reorganised to make the important details easier to understand and compare.</dd></div>
+                <div><dt>Why</dt><dd>Users need to understand delivery implications, such as timing and charges, before they commit to an order.</dd></div>
+                <div><dt>What we learned</dt><dd>Reducing friction is not simply about removing information. It is about presenting the right information at the point where it helps users make a decision.</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="co-iter">
+            <div class="co-ba">
+              <figure data-reveal="scale"><div class="co-screen"><img src="assets/img/checkout/order-before-1.webp" width="720" height="1436" alt="The earlier order details screen with generic progress steps." loading="lazy" /></div><figcaption>Before</figcaption></figure>
+              <figure data-reveal="scale" style="--d:1"><div class="co-screen"><img src="assets/img/checkout/order-how-1.webp" width="720" height="1494" alt="The final tracking screen, with a delivery date, a conversational status and the store named." loading="lazy" /></div><figcaption>After</figcaption></figure>
+            </div>
+            <div class="co-iter-copy" data-reveal>
+              <div class="qw-subchapter"><span class="num">03</span></div>
+              <h3 class="qw-h">Making order tracking more reassuring</h3>
+              <dl class="co-facts">
+                <div><dt>What wasn&rsquo;t working</dt><dd>Generic order statuses did not always explain what was happening or what users should expect next. Third-party integration constraints also limited the delivery-partner information available.</dd></div>
+                <div><dt>What changed</dt><dd>The tracking experience was refined to communicate order progress more clearly and make relevant support actions easier to access.</dd></div>
+                <div><dt>Why</dt><dd>When fulfilment is distributed across stores and delivery partners, users need clarity about progress and where to seek help.</dd></div>
+                <div><dt>What we learned</dt><dd>A useful tracking experience is not only about showing a status. It should set expectations and help users understand what they can do next.</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+        <div class="co-takeaway" data-reveal>
+          <p class="co-flag">Iteration takeaway</p>
+          <p class="qw-h">Across the cart, delivery and tracking experiences, the direction was consistent: preserve the information users need, reduce competing visual noise, and make the next step easier to understand.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         12 — RECEPTION AND IMPACT  (dark band)
          ============================================================ -->
     <section class="qw-section qw-band" id="impact">
       <div class="qw-wrap co-impact">
         <div>
-          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">10</span> Reception and impact</p>
+          <p class="qw-eyebrow qw-chaptertag" data-reveal><span class="n">12</span> Reception and impact</p>
           <div class="qw-metrics co-metrics" role="list" aria-label="Reception and impact">
             <div class="qw-metric" data-reveal role="listitem"><span class="v">7%</span><span class="d">increase in cart to order conversion</span></div>
             <div class="qw-metric" data-reveal style="--d:1" role="listitem"><span class="v">11%</span><span class="d">decrease in order issues related tickets</span></div>
