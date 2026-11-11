@@ -13,6 +13,7 @@ export const PAGES = [
   '/',
   '/work-price-genie.html',
   '/work-qween.html',
+  '/work-checkout.html',
   '/work-jugl.html',
   '/work-imagio.html',
   '/work-cityscope.html',

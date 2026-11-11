@@ -15,7 +15,7 @@ export default function ImagioPage() {
   return (
     <>
       {/* NAV */}
-      <Nav />
+      <Nav variant="case" />
       {/* 01 — HERO */}
       <section className="cs-hero" style={{ "--cs-hero-bg": "linear-gradient(150deg, #1B1610 0%, #241C12 55%, #17120C 100%)", "--cs-hero-tint": "radial-gradient(120% 90% at 78% 14%, rgba(185,163,126,0.26) 0%, rgba(11,11,12,0) 60%)", "--cs-hero-overlay": "linear-gradient(to top, rgba(12,10,7,0.82) 0%, rgba(12,10,7,0.08) 60%)" } as CSSProperties}>
         <div className="cs-hero-bg" />
@@ -38,7 +38,7 @@ export default function ImagioPage() {
             </div>
             <div>
               <h4>Platform</h4>
-              <p>Web</p>
+              <p>Web &#183; <a href="https://vstudio-kappa.vercel.app/" target="_blank" rel="noopener" style={{ color: "inherit", textDecoration: "underline" }}>See it live</a></p>
             </div>
             <div>
               <h4>Stack</h4>
@@ -164,6 +164,11 @@ export default function ImagioPage() {
           <h2>What happens when AI becomes the studio itself?</h2>
           <p>Imagio explores what happens when the model isn&#8217;t just another tool inside the studio&#8212;it becomes the studio. The goal was to move away from &#8220;write a prompt and hope for the result&#8221; toward a familiar creative workflow where designers can direct, experiment and iterate.</p>
           <div className="cs-statement">&#8220;Direct the shoot. Don&#8217;t gamble on a sentence.&#8221;</div>
+          <div className="cs-cta-wrap" style={{ marginTop: "44px" }}>
+            <span className="cs-cta-note">Imagio is live.</span>
+            {" "}
+            <a className="cs-cta" href="https://vstudio-kappa.vercel.app/" target="_blank" rel="noopener">See it live</a>
+          </div>
         </div>
         {/* CTA */}
         <div className="cs-cta-wrap fade-up">

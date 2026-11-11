@@ -15,7 +15,7 @@ export default function JuglPage() {
   return (
     <>
       {/* NAV */}
-      <Nav />
+      <Nav variant="case" />
       {/* 01 — HERO */}
       <section className="cs-hero" style={{ "--cs-hero-bg": "linear-gradient(150deg, #0E1A14 0%, #12241A 55%, #0B1510 100%)", "--cs-hero-tint": "radial-gradient(120% 90% at 80% 14%, rgba(126,185,150,0.20) 0%, rgba(11,11,12,0) 60%)", "--cs-hero-overlay": "linear-gradient(to top, rgba(7,12,9,0.82) 0%, rgba(7,12,9,0.08) 60%)" } as CSSProperties}>
         <div className="cs-hero-bg" />

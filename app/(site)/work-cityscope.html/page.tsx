@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -15,9 +14,9 @@ export default function CityScopePage() {
   return (
     <>
       {/* NAV */}
-      <Nav />
+      <Nav variant="case" onLight />
       {/* 01 — HERO */}
-      <section className="cs-hero" style={{ "--cs-hero-bg": "linear-gradient(150deg, #0E1620 0%, #10202A 55%, #0C1A24 100%)", "--cs-hero-tint": "radial-gradient(120% 90% at 80% 12%, rgba(94,168,196,0.20) 0%, rgba(11,11,12,0) 60%)", "--cs-hero-overlay": "linear-gradient(to top, rgba(8,12,16,0.82) 0%, rgba(8,12,16,0.1) 60%)" } as CSSProperties}>
+      <section className="cs-hero cx-hero">
         <div className="cs-hero-bg" />
         <div className="cs-hero-content">
           <p className="cs-hero-tag">Case Study &#8212; CityScope</p>
@@ -39,7 +38,7 @@ export default function CityScopePage() {
             </div>
             <div>
               <h4>Platform</h4>
-              <p>Web</p>
+              <p>Web &#183; <a href="https://cityscope-anand.vercel.app/" target="_blank" rel="noopener" style={{ color: "inherit", textDecoration: "underline" }}>See it live</a></p>
             </div>
             <div>
               <h4>Stack</h4>
@@ -184,6 +183,11 @@ export default function CityScopePage() {
           <h2>The map was never the feature. It was the argument.</h2>
           <p>Building CityScope reinforced that the hardest design work was deciding what deserved to be an entity, how confidence should be expressed without a paragraph of caveats, and when to switch from showing a place to helping someone judge it. The interface was the last mile of a stance about how people should decide where to live.</p>
           <div className="cs-pullquote">Don&#8217;t answer &#8220;which property?&#8221; Help someone answer &#8220;which part of the city?&#8221;</div>
+          <div className="cs-cta-wrap" style={{ marginTop: "44px" }}>
+            <span className="cs-cta-note">CityScope is live.</span>
+            {" "}
+            <a className="cs-cta" href="https://cityscope-anand.vercel.app/" target="_blank" rel="noopener">See it live</a>
+          </div>
         </div>
         {/* CTA */}
         <div className="cs-cta-wrap fade-up">

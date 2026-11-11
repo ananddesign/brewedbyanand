@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 /* ============================================================
    PRICE GENIE — case-study interactions (ported from assets/js/pg.js)
-   One motion language, IntersectionObserver-driven, transform-only.
+   One motion language, transform-only; mostly IntersectionObserver-driven.
    Every block no-ops if its markup is absent. Respects reduced motion.
    ============================================================ */
 export default function PriceGenieBehaviour() {
@@ -111,23 +111,30 @@ export default function PriceGenieBehaviour() {
       const frames = Array.from(doc.querySelectorAll('.pg-shift-frame'));
       if (!phases.length || !frames.length) return;
       const setFrame = (i: number) => {
-        frames.forEach((f, k) => { f.classList.toggle('is-on', k === i); });
+        frames.forEach((f, k) => {
+          f.classList.toggle('is-on', k === i);
+          f.classList.toggle('is-past', k < i);
+          (f as HTMLElement).style.setProperty('--depth', String(Math.max(0, i - k)));
+        });
       };
       setFrame(0);
-      if (reduced || !('IntersectionObserver' in window)) return; /* CSS shows frames statically */
-      const visible = new Set<Element>();
-      const obs = observe((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) visible.add(e.target); else visible.delete(e.target);
-        });
+      if (reduced) return; /* CSS shows frames statically */
+      /* active step = last phase whose top has crossed mid-screen. (A 0.5-threshold
+         observer never fired here: an 86vh phase can't be half-inside a 40vh band.) */
+      let current = -1;
+      let ticking = false;
+      const update = () => {
         let idx = 0;
-        phases.forEach((p, i) => { if (visible.has(p)) idx = i; });
-        if (!visible.size) {
-          phases.forEach((p, i) => { if (p.getBoundingClientRect().top < window.innerHeight * 0.5) idx = i; });
-        }
-        setFrame(idx);
-      }, { threshold: 0.5, rootMargin: '-25% 0px -35% 0px' });
-      phases.forEach((p) => { obs.observe(p); });
+        const mid = window.innerHeight * 0.5;
+        phases.forEach((p, i) => { if (p.getBoundingClientRect().top < mid) idx = i; });
+        if (idx !== current) { current = idx; setFrame(idx); }
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true, signal: ac.signal });
+      window.addEventListener('resize', update, { signal: ac.signal });
+      update();
     })();
 
     /* ---------- progress index (active chapter) ---------- */
@@ -140,7 +147,7 @@ export default function PriceGenieBehaviour() {
       if (nav) {
         const hero = doc.querySelector<HTMLElement>('.pg-hero');
         const toggleVis = () => {
-          const trigger = hero ? hero.offsetHeight * 0.6 : window.innerHeight * 0.6;
+          const trigger = hero ? hero.offsetHeight * 0.85 : window.innerHeight * 0.6; /* clear of the cover artwork */
           nav.classList.toggle('is-visible', window.scrollY > trigger);
         };
         toggleVis();
@@ -164,6 +171,27 @@ export default function PriceGenieBehaviour() {
         });
       }, { rootMargin: '-45% 0px -50% 0px' });
       Object.keys(map).forEach((id) => { obs.observe(doc.getElementById(id)!); });
+    })();
+
+    /* (nav hide-on-scroll is site-wide: HideNavOnScroll) */
+
+    /* ---------- fit headline + screen in one viewport ---------- */
+    (function fitScreens() {
+      const figs = Array.from(doc.querySelectorAll<HTMLElement>('.pg-dd .pg-screen, .pg-review .pg-screen'));
+      if (!figs.length) return;
+      const fit = () => {
+        figs.forEach((fig) => {
+          const block = fig.closest('.pg-dd, .pg-wrap');
+          const head = block && block.querySelector('.pg-dd-tag, .pg-eyebrow');
+          const above = head ? fig.getBoundingClientRect().top - head.getBoundingClientRect().top : 0;
+          // only headlines stacked above the screen count; side-by-side copy does not
+          fig.style.setProperty('--pg-above', `${Math.max(0, Math.round(above))}px`);
+        });
+      };
+      fit();
+      window.addEventListener('load', fit, { signal: ac.signal });
+      let t = 0;
+      window.addEventListener('resize', () => { clearTimeout(t); t = window.setTimeout(fit, 150); }, { signal: ac.signal });
     })();
 
     return () => {

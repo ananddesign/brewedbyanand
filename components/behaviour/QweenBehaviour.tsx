@@ -99,9 +99,19 @@ export default function QweenBehaviour() {
       /* Reveal the reading indicator only once past the hero. */
       if (nav) {
         const hero = doc.querySelector<HTMLElement>('.qw-hero');
+        const darks = Array.from(doc.querySelectorAll<HTMLElement>('.qw-band'));
         const toggleVis = () => {
-          const trigger = hero ? hero.offsetHeight * 0.6 : window.innerHeight * 0.6;
-          nav.classList.toggle('is-visible', window.scrollY > trigger);
+          /* Rail appears once the second chapter reaches mid-screen. */
+          const second = doc.querySelectorAll<HTMLElement>('main > section')[1];
+          const mid = window.innerHeight / 2;
+          nav.classList.toggle('is-visible', second
+            ? second.getBoundingClientRect().top < mid
+            : window.scrollY > (hero ? hero.offsetHeight * 0.6 : mid));
+          /* Invert the rail while it sits over a dark band. */
+          nav.classList.toggle('on-dark', darks.some((d) => {
+            const r = d.getBoundingClientRect();
+            return r.top <= mid && r.bottom >= mid;
+          }));
         };
         toggleVis();
         window.addEventListener('scroll', toggleVis, { passive: true, signal: ac.signal });

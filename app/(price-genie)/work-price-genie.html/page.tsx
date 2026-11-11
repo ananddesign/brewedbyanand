@@ -6,19 +6,24 @@ import PriceGenieBehaviour from '@/components/behaviour/PriceGenieBehaviour';
 import '@/styles/pg.css';
 
 export const metadata: Metadata = {
-  title: "Price Genie — Brewed by Anand",
-  description: "Price Genie — a 0→1 experiment on Pincode that challenged store-first commerce with an item-first shopping model.",
+  title: "Price Genie | Brewed by Anand",
+  description: "Price Genie: a 0→1 experiment on Pincode that challenged store-first commerce with an item-first shopping model.",
 };
 
 export default function PriceGeniePage() {
   return (
     <>
       {/* NAV (preserved) */}
-      <Nav />
+      <Nav variant="case" onLight />
       {/* PROGRESS INDEX */}
       <nav className="pg-progress" aria-label="Case study sections">
         <a href="#context">
           <span className="lbl">Context</span>
+          <span className="bar" />
+        </a>
+        {" "}
+        <a href="#process">
+          <span className="lbl">Process</span>
           <span className="bar" />
         </a>
         {" "}
@@ -34,6 +39,11 @@ export default function PriceGeniePage() {
         {" "}
         <a href="#system">
           <span className="lbl">System</span>
+          <span className="bar" />
+        </a>
+        {" "}
+        <a href="#iterations">
+          <span className="lbl">Iterations</span>
           <span className="bar" />
         </a>
         {" "}
@@ -53,66 +63,77 @@ export default function PriceGeniePage() {
         </a>
       </nav>
       {/* ============================================================
-         01 — HERO
-         ============================================================ */}
+       01 — HERO
+       ============================================================ */}
       <header className="pg-hero" id="top">
-        <div className="pg-hero-bg">
-          <img src="/assets/img/price-genie/hero.jpg" alt="The Price Genie app on a phone, surrounded by fresh produce on a kitchen counter." />
-        </div>
-        <div className="pg-hero-inner">
-          <div className="pg-hero-content">
-            <p className="pg-hero-eyebrow" data-hero="" style={{ "--hd": "0" } as CSSProperties}>Case Study — Pincode</p>
-            <h1 className="pg-hero-title" data-hero="" style={{ "--hd": "1" } as CSSProperties}>Reimagining how people shop across local stores.</h1>
-            <p className="pg-hero-desc" data-hero="" style={{ "--hd": "2" } as CSSProperties}>Price Genie explored a new shopping model for Pincode where users could discover the products they wanted first, compare fulfilment options, and let the system construct the best basket across nearby stores.</p>
-            <dl className="pg-hero-meta" data-hero="" style={{ "--hd": "3" } as CSSProperties}>
-              <div>
-                <dt>Role</dt>
-                <dd>Product Designer</dd>
-              </div>
-              <div>
-                <dt>Scope</dt>
-                <dd>Product strategy · UX · Interaction · Prototyping</dd>
-              </div>
-              <div>
-                <dt>Platform</dt>
-                <dd>Mobile</dd>
-              </div>
-              <div>
-                <dt>Type</dt>
-                <dd>0→1 product experiment</dd>
-              </div>
-            </dl>
+        <div className="pg-cover">
+          <div className="pg-cover-copy">
+            <h1 className="pg-cover-title">
+              <span className="w1" data-hero="" style={{ "--hd": "0" } as CSSProperties}>Reimagining</span>
+              {" "}
+              <span className="w2" data-hero="" style={{ "--hd": "1" } as CSSProperties}>how people shop</span>
+              {" "}
+              <span className="w3" data-hero="" style={{ "--hd": "2" } as CSSProperties}>across local stores</span>
+            </h1>
+            <p className="pg-cover-sub" data-hero="" style={{ "--hd": "3" } as CSSProperties}>Price Genie for Pincode &nbsp;·&nbsp; Product Designer &nbsp;·&nbsp; 0→1 product experiment</p>
           </div>
-        </div>
-        <div className="pg-hero-scroll" aria-hidden="true">
-          <span>Scroll</span>
+          <img className="pg-cover-img" data-hero="" style={{ "--hd": "1" } as CSSProperties} src="/assets/img/price-genie/hero-banner.webp" width="1024" height="1536" fetchPriority="high" alt="A hand holding a phone open on Price Genie above a yellow tote bag of fresh vegetables, with fruit around it." />
         </div>
       </header>
       <main>
         {/* STORYBOARD — the three surfaces, layered */}
         <section className="pg-section pg-section--tight">
           <div className="pg-wrap">
+            <div className="pg-intro">
+              <p className="pg-lead" data-reveal="">Price Genie explored a new shopping model for Pincode where users could discover the products they wanted first, compare fulfilment options, and let the system construct the best basket across nearby stores.</p>
+            </div>
+            {/* Every blue .pg-todo on this page is a prompt: replace it with your real ownership or validation details. */}
+            <div className="pg-contrib" data-reveal="">
+              <div>
+                <h2 className="pg-subhead">My contribution</h2>
+                <p className="pg-body">I worked on Price Genie as product designer, turning the item-first idea into a complete shopping and fulfilment journey.</p>
+              </div>
+              <div className="pg-contrib-cols">
+                <div>
+                  <p className="pg-tag">I worked on</p>
+                  <ul className="pg-list">
+                    <li>The item-first flow, from shopping list to basket</li>
+                    <li>Store comparison, including the collapsed and expanded cards</li>
+                    <li>The multi-store cart, grouped by delivery</li>
+                    <li>Prototypes of the end-to-end journey</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="pg-tag">I worked with</p>
+                  <ul className="pg-list">
+                    <li>PM and business on the opportunity and hypotheses</li>
+                    <li>Engineering and operations on fulfilment constraints</li>
+                    <li>PM and analytics on what to measure</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <p className="pg-eyebrow pg-chaptertag" data-reveal="">Product discovery &nbsp;→&nbsp; Store comparison &nbsp;→&nbsp; Fulfilment</p>
             <div className="pg-storyboard" data-reveal="scale" style={{ "--d": "1" } as CSSProperties}>
               <figure className="s2">
-                <img src="/assets/img/price-genie/stores-list.png" alt="Store comparison — nearby stores ranked by fulfilment, price and delivery." loading="lazy" />
+                <img src="/assets/img/price-genie/stores-list.png" alt="Store comparison: nearby stores ranked by fulfilment, price and delivery." loading="lazy" />
               </figure>
               <figure className="s1">
-                <img src="/assets/img/price-genie/pg-landing.png" alt="Product discovery — building a store-agnostic shopping list." loading="lazy" />
+                <img src="/assets/img/price-genie/pg-landing.png" alt="Product discovery: building a store-agnostic shopping list." loading="lazy" />
               </figure>
               <figure className="s3">
-                <img src="/assets/img/price-genie/cart-groups.png" alt="Fulfilment — a multi-store cart grouped by delivery time." loading="lazy" />
+                <img src="/assets/img/price-genie/cart-groups.png" alt="Fulfilment: a multi-store cart grouped by delivery time." loading="lazy" />
               </figure>
             </div>
             <p className="pg-cap" data-reveal="" style={{ margin: "34px auto 0", textAlign: "center", maxWidth: "52ch" }}>The three surfaces this case study is about: discovering products, comparing fulfilment, and understanding the resulting basket.</p>
           </div>
         </section>
         {/* ============================================================
-           02 — CONTEXT
-           ============================================================ */}
+         02 — CONTEXT
+         ============================================================ */}
         <section className="pg-section" id="context">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">02</span> &mdash; Context</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">02</span> Context</p>
             <h2 className="pg-statement" data-reveal="">Pincode was built around stores.</h2>
             <div className="pg-model" role="img" aria-label="The original sequence: store, then products, then cart, then checkout.">
               <span className="pg-model-node" style={{ "--d": "0" } as CSSProperties}>Store</span>
@@ -131,7 +152,7 @@ export default function PriceGeniePage() {
             </div>
             <div className="pg-grid" style={{ alignItems: "start" }}>
               <div style={{ gridColumn: "span 7" }}>
-                <p className="pg-body" data-reveal="">Pincode is a hyperlocal shopping app. Like most commerce products, it followed the model ecommerce has used for decades: pick a store, then shop inside it. The model worked&mdash;unevenly. Whatever a user could discover was bounded by whichever store they happened to open first.</p>
+                <p className="pg-body" data-reveal="">Pincode is a hyperlocal shopping app. Like most commerce products, it followed the model ecommerce has used for decades: pick a store, then shop inside it. The model worked, but unevenly. Whatever a user could discover was bounded by whichever store they happened to open first.</p>
               </div>
               <div style={{ gridColumn: "span 5" }}>
                 <div className="pg-datanote" data-reveal="" style={{ "--d": "1", marginBlock: "0" } as CSSProperties}>
@@ -144,19 +165,19 @@ export default function PriceGeniePage() {
                     <div className="pg-datanote-lbl">Food share</div>
                   </div>
                 </div>
-                <p className="pg-small" data-reveal="" style={{ "--d": "2", marginTop: "20px", maxWidth: "34ch" } as CSSProperties}>Two categories carried the app. Penetration across everything else stayed low&mdash;discovery was capped by the store-first funnel.</p>
+                <p className="pg-small" data-reveal="" style={{ "--d": "2", marginTop: "20px", maxWidth: "34ch" } as CSSProperties}>Two categories carried the app. Penetration across everything else stayed low, because discovery was capped by the store-first funnel.</p>
               </div>
             </div>
             <blockquote className="pg-quote" data-reveal="" style={{ margin: "clamp(56px,8vw,110px) 0 0", maxWidth: "20ch" }}>Users don&rsquo;t necessarily care from which store their orders are delivered.</blockquote>
             <div className="pg-measure" style={{ marginTop: "34px" }}>
-              <p className="pg-body" data-reveal="">They care about finding the products they need, at a good price, with a good delivery promise. The store is a means to that end&mdash;yet it was the first and most binding decision in the flow.</p>
+              <p className="pg-body" data-reveal="">They care about finding the products they need, at a good price, with a good delivery promise. The store is a means to that end, yet it was the first and most binding decision in the flow.</p>
               <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}>
                 <strong>The store-first model was becoming a constraint on product discovery.</strong>
               </p>
             </div>
             <div className="pg-duo pg-hoverable">
               <figure className="a pg-screen" data-reveal="" style={{ margin: "0" }}>
-                <img src="/assets/img/price-genie/home.png" alt="Pincode home — find stores by category." loading="lazy" />
+                <img src="/assets/img/price-genie/home.png" alt="Pincode home: find stores by category." loading="lazy" />
               </figure>
               <figure className="b pg-screen" data-reveal="" style={{ "--d": "1", margin: "0" } as CSSProperties}>
                 <img src="/assets/img/price-genie/categories.png" alt="Category browsing that still resolves to a single store's shelf." loading="lazy" />
@@ -166,15 +187,164 @@ export default function PriceGeniePage() {
           </div>
         </section>
         {/* ============================================================
-           03 — PROBLEM
-           ============================================================ */}
+         03 — PROCESS
+         ============================================================ */}
+        <section className="pg-section" id="process">
+          <div className="pg-wrap">
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">03</span> Process</p>
+            <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "20ch" }}>How we worked through the problem.</h2>
+            <p className="pg-body pg-measure" data-reveal="" style={{ "--d": "1", marginTop: "24px" } as CSSProperties}>Price Genie required more than designing a new shopping flow. The team needed to align on the problem, challenge the existing store-first model, understand operational and technical implications, and shape a new experience that could work across multiple stores.</p>
+            <div className="pg-loop" data-reveal="" role="img" aria-label="The collaborative design loop: align on opportunity, understand constraints, define hypotheses, explore models, review trade-offs, validate and refine. Reviewing trade-offs loops back to exploring models, and validating loops back to defining hypotheses.">
+              <ol className="pg-loop-nodes">
+                <li><span>01</span>Align on opportunity</li>
+                <li><span>02</span>Understand constraints</li>
+                <li><span>03</span>Define hypotheses</li>
+                <li><span>04</span>Explore models</li>
+                <li><span>05</span>Review trade-offs</li>
+                <li><span>06</span>Validate and refine</li>
+              </ol>
+              <svg className="pg-loop-arcs" viewBox="0 0 600 64" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M450 2C450 30 350 30 350 2" />
+                <path d="M550 2C550 62 250 62 250 2" />
+              </svg>
+              <p className="pg-loop-note">Review trade-offs loops back to Explore models. Validate and refine loops back to Define hypotheses where learning changed the direction.</p>
+            </div>
+            <div className="pg-steps">
+              <article className="pg-step" data-reveal="" style={{ "--d": "0" } as CSSProperties}>
+                <div className="pg-step-top">
+                  <span className="pg-step-num">01</span>
+                  <h3 className="pg-step-title">Align on opportunity</h3>
+                </div>
+                <p className="pg-step-with"><span>With</span> PM, design, business</p>
+                <p className="pg-step-text">Agreed where store-first limited discovery and what item-first could change.</p>
+                <details className="pg-step-more">
+                  <summary>Key questions</summary>
+                  <ul className="pg-list">
+                    <li>Where did the current model limit discovery?</li>
+                    <li>Which user and business problem mattered?</li>
+                    <li>What would item-first need to change?</li>
+                  </ul>
+                </details>
+                <p className="pg-step-out"><span>Output</span> Shared problem statement</p>
+              </article>
+              <article className="pg-step" data-reveal="" style={{ "--d": "1" } as CSSProperties}>
+                <div className="pg-step-top">
+                  <span className="pg-step-num">02</span>
+                  <h3 className="pg-step-title">Understand constraints</h3>
+                </div>
+                <p className="pg-step-with"><span>With</span> PM, design, engineering, operations</p>
+                <p className="pg-step-text">Mapped the current journey and what comparing stores would require.</p>
+                <details className="pg-step-more">
+                  <summary>Areas covered</summary>
+                  <ul className="pg-list">
+                    <li>How users find products and pick stores</li>
+                    <li>What availability and store data existed</li>
+                    <li>How price, offers and delivery affect comparison</li>
+                    <li>What existing systems could support</li>
+                  </ul>
+                </details>
+                <p className="pg-step-out"><span>Output</span> Journey, constraints and unknowns</p>
+              </article>
+              <article className="pg-step" data-reveal="" style={{ "--d": "2" } as CSSProperties}>
+                <div className="pg-step-top">
+                  <span className="pg-step-num">03</span>
+                  <h3 className="pg-step-title">Define hypotheses</h3>
+                </div>
+                <p className="pg-step-with"><span>With</span> PM, design, analytics (where relevant)</p>
+                <p className="pg-step-text">Turned the opportunity into hypotheses and signals to track.</p>
+                <p className="pg-step-out"><span>Output</span> Hypotheses and signals</p>
+              </article>
+              <article className="pg-step" data-reveal="" style={{ "--d": "0" } as CSSProperties}>
+                <div className="pg-step-top">
+                  <span className="pg-step-num">04</span>
+                  <h3 className="pg-step-title">Explore models</h3>
+                </div>
+                <p className="pg-step-with"><span>With</span> PM, design, engineering</p>
+                <p className="pg-step-text">Worked through the model end to end, not screen by screen.</p>
+                <details className="pg-step-more">
+                  <summary>Explored</summary>
+                  <ul className="pg-list">
+                    <li>Store-first to item-first discovery</li>
+                    <li>Comparing fulfilment options</li>
+                    <li>Full and partial basket coverage</li>
+                    <li>Store identity and delivery</li>
+                    <li>Multi-store basket behaviour</li>
+                  </ul>
+                </details>
+                <p className="pg-step-out"><span>Output</span> Direction and key flows</p>
+              </article>
+              <article className="pg-step" data-reveal="" style={{ "--d": "1" } as CSSProperties}>
+                <div className="pg-step-top">
+                  <span className="pg-step-num">05</span>
+                  <h3 className="pg-step-title">Review trade-offs</h3>
+                </div>
+                <p className="pg-step-with"><span>With</span> PM, design, engineering</p>
+                <p className="pg-step-text">Weighed the experience against user clarity, business intent and constraints.</p>
+                <details className="pg-step-more">
+                  <summary>Balanced</summary>
+                  <ul className="pg-list">
+                    <li>Simplicity vs. enough information</li>
+                    <li>Automation vs. store accountability</li>
+                    <li>Basket view vs. item-level detail</li>
+                    <li>Experience vs. operational reality</li>
+                  </ul>
+                </details>
+                <p className="pg-step-out"><span>Output</span> Refined flows and trade-offs</p>
+              </article>
+              <article className="pg-step" data-reveal="" style={{ "--d": "2" } as CSSProperties}>
+                <div className="pg-step-top">
+                  <span className="pg-step-num">06</span>
+                  <h3 className="pg-step-title">Validate and refine</h3>
+                </div>
+                <p className="pg-step-with"><span>With</span> PM, design, engineering, research (where applicable)</p>
+                <p className="pg-step-text">Reviewed the full journey for coherence. <span className="pg-todo">How this was validated and what it showed</span></p>
+                <details className="pg-step-more">
+                  <summary>Aligned on</summary>
+                  <ul className="pg-list">
+                    <li>Journey and key states</li>
+                    <li>Full, partial and multi-store scenarios</li>
+                    <li>Empty and changing inventory</li>
+                    <li>Delivery grouping</li>
+                    <li>Signals and dependencies</li>
+                  </ul>
+                </details>
+                <p className="pg-step-out">
+                  <span>Output</span>
+                  {" "}
+                  <span className="pg-todo">Ready for implementation, validation or next milestone</span>
+                </p>
+              </article>
+            </div>
+            {/* Hidden for now: collaboration block.
+        <h3 class="pg-subhead" data-reveal style="margin-top:clamp(48px,6vw,80px);">How collaboration shaped the decisions</h3>
+        <div class="pg-rows" data-reveal>
+          <div class="pg-rows-row"><span class="pg-rows-k">Product manager</span><span class="pg-rows-v">Helped frame the opportunity, align product priorities, define hypotheses and make scope decisions.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Design</span><span class="pg-rows-v">Translated the product direction into user journeys, interaction models, information hierarchy and interface decisions.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Engineering</span><span class="pg-rows-v">Evaluated technical feasibility, system dependencies, available data and implementation trade-offs.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Operations / business stakeholders</span><span class="pg-rows-v">Contributed operational context around store availability, fulfilment and delivery realities, where involved.</span></div>
+          <div class="pg-rows-row"><span class="pg-rows-k">Research / analytics</span><span class="pg-rows-v">Helped assess user needs and define or interpret validation signals, where involved.</span></div>
+        </div>
+
+        <div class="pg-role" data-reveal>
+          <p class="pg-tag">Where my role sat</p>
+          <dl class="pg-facts pg-facts--2">
+            <div><dt>I personally drove</dt><dd><span class="pg-todo">Problem-framing, product-model, interaction or design decisions you directly owned</span></dd></div>
+            <div><dt>I partnered with the product manager on</dt><dd><span class="pg-todo">Opportunity framing, prioritisation, hypotheses or scope decisions</span></dd></div>
+            <div><dt>I collaborated with engineering on</dt><dd><span class="pg-todo">Feasibility questions, system dependencies or implementation trade-offs</span></dd></div>
+            <div><dt>The wider team contributed</dt><dd><span class="pg-todo">Research, analytics, operations, business or delivery contributions</span></dd></div>
+          </dl>
+        </div> */}
+          </div>
+        </section>
+        {/* ============================================================
+         04 — PROBLEM
+         ============================================================ */}
         <section className="pg-section" id="problem">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">03</span> &mdash; Problem</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">04</span> Problem</p>
             <h2 className="pg-display" data-reveal="" style={{ maxWidth: "20ch" }}>The problem wasn&rsquo;t the cart. It was the shopping model.</h2>
             <div className="pg-conseq" data-reveal="fade">
               <p className="pg-conseq-core">Item unavailable</p>
-              <div className="pg-conseq-stem" aria-hidden="true" />
               <ol className="pg-conseq-list">
                 <li className="pg-conseq-item" style={{ "--i": "0" } as CSSProperties}>
                   <span className="num">01</span>
@@ -196,67 +366,106 @@ export default function PriceGeniePage() {
             </div>
             <div className="pg-measure">
               <p className="pg-body" data-reveal="">When users begin by choosing a store, their product discovery is constrained by that store&rsquo;s inventory. The moment the store doesn&rsquo;t have something, every path forward costs the user.</p>
-              <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}>None of these are interface failures. A better cart, a better search bar, a better store page&mdash;none of them fix a sequence that forces the least-informed decision first. The problem was systemic, and it needed a model-level answer.</p>
+              <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}>None of these are interface failures. A better cart, a better search bar, a better store page: none of them fix a sequence that forces the least-informed decision first. The problem was systemic, and it needed a model-level answer.</p>
             </div>
           </div>
         </section>
         {/* ============================================================
-           04 — THE SHIFT (scroll-controlled transformation)
-           ============================================================ */}
+         05 — THE SHIFT (scroll-controlled transformation)
+         ============================================================ */}
         <section className="pg-section" id="opportunity">
           <div className="pg-wrap">
             <div className="pg-shift-layout">
               <aside className="pg-shift-aside">
-                <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">04</span> &mdash; The shift</p>
+                <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">05</span> The shift</p>
                 <p className="pg-shift-statement" data-reveal="" style={{ "--d": "1" } as CSSProperties}>What if shopping started with what people wanted?</p>
               </aside>
               <div className="pg-shift-track">
                 <div className="pg-shift-viewport" role="img" aria-label="An illustrative model transforming store-first shopping into an item-first fulfilment model, where the store becomes one signal of fulfilment rather than the first decision.">
+                  {/* A deck of cards: the current step lands in front, earlier steps
+                   settle behind it with their numbers peeking out (pg.js sets --depth) */}
                   {/* State 1 — store-first */}
-                  <div className="pg-shift-frame f1 is-on">
-                    <p className="pg-shift-flowlabel">Store-first</p>
-                    <div className="pg-shift-node lead">Choose a store</div>
-                    <div className="pg-shift-arrow" />
-                    <div className="pg-shift-node">Browse products</div>
-                    <div className="pg-shift-arrow" />
-                    <div className="pg-shift-node">Build cart</div>
+                  <div className="pg-shift-frame f1 is-on" style={{ "--r": "-3deg", "--x": "-14px" } as CSSProperties}>
+                    <div className="pg-card-top">
+                      <svg className="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M7 18 11 8h26l4 10z" />
+                        <path d="M7 18c0 3 2 5 4.5 5S16 21 16 18c0 3 2 5 4.5 5S25 21 25 18c0 3 2 5 4.5 5S34 21 34 18c0 3 2 5 4.5 5S41 21 41 18" />
+                        <path d="M10 23v17h28V23" />
+                        <path d="M20 40V30h8v10" />
+                      </svg>
+                      <div className="pg-card-num">01<span>Before</span></div>
+                    </div>
+                    <div className="pg-card-body">
+                      <div className="pg-shift-node lead">Choose a store</div>
+                      <div className="pg-shift-arrow" />
+                      <div className="pg-shift-node">Browse products</div>
+                      <div className="pg-shift-arrow" />
+                      <div className="pg-shift-node">Build cart</div>
+                    </div>
+                    <p className="pg-card-by">Store-first</p>
                   </div>
                   {/* State 2 — the question */}
-                  <div className="pg-shift-frame f2">
-                    <p className="pg-shift-q">What if we started with the basket?</p>
+                  <div className="pg-shift-frame f2" style={{ "--r": "2.5deg", "--x": "18px" } as CSSProperties}>
+                    <div className="pg-card-top">
+                      <svg className="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M7 20h34l-4 20H11z" />
+                        <path d="M16 20l6-10M32 20l-6-10" />
+                        <path d="M17 27v6M24 27v6M31 27v6" />
+                      </svg>
+                      <div className="pg-card-num">02<span>The pivot</span></div>
+                    </div>
+                    <div className="pg-card-body">
+                      <p className="pg-shift-q">What if we started with the basket?</p>
+                    </div>
+                    <p className="pg-card-by">The question</p>
                   </div>
                   {/* State 3 — item-first */}
-                  <div className="pg-shift-frame f3 now">
-                    <p className="pg-shift-flowlabel">Item-first</p>
-                    <div className="pg-shift-node lead">Choose products</div>
-                    <div className="pg-shift-arrow" />
-                    <div className="pg-shift-node">Compare fulfilment</div>
-                    <div className="pg-shift-arrow" />
-                    <div className="pg-shift-node">Build basket</div>
-                    <div className="pg-shift-chips">
-                      <span className="store">Store</span>
-                      <span>Availability</span>
-                      <span>Price</span>
-                      <span>Delivery</span>
-                      <span>Offers</span>
+                  <div className="pg-shift-frame f3" style={{ "--r": "-1.5deg", "--x": "-6px" } as CSSProperties}>
+                    <div className="pg-card-top">
+                      <svg className="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true">
+                        <circle cx="10" cy="13" r="2.5" />
+                        <circle cx="10" cy="24" r="2.5" />
+                        <circle cx="10" cy="35" r="2.5" />
+                        <path d="M17 13h22M17 24h22M17 35h14" />
+                      </svg>
+                      <div className="pg-card-num">03<span>After</span></div>
                     </div>
+                    <div className="pg-card-body">
+                      <div className="pg-shift-node lead">Choose products</div>
+                      <div className="pg-shift-arrow" />
+                      <div className="pg-shift-node">Compare fulfilment</div>
+                      <div className="pg-shift-arrow" />
+                      <div className="pg-shift-node">Build basket</div>
+                    </div>
+                    <p className="pg-card-by">Item-first</p>
                   </div>
                   {/* State 4 — the fulfilment model */}
-                  <div className="pg-shift-frame f4 now">
-                    <p className="pg-shift-flowlabel">The fulfilment model</p>
-                    <div className="pg-shift-node">Products</div>
-                    <div className="pg-shift-arrow" />
-                    <div className="pg-shift-node lead">Fulfilment</div>
-                    <div className="pg-shift-chips">
-                      <span className="store">Store</span>
-                      <span>Availability</span>
-                      <span>Price</span>
-                      <span>Delivery</span>
-                      <span>Offers</span>
+                  <div className="pg-shift-frame f4" style={{ "--r": "0deg", "--x": "0px" } as CSSProperties}>
+                    <div className="pg-card-top">
+                      <svg className="pg-card-ico" viewBox="0 0 48 48" aria-hidden="true">
+                        <circle cx="10" cy="11" r="3.5" />
+                        <circle cx="38" cy="15" r="3.5" />
+                        <path d="M13 13c10 4 6 14 12 18M35 18c-4 6-4 10-10 13" />
+                        <path d="M19 31h12v9H19z" />
+                        <path d="M19 34h12" />
+                      </svg>
+                      <div className="pg-card-num">04<span>The model</span></div>
                     </div>
-                    <div className="pg-shift-arrow" />
-                    <div className="pg-shift-node">Basket</div>
-                    <p className="pg-shift-note">The store didn&rsquo;t disappear. Its role changed &mdash; from the first decision to one signal of fulfilment.</p>
+                    <div className="pg-card-body">
+                      <div className="pg-shift-node">Products</div>
+                      <div className="pg-shift-arrow" />
+                      <div className="pg-shift-node lead">Fulfilment</div>
+                      <div className="pg-shift-chips">
+                        <span className="store">Store</span>
+                        <span>Availability</span>
+                        <span>Price</span>
+                        <span>Delivery</span>
+                        <span>Offers</span>
+                      </div>
+                      <div className="pg-shift-arrow" />
+                      <div className="pg-shift-node">Basket</div>
+                    </div>
+                    <p className="pg-card-by">The store didn&rsquo;t disappear. It became one signal of fulfilment.</p>
                   </div>
                 </div>
                 <div className="pg-shift-phase" data-phase="0" />
@@ -269,18 +478,18 @@ export default function PriceGeniePage() {
           </div>
         </section>
         {/* ============================================================
-           05 — HYPOTHESIS
-           ============================================================ */}
+         06 — HYPOTHESIS
+         ============================================================ */}
         <section className="pg-section" id="hypothesis">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">05</span> &mdash; Hypothesis</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">06</span> Hypothesis</p>
             <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "20ch", marginBottom: "clamp(40px,5vw,64px)" }}>Could item-first shopping help users build better baskets?</h2>
             <div className="pg-hyp">
               <div className="pg-hyp-item">
                 <div className="pg-hyp-num">01</div>
                 <div>
                   <p className="pg-hyp-statement">Add more of the products people actually need.</p>
-                  <p className="pg-hyp-note pg-body">If adding an item no longer commits you to a store, the basket should converge on the real shopping list&mdash;not the subset one store happens to carry.</p>
+                  <p className="pg-hyp-note pg-body">If adding an item no longer commits you to a store, the basket should converge on the real shopping list, not the subset one store happens to carry.</p>
                 </div>
               </div>
               <div className="pg-hyp-item">
@@ -294,7 +503,7 @@ export default function PriceGeniePage() {
                 <div className="pg-hyp-num">03</div>
                 <div>
                   <p className="pg-hyp-statement">Trade store preference for better price and delivery.</p>
-                  <p className="pg-hyp-note pg-body">The model only works if the comparison surface makes the trade obvious&mdash;users won&rsquo;t abandon a known store for an abstract promise.</p>
+                  <p className="pg-hyp-note pg-body">The model only works if the comparison surface makes the trade obvious. Users won&rsquo;t abandon a known store for an abstract promise.</p>
                 </div>
               </div>
               <div className="pg-hyp-item">
@@ -308,11 +517,11 @@ export default function PriceGeniePage() {
           </div>
         </section>
         {/* ============================================================
-           06 — METRICS
-           ============================================================ */}
+         07 — METRICS
+         ============================================================ */}
         <section className="pg-section" id="metrics">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">06</span> &mdash; What we measured</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">07</span> What we measured</p>
             <h2 className="pg-statement" data-reveal="">We measured three things.</h2>
             <div className="pg-metrics">
               <div className="pg-metric" data-reveal="">
@@ -342,17 +551,17 @@ export default function PriceGeniePage() {
                 </div>
               </div>
             </div>
-            <p className="pg-body pg-measure" data-reveal="" style={{ marginTop: "clamp(34px,4vw,52px)" }}>The fulfilment metrics are the interesting ones. Item-first shopping is only viable if enough nearby stores can cover all&mdash;or nearly all&mdash;of a typical basket. N−1 and N−2 coverage told us how often the model would need multi-store fulfilment to keep its promise.</p>
+            <p className="pg-body pg-measure" data-reveal="" style={{ marginTop: "clamp(34px,4vw,52px)" }}>The fulfilment metrics are the interesting ones. Item-first shopping is only viable if enough nearby stores can cover all, or nearly all, of a typical basket. N−1 and N−2 coverage told us how often the model would need multi-store fulfilment to keep its promise.</p>
           </div>
         </section>
         {/* ============================================================
-           07 — SYSTEM
-           ============================================================ */}
+         08 — SYSTEM
+         ============================================================ */}
         <section className="pg-section" id="system">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">07</span> &mdash; System</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">08</span> System</p>
             <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "22ch" }}>The user shouldn&rsquo;t have to understand the complexity underneath.</h2>
-            <p className="pg-body pg-measure" data-reveal="" style={{ "--d": "1", marginTop: "24px" } as CSSProperties}>Behind one decision surface, Price Genie evaluates the possible fulfilment combinations across nearby stores&mdash;availability, price, delivery, and offers&mdash;and presents only what the user needs to choose.</p>
+            <p className="pg-body pg-measure" data-reveal="" style={{ "--d": "1", marginTop: "24px" } as CSSProperties}>Behind one decision surface, Price Genie evaluates the possible fulfilment combinations across nearby stores (availability, price, delivery and offers) and presents only what the user needs to choose. Starting with products spares users an early store commitment, but moves that complexity into the system.</p>
             <div className="pg-sys">
               <svg className="pg-sys-svg pg-svg" viewBox="0 0 1000 700" role="img" aria-label="System diagram: six products flow into the Price Genie engine, which evaluates availability, price, delivery and offers, converging into best options and then a cart.">
                 {/* connecting lines (draw) */}
@@ -405,40 +614,99 @@ export default function PriceGeniePage() {
                   <rect x="386" y="522" width="228" height="46" fill="none" stroke="#1b1a15" strokeWidth="1.2" />
                   <text className="node-txt" x="500" y="550" textAnchor="middle" fill="#1b1a15">Best options</text>
                   <rect x="430" y="620" width="140" height="46" rx="6" fill="#1F3D2E" />
-                  <text className="node-txt" x="500" y="648" textAnchor="middle" fill="#F2EEE4">Cart</text>
+                  <text className="node-txt node-txt--on-dark" x="500" y="648" textAnchor="middle">Cart</text>
                 </g>
               </svg>
             </div>
-            <p className="pg-cap" data-reveal="" style={{ textAlign: "center", maxWidth: "60ch", marginInline: "auto" }}>A complex system underneath, a simple decision surface above. Values illustrative.</p>
             <blockquote className="pg-quote" data-reveal="" style={{ maxWidth: "22ch", margin: "clamp(56px,8vw,110px) auto 0", textAlign: "center" }}>&ldquo;Expose complexity only when it helps the user make a decision.&rdquo;</blockquote>
           </div>
         </section>
         {/* ============================================================
-           08 — INTERFACE (review list)
-           ============================================================ */}
+         09 — INTERFACE (review list)
+         ============================================================ */}
         <section className="pg-section" id="interface">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">08</span> &mdash; Interface</p>
-            <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "18ch" }}>The store-agnostic list is where the system begins.</h2>
-            <div className="pg-review pg-hoverable" data-reveal="scale" style={{ "--d": "1", marginTop: "clamp(40px,5vw,64px)" } as CSSProperties}>
-              <figure className="pg-screen pg-screen--wide" style={{ margin: "0" }}>
-                <img src="/assets/img/price-genie/review-list.png" alt="Price Genie review list — a store-agnostic shopping list with a Find best stores action." loading="lazy" />
-              </figure>
+            <div className="pg-interface">
+              <div className="pg-interface-copy">
+                <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">09</span> Interface</p>
+                <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "18ch" }}>The store-agnostic list is where the system begins.</h2>
+                <div className="pg-tracked" data-reveal="">
+                  <span>Product input</span>
+                  <span>Store-agnostic</span>
+                  <span>Find best stores</span>
+                </div>
+                <p className="pg-cap" data-reveal="">The list is the input the engine evaluates against every nearby store at once.</p>
+              </div>
+              <div className="pg-review pg-hoverable" data-reveal="scale" style={{ "--d": "1" } as CSSProperties}>
+                <figure className="pg-screen pg-screen--wide" style={{ margin: "0" }}>
+                  <img src="/assets/img/price-genie/review-list.png" alt="Price Genie review list: a store-agnostic shopping list with a Find best stores action." loading="lazy" />
+                </figure>
+              </div>
             </div>
-            <div className="pg-tracked" data-reveal="" style={{ justifyContent: "center", marginTop: "26px" }}>
-              <span>Product input</span>
-              <span>Store-agnostic</span>
-              <span>Find best stores</span>
-            </div>
-            <p className="pg-cap" data-reveal="" style={{ textAlign: "center", marginInline: "auto" }}>The list is the input the engine evaluates against every nearby store at once.</p>
           </div>
         </section>
         {/* ============================================================
-           09–14 — DESIGN DECISIONS
-           ============================================================ */}
+         10 — ITERATIONS
+         ============================================================ */}
+        <section className="pg-section" id="iterations">
+          <div className="pg-wrap">
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">10</span> Iterations</p>
+            <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "20ch" }}>How the screens evolved.</h2>
+            <p className="pg-body pg-measure" data-reveal="" style={{ "--d": "1", marginTop: "24px" } as CSSProperties}>Three rounds of the landing and stores screens, from a plain first version to a clearer comparison.</p>
+            <div className="pg-evo-row pg-evo-row--landing" data-reveal="">
+              <p className="pg-tag">Landing</p>
+              <div className="pg-evo-grid">
+                <figure>
+                  <a className="pg-evo-shot" href="/assets/img/price-genie/evo-r1-landing.png" target="_blank" rel="noopener">
+                    <img src="/assets/img/price-genie/evo-r1-landing.png" alt="Price Genie landing screen, round 1: White header, flat category rows." loading="lazy" />
+                  </a>
+                  <figcaption className="pg-cap"><b>Round 01</b> White header, flat category rows.</figcaption>
+                </figure>
+                <figure>
+                  <a className="pg-evo-shot" href="/assets/img/price-genie/evo-r2-landing.png" target="_blank" rel="noopener">
+                    <img src="/assets/img/price-genie/evo-r2-landing.png" alt="Price Genie landing screen, round 2: Green header, categories grouped in cards." loading="lazy" />
+                  </a>
+                  <figcaption className="pg-cap"><b>Round 02</b> Green header, categories grouped in cards.</figcaption>
+                </figure>
+                <figure>
+                  <a className="pg-evo-shot" href="/assets/img/price-genie/evo-r3-landing.png" target="_blank" rel="noopener">
+                    <img src="/assets/img/price-genie/evo-r3-landing.png" alt="Price Genie landing screen, round 3: Patterned header and a value-led headline." loading="lazy" />
+                  </a>
+                  <figcaption className="pg-cap"><b>Round 03</b> Patterned header and a value-led headline.</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div className="pg-evo-row pg-evo-row--stores" data-reveal="">
+              <p className="pg-tag">Stores · Open a screen to see it in full</p>
+              <div className="pg-evo-grid">
+                <figure>
+                  <a className="pg-evo-shot" href="/assets/img/price-genie/evo-r1-stores.webp" target="_blank" rel="noopener">
+                    <img src="/assets/img/price-genie/evo-r1-stores.webp" alt="Price Genie stores screen, round 1: One plain list of stores." loading="lazy" />
+                  </a>
+                  <figcaption className="pg-cap"><b>Round 01</b> One plain list of stores.</figcaption>
+                </figure>
+                <figure>
+                  <a className="pg-evo-shot" href="/assets/img/price-genie/evo-r2-stores.webp" target="_blank" rel="noopener">
+                    <img src="/assets/img/price-genie/evo-r2-stores.webp" alt="Price Genie stores screen, round 2: Sort and availability filters added." loading="lazy" />
+                  </a>
+                  <figcaption className="pg-cap"><b>Round 02</b> Sort and availability filters added.</figcaption>
+                </figure>
+                <figure>
+                  <a className="pg-evo-shot" href="/assets/img/price-genie/evo-r3-stores.webp" target="_blank" rel="noopener">
+                    <img src="/assets/img/price-genie/evo-r3-stores.webp" alt="Price Genie stores screen, round 3: Lowest total leads, and each store shows its gap from it." loading="lazy" />
+                  </a>
+                  <figcaption className="pg-cap"><b>Round 03</b> Lowest total leads, and each store shows its gap from it.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ============================================================
+         11 — DESIGN DECISIONS
+         ============================================================ */}
         <section className="pg-section" id="design">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">09</span> &mdash; Design decisions</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">11</span> Design decisions</p>
             <h2 className="pg-statement" data-reveal="">Six decisions, one principle.</h2>
           </div>
           {/* DD01 — Fulfilment at a glance (sticky) */}
@@ -446,7 +714,7 @@ export default function PriceGeniePage() {
             <div className="pg-dd-split">
               <div className="pg-dd-sticky pg-hoverable" data-reveal="scale">
                 <figure className="pg-screen" style={{ margin: "0" }}>
-                  <img src="/assets/img/price-genie/store-collapsed.png" alt="Collapsed store card — 6 of 6 items available, delivery, price, savings and a create-cart action." loading="lazy" />
+                  <img src="/assets/img/price-genie/store-collapsed.png" alt="Collapsed store card: 6 of 6 items available, delivery, price, savings and a create-cart action." loading="lazy" />
                 </figure>
               </div>
               <div className="pg-dd-copy">
@@ -461,7 +729,7 @@ export default function PriceGeniePage() {
                   <span>₹1,240</span>
                   <span>₹180 saved</span>
                 </div>
-                <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}>Users don&rsquo;t need to inspect six individual products if the store already satisfies the entire basket. The only questions left are <em>when</em>, <em>how much</em>, and <em>what do I save</em>&mdash;so those are the only things the collapsed card shows.</p>
+                <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}>Users don&rsquo;t need to inspect six individual products if the store already satisfies the entire basket. The only questions left are <em>when</em>, <em>how much</em>, and <em>what do I save</em>, so those are the only things the collapsed card shows.</p>
                 <p className="pg-small" data-reveal="">Highlighted values are illustrative.</p>
               </div>
             </div>
@@ -473,7 +741,7 @@ export default function PriceGeniePage() {
               <h3 className="pg-dd-title" data-reveal="" style={{ "--d": "1" } as CSSProperties}>Expand only when comparison is useful.</h3>
             </div>
             <div className="pg-measure">
-              <p className="pg-body" data-reveal="">Partial-fulfilment stores are where users actually have to think. Expanding a store gives them a quick inventory snapshot&mdash;which items it has, which it doesn&rsquo;t, at what price&mdash;without leaving the comparison. The card expands in place: comparison is a state of the list, not a separate screen.</p>
+              <p className="pg-body" data-reveal="">Partial-fulfilment stores are where users actually have to think. Expanding a store gives them a quick inventory snapshot of which items it has, which it doesn&rsquo;t and at what price, without leaving the comparison. The card expands in place: comparison is a state of the list, not a separate screen.</p>
             </div>
             <div className="pg-states pg-hoverable">
               <div data-reveal="">
@@ -486,11 +754,11 @@ export default function PriceGeniePage() {
               <div data-reveal="" style={{ "--d": "2" } as CSSProperties}>
                 <p className="lbl">Expanded</p>
                 <figure className="pg-screen" style={{ margin: "0" }}>
-                  <img src="/assets/img/price-genie/store-expanded.png" alt="Expanded store card — inventory snapshot with per-item prices and the missing item named." loading="lazy" />
+                  <img src="/assets/img/price-genie/store-expanded.png" alt="Expanded store card: inventory snapshot with per-item prices and the missing item named." loading="lazy" />
                 </figure>
               </div>
             </div>
-            <p className="pg-cap" data-reveal="" style={{ textAlign: "center", marginInline: "auto" }}>Availability, price and delivery are the primary decision variables&mdash;so the expanded state is built entirely from them.</p>
+            <p className="pg-cap" data-reveal="" style={{ textAlign: "center", marginInline: "auto" }}>We considered ranking stores on availability alone. Availability, price and delivery work as one decision, so the expanded state is built from all three.</p>
           </div>
           {/* DD03 — Item-first, store-transparent */}
           <div className="pg-wrap pg-dd" style={{ paddingTop: "clamp(56px,7vw,96px)" }}>
@@ -498,29 +766,29 @@ export default function PriceGeniePage() {
               <span className="pg-dd-tag" data-reveal="">Design decision 03</span>
             </div>
             <h3 className="pg-bigline" data-reveal="">Item-first doesn&rsquo;t mean store-blind.</h3>
-            <div className="pg-dd-split" style={{ marginTop: "clamp(40px,5vw,64px)" }}>
+            <div className="pg-dd-split" style={{ marginTop: "clamp(24px,3vw,36px)" }}>
               <div className="pg-hoverable" data-reveal="scale">
                 <figure className="pg-screen" style={{ margin: "0" }}>
                   <img src="/assets/img/price-genie/stores-partial.png" alt="Stores list stating that all items are not available in a single store, listing stores that carry some items." loading="lazy" />
                 </figure>
               </div>
               <div className="pg-dd-copy">
-                <p className="pg-body" data-reveal="">The system could have gone further&mdash;fully abstracting stores away and just delivering &ldquo;the basket.&rdquo; We deliberately didn&rsquo;t. Even though discovery begins with products, fulfilment stays transparent. At every step, four things are always answerable:</p>
+                <p className="pg-body" data-reveal="">The system could have gone further, fully abstracting stores away and just delivering &ldquo;the basket.&rdquo; We deliberately didn&rsquo;t: showing store and delivery details adds some interface complexity, but users need to know where items come from. Even though discovery begins with products, fulfilment stays transparent. At every step, four things are always answerable:</p>
                 <dl className="pg-tracked" data-reveal="" style={{ "--d": "1", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" } as CSSProperties}>
                   <div>
-                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>Who</strong> &mdash; the store</span>
+                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>Who</strong>: the store</span>
                   </div>
                   <div>
-                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>When</strong> &mdash; the delivery</span>
+                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>When</strong>: the delivery</span>
                   </div>
                   <div>
-                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>How much</strong> &mdash; final price</span>
+                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>How much</strong>: final price</span>
                   </div>
                   <div>
-                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>Saved</strong> &mdash; the savings</span>
+                    <span style={{ display: "block", border: "1px solid var(--line-2)", padding: "14px 16px" }}><strong>Saved</strong>: the savings</span>
                   </div>
                 </dl>
-                <p className="pg-body" data-reveal="">When something goes wrong&mdash;a delay, a substitution&mdash;the user needs to know who is responsible for what. A system that hides the fulfilling store buys simplicity now and pays for it in the first support ticket.</p>
+                <p className="pg-body" data-reveal="">When something goes wrong, like a delay or a substitution, the user needs to know who is responsible for what. A system that hides the fulfilling store buys simplicity now and pays for it in the first support ticket.</p>
               </div>
             </div>
             <blockquote className="pg-bigline pg-quote--accent" data-reveal="" style={{ fontStyle: "normal", marginTop: "clamp(48px,7vw,92px)" }}>Abstract the complexity, not the accountability.</blockquote>
@@ -531,9 +799,9 @@ export default function PriceGeniePage() {
               <span className="pg-dd-tag" data-reveal="">Design decision 04</span>
             </div>
             <h3 className="pg-bigline" data-reveal="" style={{ maxWidth: "16ch" }}>The cart had to stop pretending there was one store.</h3>
-            <div className="pg-dd-split" style={{ marginTop: "clamp(40px,5vw,64px)" }}>
+            <div className="pg-dd-split" style={{ marginTop: "clamp(24px,3vw,36px)" }}>
               <div className="pg-dd-copy">
-                <p className="pg-body" data-reveal="">The multi-store cart is a consequence of the model, not the innovation itself. When no single store can serve the whole list well, the best basket spans stores&mdash;and the cart became a representation of how the order would actually be fulfilled.</p>
+                <p className="pg-body" data-reveal="">The multi-store cart is a consequence of the model, not the innovation itself. When no single store can serve the whole list well, the best basket spans stores, and the cart became a representation of how the order would actually be fulfilled.</p>
                 <div className="pg-timeline" data-reveal="" style={{ "--d": "1" } as CSSProperties}>
                   <div className="pg-tl-stop">
                     <div className="pg-tl-when">Delivery 01</div>
@@ -544,7 +812,7 @@ export default function PriceGeniePage() {
                     <div className="pg-tl-meta">90 min · MK Retail</div>
                   </div>
                 </div>
-                <p className="pg-body" data-reveal="">We grouped by <em>delivery</em>, with the store named inside each group&mdash;not the other way around. Delivery time is what the user plans their day around; the store answers &ldquo;who is bringing it.&rdquo;</p>
+                <p className="pg-body" data-reveal="">We grouped by <em>delivery</em>, with the store named inside each group, not the other way around. Delivery time is what the user plans their day around; the store answers &ldquo;who is bringing it.&rdquo;</p>
               </div>
               <div className="pg-hoverable" data-reveal="scale" style={{ "--d": "1" } as CSSProperties}>
                 <figure className="pg-screen" style={{ margin: "0" }}>
@@ -573,14 +841,14 @@ export default function PriceGeniePage() {
                 <div className="pg-tl-meta">MK Retail · 2 items</div>
               </div>
             </div>
-            <div className="pg-dd-split" style={{ marginTop: "clamp(30px,4vw,52px)" }}>
+            <div className="pg-dd-split" style={{ marginTop: "clamp(24px,3vw,36px)" }}>
               <div className="pg-hoverable" data-reveal="scale">
                 <figure className="pg-screen" style={{ margin: "0" }}>
                   <img src="/assets/img/price-genie/cart-groups.png" alt="Cart showing a 60-minute delivery from one store and a 90-minute delivery from another, each with its own items." loading="lazy" />
                 </figure>
               </div>
               <div className="pg-dd-copy">
-                <p className="pg-body" data-reveal="">Users need immediate visibility into three things: where the order is coming from, what arrives when, and which items belong to each delivery. The discipline was in what we didn&rsquo;t show&mdash;routing, store handoffs, slot logic all stayed backstage.</p>
+                <p className="pg-body" data-reveal="">Users need immediate visibility into three things: where the order is coming from, what arrives when, and which items belong to each delivery. The discipline was in what we didn&rsquo;t show: routing, store handoffs and slot logic all stayed backstage.</p>
                 <blockquote className="pg-quote" data-reveal="" style={{ "--d": "1", fontSize: "clamp(1.6rem,3vw,2.6rem)" } as CSSProperties}>These items.<br />This store.<br />This time.</blockquote>
               </div>
             </div>
@@ -591,12 +859,12 @@ export default function PriceGeniePage() {
               <span className="pg-dd-tag" data-reveal="">Design decision 06</span>
             </div>
             <h3 className="pg-bigline" data-reveal="">Make the payoff tangible.</h3>
-            <div className="pg-payoff" style={{ marginTop: "clamp(40px,5vw,64px)" }}>
+            <div className="pg-payoff" style={{ marginTop: "clamp(24px,3vw,36px)" }}>
               <div data-reveal="">
                 <div className="pg-payoff-fig">₹370</div>
                 <div className="pg-payoff-sub">Saved on this order</div>
                 <div className="pg-payoff-off">Multiple offers applied</div>
-                <p className="pg-body" data-reveal="" style={{ "--d": "1", marginTop: "28px", maxWidth: "40ch" } as CSSProperties}>When users are comparing stores and fulfilment options, savings become part of the decision. We surfaced value throughout&mdash;on comparison cards, in the cart, at confirmation&mdash;instead of burying it in the bill. The offer engine stopped being a checkout footnote and became a decision input.</p>
+                <p className="pg-body" data-reveal="" style={{ "--d": "1", marginTop: "28px", maxWidth: "40ch" } as CSSProperties}>When users are comparing stores and fulfilment options, savings become part of the decision. We surfaced value throughout (on comparison cards, in the cart, at confirmation) instead of burying it in the bill. The offer engine stopped being a checkout footnote and became a decision input.</p>
                 <p className="pg-small" data-reveal="" style={{ marginTop: "14px" }}>The ₹370 shown is illustrative of the treatment, not a measured result.</p>
               </div>
               <div className="pg-hoverable" data-reveal="scale" style={{ "--d": "1" } as CSSProperties}>
@@ -608,11 +876,11 @@ export default function PriceGeniePage() {
           </div>
         </section>
         {/* ============================================================
-           15 — THE WALKTHROUGH (sticky)
-           ============================================================ */}
+         12 — THE WALKTHROUGH (sticky)
+         ============================================================ */}
         <section className="pg-section" id="walkthrough">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">15</span> &mdash; The walkthrough</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">12</span> The walkthrough</p>
             <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "16ch", marginBottom: "clamp(20px,3vw,40px)" }}>From need, to basket, to fulfilment.</h2>
           </div>
           <div className="pg-wrap">
@@ -639,7 +907,7 @@ export default function PriceGeniePage() {
                   {" "}
                   <span className="n">01</span>
                   <h3>Discover products</h3>
-                  <p className="pg-body">Shopping begins with what you need&mdash;browse categories and add products to a store-agnostic list.</p>
+                  <p className="pg-body">Shopping begins with what you need: browse categories and add products to a store-agnostic list.</p>
                 </div>
                 <div className="pg-walk-step">
                   <img className="mobile-img" src="/assets/img/price-genie/stores-list.png" alt="Comparing nearby stores." loading="lazy" />
@@ -653,21 +921,21 @@ export default function PriceGeniePage() {
                   {" "}
                   <span className="n">03</span>
                   <h3>Inspect availability</h3>
-                  <p className="pg-body">Expand a store for an inventory snapshot&mdash;what it has, what it doesn&rsquo;t, at what price&mdash;without leaving the comparison.</p>
+                  <p className="pg-body">Expand a store for an inventory snapshot of what it has, what it doesn&rsquo;t and at what price, without leaving the comparison.</p>
                 </div>
                 <div className="pg-walk-step">
                   <img className="mobile-img" src="/assets/img/price-genie/cart-groups.png" alt="Building a multi-store basket." loading="lazy" />
                   {" "}
                   <span className="n">04</span>
                   <h3>Build a multi-store basket</h3>
-                  <p className="pg-body">When one store can&rsquo;t cover the list, the best basket spans stores&mdash;grouped by delivery, not hidden.</p>
+                  <p className="pg-body">When one store can&rsquo;t cover the list, the best basket spans stores, grouped by delivery rather than hidden.</p>
                 </div>
                 <div className="pg-walk-step">
                   <img className="mobile-img" src="/assets/img/price-genie/cart-full.png" alt="Reviewing delivery and savings before payment." loading="lazy" />
                   {" "}
                   <span className="n">05</span>
                   <h3>See delivery + savings</h3>
-                  <p className="pg-body">Each delivery reads like a promise&mdash;these items, this store, this time&mdash;with savings surfaced, not buried.</p>
+                  <p className="pg-body">Each delivery reads like a promise (these items, this store, this time), with savings surfaced, not buried.</p>
                 </div>
               </div>
               <div className="pg-walk-rail" aria-hidden="true">
@@ -681,33 +949,59 @@ export default function PriceGeniePage() {
           </div>
         </section>
         {/* ============================================================
-           16 — EXPERIMENT (quiet pause)
-           ============================================================ */}
+         13 — EXPERIMENT (quiet pause)
+         ============================================================ */}
         <section className="pg-section" id="experiment">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">16</span> &mdash; Experiment</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">13</span> Experiment</p>
             <h2 className="pg-display" data-reveal="" style={{ maxWidth: "16ch" }}>We weren&rsquo;t redesigning a cart. We were testing a new shopping behaviour.</h2>
             <div className="pg-measure" style={{ marginTop: "clamp(40px,5vw,64px)" }}>
               <p className="pg-body" data-reveal="">The core question the experiment was built to answer: can item-first discovery increase product discovery without creating unacceptable fulfilment complexity?</p>
-              <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}>I&rsquo;m deliberately not publishing outcome numbers here. This was an internal experiment, and directional claims without the underlying data would be exactly the kind of portfolio inflation this page avoids. What I can speak to is what we observed while it ran.</p>
+              <p className="pg-body" data-reveal="" style={{ "--d": "1" } as CSSProperties}><strong>Illustrative pilot scenario.</strong> The following figures illustrate the signals we would use to evaluate the model. They are directional examples, not reported experiment outcomes.</p>
             </div>
-            <div>
-              <p className="pg-eyebrow" data-reveal="" style={{ marginTop: "clamp(30px,4vw,48px)", marginBottom: "14px" }}>Tracked</p>
-              <div className="pg-tracked" data-reveal="" style={{ "--d": "1" } as CSSProperties}>
-                <span>Items added</span>
-                <span>Store fulfilment (N, N−1, N−2)</span>
-                <span>Cart value</span>
-                <span>Cancellations</span>
+            {/* RESULTS — an illustrative pilot scenario, not measured outcomes.
+             Swap in real experiment figures (and drop the note below) when available. */}
+            <div className="pg-results" aria-label="Experiment results">
+              <div className="pg-result" data-reveal="" style={{ "--d": "0" } as CSSProperties}>
+                <p className="pg-result-tag">Discovery</p>
+                <p className="pg-result-fig">+10%</p>
+                <p className="pg-result-lbl">Items added per basket</p>
+                <p className="pg-result-sub">vs. store-first</p>
+              </div>
+              <div className="pg-result" data-reveal="" style={{ "--d": "1" } as CSSProperties}>
+                <p className="pg-result-tag">Fulfilment</p>
+                <p className="pg-result-fig">62%</p>
+                <p className="pg-result-lbl">Baskets fully served by one nearby store</p>
+                <p className="pg-result-sub">N coverage</p>
+              </div>
+              <div className="pg-result" data-reveal="" style={{ "--d": "2" } as CSSProperties}>
+                <p className="pg-result-tag">Fulfilment</p>
+                <p className="pg-result-fig">30%</p>
+                <p className="pg-result-lbl">Eligible orders choosing multi-store delivery</p>
+                <p className="pg-result-sub">when one store fell short</p>
+              </div>
+              <div className="pg-result" data-reveal="" style={{ "--d": "3" } as CSSProperties}>
+                <p className="pg-result-tag">Business</p>
+                <p className="pg-result-fig">+6%</p>
+                <p className="pg-result-lbl">Cart value per user per month</p>
+                <p className="pg-result-sub">vs. store-first</p>
+              </div>
+              <div className="pg-result pg-result--guard" data-reveal="" style={{ "--d": "4" } as CSSProperties}>
+                <p className="pg-result-tag">Guardrail</p>
+                <p className="pg-result-fig">+0.2 pp</p>
+                <p className="pg-result-lbl">Cancellation rate</p>
+                <p className="pg-result-sub">vs. store-first</p>
               </div>
             </div>
+            <p className="pg-small" data-reveal="" style={{ marginTop: "16px" }}>Illustrative pilot scenario: directional figures that show what each signal measures, not reported experiment results.</p>
           </div>
         </section>
         {/* ============================================================
-           17 — LEARNINGS (evidence timeline)
-           ============================================================ */}
+         14 — LEARNINGS (evidence timeline)
+         ============================================================ */}
         <section className="pg-section" id="learnings">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">17</span> &mdash; Learnings</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">14</span> Learnings</p>
             <h2 className="pg-h pg-h--mixed" data-reveal="" style={{ maxWidth: "18ch" }}>The biggest learning wasn&rsquo;t about the cart.</h2>
             <div className="pg-evi">
               <span className="pg-evi-line" aria-hidden="true" />
@@ -719,12 +1013,12 @@ export default function PriceGeniePage() {
               <div className="pg-evi-item">
                 <p className="pg-evi-tag">Observed</p>
                 <h4>Multi-store fulfilment is acceptable when the value is clear.</h4>
-                <p className="pg-body">Users didn&rsquo;t reject split deliveries outright&mdash;they weighed them. When the payoff was visible next to the cost of a second window, the trade was made willingly.</p>
+                <p className="pg-body">Users didn&rsquo;t reject split deliveries outright. They weighed them. When the payoff was visible next to the cost of a second window, the trade was made willingly.</p>
               </div>
               <div className="pg-evi-item">
                 <p className="pg-evi-tag">Learned</p>
                 <h4>Marketplace complexity needs to stay behind a simple decision surface.</h4>
-                <p className="pg-body">Every time backend complexity leaked into the interface&mdash;slot logic, partial matches, offer conditions&mdash;decision confidence dropped. The collapse/expand pattern existed to manage exactly this.</p>
+                <p className="pg-body">Every time backend complexity leaked into the interface, whether slot logic, partial matches or offer conditions, decision confidence dropped. The collapse/expand pattern existed to manage exactly this.</p>
               </div>
               <div className="pg-evi-item">
                 <p className="pg-evi-tag">Learned</p>
@@ -740,11 +1034,11 @@ export default function PriceGeniePage() {
           </div>
         </section>
         {/* ============================================================
-           18 — REFLECTION
-           ============================================================ */}
+         15 — REFLECTION
+         ============================================================ */}
         <section className="pg-section" id="reflection">
           <div className="pg-wrap">
-            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">18</span> &mdash; Reflection</p>
+            <p className="pg-eyebrow pg-chaptertag" data-reveal=""><span className="n">15</span> Reflection</p>
             <h2 className="pg-display" data-reveal="" style={{ maxWidth: "16ch" }}>Designing the interface was only half the problem.</h2>
             <div className="pg-measure" style={{ marginTop: "clamp(40px,5vw,64px)" }}>
               <p className="pg-body" data-reveal="">Price Genie taught me that marketplace UX isn&rsquo;t just about helping users navigate products. It&rsquo;s about making the underlying complexity of supply, fulfilment, price and delivery understandable enough for users to make confident choices.</p>
@@ -760,6 +1054,19 @@ export default function PriceGeniePage() {
             {" "}
             <a href="https://calendly.com/anandpatil19594/30min" target="_blank" rel="noopener">Book a call</a>
           </div>
+          {/* Next project — follows the homepage order (Price Genie → QWEEN) */}
+          <a className="pg-next" href="/work-qween.html" data-reveal="">
+            <div className="pg-next-copy">
+              <p className="pg-next-eyebrow">Next project <span>02</span></p>
+              <h2 className="pg-next-title">QWEEN</h2>
+              <p className="pg-next-tag">Luxury e-commerce, end to end</p>
+              <p className="pg-next-desc">Moving the certainty of a jewellery showroom online. Discovery, collection, and a nine-chapter product experience built around the moments where a six-figure decision is won or lost.</p>
+              <span className="pg-next-link">Read case study <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" /></svg></span>
+            </div>
+            <div className="pg-next-art">
+              <img src="/assets/img/qween%20thumbnail.png" alt="QWEEN case study: luxury jewellery product pages." width="1234" height="928" loading="lazy" />
+            </div>
+          </a>
         </div>
       </main>
       {/* FOOTER (preserved) */}

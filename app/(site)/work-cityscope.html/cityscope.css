@@ -3,6 +3,32 @@
    tokens only, no new colour language.
    ============================================================ */
 
+/* Hero banner — a light image, so the shared white hero type goes dark.
+   The photo's backdrop is a flat #D8D1CD: the image is pinned bottom-right
+   (the hands bleed off those edges) and that colour fills the rest, so the
+   tablet is never cropped. */
+.cx-hero { --cx-hero-paper: #D8D1CD; height: auto; min-height: max(100vh, 660px); background: var(--cx-hero-paper); padding-top: 120px; }
+.cx-hero .cs-hero-bg { background: var(--cx-hero-paper) url('/assets/img/cityscope/hero-banner.webp') right bottom / 131vw auto no-repeat; }
+.cx-hero .cs-hero-bg::before, .cx-hero .cs-hero-bg::after { content: none; }
+.cx-hero .cs-hero-content { max-width: 54vw; }
+.cx-hero .cs-hero-tag { color: rgba(28, 28, 28, 0.6); }
+.cx-hero .cs-hero-title { color: var(--dark); }
+.cx-hero .cs-hero-subtitle { color: rgba(28, 28, 28, 0.78); }
+.cx-hero .cs-hero-meta { border-top-color: rgba(28, 28, 28, 0.18); gap: 28px 40px; }
+.cx-hero .cs-hero-meta div h4 { color: rgba(28, 28, 28, 0.55); }
+.cx-hero .cs-hero-meta div p { color: rgba(28, 28, 28, 0.82); }
+.cx-hero .cx-hero-flow span { color: rgba(28, 28, 28, 0.7); border-color: rgba(28, 28, 28, 0.25); }
+.cx-hero .cx-hero-flow em { color: rgba(28, 28, 28, 0.4); }
+.cx-hero .cs-hero-scroll { display: none; }
+/* Below this the text can't share a row with the tablet: stack them, and
+   fade the hands' cut edge into the paper colour. */
+@media (max-width: 960px) {
+  .cx-hero { display: block; padding-top: calc(92vw + 84px); }
+  .cx-hero .cs-hero-bg { inset: 0 0 auto 0; height: 92vw; margin-top: 56px; background-size: 261vw auto; }
+  .cx-hero .cs-hero-bg::after { content: ''; background: linear-gradient(to top, var(--cx-hero-paper) 0%, transparent 22%); }
+  .cx-hero .cs-hero-content { max-width: none; }
+}
+
 /* Hero flow line — the 30-second read under the subtitle */
 .cx-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
 .cx-hero-flow span {

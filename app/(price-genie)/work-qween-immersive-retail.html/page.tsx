@@ -87,7 +87,7 @@ const LOCATOR_FLOW = [
 export default function QweenImmersiveRetailPage() {
   return (
     <>
-      <Nav onLight />
+      <Nav variant="case" onLight />
       {/* PROGRESS INDEX */}
       <nav className="pg-progress" aria-label="Case study sections">
         {[

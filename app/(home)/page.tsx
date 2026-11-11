@@ -17,13 +17,13 @@ export default function HomePage() {
   return (
     <>
       {/* ============================================================
-         PORTFOLIO INTRO OVERLAY  (counter preloader → block-wipe reveal)
-         Static markup so the blue blocks paint on the very first frame.
-         assets/js/intro.js runs one GSAP timeline: a giant counter rolls
-         00 → 27 → 65 → 98 → 99, then the two blue panels wipe upward to
-         reveal the real homepage, with the nav sliding in and the hero
-         headline playing its clipped-line reveal. Removed when done.
-         ============================================================ */}
+       PORTFOLIO INTRO OVERLAY  (counter preloader → block-wipe reveal)
+       Static markup so the blue blocks paint on the very first frame.
+       assets/js/intro.js runs one GSAP timeline: a giant counter rolls
+       00 → 27 → 65 → 98 → 99, then the two blue panels wipe upward to
+       reveal the real homepage, with the nav sliding in and the hero
+       headline playing its clipped-line reveal. Removed when done.
+       ============================================================ */}
       <div className="intro" id="intro" aria-hidden="true">
         <div className="intro-overlay">
           <div className="intro-block" />
@@ -81,10 +81,10 @@ export default function HomePage() {
       <section id="hero">
         <div className="hero-content">
           {/* Two-level reveal (per revealanimation.js): each line is a clipped
-             mask wrapping an inner element that slides in from xPercent 50 → 0
-             with an expo-out ease, the two lines staggered. Triggered by
-             .is-revealed — on view when the intro is skipped, or at the
-             aperture beat when the intro plays. */}
+           mask wrapping an inner element that slides in from xPercent 50 → 0
+           with an expo-out ease, the two lines staggered. Triggered by
+           .is-revealed — on view when the intro is skipped, or at the
+           aperture beat when the intro plays. */}
           <h1 className="hero-headline">
             <span className="hl-mask">
               <span className="hl-in hero-headline-lead"><span className="hero-headline-swash">F</span>uelled by coffee</span>
@@ -105,7 +105,7 @@ export default function HomePage() {
         <div className="section-head fade-up">
           <p className="section-kicker">01 &#8212; Featured Work</p>
           <h2 className="section-title">Selected case studies</h2>
-          <p className="section-intro">Products taken from ambiguity to a designed experience &#8212; the research, the trade-offs, and the decisions behind them.</p>
+          <p className="section-intro">Four products taken from ambiguity to shipped experience &#8212; the research, the trade-offs, and what the numbers did afterwards.</p>
         </div>
         <div className="work-features">
           <a className="work-feature fade-up fade-up-d1" href="/work-price-genie.html" style={{ "--feature-art": "#14161C url('/assets/img/price-genie/thumb.jpg') center/cover no-repeat", "--feature-tint": "linear-gradient(to bottom, rgba(10,11,12,0.4) 0%, rgba(10,11,12,0) 30%, rgba(10,11,12,0) 52%, rgba(10,11,12,0.62) 100%)" } as CSSProperties}>
@@ -176,9 +176,43 @@ export default function HomePage() {
             </div>
           </a>
           {" "}
-          <a className="work-feature fade-up fade-up-d1" href="/work-qween-immersive-retail.html" style={{ "--feature-art": "#0F0F11 url('/assets/img/qween-immersive/home-card.webp') center/cover no-repeat", "--feature-tint": "linear-gradient(to bottom, rgba(10,11,12,0.4) 0%, rgba(10,11,12,0) 30%, rgba(10,11,12,0) 52%, rgba(10,11,12,0.62) 100%)" } as CSSProperties}>
+          <a className="work-feature fade-up fade-up-d1" href="/work-checkout.html" style={{ "--feature-art": "#0F5C4E url('/assets/img/checkout/thumb.jpg') center/cover no-repeat", "--feature-tint": "linear-gradient(to bottom, rgba(10,11,12,0.4) 0%, rgba(10,11,12,0) 30%, rgba(10,11,12,0) 52%, rgba(10,11,12,0.62) 100%)" } as CSSProperties}>
             <div className="work-feature-art">
               <span className="work-feature-index">03</span>
+              <p className="work-feature-art-label">Pincode &#8212; ONDC</p>
+            </div>
+            <div className="work-feature-body">
+              <p className="work-feature-tag">Hyperlocal commerce &#8212; checkout</p>
+              <h3>Simply Checkout</h3>
+              <p className="work-feature-desc">Checkout made quick, fun and stress-free. A redesign of the cart and order tracking for an ONDC-based app, built around the questions that were stopping people from finishing an order.</p>
+              <ul className="work-feature-meta">
+                <li>
+                  <h4>Role</h4>
+                  <p>Product Designer</p>
+                </li>
+                <li>
+                  <h4>Scope</h4>
+                  <p>Research &#183; UX &#183; Prototyping</p>
+                </li>
+                <li>
+                  <h4>Surfaces</h4>
+                  <p>Cart &#183; Order tracking</p>
+                </li>
+              </ul>
+              <div className="work-feature-impact">
+                <span>7% more cart to order</span>
+                {" "}
+                <span>11% fewer order tickets</span>
+                {" "}
+                <span>Tone of voice</span>
+              </div>
+              <span className="work-card-link">Read case study</span>
+            </div>
+          </a>
+          {" "}
+          <a className="work-feature fade-up fade-up-d1" href="/work-qween-immersive-retail.html" style={{ "--feature-art": "#0F0F11 url('/assets/img/qween-immersive/home-card.webp') center/cover no-repeat", "--feature-tint": "linear-gradient(to bottom, rgba(10,11,12,0.4) 0%, rgba(10,11,12,0) 30%, rgba(10,11,12,0) 52%, rgba(10,11,12,0.62) 100%)" } as CSSProperties}>
+            <div className="work-feature-art">
+              <span className="work-feature-index">04</span>
               <p className="work-feature-art-label">QWEEN &#8212; Immersive Retail</p>
             </div>
             <div className="work-feature-body">
@@ -255,10 +289,12 @@ export default function HomePage() {
                 </div>
                 <div className="link-row link-row--onlight">
                   <a href="/work-imagio.html">Read case study</a>
+                  {" "}
+                  <a href="https://vstudio-kappa.vercel.app/" target="_blank" rel="noopener">See it live</a>
                 </div>
               </div>
             </div>
-            <div className="exp-card exp-card--ai" data-url="/work-cityscope.html" style={{ "--card-bg": "#10202A", "--card-img": "url('/assets/img/city%20scope%20app-thumb.png')" } as CSSProperties}>
+            <div className="exp-card exp-card--ai exp-card--cityscope" data-url="/work-cityscope.html" style={{ "--card-bg": "#D8D1CD", "--card-img": "url('/assets/img/cityscope/hero-banner.webp')" } as CSSProperties}>
               <div className="exp-card-text">
                 <p className="exp-card-eyebrow">Next.js &#183; MapLibre &#183; PostGIS</p>
                 <h2>CityScope</h2>
@@ -273,6 +309,8 @@ export default function HomePage() {
                 </div>
                 <div className="link-row link-row--onlight">
                   <a href="/work-cityscope.html">Read case study</a>
+                  {" "}
+                  <a href="https://cityscope-anand.vercel.app/" target="_blank" rel="noopener">See it live</a>
                 </div>
               </div>
             </div>
@@ -308,39 +346,50 @@ export default function HomePage() {
               <div className="link-row">
                 <a href="/experiment-design-cop.html">Write-up</a>
                 {/* No public repo yet. Once pushed, paste:
-                   <a href="https://github.com/ananddesign/REPO" target="_blank" rel="noopener">GitHub</a> */}
+              <a href="https://github.com/ananddesign/REPO" target="_blank" rel="noopener">GitHub</a> */}
               </div>
             </div>
           </div>
           <div className="plugin-card">
-            <div className="plugin-art">
-              <span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-motion.webp</span>
-            </div>
+            <div className="plugin-art plugin-art--linemotion" />
             <div className="plugin-body">
-              <p className="plugin-type">TODO &#8212; type</p>
-              <h3>Motion plugin</h3>
-              <p>TODO &#8212; one sentence on the problem it solves.</p>
+              <p className="plugin-type">Figma Plugin</p>
+              <h3>LineMotion</h3>
+              <p>Scans icons in a selection, previews the line-draw animation live, and exports it as a Lottie file.</p>
               <div className="tech-tags">
-                <span className="tech-tag">TODO</span>
-              </div>
-              <div className="link-row">
-                <a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a>
+                <span className="tech-tag">Figma API</span>
+                {" "}
+                <span className="tech-tag">Lottie</span>
               </div>
             </div>
           </div>
           <div className="plugin-card">
-            <div className="plugin-art">
-              <span>Screenshot &#8212; drop a 3:2 image at assets/img/plugin-ticket.webp</span>
+            <div className="plugin-art plugin-art--video">
+              <video autoPlay muted loop playsInline preload="metadata" aria-label="Leo desktop assistant demo">
+                <source src="/assets/video/tools/leo.mp4" type="video/mp4" />
+              </video>
             </div>
             <div className="plugin-body">
-              <p className="plugin-type">TODO &#8212; type</p>
-              <h3>Ticket extension</h3>
-              <p>TODO &#8212; one sentence on the problem it solves.</p>
+              <p className="plugin-type">Desktop App</p>
+              <h3>Leo</h3>
+              <p>A desktop assistant that sits on my screen and helps with everyday tasks without breaking my flow.</p>
               <div className="tech-tags">
-                <span className="tech-tag">TODO</span>
+                <span className="tech-tag">Desktop</span>
+                {" "}
+                <span className="tech-tag">AI</span>
               </div>
-              <div className="link-row">
-                <a href="https://github.com/ananddesign" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <div className="plugin-card">
+            <div className="plugin-art plugin-art--feedback" />
+            <div className="plugin-body">
+              <p className="plugin-type">Chrome Extension</p>
+              <h3>Feedback</h3>
+              <p>Draw arrows on a page, capture an area, and raise a ClickUp ticket in three quick steps.</p>
+              <div className="tech-tags">
+                <span className="tech-tag">Chrome</span>
+                {" "}
+                <span className="tech-tag">ClickUp API</span>
               </div>
             </div>
           </div>
@@ -364,6 +413,7 @@ export default function HomePage() {
           <div className="about-image">
             <picture>
               <source srcSet="/assets/img/about.webp" type="image/webp" />
+              {" "}
               <img src="/assets/img/about.jpg" alt="Anand Patil" width="1254" height="1254" loading="lazy" />
             </picture>
           </div>
