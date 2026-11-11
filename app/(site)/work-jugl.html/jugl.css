@@ -1,0 +1,27 @@
+/* ============================================================
+   JUGL — page-scoped moments. Composes the shared cs- kit;
+   tokens only.
+   ============================================================ */
+
+/* Hero loop line — the business loop JUGL is built around */
+.jg-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
+.jg-hero-flow span {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.22); padding: 9px 15px; white-space: nowrap;
+}
+.jg-hero-flow em { font-style: normal; color: rgba(255, 255, 255, 0.35); font-size: 13px; }
+
+/* Shipped feature checklist */
+.jg-shipped { columns: 2; column-gap: 40px; margin: 34px 0 8px; }
+.jg-shipped li {
+  break-inside: avoid; list-style: none; position: relative;
+  padding: 11px 0 11px 26px; border-bottom: 1px solid var(--line);
+  font-size: 15px; font-weight: 300; color: var(--dark);
+}
+.jg-shipped li::before {
+  content: ''; position: absolute; left: 0; top: 17px;
+  width: 9px; height: 9px; border: 1px solid var(--dark); border-radius: 50%;
+  background: var(--dark);
+}
+@media (max-width: 760px) { .jg-shipped { columns: 1; } }

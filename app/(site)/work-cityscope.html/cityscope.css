@@ -1,0 +1,37 @@
+/* ============================================================
+   CITYSCOPE — page-scoped moments. Composes the shared cs- kit;
+   tokens only, no new colour language.
+   ============================================================ */
+
+/* Hero flow line — the 30-second read under the subtitle */
+.cx-hero-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
+.cx-hero-flow span {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.22); padding: 9px 15px; white-space: nowrap;
+}
+.cx-hero-flow em { font-style: normal; color: rgba(255, 255, 255, 0.35); font-size: 13px; }
+
+/* Confidence lifecycle — the spine of the product's trust model */
+.cx-lifecycle { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; margin: 40px 0 8px; }
+.cx-lifecycle-step {
+  flex: 1 1 0; min-width: 130px; text-align: center;
+  border: 1px solid var(--line); padding: 18px 14px;
+  background: rgba(255, 255, 255, 0.45);
+}
+.cx-lifecycle-step .n {
+  display: block; font-size: 10px; font-weight: 400; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.cx-lifecycle-step .l {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 21px; color: var(--dark); line-height: 1.1;
+}
+/* The later stages read as more confirmed — fill deepens left to right. */
+.cx-lifecycle-step:nth-child(4) { background: rgba(28, 28, 28, 0.05); }
+.cx-lifecycle-step:nth-child(5) { background: var(--dark); border-color: var(--dark); }
+.cx-lifecycle-step:nth-child(5) .n { color: rgba(255, 255, 255, 0.55); }
+.cx-lifecycle-step:nth-child(5) .l { color: var(--white); }
+@media (max-width: 760px) {
+  .cx-lifecycle-step { flex-basis: calc(50% - 5px); }
+}
