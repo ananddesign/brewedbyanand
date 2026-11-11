@@ -1,0 +1,98 @@
+import type { CSSProperties } from 'react';
+import type { Metadata } from 'next';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import '@/styles/components.css';
+import '@/styles/article.css';
+
+export const metadata: Metadata = {
+  title: "Small Business App — Brewed by Anand",
+  description: "Building a small business app changed how I think about design tools — no canvas, no code, no AI.",
+};
+
+export default function SmallBusinessPage() {
+  return (
+    <>
+      {/* NAV */}
+      <Nav />
+      {/* HERO */}
+      <section className="blog-hero" style={{ "--blog-hero-bg": "linear-gradient(135deg, #1C1C1C 0%, #2E2520 60%, #3A2E26 100%)", "--blog-hero-overlay": "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%)" } as CSSProperties}>
+        <div className="blog-hero-bg" />
+        <div className="blog-hero-content">
+          <p className="blog-hero-tag">Essay &#8212; Design Tools / Product Thinking</p>
+          <h1 className="blog-hero-title">Building a Small Business App Changed How I Think About Design Tools</h1>
+          <p className="blog-hero-subtitle">Working on a small business app forces clarity. No luxury of overthinking flows. You&#8217;re solving real operational problems. That&#8217;s what pushed me deeper into code-first design experimentation.</p>
+          <p className="blog-hero-date">2026</p>
+        </div>
+      </section>
+      {/* ARTICLE */}
+      <article className="blog-article">
+        {/* Intro */}
+        <div className="blog-section fade-up">
+          <p>Working on a small business app forces clarity.</p>
+          <p>No luxury of endless design reviews. No beautifully staged handoff rituals. No time to admire wireframes.</p>
+          <p>You&#8217;re solving operational problems&#8212;orders, workflows, tracking, merchant actions. The product doesn&#8217;t need theatre. It needs to work.</p>
+          <p>That reality pushed me into experimenting with code-first design and AI-native workflows while building this product. And it changed how I think about design tooling.</p>
+        </div>
+        {/* Section 1 */}
+        <div className="blog-section fade-up">
+          <h2>1. For Small Business Apps, Code-First Feels Incredibly Logical</h2>
+          <p>In a small business app, utility beats polish in the early stages. You care less about pixel-perfect emotional storytelling and more about whether a merchant can finish a task without friction.</p>
+          <p>That makes designing in code surprisingly attractive.</p>
+          <p>Instead of: Idea &#8594; Figma &#8594; Prototype &#8594; Handoff &#8594; Build</p>
+          <p>You get: Idea &#8594; Build &#8594; Interact immediately</p>
+          <div className="blog-pullquote blog-pullquote--quiet">That compression changes everything. You&#8217;re not imagining the flow. You&#8217;re feeling it.</div>
+          <p>You can test actual interactions, real constraints, real responsiveness&#8212;much earlier. For this category, code-first doesn&#8217;t feel experimental. It feels practical.</p>
+        </div>
+        {/* Section 2 */}
+        <div className="blog-section fade-up">
+          <h2>2. Canvas Is Still the Fastest Way to Explore</h2>
+          <p>But designing isn&#8217;t just building. It&#8217;s exploring. And exploration is chaotic.</p>
+          <p>Move the CTA here. Try filters on top. Shrink this section. Kill this card. Actually bring it back.</p>
+          <p>This kind of iteration is instinctive. Visual. Fast. Canvas still dominates this phase.</p>
+          <p>Because the moment every micro decision has to be translated into language or implementation, speed collapses. Dragging a block takes seconds. Describing that same intent takes thought, then interpretation, then retries.</p>
+          <div className="blog-pullquote blog-pullquote--quiet">AI speeds up execution. Canvas still speeds up thinking. Those are not the same thing.</div>
+        </div>
+        {/* Section 3 */}
+        <div className="blog-section fade-up">
+          <h2>3. Designing in Code Creates Hidden Double Work</h2>
+          <p>The strongest advantage of designing in code is realism. You see the actual product immediately. Not simulated interactions. Not designer approximations. The real thing.</p>
+          <p>But realism has a hidden tax. Design refinement gets entangled with engineering friction. Spacing tweaks become implementation work. Layout experiments break responsiveness. Simple visual improvements turn into debugging sessions.</p>
+          <p>Good product design lives in subtle details: hierarchy, spacing rhythm, visual clarity, micro interactions, whitespace balance. Those decisions are lightweight in design tools. Heavier in code.</p>
+          <div className="blog-pullquote blog-pullquote--quiet">You move faster toward something functional. Sometimes slower toward something refined.</div>
+        </div>
+        {/* Section 4 */}
+        <div className="blog-section fade-up">
+          <h2>4. Claude Design Is Impressive, But Still Feels Naive About Design Work</h2>
+          <p>I spent meaningful time experimenting with Claude Design while building this app. And the first impression is genuinely impressive. You can describe a screen, edit through conversation, refine components through prompts. That feels magical.</p>
+          <p>At one point, I gave it a Pinterest UI reference&#8212;and it recreated the direction surprisingly well. Messy, yes. But useful. Especially when you need fast inspiration or rough scaffolding.</p>
+          <p>But the cracks show quickly.</p>
+          <p>For example, I nearly spent <strong>20 minutes fixing padding between two CTA buttons.</strong> Not because the problem was hard. Because communicating precision through prompts becomes absurdly inefficient.</p>
+          <p>A designer would fix that in seconds on a canvas. Drag. Adjust. Done. Instead it became: describe spacing, wait, review, prompt again, fix side effects, repeat.</p>
+          <div className="blog-pullquote blog-pullquote--quiet">Not every visual decision should become a conversation. Sometimes language is the slowest possible interface.</div>
+          <p>Claude understands structure better than nuance. It can imitate references, but originality is weak. It can generate interfaces, but design judgment is still shallow.</p>
+        </div>
+        {/* Section 5 */}
+        <div className="blog-section fade-up">
+          <h2>5. The Real Future Is Smart Canvas</h2>
+          <p>This whole experiment made one thing obvious: the future isn&#8217;t no-canvas design. That framing is wrong.</p>
+          <div className="blog-pullquote blog-pullquote--quiet">The real opportunity is smart canvas.</div>
+          <p>A workspace where visual edits happen instantly, AI helps with generation and repetitive work, code previews stay live, references can become starting points, and layout changes don&#8217;t require linguistic negotiation.</p>
+          <p>A hybrid creation environment. Because designers don&#8217;t think in one mode&#8212;sometimes visually, sometimes structurally, sometimes conversationally. Great tools should adapt to that. Not force one interface for every problem.</p>
+        </div>
+        {/* Closing */}
+        <div className="blog-section fade-up">
+          <p>Building this small business app taught me something simple:</p>
+          <p>
+            <strong>The future of design tools isn&#8217;t AI replacing canvas.</strong>
+          </p>
+          <p>
+            <strong>It&#8217;s AI making canvas intelligent.</strong>
+          </p>
+        </div>
+      </article>
+      {/* FOOTER */}
+      <Footer />
+    </>
+  );
+}

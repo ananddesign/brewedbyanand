@@ -1,0 +1,105 @@
+import type { CSSProperties } from 'react';
+import type { Metadata } from 'next';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import '@/styles/components.css';
+import '@/styles/article.css';
+
+export const metadata: Metadata = {
+  title: "Design Cop — Brewed by Anand",
+  description: "Design Cop — a Figma plugin that audits a design system, flags violations and auto-fixes them before handoff.",
+};
+
+export default function DesignCopPage() {
+  return (
+    <>
+      {/* NAV */}
+      <Nav />
+      {/* HERO */}
+      <section className="blog-hero blog-hero--design-cop" style={{ "--blog-hero-overlay": "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 50%)", "--blog-hero-align": "flex-start", "--blog-hero-pad": "120px 72px 0" } as CSSProperties}>
+        <div className="blog-hero-bg" />
+        <div className="blog-hero-content" style={{ padding: "432.004px 72px 0px" }}>
+          <p className="blog-hero-tag">Experiment &#8212; Figma Plugin</p>
+          <h1 className="blog-hero-title">Design Cop</h1>
+          <p className="blog-hero-subtitle">Building a plugin to police my own design files &#8212; auditing unlinked colours and text styles so I didn&#8217;t have to.</p>
+          <p className="blog-hero-date">2024</p>
+        </div>
+      </section>
+      {/* ARTICLE */}
+      <article className="blog-article">
+        {/* Intro */}
+        <div className="blog-section fade-up">
+          <p>I was deep in a Figma file for Qween Design System 2.0 when I realised I&#8217;d been doing the same thing for the third time that week: hunting down a colour, opening the variables panel, scrolling through tokens, finding the right one, linking it, moving on. Then doing it again. And again.</p>
+          <p>The colours and text styles in my designs weren&#8217;t connected to the DS. Not because I didn&#8217;t care because I was working fast, pasting in components, tweaking shades, and the connections were getting lost along the way. Manually auditing every node was tedious. Missing a few was guaranteed.</p>
+          <p>So I built a plugin to do it for me. It&#8217;s called Design Cop.</p>
+        </div>
+        {/* What it does */}
+        <div className="blog-section fade-up">
+          <h2>What It Does</h2>
+          <p>Design Cop scans your Figma file &#8212; current selection or full page &#8212; and finds every colour and text style that isn&#8217;t linked to your Design System. For each issue, it suggests the nearest matching DS token and lets you link it in one click. Where it finds exact matches, it can batch-link the whole lot at once.</p>
+          <div className="blog-pullquote">Audit, suggest and auto-link unlinked colours and text to your DS.</div>
+          <p>That&#8217;s the elevator version. The interesting part is everything that had to go right underneath it.</p>
+        </div>
+        {/* Performance */}
+        <div className="blog-section fade-up">
+          <h2>The Performance Problem</h2>
+          <p>The first version of Design Cop took 30+ seconds to scan a file. That&#8217;s not a plugin, that&#8217;s a punishment.</p>
+          <p>It was doing three things wrong. It scanned every page in the file, even ones I didn&#8217;t care about. It walked the node tree recursively, which meant blowing the stack on large files. And worst of all, it made an individual async API call to resolve every single style reference, sometimes 3,000+ calls for a moderately complex file.</p>
+          <p>The fix was three changes stacked together: stop scanning pages entirely and only look at what&#8217;s selected or on the current page; deduplicate style IDs before resolving them, so 3,262 calls collapsed to ~30 unique ones; and replace the recursive walker with an iterative stack-based one. The result was near-instant on most files. The moment it dropped from &#8220;go make coffee&#8221; to &#8220;blink and miss it&#8221; was easily the most satisfying part of building this.</p>
+        </div>
+        {/* Generic DS */}
+        <div className="blog-section fade-up">
+          <h2>Making It Work for Any Design System</h2>
+          <p>The first version was hardcoded to Qween DS. Every token name, every collection, baked in. It worked, but only for one team.</p>
+          <p>I rewrote it to be generic. Instead of hardcoding tokens, the plugin dynamically discovers all connected library variable collections in the file at scan time, resolves each colour variable, and builds a live token map. Material, IBM Carbon, Atlassian, your custom enterprise DS, if it&#8217;s variable-based or uses paint styles, Design Cop works with it.</p>
+        </div>
+        {/* Alias chain */}
+        <div className="blog-section fade-up">
+          <h2>The Alias Chain</h2>
+          <p>Figma variables aren&#8217;t usually simple colour values. They&#8217;re aliases that point to other aliases that eventually point to a real colour. Qween DS has a three-level chain</p>
+          <div className="blog-pullquote">Component token &#8594; Semantic token &#8594; Primitive &#8594; actual hex value</div>
+          <p>The plugin needs to walk this entire chain to know what colour a token actually represents. Easy in theory. Less easy when a sync version of a Figma API silently fails because dynamic-page plugins require the async variant and you don&#8217;t get an error, you just get nothing back.</p>
+          <p>Finding that bug was the kind of debugging where you stare at the code, then at the file, then at the docs, then back at the code, until you finally console.log the right thing and the whole picture snaps into focus. None of it was in the documentation in any obvious way. I had to run code against a live file to understand what Figma was actually doing under the hood.</p>
+        </div>
+        {/* Right tokens */}
+        <div className="blog-section fade-up">
+          <h2>Showing the Right Tokens</h2>
+          <p>Even after fixing alias resolution, the suggestions were wrong in a different way. The plugin was confidently recommending things like <code style={{ fontFamily: "monospace", fontSize: "14px", background: "rgba(28,28,28,0.06)", padding: "2px 6px", borderRadius: "3px" }}>Primitives/Secondary/Brown/300</code> &#8212; colours that exist in the system but aren&#8217;t meant to be used directly.</p>
+          <p>I added a filter: the plugin peeks at variable names in each collection. If they use role-based semantic naming (<code style={{ fontFamily: "monospace", fontSize: "14px", background: "rgba(28,28,28,0.06)", padding: "2px 6px", borderRadius: "3px" }}>colour/text/primary</code>), they&#8217;re included. Raw primitive collections get skipped automatically.</p>
+        </div>
+        {/* Colour matching */}
+        <div className="blog-section fade-up">
+          <h2>Matching Colours Properly</h2>
+          <p>Colour matching uses perceptual distance in LAB colour space, Delta-E-not simple hex comparison. Two colours that look identical to your eye can have very different RGB values, and two colours with similar RGB can look noticeably different. LAB is closer to how humans actually perceive colour, so the rankings make more sense.</p>
+          <p>Matches are tiered: exact, close, near. And critically, when multiple tokens tie for the closest match, the plugin doesn&#8217;t guess. It shows <em>&#8220;Multiple DS colours match&#8221;</em> and asks the designer to choose. Confidently picking the wrong one would erode trust faster than not picking at all.</p>
+        </div>
+        {/* Dead button */}
+        <div className="blog-section fade-up">
+          <h2>The Dead Button Lesson</h2>
+          <p>An early version had a &#8220;Link All Styles&#8221; button at the top of the issues panel. It showed up regardless of whether there were actually any exact matches to link. Most of the time, clicking it did nothing.</p>
+          <p>A dead button isn&#8217;t a small UX issue. It teaches users the plugin is unreliable, and once they learn that, they stop trusting any of its buttons. The fix was small: the button only appears when there&#8217;s at least one exact match. Hiding is better than disabling, and disabling is better than no-op.</p>
+        </div>
+        {/* Constraints */}
+        <div className="blog-section fade-up">
+          <h2>Honesty About Constraints</h2>
+          <p>Some nodes inside component instances can&#8217;t be edited directly, Figma simply doesn&#8217;t allow it. Early on, the plugin would try, fail, and show &#8220;&#10007; Failed&#8221;, which made it look broken.</p>
+          <p>Now it detects these cases and shows &#8220; In component&#8221; instead. Same outcome, but the user knows it&#8217;s a Figma constraint, not a Design Cop bug. Tools that are honest about their limits get more trust than tools that pretend everything is fine.</p>
+        </div>
+        {/* Reflections */}
+        <div className="blog-section fade-up">
+          <h2>Reflections</h2>
+          <p>The hardest part of building this wasn&#8217;t the UI or the matching logic. It was understanding how Figma&#8217;s variable system actually behaves at runtime. The alias chain, the sync vs async API gotcha, the distinction between primitive and semantic collections, none of it is obvious from reading the docs. You learn it by running code against a live file and watching things go wrong in specific ways.</p>
+          <p>The plugin is fully local. No backend, no network requests, no user data. Just a tool that walks your file, finds the gaps, and helps you close them.</p>
+          <p>Design Cop is on Figma Community now. Built originally for the Qween DS team, open to anyone whose Design System follows semantic naming conventions.</p>
+          <p>If you&#8217;ve ever rage-quit a Figma file at 11pm because half your colours are unlinked, this is for you.</p>
+        </div>
+        {/* CTA */}
+        <div className="blog-cta-wrap fade-up">
+          <a className="blog-cta" href="https://www.figma.com/community/plugin/1610771346863330262/design-cop" target="_blank" rel="noopener">View on Figma Community &#8599;</a>
+        </div>
+      </article>
+      {/* FOOTER */}
+      <Footer variant="image" />
+    </>
+  );
+}
