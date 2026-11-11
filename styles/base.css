@@ -104,6 +104,11 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 rgba(28, 28, 28, 0.08);
 }
+/* Slides out of view while scrolling down (HideNavOnScroll.tsx). The
+   transitions above are repeated so adding transform doesn't drop them;
+   reduced motion's global transition override makes it an instant switch. */
+#mainNav { transition: padding var(--dur-nav) ease, background var(--dur-nav) ease, box-shadow var(--dur-nav) ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+#mainNav.nav--tucked { transform: translateY(-100%); }
 
 .nav-logo { text-decoration: none; display: block; color: inherit; transition: opacity var(--dur-hover); }
 .nav-logo:hover { opacity: 0.7; }

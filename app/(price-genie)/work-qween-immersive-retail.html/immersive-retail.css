@@ -1,0 +1,405 @@
+/* ============================================================
+   QWEEN — IMMERSIVE RETAIL
+   Page-scoped additions on top of the Price Genie editorial system
+   (styles/pg.css, body.pg). Tokens only — no new colour language.
+   Everything here is prefixed qr- and only loads on this page.
+   ============================================================ */
+
+/* ---------- PLACEHOLDER PLATES ----------
+   Image slots for project assets that haven't been supplied yet.
+   Mirrors .qw-plate on the QWEEN PDP case study. To fill one, put an
+   <img> inside the .qr-plate (it is styled to cover) and delete the
+   .qr-plate-note. */
+.qr-plate {
+  position: relative; margin: 0; background: var(--bg-panel);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  overflow: hidden;
+}
+.qr-plate img, .qr-plate video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Filled slot: the corner ticks only mark empty placeholders. */
+.qr-plate--media::before, .qr-plate--media::after { display: none; }
+.qr-plate-note { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: clamp(20px, 4vw, 48px); max-width: 44ch; }
+.qr-plate-kind { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); }
+.qr-plate-desc { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.6vw, 1.4rem); line-height: 1.25; color: var(--muted); }
+.qr-plate-file { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); overflow-wrap: anywhere; }
+.qr-plate::before, .qr-plate::after { content: ''; position: absolute; width: 14px; height: 14px; border: 1px solid var(--line-2); pointer-events: none; }
+.qr-plate::before { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+.qr-plate::after { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+.qr-plate--wide { aspect-ratio: 16 / 9; }
+.qr-plate--pano { aspect-ratio: 21 / 9; }
+.qr-plate--phone { aspect-ratio: 590 / 1278; border-radius: 22px; }
+.qr-plate--phone .qr-plate-note { padding: 18px; gap: 8px; }
+.qr-plate--phone .qr-plate-desc { font-size: 1rem; }
+
+/* dark variant — for the cinematic VR chapter and the hero */
+.qr-plate--ink { background: #17171a; border-color: rgba(255, 255, 255, 0.12); }
+.qr-plate--ink::before, .qr-plate--ink::after { border-color: rgba(255, 255, 255, 0.22); }
+.qr-plate--ink .qr-plate-kind { color: #9EA8FF; }
+.qr-plate--ink .qr-plate-desc { color: rgba(255, 255, 255, 0.5); }
+.qr-plate--ink .qr-plate-file { color: rgba(255, 255, 255, 0.32); }
+
+
+/* Status chip — states what kind of content a block is (proposed, concept,
+   awaiting data). Never used to dress placeholders up as results. */
+.qr-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  border: 1px solid var(--line-2); padding: 7px 11px; line-height: 1.5; max-width: 100%;
+}
+.qr-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; border: 1px solid currentColor; }
+
+/* ============================================================
+   01 — HERO
+   Same layout and type as the Price Genie hero, inverted for a light
+   photograph: dark text, and a fade in the photo's own grey (#EEE) in
+   place of the dark scrim, so the copy never sits on the subject.
+   ============================================================ */
+.qr-hero { color: #141414; background: #EEEEEE; }
+.qr-hero .pg-hero-bg::after {
+  background:
+    linear-gradient(100deg, #EEEEEE 0%, rgba(238,238,238,0.9) 34%, rgba(238,238,238,0) 56%),
+    linear-gradient(to top, rgba(238,238,238,0.85) 0%, rgba(238,238,238,0) 34%);
+}
+.qr-hero .pg-hero-title { color: #141414; text-shadow: none; }
+.qr-hero .pg-hero-eyebrow { color: rgba(20,20,20,0.58); }
+.qr-hero .pg-hero-desc { color: rgba(20,20,20,0.76); }
+.qr-hero .pg-hero-meta dt { color: rgba(20,20,20,0.5); }
+.qr-hero .pg-hero-meta dd { color: rgba(20,20,20,0.88); }
+.qr-hero .pg-hero-scroll span { color: rgba(20,20,20,0.5); }
+.qr-hero .pg-hero-scroll::after { background: linear-gradient(to bottom, rgba(20,20,20,0.5), transparent); }
+@media (max-width: 860px) {
+  /* Portrait: stack the photo above the copy rather than under it. */
+  .qr-hero { flex-direction: column; align-items: stretch; justify-content: flex-end; }
+  .qr-hero .pg-hero-bg { position: relative; inset: auto; height: 44svh; min-height: 260px; flex: none; margin-top: 64px; }
+  .qr-hero .pg-hero-bg img { object-position: 78% 30%; }
+  .qr-hero .pg-hero-bg::after { background: linear-gradient(to top, #EEEEEE 0%, rgba(238,238,238,0) 30%); }
+  .qr-hero .pg-hero-inner { padding-top: 8px; }
+}
+
+/* ============================================================
+   03 — PROBLEM (two challenges)
+   ============================================================ */
+.qr-challenges { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line-2); }
+.qr-challenge { padding-top: clamp(28px, 4vw, 44px); }
+.qr-challenge-num { font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); line-height: 0.9; color: var(--accent); }
+.qr-challenge-tag { margin-top: 18px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.qr-challenge-title { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.4rem, 2.4vw, 1.95rem); line-height: 1.1; letter-spacing: -0.01em; }
+.qr-challenge .pg-body { margin-top: 16px; max-width: 46ch; }
+@media (max-width: 860px) { .qr-challenges { grid-template-columns: 1fr; gap: 0; } }
+
+/* starting hypotheses, folded into each challenge */
+.qr-hyp-tag { margin-top: 26px; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.qr-hyp { list-style: none; margin: 10px 0 0; padding: 0; max-width: 46ch; }
+.qr-hyp li { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.3; color: var(--text); padding-block: 10px; border-top: 1px solid var(--line); }
+
+/* ============================================================
+   07 — SYSTEM (shared objective, two independent pathways)
+   ============================================================ */
+/* A print mock-up on the page grey: path card · the jewellery · path card.
+   The cards are three.js paper (PaperCard.tsx / paper-card.ts); the HTML
+   card under each is the accessible content and the no-WebGL fallback. */
+/* top margin only: below, the section's own padding sets the chapter break */
+.qr-sys { margin-top: clamp(48px, 7vw, 96px); }
+.qr-sys-board {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr) minmax(0, 1fr);
+  align-items: center; gap: clamp(20px, 5vw, 88px);
+  padding: clamp(12px, 3vw, 48px) clamp(0px, 4vw, 72px);
+}
+
+/* each card slot keeps the board-and-card proportions of the 3D scene */
+.qr-paper { position: relative; aspect-ratio: 3 / 5; width: 100%; max-width: 360px; justify-self: center; }
+/* overhangs the slot so the card's shadow fades out inside the canvas */
+.qr-paper-gl { position: absolute; inset: -15% -25%; z-index: 1; }
+.qr-paper-gl canvas { touch-action: pan-y; }
+.qr-paper-html { position: absolute; inset: 0; transition: opacity 0.6s var(--ease); }
+.qr-paper.is-3d .qr-paper-html { opacity: 0; }
+
+/* HTML fallback: the same card in CSS, lying on the page with a soft shadow */
+.qr-paper-html { padding: 2% 0; }
+.qr-paper-sheet {
+  height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: #F8F6F1; padding: 11% 10% 9%; box-shadow: 4px 8px 22px rgba(58, 50, 38, 0.16);
+}
+.qr-paper-tag { align-self: flex-start; font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8A8579; }
+.qr-paper--b .qr-paper-tag { color: var(--accent); }
+.qr-paper-title { margin-top: auto; font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 0.98; color: #1C1C1C; transform: rotate(-3deg); }
+.qr-paper-title span { display: block; }
+.qr-paper-steps { list-style: none; margin: auto 0 0; padding: 0; font-family: var(--font-serif); font-style: italic; font-size: clamp(0.82rem, 1.1vw, 0.98rem); line-height: 1.45; color: #5F5A50; }
+.qr-paper-mark { margin-top: 9%; font-family: var(--font-serif); font-size: clamp(1.2rem, 2vw, 1.7rem); letter-spacing: 0.06em; text-transform: uppercase; color: #1C1C1C; }
+
+.qr-sys-centre { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.qr-sys-centre img { display: block; width: 100%; max-width: 230px; height: auto; }
+.qr-sys-centre figcaption { text-align: center; max-width: 24ch; font-family: var(--font-serif); font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.25; color: var(--text); }
+.qr-sys-centre-tag { display: block; margin-bottom: 8px; font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+.qr-sys-note { margin-top: clamp(28px, 4vw, 44px); text-align: center; margin-inline: auto; max-width: 56ch; }
+
+@media (max-width: 760px) {
+  /* stacked: card, the jewellery, card */
+  .qr-sys-board { grid-template-columns: 1fr; gap: 40px; padding: 8px 0; }
+  .qr-paper { max-width: 300px; }
+  .qr-sys-centre img { max-width: 150px; }
+}
+
+/* ============================================================
+   08 — INTERFACE
+   A: cinematic dark band · B: precise phone flow
+   ============================================================ */
+.qr-band { background: var(--bg-ink); color: #fff; padding-block: clamp(70px, 10vw, 140px); }
+.qr-band .pg-eyebrow { color: rgba(255, 255, 255, 0.55); }
+.qr-band .pg-eyebrow .n { color: #9EA8FF; }
+.qr-band .pg-h, .qr-band .pg-display { color: #fff; }
+.qr-band .pg-body { color: rgba(255, 255, 255, 0.72); }
+.qr-band .pg-small, .qr-band .pg-cap { color: rgba(255, 255, 255, 0.5); }
+.qr-band .qr-status { color: rgba(255, 255, 255, 0.62); border-color: rgba(255, 255, 255, 0.3); }
+
+.qr-chapter-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(44px, 6vw, 80px); }
+@media (max-width: 860px) { .qr-chapter-head { grid-template-columns: 1fr; } }
+.qr-chapter-letter { font-family: var(--font-serif); font-style: italic; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 0.9; color: #9EA8FF; }
+.qr-chapter-letter--light { color: var(--accent); }
+
+/* ---------- VR showroom carousel (VrCarousel.tsx) ----------
+   Glass cards over a blurred loop of the intro film. Base styles are a
+   plain stack (no JS / reduced motion); `.is-live` pins the stage and
+   lets the script place the cards. */
+/* Stage bands (live mode): label at the top, dock at the bottom, cards
+   centred in what's left and sized so they can't reach either. */
+.qr-vr { --top: clamp(20px, 4vh, 36px); --label: 42px; --dock: clamp(112px, 15vh, 140px); --cap: 132px;
+  --glass: rgba(255, 255, 255, 0.13); --glass-edge: rgba(255, 255, 255, 0.3); --warm: #F2D6A2; position: relative; isolation: isolate; }
+.qr-vr-stage { position: relative; padding: clamp(56px, 8vw, 96px) var(--gutter); }
+
+.qr-vr-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: #2a1d14; }
+/* a still of the showroom, blurred into a backdrop (image set by the component) */
+.qr-vr-bg::before { content: ''; position: absolute; inset: -6%; background: var(--bg-img) center/cover; filter: blur(26px) saturate(1.2) brightness(0.74); }
+.qr-vr-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(15, 15, 17, 0) 0%, rgba(15, 15, 17, 0.45) 100%),
+    linear-gradient(to bottom, var(--bg-ink) 0%, rgba(15, 15, 17, 0) 16%, rgba(15, 15, 17, 0) 84%, var(--bg-ink) 100%);
+}
+
+.qr-vr-top {
+  display: none; position: absolute; top: var(--top); height: var(--label); left: 50%; transform: translateX(-50%);
+  align-items: center; gap: 12px; padding: 10px 20px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--glass-edge); backdrop-filter: blur(20px) saturate(1.3); -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255, 255, 255, 0.85); white-space: nowrap;
+}
+.qr-vr-top-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 10px var(--warm); }
+.qr-vr-top-sep { width: 1px; height: 12px; background: rgba(255, 255, 255, 0.3); }
+
+.qr-vr-cards { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 40px; max-width: 880px; }
+.qr-vr-card {
+  --focus: 1;
+  padding: 12px; border-radius: 28px; color: #fff;
+  background: var(--glass); border: 1px solid var(--glass-edge);
+  backdrop-filter: blur(24px) saturate(1.35); -webkit-backdrop-filter: blur(24px) saturate(1.35);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.qr-vr-media { position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #111; }
+.qr-vr-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.qr-vr-cap { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: baseline; padding: 18px 12px 8px; opacity: calc(0.35 + var(--focus) * 0.65); }
+.qr-vr-n { font-family: var(--font-serif); font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1; color: var(--warm); }
+.qr-vr-title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.2rem, 1.9vw, 1.6rem); line-height: 1.1; color: #fff; }
+.qr-vr-body { margin-top: 6px; font-size: 0.95rem; line-height: 1.5; color: rgba(255, 255, 255, 0.72); max-width: 58ch; }
+
+.qr-vr-dock { display: none; }
+
+/* ----- live: pinned stage, cards placed by script ----- */
+.qr-vr.is-live { height: calc(100svh + (var(--n) - 1) * 62svh); }
+.qr-vr.is-live .qr-vr-stage { position: sticky; top: 0; height: 100svh; padding: 0; overflow: hidden; }
+.qr-vr.is-live .qr-vr-bg { position: absolute; }
+.qr-vr.is-live .qr-vr-top { display: inline-flex; }
+.qr-vr.is-live .qr-vr-cards { position: absolute; top: calc(var(--top) + var(--label) + 16px); bottom: var(--dock); left: 0; right: 0; max-width: none; display: block; perspective: 1800px; perspective-origin: 50% 50%; }
+.qr-vr.is-live .qr-vr-card {
+  position: absolute; left: 50%; top: 50%;
+  /* the tallest it may be is the band between label and dock; a card is
+     its 16:9 clip plus ~--cap of caption and padding */
+  width: min(52vw, 780px, calc((100svh - var(--top) - var(--label) - 16px - var(--dock) - var(--cap)) * 16 / 9));
+  transform-style: preserve-3d; will-change: transform, opacity; cursor: pointer;
+}
+.qr-vr.is-live .qr-vr-card[aria-current] { cursor: default; }
+/* off-centre cards sink back: darker and out of focus, scaled by --focus
+   (1 at the centre, 0 one step away or more) */
+.qr-vr.is-live .qr-vr-card { filter: brightness(calc(0.5 + var(--focus) * 0.5)) blur(calc((1 - var(--focus)) * 3.5px)); }
+
+.qr-vr.is-live .qr-vr-dock {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  position: absolute; left: 50%; bottom: clamp(20px, 4vh, 40px); transform: translateX(-50%); z-index: 200;
+}
+.qr-vr-dock-pill {
+  display: flex; align-items: center; gap: 14px; padding: 8px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--glass-edge); backdrop-filter: blur(20px) saturate(1.3); -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+.qr-vr-btn {
+  width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center;
+  background: rgba(255, 255, 255, 0.16); color: #fff; transition: background 0.25s ease, opacity 0.25s ease;
+}
+.qr-vr-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.3); }
+.qr-vr-btn:disabled { opacity: 0.35; cursor: default; }
+.qr-vr-btn:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
+.qr-vr-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.qr-vr-now { display: flex; align-items: baseline; gap: 12px; min-width: min(46vw, 340px); padding-inline: 4px; white-space: nowrap; }
+.qr-vr-now-n { font-family: var(--font-serif); font-size: 1.25rem; color: var(--warm); }
+.qr-vr-now-t { font-size: 0.92rem; color: #fff; overflow: hidden; text-overflow: ellipsis; }
+.qr-vr-now-of { margin-left: auto; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); }
+.qr-vr-ticks { display: flex; gap: 6px; }
+.qr-vr-ticks span { width: 6px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.35); transition: width 0.4s var(--ease), background 0.4s var(--ease); }
+.qr-vr-ticks span.is-on { width: 34px; background: #fff; }
+
+@media (max-width: 760px) {
+  .qr-vr.is-live { height: calc(100svh + (var(--n) - 1) * 70svh); }
+  .qr-vr { --cap: 150px; }
+  .qr-vr.is-live .qr-vr-card { width: min(84vw, calc((100svh - var(--top) - var(--label) - 16px - var(--dock) - var(--cap)) * 16 / 9)); padding: 8px; border-radius: 22px; }
+  .qr-vr-media { border-radius: 15px; }
+  .qr-vr-cap { padding: 14px 8px 6px; gap: 12px; }
+  .qr-vr-body { font-size: 0.88rem; }
+  .qr-vr-now { min-width: 0; max-width: 56vw; }
+  .qr-vr-now-of { display: none; }
+}
+
+/* the two design decisions that used to sit beside frames 03 and 05 */
+.qr-vr-why { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 96px); margin-top: clamp(56px, 7vw, 96px); }
+.qr-vr-why .qr-why--ink { margin-left: 0; margin-top: 0; }
+@media (max-width: 760px) { .qr-vr-why { grid-template-columns: 1fr; } }
+
+/* locator flow — phone screens in a measured row */
+.qr-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(36px, 5vw, 64px) clamp(18px, 3vw, 40px); }
+.qr-flow li { display: flex; flex-direction: column; }
+.qr-flow .qr-plate--phone { width: 100%; max-width: 260px; }
+.qr-flow-step { margin-top: 18px; display: grid; grid-template-columns: 34px 1fr; gap: 4px 10px; align-items: baseline; }
+.qr-flow-n { font-size: 11px; letter-spacing: 0.12em; color: var(--accent); }
+.qr-flow-title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.15; }
+.qr-flow-step .pg-small { grid-column: 2; }
+@media (max-width: 900px) { .qr-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .qr-flow { grid-template-columns: 1fr; } .qr-flow .qr-plate--phone { max-width: 240px; } }
+
+/* ---------- locator walkthrough (LocatorScroller.tsx) ----------
+   Fallback: the .qr-flow grid above, inside the page width. `.is-live`
+   pins one screen-height: step copy on the left, a row of phones on the
+   right that the script slides left one step per scroll slot. */
+.qr-loc-stage { max-width: var(--content); margin: 0 auto; padding: 0 var(--gutter); }
+.qr-loc-copy { display: none; }
+
+.qr-loc.is-live { height: calc(100svh + (var(--n) - 1) * 60svh); overflow-x: clip; } /* clip, not hidden: keeps the stage sticky */
+.qr-loc.is-live .qr-loc-stage {
+  position: sticky; top: 0; height: 100svh;
+  display: grid; grid-template-columns: minmax(240px, 0.75fr) minmax(0, 2fr); gap: clamp(32px, 5vw, 88px); align-items: center;
+}
+.qr-loc.is-live .qr-loc-copy { display: flex; flex-direction: column; gap: clamp(20px, 3vh, 32px); }
+.qr-loc-count { font-size: 12px; letter-spacing: 0.18em; color: var(--muted); }
+.qr-loc-count span { display: block; margin-bottom: 6px; font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 5rem); line-height: 0.9; letter-spacing: -0.01em; color: var(--accent); }
+.qr-loc-steps { display: grid; }
+.qr-loc-step { grid-area: 1 / 1; opacity: 0; transform: translateY(14px); transition: opacity 0.45s var(--ease), transform 0.45s var(--ease); pointer-events: none; }
+.qr-loc-step:not([aria-hidden="true"]) { opacity: 1; transform: none; pointer-events: auto; }
+.qr-loc-title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.7rem, 2.8vw, 2.5rem); line-height: 1.05; letter-spacing: -0.01em; }
+.qr-loc-body { margin-top: 14px; max-width: 34ch; font-size: 1.02rem; line-height: 1.55; color: var(--muted); }
+.qr-loc-ticks { display: flex; gap: 6px; }
+.qr-loc-ticks button { width: 22px; height: 14px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; transition: width 0.4s var(--ease); }
+.qr-loc-ticks button::before { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 2px; border-radius: 1px; background: var(--line-2); transition: background 0.4s var(--ease); }
+.qr-loc-ticks button.is-on { width: 44px; }
+.qr-loc-ticks button.is-on::before { background: var(--accent); }
+.qr-loc-ticks button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* the row is clipped on the left only, so passed screens slide out under the copy */
+.qr-loc.is-live .qr-loc-view { align-self: stretch; display: flex; align-items: center; clip-path: inset(-20% -100vw -20% 0); }
+.qr-loc.is-live .qr-loc-track { display: flex; flex-wrap: nowrap; gap: clamp(24px, 3vw, 48px); will-change: transform; }
+.qr-loc.is-live .qr-loc-track li { flex: none; cursor: pointer; }
+.qr-loc.is-live .qr-loc-track .qr-plate--phone { height: min(78svh, 720px); width: auto; max-width: none; }
+.qr-loc.is-live .qr-flow-step { display: none; }
+/* screens fade into the page grey towards the right edge, clear of the section index */
+.qr-loc.is-live .qr-loc-stage::after {
+  /* the stage is capped at --content and centred, so reach out to the window's right edge */
+  content: ''; position: absolute; top: 0; bottom: 0; right: min(0px, calc((var(--content) - 100vw) / 2)); width: clamp(140px, 22vw, 360px); z-index: 2; pointer-events: none;
+  background: linear-gradient(to right, rgba(234, 234, 234, 0) 0%, rgba(234, 234, 234, 0.85) 55%, var(--bg) 100%);
+}
+
+@media (max-width: 760px) {
+  /* stacked: copy on top, the row of phones underneath */
+  .qr-loc.is-live { height: calc(100svh + (var(--n) - 1) * 70svh); }
+  .qr-loc.is-live .qr-loc-stage { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 20px; padding-top: 28px; padding-bottom: 20px; align-items: start; }
+  .qr-loc.is-live .qr-loc-copy { gap: 12px; }
+  .qr-loc-count span { font-size: 2.4rem; }
+  .qr-loc-title { font-size: 1.5rem; }
+  .qr-loc-body { font-size: 0.95rem; margin-top: 8px; }
+  .qr-loc.is-live .qr-loc-track .qr-plate--phone { height: min(52svh, 480px); }
+}
+
+/* ============================================================
+   DESIGN DECISIONS — inline notes beside the screens they explain
+   ============================================================ */
+.qr-why { margin-top: 22px; border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; max-width: 46ch; }
+.qr-why-tag { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.qr-why-title { margin-top: 8px; font-family: var(--font-serif); font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.15; color: var(--text); }
+.qr-why-focus { margin-top: 6px; font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
+.qr-why--ink { border-left-color: #9EA8FF; margin-left: 58px; }
+.qr-why--ink .qr-why-tag { color: #9EA8FF; }
+.qr-why--ink .qr-why-title { color: #fff; }
+.qr-why--ink .qr-why-focus { color: rgba(255, 255, 255, 0.55); }
+@media (max-width: 760px) { .qr-why--ink { margin-left: 0; } }
+
+/* store map caption + decision 03 side by side */
+/* Outcomes: pop-up → intent → visit, read left to right */
+.qr-funnel { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; max-width: 960px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line-2); }
+.qr-funnel li { display: flex; flex-direction: column; gap: 12px; padding: clamp(24px, 3vw, 36px) clamp(16px, 2.5vw, 32px) clamp(24px, 3vw, 36px) 0; border-bottom: 1px solid var(--line-2); }
+.qr-funnel li + li { padding-left: clamp(16px, 2.5vw, 32px); border-left: 1px solid var(--line-2); }
+.qr-funnel-n { font-family: var(--font-serif); font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -0.02em; color: var(--text); }
+.qr-funnel li:last-child .qr-funnel-n { color: var(--accent); }
+.qr-funnel-l { font-size: 0.95rem; line-height: 1.45; color: var(--muted); max-width: 24ch; }
+@media (max-width: 640px) {
+  .qr-funnel { grid-template-columns: 1fr; }
+  .qr-funnel li + li { padding-left: 0; border-left: 0; }
+  .qr-funnel li { flex-direction: row; align-items: baseline; gap: 18px; }
+  .qr-funnel-n { min-width: 3.2ch; }
+}
+.qr-photo { margin: clamp(40px, 5vw, 64px) 0 0; }
+.qr-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.qr-map { margin: 0; background: #F6EFE8; border: 1px solid var(--line); }
+.qr-map img { display: block; width: 100%; height: auto; }
+.qr-map-tag { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+.qr-zones { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+.qr-zones li { display: flex; gap: 12px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+.qr-zones span { font-family: var(--font-serif); color: #6B1A2C; min-width: 2ch; }
+.qr-loc-detail { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: start; margin-top: clamp(28px, 4vw, 48px); }
+.qr-loc-detail .qr-why { margin-top: 0; }
+@media (max-width: 760px) { .qr-loc-detail { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   NEXT PROJECT
+   ============================================================ */
+.qr-next { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.qr-next a { display: block; padding: clamp(36px, 5vw, 64px) 0; text-decoration: none; color: var(--text); }
+.qr-next a + a { border-left: 1px solid var(--line); padding-left: clamp(24px, 4vw, 56px); }
+.qr-next-lbl { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.qr-next-title { display: block; margin-top: 12px; font-family: var(--font-serif); font-size: clamp(1.5rem, 2.8vw, 2.4rem); line-height: 1.04; letter-spacing: -0.01em; transition: color 0.25s ease; }
+.qr-next-sub { display: block; margin-top: 10px; font-size: 0.95rem; color: var(--muted); max-width: 36ch; line-height: 1.5; }
+.qr-next a:hover .qr-next-title { color: var(--accent); }
+@media (max-width: 760px) {
+  .qr-next { grid-template-columns: 1fr; }
+  .qr-next a + a { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+}
+
+/* ---------- PROGRESS INDEX ----------
+   It's a <nav>, so base.css's site-header rule stretches it edge to edge
+   (left: 0; right: 0): an invisible band across mid-screen that swallowed
+   hovers on the locator screens. Let the pointer through; only its links
+   catch it. */
+.pg-progress.is-visible { pointer-events: none; }
+.pg-progress.is-visible a { pointer-events: auto; }
+/* over dark sections (ProgressContrast.tsx) the index inverts to light ink */
+.pg-progress.is-on-dark .bar { background: rgba(255, 255, 255, 0.45); }
+.pg-progress.is-on-dark a.is-active .bar { background: #fff; }
+.pg-progress.is-on-dark .lbl { color: rgba(255, 255, 255, 0.7); transition: opacity 0.3s ease, transform 0.3s var(--ease), color 0.35s ease; }
+.pg-progress.is-on-dark a.is-active .lbl { color: #fff; }
+
+/* ---------- FOCUS (keyboard) ---------- */
+.pg-progress a:focus-visible, .qr-next a:focus-visible, .pg-cta a:focus-visible, main a:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 4px;
+}
+.qr-band a:focus-visible { outline-color: #9EA8FF; }
+/* The plate clips its video, so the ring goes on the plate. */
+.qr-plate video:focus { outline: none; }
+.qr-plate:has(video:focus-visible) { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* REDUCED MOTION: the VR carousel stays a static stack (VrCarousel skips
+   its script), so no overrides are needed here. */

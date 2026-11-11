@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import SiteBehaviour from './behaviour/SiteBehaviour';
+import HideNavOnScroll from './behaviour/HideNavOnScroll';
 import '@/styles/base.css';
 
 /* The <html>/<body> shell every root layout renders. Pages are full
@@ -24,6 +25,7 @@ export default function Document({
             page's own behaviour, matching the original script order. */}
         <SiteBehaviour />
         {children}
+        <HideNavOnScroll />
       </body>
     </html>
   );

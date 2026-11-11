@@ -105,7 +105,7 @@ export default function HomePage() {
         <div className="section-head fade-up">
           <p className="section-kicker">01 &#8212; Featured Work</p>
           <h2 className="section-title">Selected case studies</h2>
-          <p className="section-intro">Two products taken from ambiguity to shipped experience &#8212; the research, the trade-offs, and what the numbers did afterwards.</p>
+          <p className="section-intro">Products taken from ambiguity to a designed experience &#8212; the research, the trade-offs, and the decisions behind them.</p>
         </div>
         <div className="work-features">
           <a className="work-feature fade-up fade-up-d1" href="/work-price-genie.html" style={{ "--feature-art": "#14161C url('/assets/img/price-genie/thumb.jpg') center/cover no-repeat", "--feature-tint": "linear-gradient(to bottom, rgba(10,11,12,0.4) 0%, rgba(10,11,12,0) 30%, rgba(10,11,12,0) 52%, rgba(10,11,12,0.62) 100%)" } as CSSProperties}>
@@ -171,6 +171,40 @@ export default function HomePage() {
                 <span>9-chapter PDP</span>
                 {" "}
                 <span>Motion language</span>
+              </div>
+              <span className="work-card-link">Read case study</span>
+            </div>
+          </a>
+          {" "}
+          <a className="work-feature fade-up fade-up-d1" href="/work-qween-immersive-retail.html" style={{ "--feature-art": "#0F0F11 url('/assets/img/qween-immersive/home-card.webp') center/cover no-repeat", "--feature-tint": "linear-gradient(to bottom, rgba(10,11,12,0.4) 0%, rgba(10,11,12,0) 30%, rgba(10,11,12,0) 52%, rgba(10,11,12,0.62) 100%)" } as CSSProperties}>
+            <div className="work-feature-art">
+              <span className="work-feature-index">03</span>
+              <p className="work-feature-art-label">QWEEN &#8212; Immersive Retail</p>
+            </div>
+            <div className="work-feature-body">
+              <p className="work-feature-tag">Immersive retail &#8212; VR to physical store</p>
+              <h3>Beyond Digital Commerce</h3>
+              <p className="work-feature-desc">Connecting immersive jewellery discovery with physical retail: a virtual QWEEN showroom with mixed-reality try-on, and a product locator that takes customers from the product page to the exact piece in store.</p>
+              <ul className="work-feature-meta">
+                <li>
+                  <h4>Brand</h4>
+                  <p>QWEEN</p>
+                </li>
+                <li>
+                  <h4>Scope</h4>
+                  <p>Spatial UX &#183; Interaction &#183; E-commerce</p>
+                </li>
+                <li>
+                  <h4>Type</h4>
+                  <p>Connected retail experience</p>
+                </li>
+              </ul>
+              <div className="work-feature-impact">
+                <span>VR showroom</span>
+                {" "}
+                <span>Mixed-reality try-on</span>
+                {" "}
+                <span>PDP product locator</span>
               </div>
               <span className="work-card-link">Read case study</span>
             </div>
